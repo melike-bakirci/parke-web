@@ -1,0 +1,142 @@
+---
+// src/components/ScrollToTop.astro
+---
+
+<button 
+  id="scroll-to-top" 
+  class="scroll-to-top-btn" 
+  type="button" 
+  aria-label="Yukarı Çık"
+  title="Yukarı Çık"
+>
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width="22" 
+    height="22" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    stroke-width="2.5" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+    class="arrow-icon"
+  >
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<style>
+  .scroll-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--color-primary, #123447);
+    color: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease,
+                visibility 0.25s ease,
+                transform 0.25s ease,
+                background-color 0.2s ease,
+                box-shadow 0.2s ease;
+    outline: none;
+    user-select: none;
+  }
+
+  .scroll-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .arrow-icon {
+    transition: transform 0.2s ease;
+  }
+
+  .scroll-to-top-btn:hover {
+    background-color: var(--color-secondary, #E36414);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  }
+
+  .scroll-to-top-btn:hover .arrow-icon {
+    transform: translateY(-1px);
+  }
+
+  .scroll-to-top-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+  }
+
+  .scroll-to-top-btn:focus-visible {
+    box-shadow: 0 0 0 2px rgba(227, 100, 20, 0.5), 0 2px 8px rgba(0, 0, 0, 0.16);
+  }
+
+  @media (max-width: 768px) {
+    .scroll-to-top-btn {
+      bottom: 1.25rem;
+      right: 1.25rem;
+      width: 42px;
+      height: 42px;
+    }
+
+    .arrow-icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>
+
+<script>
+  function initScrollToTop() {
+    const scrollBtn = document.getElementById('scroll-to-top');
+    if (!scrollBtn) return;
+
+    let ticking = false;
+
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(toggleVisibility);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    scrollBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Check initial position
+    toggleVisibility();
+  }
+
+  // Support initial load and Astro page transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollToTop);
+  } else {
+    initScrollToTop();
+  }
+  document.addEventListener('astro:page-load', initScrollToTop);
+</script>
