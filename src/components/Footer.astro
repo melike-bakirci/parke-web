@@ -1,7 +1,21 @@
 ---
 import CtaBanner from './CtaBanner.astro';
+
+interface Props {
+  ctaTitle?: string;
+  ctaDescription?: string;
+  ctaWhatsappMsg?: string;
+  ctaPhoneText?: string;
+}
+
+const { ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
 ---
-<CtaBanner />
+<CtaBanner 
+  title={ctaTitle} 
+  description={ctaDescription} 
+  whatsappMessage={ctaWhatsappMsg} 
+  phoneText={ctaPhoneText} 
+/>
 <footer class="footer">
   <div class="container footer-container">
     <div class="footer-col brand-col">
