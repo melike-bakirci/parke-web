@@ -1,108 +1,373 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import PageHero from '../components/PageHero.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="İletişim - Woodcove Flooring">
 	<Header />
-	<PageHero title="Bize Ulaşın" subtitle="Projeniz için ücretsiz keşif ve fiyat teklifi almak üzere bizimle iletişime geçin." />
-	
+	<PageHero
+		title="Bize Ulaşın"
+		subtitle="Projeniz için ücretsiz keşif ve fiyat teklifi almak üzere bizimle iletişime geçin."
+	/>
+
 	<section class="contact-page-section">
 		<div class="container contact-page-container">
-			
 			<!-- Contact Info Cards -->
 			<div class="contact-info-cards">
 				<div class="info-card">
 					<div class="icon-circle">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+							></path><circle cx="12" cy="10" r="3"></circle></svg
+						>
 					</div>
 					<h3>Adresimiz</h3>
-					<p><a href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA" target="_blank" rel="noopener noreferrer">Leman Sk. No:4,<br/>Sancaktepe / İstanbul</a></p>
-				</div>
-				
-				<div class="info-card">
-					<div class="icon-circle">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-					</div>
-					<h3>Telefon</h3>
-					<p><a href="tel:+905302708487">+90 (530) 270 84 87</a></p>
-				</div>
-				
-				<div class="info-card">
-					<div class="icon-circle">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-					</div>
-					<h3>E-posta</h3>
-					<p><a href="mailto:zenflormarket@gmail.com">zenflormarket@gmail.com</a></p>
+					<p>
+						<a
+							href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA"
+							target="_blank"
+							rel="noopener noreferrer"
+							>Leman Sk. No:4,<br />Sancaktepe / İstanbul</a
+						>
+					</p>
 				</div>
 
 				<div class="info-card">
 					<div class="icon-circle">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+							></path></svg
+						>
 					</div>
-					<h3>Çalışma Saatleri</h3>
-					<p>Pzt - Cmt: 09:00 – 19:00<br/><span class="text-muted">Pazar: Kapalı</span></p>
+					<h3>Telefonumuz</h3>
+					<p><a href="tel:+905302708487">+90 (530) 270 84 87</a></p>
+				</div>
+
+				<div class="info-card">
+					<div class="icon-circle">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+							></path><polyline points="22,6 12,13 2,6"
+							></polyline></svg
+						>
+					</div>
+					<h3>E-postamız</h3>
+					<p>
+						<a href="mailto:zenflormarket@gmail.com"
+							>zenflormarket@gmail.com</a
+						>
+					</p>
+				</div>
+
+				<div class="info-card">
+					<div class="icon-circle">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><circle cx="12" cy="12" r="10"></circle><polyline
+								points="12 6 12 12 16 14"></polyline></svg
+						>
+					</div>
+					<h3>Çalışma Saatlerimiz</h3>
+					<p>
+						Pzt - Cmt: 09:00 – 19:00<br /><span class="text-muted"
+							>Pazar: Kapalı</span
+						>
+					</p>
 				</div>
 			</div>
-			
+
+			<!-- Horizontal Social Media Bar -->
+			<div class="contact-social-bar">
+				<div class="social-bar-heading">
+					<h3>Bizi Takip Edin</h3>
+				</div>
+				<div class="social-bar-icons">
+					<a
+						href="https://www.instagram.com/zenflormarket/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="Instagram"
+						title="Instagram"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><rect
+								x="2"
+								y="2"
+								width="20"
+								height="20"
+								rx="5"
+								ry="5"></rect><path
+								d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+							></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
+							></line></svg
+						>
+					</a>
+					<a
+						href="https://www.linkedin.com/company/zenflor"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="LinkedIn"
+						title="LinkedIn"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+							></path><rect x="2" y="9" width="4" height="12"
+							></rect><circle cx="4" cy="4" r="2"></circle></svg
+						>
+					</a>
+					<a
+						href="https://facebook.com/people/Zenflor/61592694338862/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="Facebook"
+						title="Facebook"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+							></path></svg
+						>
+					</a>
+					<a
+						href="https://www.youtube.com/@zenflormarket"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="YouTube"
+						title="YouTube"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							><path
+								d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+							></path><polygon
+								points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+								fill="currentColor"></polygon></svg
+						>
+					</a>
+					<a
+						href="https://www.tiktok.com/@zenflormarket"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="TikTok"
+						title="TikTok"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							><path
+								d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.891 2.887 2.896 2.896 0 0 1-2.891-2.887 2.896 2.896 0 0 1 2.891-2.887c.277 0 .543.04.8.113V9.01a6.347 6.347 0 0 0-.8-.052c-3.535 0-6.4 2.865-6.4 6.4s2.865 6.4 6.4 6.4 6.4-2.865 6.4-6.4V8.307a8.214 8.214 0 0 0 4.806 1.523v-3.144h-.001z"
+							></path></svg
+						>
+					</a>
+					<a
+						href="https://zenflor.sahibinden.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="social-icon-btn"
+						aria-label="Sahibinden"
+						title="Sahibinden"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							><path
+								d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-4.2 6.2c-.4-.4-1.1-.7-2-.7-.9 0-1.6.3-1.6.9 0 .6.5.7 1.5 1 1.7.5 3.3 1.1 3.3 3 0 1.9-1.6 3.1-3.8 3.1-1.7 0-2.9-.6-3.7-1.4l1.3-1.5c.6.6 1.4 1 2.3 1 1 0 1.7-.4 1.7-1 0-.6-.5-.8-1.5-1.1-1.8-.5-3.3-1.1-3.3-2.9 0-1.8 1.5-3 3.5-3 1.4 0 2.5.4 3.3 1.1l-1.3 1.6z"
+							></path></svg
+						>
+					</a>
+				</div>
+			</div>
+
 			<!-- Map & Form Section -->
 			<div class="map-form-wrapper">
 				<!-- Google Map Iframe -->
 				<div class="map-container">
-					<iframe 
-						src="https://maps.google.com/maps?q=Leman+Sk.+No:4,+Sancaktepe+İstanbul&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-						width="100%" 
-						height="100%" 
-						style="border:0; min-height: 450px; display: block;" 
-						allowfullscreen="" 
-						loading="lazy" 
+					<iframe
+						src="https://maps.google.com/maps?q=Leman+Sk.+No:4,+Sancaktepe+İstanbul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+						width="100%"
+						height="100%"
+						style="border:0; min-height: 450px; display: block;"
+						allowfullscreen=""
+						loading="lazy"
 						referrerpolicy="no-referrer-when-downgrade"
-						title="Ofis Konumu">
+						title="Ofis Konumu"
+					>
 					</iframe>
 				</div>
-				
+
 				<!-- Contact Form -->
 				<div class="form-container">
-					<h2>Mesaj Gönderin</h2>
-					<p>Öneri, şikayet veya teklif istekleriniz için aşağıdaki formu doldurabilirsiniz. Uzman ekibimiz en kısa sürede size dönüş yapacaktır.</p>
-					
-					<form class="page-contact-form">
+					<h2>Bize Ulaşın</h2>
+					<p>
+						Aklınızdaki projeyi konuşmak için sabırsızlanıyoruz! Bir
+						mesaj atmaya ne dersiniz?
+					</p>
+
+					<form class="page-contact-form" id="contactForm">
+						<div id="formSuccessMessage" class="form-success-alert" role="alert">
+							<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+							<div>
+								<strong>Mesajınız başarıyla iletildi!</strong>
+								<p>En kısa süre içerisinde sizinle iletişime geçeceğiz.</p>
+							</div>
+						</div>
+
 						<div class="form-row">
 							<div class="input-group">
-								<label>Adınız Soyadınız</label>
-								<input type="text" placeholder="John Doe" />
+								<label>Adınız <span class="required">*</span></label>
+								<input type="text" required placeholder="Size nasıl hitap edelim?" />
 							</div>
 							<div class="input-group">
-								<label>E-posta Adresiniz</label>
-								<input type="email" placeholder="ornek@mail.com" />
+								<label>Telefon Numaranız <span class="required">*</span></label>
+								<input
+									type="tel"
+									required
+									placeholder="Size ulaşabileceğimiz telefon"
+								/>
 							</div>
 						</div>
-						
+
 						<div class="input-group">
-							<label>Konu</label>
-							<select>
-								<option>Fiyat Teklifi İstiyorum</option>
-								<option>Ürünler Hakkında Bilgi</option>
-								<option>Bayilik Başvurusu</option>
-								<option>Diğer</option>
-							</select>
+							<label>Mesajınız <span class="required">*</span></label>
+							<textarea
+								required
+								placeholder="Aklınızdan geçenleri bizimle paylaşın..."
+								rows="6"></textarea>
 						</div>
-						
-						<div class="input-group">
-							<label>Mesajınız</label>
-							<textarea placeholder="Size nasıl yardımcı olabiliriz?" rows="6"></textarea>
-						</div>
-						
-						<button type="button" class="btn-primary">Gönder</button>
+
+						<button type="submit" class="btn-primary" id="submitBtn">Mesajı Gönder</button>
 					</form>
 				</div>
 			</div>
-			
 		</div>
 	</section>
-	
+
+	<script>
+		const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+		const successAlert = document.getElementById('formSuccessMessage');
+		const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+
+		contactForm?.addEventListener('submit', (e) => {
+			e.preventDefault();
+			
+			if (submitBtn) {
+				submitBtn.disabled = true;
+				submitBtn.innerHTML = `
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-spinner">
+						<path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+					</svg>
+					Gönderiliyor...
+				`;
+			}
+
+			// Simulate submission feedback
+			setTimeout(() => {
+				contactForm.reset();
+				
+				if (submitBtn) {
+					submitBtn.disabled = false;
+					submitBtn.textContent = 'Mesajı Gönder';
+				}
+
+				if (successAlert) {
+					successAlert.classList.add('show');
+					successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+					setTimeout(() => {
+						successAlert.classList.remove('show');
+					}, 6000);
+				}
+			}, 600);
+		});
+	</script>
+
 	<Footer />
 </Layout>
 
@@ -116,7 +381,7 @@ import Footer from '../components/Footer.astro';
 		flex-direction: column;
 		gap: 60px;
 	}
-	
+
 	/* Info Cards */
 	.contact-info-cards {
 		display: grid;
@@ -144,7 +409,7 @@ import Footer from '../components/Footer.astro';
 		padding: 40px 30px;
 		border-radius: 8px;
 		text-align: center;
-		box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
 		transition: transform 0.3s;
 	}
 	.info-card:hover {
@@ -166,7 +431,8 @@ import Footer from '../components/Footer.astro';
 		margin-bottom: 15px;
 		color: var(--color-primary);
 	}
-	.info-card p, .info-card a {
+	.info-card p,
+	.info-card a {
 		color: #666;
 		line-height: 1.6;
 		font-size: 1rem;
@@ -176,7 +442,7 @@ import Footer from '../components/Footer.astro';
 		color: var(--color-primary);
 		text-decoration: underline;
 	}
-	
+
 	/* Map & Form Wrapper */
 	.map-form-wrapper {
 		display: flex;
@@ -184,7 +450,7 @@ import Footer from '../components/Footer.astro';
 		background: #fff;
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 	}
 	@media (min-width: 1024px) {
 		.map-form-wrapper {
@@ -226,7 +492,7 @@ import Footer from '../components/Footer.astro';
 		margin-bottom: 30px;
 		line-height: 1.6;
 	}
-	
+
 	/* Form Elements */
 	.page-contact-form {
 		display: flex;
@@ -254,7 +520,14 @@ import Footer from '../components/Footer.astro';
 		font-weight: 600;
 		color: #555;
 	}
-	.input-group input, .input-group select, .input-group textarea {
+	.required {
+		color: #e53e3e;
+		font-weight: bold;
+		margin-left: 2px;
+	}
+	.input-group input,
+	.input-group select,
+	.input-group textarea {
 		padding: 12px 15px;
 		border: 1px solid #ddd;
 		border-radius: 4px;
@@ -263,7 +536,9 @@ import Footer from '../components/Footer.astro';
 		transition: border-color 0.3s;
 		background: #fcfcfc;
 	}
-	.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+	.input-group input:focus,
+	.input-group select:focus,
+	.input-group textarea:focus {
 		border-color: var(--color-primary);
 		background: #fff;
 	}
@@ -271,5 +546,100 @@ import Footer from '../components/Footer.astro';
 		align-self: flex-start;
 		padding: 15px 40px;
 		margin-top: 10px;
+	}
+
+	/* Horizontal Social Media Bar */
+	.contact-social-bar {
+		background: #fff;
+		border-radius: 8px;
+		padding: 24px 36px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+	}
+	@media (min-width: 900px) {
+		.contact-social-bar {
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+		}
+	}
+	.social-bar-heading h3 {
+		font-size: 1.2rem;
+		color: var(--color-primary);
+	}
+	.social-bar-icons {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+	.social-icon-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: #f8fafc;
+		border: 1px solid #e2e8f0;
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: all 0.25s ease;
+	}
+	.social-icon-btn:hover {
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		color: #fff;
+		transform: translateY(-3px);
+		box-shadow: 0 6px 16px rgba(18, 52, 71, 0.15);
+	}
+
+	/* Form Success Alert */
+	.form-success-alert {
+		display: none;
+		align-items: flex-start;
+		gap: 12px;
+		background: #ecfdf5;
+		border: 1px solid #a7f3d0;
+		color: #065f46;
+		padding: 16px 20px;
+		border-radius: 6px;
+		margin-bottom: 20px;
+		animation: fadeIn 0.3s ease;
+	}
+	.form-success-alert.show {
+		display: flex;
+	}
+	.form-success-alert svg {
+		flex-shrink: 0;
+		color: #059669;
+		margin-top: 2px;
+	}
+	.form-success-alert strong {
+		display: block;
+		font-size: 0.95rem;
+		margin-bottom: 2px;
+		color: #047857;
+	}
+	.form-success-alert p {
+		margin: 0;
+		font-size: 0.88rem;
+		color: #065f46;
+	}
+
+	/* Button Spinner */
+	.btn-spinner {
+		animation: spin 0.8s linear infinite;
+		margin-right: 8px;
+	}
+	@keyframes spin {
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	}
+	@keyframes fadeIn {
+		from { opacity: 0; transform: translateY(-6px); }
+		to { opacity: 1; transform: translateY(0); }
 	}
 </style>
