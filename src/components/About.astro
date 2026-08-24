@@ -1,0 +1,109 @@
+---
+---
+<section class="about">
+  <div class="container about-container">
+    <div class="about-images">
+      <div class="image-grid">
+        <img src="/images/about-1.jpg" alt="Trendy woodwork 1" class="img-1" />
+        <img src="/images/about-2.jpg" alt="Trendy woodwork 2" class="img-2" />
+        <img src="/images/about-3.jpg" alt="Trendy woodwork 3" class="img-3" />
+        <div class="award-badge">
+          <span>Company Of The<br/>Year Award<br/>Winner</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="about-text">
+      <h2>A Trendy Woodwork<br/>for Trendy Home</h2>
+      <p>We take pride in building beautiful interiors with elegant woodwork solutions that fit your style. Our professional and experienced team will make sure to provide you the best quality of services.</p>
+      <button class="btn-primary">Read more</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 120px 0;
+    background: #fff;
+  }
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .about-container {
+      flex-direction: row;
+      align-items: center;
+      gap: 6rem;
+    }
+  }
+  .about-images {
+    flex: 1;
+    position: relative;
+  }
+  .image-grid {
+    position: relative;
+    width: 100%;
+    height: 500px;
+  }
+  .img-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 60%;
+    object-fit: cover;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .img-2 {
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 45%;
+    height: 50%;
+    object-fit: cover;
+    z-index: 2;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .img-3 {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 50%;
+    height: 70%;
+    object-fit: cover;
+    z-index: 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  .award-badge {
+    position: absolute;
+    top: 55%;
+    right: 15%;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: center;
+    z-index: 3;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  .about-text {
+    flex: 1;
+    max-width: 450px;
+  }
+  .about-text h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .about-text p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+</style>

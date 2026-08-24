@@ -1,0 +1,83 @@
+---
+---
+<section class="stats">
+  <div class="container stats-container">
+    <div class="stat-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+      </div>
+      <div class="number">500+</div>
+      <div class="label">AWESOME FLOORS</div>
+    </div>
+    
+    <div class="stat-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </div>
+      <div class="number">350+</div>
+      <div class="label">FULL WIDTH COLLECTIONS</div>
+    </div>
+    
+    <div class="stat-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19.07 4.93a10 10 0 0 0-14.14 0l1.42 1.42a8 8 0 1 1 11.3 0l1.42-1.42z"></path><path d="M5.5 10h13"></path><path d="M12 15v4"></path></svg>
+      </div>
+      <div class="number">25+</div>
+      <div class="label">STORES WORLDWIDE</div>
+    </div>
+    
+    <div class="stat-item">
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      </div>
+      <div class="number">20+</div>
+      <div class="label">AWARDS & RECOGNITION</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats {
+    background-color: var(--color-dark);
+    padding: 80px 0;
+    color: #fff;
+  }
+  .stats-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+    text-align: center;
+  }
+  @media (min-width: 640px) {
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .stats-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .icon {
+    color: #fff;
+    opacity: 0.8;
+  }
+  .number {
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    text-transform: uppercase;
+  }
+</style>

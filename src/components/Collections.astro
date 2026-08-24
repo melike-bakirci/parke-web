@@ -1,0 +1,166 @@
+---
+---
+<section class="collections">
+  <div class="container collections-container">
+    <div class="collections-text">
+      <h2>Explore Our Hardwood<br/>Collections</h2>
+      <p>Elevate your space with the timeless elegance of our premium hardwood collections. Each plank is crafted to perfection, offering a blend of durability, style, and natural beauty. Find the perfect fit for your home today.</p>
+    </div>
+    
+    <div class="collections-slider">
+      <button class="slider-arrow prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      
+      <div class="cards-wrapper">
+        <div class="collection-card">
+          <img src="/images/collection-1.jpg" alt="Nature's First Choice" />
+          <div class="card-content">
+            <h3>Naturesville - Series 110 - White Oak Solid Hardwood</h3>
+            <div class="card-footer">
+              <button class="btn-primary">Add to cart</button>
+              <span class="price">$14</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="collection-card">
+          <img src="/images/collection-2.jpg" alt="Walnut Dark Choice" />
+          <div class="card-content">
+            <h3>Walnut Dark Series 400 - Real Vintage Oak Hardwood Plank</h3>
+            <div class="card-footer">
+              <button class="btn-primary">Add to cart</button>
+              <span class="price">$21</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button class="slider-arrow next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .collections {
+    background-color: var(--color-light);
+    padding: 100px 0;
+  }
+  .collections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  @media (min-width: 1024px) {
+    .collections-container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .collections-text {
+    flex: 1;
+    max-width: 400px;
+  }
+  .collections-text h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  .collections-text p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+  .collections-slider {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+  }
+  .slider-arrow {
+    background: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    color: var(--color-primary);
+    transition: all 0.3s;
+    flex-shrink: 0;
+  }
+  .slider-arrow:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .cards-wrapper {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    overflow: hidden;
+  }
+  .collection-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    flex: 1;
+  }
+  .collection-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 1.5rem;
+  }
+  .card-content h3 {
+    font-size: 1.1rem;
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-footer .btn-primary {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  .price {
+    font-weight: 700;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: -10px;
+  }
+  .slider-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+  }
+  .slider-dots .dot.active {
+    background: var(--color-primary);
+  }
+</style>

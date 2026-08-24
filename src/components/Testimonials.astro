@@ -1,0 +1,136 @@
+---
+---
+<section class="testimonials">
+  <div class="test-overlay"></div>
+  <div class="container test-container">
+    <div class="test-header">
+      <h2>What <span>Our Customers</span> Say</h2>
+      <p>Here you will see our customers' feedback. There are so many customers who are very happy to choose us as their flooring partner.</p>
+    </div>
+    
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-author">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." />
+          <h4>Sarah M.</h4>
+        </div>
+        <p>"Woodcove Flooring has truly amazed me! We love the quality of the hardwood and the amazing job of the installation team. Highly recommend them for anyone!"</p>
+        <div class="dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+      
+      <div class="test-card">
+        <div class="test-author">
+          <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="James L." />
+          <h4>James L.</h4>
+        </div>
+        <p>"The entire process was smooth and hassle-free. The floors are stunning and incredibly durable. I am extremely pleased with Woodcove's service."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    position: relative;
+    padding: 100px 0;
+    background-image: url('/images/hero-bg.jpg'); /* Reusing hero bg due to quota */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    background-attachment: fixed;
+  }
+  .test-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(18, 52, 71, 0.85);
+  }
+  .test-container {
+    position: relative;
+    z-index: 1;
+  }
+  .test-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+  }
+  .test-header h2 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .test-header h2 span {
+    font-weight: 800;
+  }
+  .test-header p {
+    font-size: 1.05rem;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+  .test-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  @media (min-width: 768px) {
+    .test-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .test-card {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .test-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .test-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+  .test-author h4 {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  .test-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.9;
+  }
+  .dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 2rem;
+  }
+  .dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .dots .dot:first-child {
+    background: #fff;
+  }
+</style>

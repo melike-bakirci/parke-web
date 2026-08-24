@@ -1,0 +1,113 @@
+---
+---
+<section class="team">
+  <div class="container team-container">
+    <div class="team-header">
+      <h2>MEET THE <span>BUDDY TEAM</span></h2>
+      <p>Our dedicated team of floor expert and consulting are here to provide and build premium quality flooring services running your residential and commercial project.</p>
+    </div>
+    
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="/images/team-1.jpg" alt="John Smith" />
+        <div class="team-info">
+          <h3>John Smith</h3>
+          <p>Founder & CEO</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <img src="/images/team-2.jpg" alt="Jane Doe" />
+        <div class="team-info">
+          <h3>Jane Doe</h3>
+          <p>Lead Designer</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <img src="/images/team-3.jpg" alt="Mike Johnson" />
+        <div class="team-info">
+          <h3>Mike Johnson</h3>
+          <p>Installation Manager</p>
+        </div>
+      </div>
+      
+      <div class="team-card">
+        <img src="/images/team-4.jpg" alt="Emily Brown" />
+        <div class="team-info">
+          <h3>Emily Brown</h3>
+          <p>Customer Relations Specialist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .team {
+    padding: 100px 0;
+    background: #fff;
+  }
+  .team-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+  }
+  .team-header h2 {
+    font-size: 2.5rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .team-header h2 span {
+    color: var(--color-primary);
+    font-weight: 800;
+  }
+  .team-header p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.05rem;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+  @media (min-width: 640px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .team-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .team-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+  .team-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+  .team-info {
+    padding: 1.5rem;
+  }
+  .team-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+  }
+  .team-info p {
+    color: #888;
+    font-size: 0.9rem;
+  }
+</style>

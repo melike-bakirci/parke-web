@@ -1,0 +1,142 @@
+---
+---
+<section class="contact">
+  <div class="container contact-container">
+    <div class="contact-form-section">
+      <div class="contact-header">
+        <span class="subtitle">GET IN TOUCH</span>
+        <h2>Needs Help? Let's Get in<br/>Touch</h2>
+      </div>
+      
+      <form class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="First Name" />
+          <input type="email" placeholder="Email Address" />
+        </div>
+        <input type="text" placeholder="Phone" />
+        <textarea placeholder="Message" rows="5"></textarea>
+        <button type="button" class="btn-primary form-btn">Submit</button>
+      </form>
+    </div>
+    
+    <div class="contact-images">
+      <!-- Reusing about images as fallback -->
+      <img src="/images/about-1.jpg" alt="Interior 1" class="c-img-1" />
+      <img src="/images/about-2.jpg" alt="Interior 2" class="c-img-2" />
+      <img src="/images/about-3.jpg" alt="Interior 3" class="c-img-3" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 100px 0;
+    background: var(--color-primary);
+    color: #fff;
+  }
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  @media (min-width: 1024px) {
+    .contact-container {
+      flex-direction: row;
+      align-items: center;
+      gap: 6rem;
+    }
+  }
+  .contact-form-section {
+    flex: 1;
+    max-width: 500px;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .contact-header h2 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: #fff;
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-row {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .form-row input {
+    flex: 1;
+  }
+  input, textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 20px;
+    color: #fff;
+    font-family: var(--font-secondary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  input:focus, textarea:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+  input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .form-btn {
+    align-self: flex-start;
+    background: #fff;
+    color: var(--color-primary);
+    padding: 15px 40px;
+    margin-top: 0.5rem;
+  }
+  .form-btn:hover {
+    background: var(--color-secondary);
+    color: #fff;
+  }
+  .contact-images {
+    flex: 1;
+    position: relative;
+    height: 500px;
+  }
+  .c-img-1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 45%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .c-img-2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 2;
+  }
+  .c-img-3 {
+    position: absolute;
+    top: 30%;
+    right: 20%;
+    width: 50%;
+    height: 40%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 1;
+    border: 5px solid var(--color-primary);
+  }
+</style>
