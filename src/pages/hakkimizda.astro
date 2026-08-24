@@ -2,15 +2,255 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
-import About from '../components/About.astro';
-import Team from '../components/Team.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Hakkımızda - Woodcove Flooring">
 	<Header />
-	<PageHero title="Hakkımızda" subtitle="Bizi daha yakından tanıyın. Deneyimli ekibimizle yaşam alanlarınızı güzelleştiriyoruz." />
-	<About />
-	<Team />
+	<PageHero title="Hakkımızda" subtitle="Bizi daha yakından tanıyın. Kalite ve estetiği ahşapla buluşturuyoruz." />
+	
+	<!-- Vision & Mission Section -->
+	<section class="vision-section">
+		<div class="container vision-container">
+			<div class="vision-text">
+				<span class="subtitle">VİZYONUMUZ & MİSYONUMUZ</span>
+				<h2>Yaşam Alanlarınızı Doğanın Sıcaklığıyla Buluşturuyoruz</h2>
+				<p>Woodcove Flooring olarak 20 yılı aşkın süredir en kaliteli ahşap malzemeleri işleyerek, modern ve dayanıklı zemin çözümleri sunuyoruz. Amacımız sadece zemin kaplamak değil, aynı zamanda estetik, dayanıklılık ve sürdürülebilirliği bir araya getirerek zamana meydan okuyan mekanlar yaratmaktır.</p>
+				<p>Sürdürülebilir orman yönetimini destekliyor, çevreye duyarlı üretim süreçleriyle geleceğe değer katıyoruz.</p>
+			</div>
+			<div class="vision-image">
+				<img src="/images/about-3.jpg" alt="Woodcove Vision" />
+				<div class="experience-badge">
+					<strong>20+</strong>
+					<span>Yıllık<br/>Tecrübe</span>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Timeline Section -->
+	<section class="timeline-section">
+		<div class="container">
+			<div class="section-header">
+				<h2>Başarı Hikayemiz</h2>
+				<p>Küçük bir atölyeden global bir markaya uzanan yolculuğumuz.</p>
+			</div>
+			
+			<div class="timeline">
+				<div class="timeline-item">
+					<div class="timeline-year">2005</div>
+					<div class="timeline-content">
+						<h3>Kuruluş</h3>
+						<p>Yerel bir ahşap atölyesi olarak sektöre ilk adımımızı attık.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-year">2012</div>
+					<div class="timeline-content">
+						<h3>İlk Büyük Tesis</h3>
+						<p>Üretim kapasitemizi 5 katına çıkararak ilk büyük fabrikamızı kurduk.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-year">2018</div>
+					<div class="timeline-content">
+						<h3>Uluslararası Pazara Açılma</h3>
+						<p>Avrupa'da 15 farklı ülkeye ihracat yapmaya başladık.</p>
+					</div>
+				</div>
+				<div class="timeline-item">
+					<div class="timeline-year">2026</div>
+					<div class="timeline-content">
+						<h3>Sektör Liderliği</h3>
+						<p>Yenilikçi tasarımlarımızla sektörde en çok tercih edilen marka konumuna geldik.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 	<Footer />
 </Layout>
+
+<style>
+	.subtitle {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--color-secondary);
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: 1rem;
+	}
+	
+	/* Vision Section */
+	.vision-section {
+		padding: 100px 0;
+		background: #fff;
+	}
+	.vision-container {
+		display: flex;
+		flex-direction: column;
+		gap: 60px;
+	}
+	@media (min-width: 1024px) {
+		.vision-container {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+	.vision-text {
+		flex: 1;
+	}
+	.vision-text h2 {
+		font-size: 2.5rem;
+		line-height: 1.2;
+		margin-bottom: 2rem;
+	}
+	.vision-text p {
+		color: #666;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+	}
+	.vision-image {
+		flex: 1;
+		position: relative;
+	}
+	.vision-image img {
+		width: 100%;
+		border-radius: 8px;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+	}
+	.experience-badge {
+		position: absolute;
+		bottom: -30px;
+		left: -30px;
+		background: var(--color-primary);
+		color: #fff;
+		padding: 30px;
+		border-radius: 50%;
+		width: 140px;
+		height: 140px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		box-shadow: 0 10px 20px rgba(18, 52, 71, 0.3);
+	}
+	.experience-badge strong {
+		font-size: 2.5rem;
+		font-family: var(--font-primary);
+		line-height: 1;
+	}
+	.experience-badge span {
+		font-size: 0.9rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-top: 5px;
+	}
+	
+	/* Timeline Section */
+	.timeline-section {
+		padding: 100px 0;
+		background: var(--color-light);
+	}
+	.section-header {
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto 60px auto;
+	}
+	.section-header h2 {
+		font-size: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	.section-header p {
+		color: #666;
+		font-size: 1.1rem;
+	}
+	.timeline {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		position: relative;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 20px;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: rgba(0,0,0,0.1);
+	}
+	@media (min-width: 768px) {
+		.timeline::before {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	.timeline-item {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		padding-left: 60px;
+	}
+	@media (min-width: 768px) {
+		.timeline-item {
+			flex-direction: row;
+			justify-content: space-between;
+			padding-left: 0;
+		}
+		.timeline-item:nth-child(even) {
+			flex-direction: row-reverse;
+		}
+	}
+	.timeline-year {
+		background: var(--color-primary);
+		color: #fff;
+		font-family: var(--font-primary);
+		font-weight: 700;
+		font-size: 1.2rem;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		left: -20px;
+		top: 0;
+		border: 5px solid var(--color-light);
+		z-index: 1;
+	}
+	@media (min-width: 768px) {
+		.timeline-year {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	.timeline-content {
+		background: #fff;
+		padding: 30px;
+		border-radius: 8px;
+		box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+		width: 100%;
+	}
+	@media (min-width: 768px) {
+		.timeline-content {
+			width: calc(50% - 60px);
+		}
+	}
+	.timeline-content h3 {
+		font-size: 1.3rem;
+		margin-bottom: 10px;
+		color: var(--color-primary);
+	}
+	.timeline-content p {
+		color: #666;
+		line-height: 1.5;
+	}
+</style>

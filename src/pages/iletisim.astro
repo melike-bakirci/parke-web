@@ -2,13 +2,250 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
-import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="İletişim - Woodcove Flooring">
 	<Header />
-	<PageHero title="Bize Ulaşın" subtitle="Sorularınız, teklif talepleriniz ve daha fazlası için bizimle iletişime geçmekten çekinmeyin." />
-	<Contact />
+	<PageHero title="Bize Ulaşın" subtitle="Projeniz için ücretsiz keşif ve fiyat teklifi almak üzere bizimle iletişime geçin." />
+	
+	<section class="contact-page-section">
+		<div class="container contact-page-container">
+			
+			<!-- Contact Info Cards -->
+			<div class="contact-info-cards">
+				<div class="info-card">
+					<div class="icon-circle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+					</div>
+					<h3>Merkez Ofis</h3>
+					<p>123 Woodcove Plaza,<br/>Kadıköy, İstanbul 34000</p>
+				</div>
+				
+				<div class="info-card">
+					<div class="icon-circle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+					</div>
+					<h3>Telefon</h3>
+					<p><a href="tel:14202344567">(1420) 234 4567</a><br/><a href="tel:14202344568">(1420) 234 4568</a></p>
+				</div>
+				
+				<div class="info-card">
+					<div class="icon-circle">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+					</div>
+					<h3>E-posta</h3>
+					<p><a href="mailto:info@woodcove.com">info@woodcove.com</a><br/><a href="mailto:support@woodcove.com">support@woodcove.com</a></p>
+				</div>
+			</div>
+			
+			<!-- Map & Form Section -->
+			<div class="map-form-wrapper">
+				<!-- Map Placeholder -->
+				<div class="map-container">
+					<!-- Simulated Map using a div and background color, could be replaced with Google Maps iframe -->
+					<div class="map-placeholder">
+						<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg>
+						<span>Harita Görünümü</span>
+					</div>
+				</div>
+				
+				<!-- Contact Form -->
+				<div class="form-container">
+					<h2>Mesaj Gönderin</h2>
+					<p>Öneri, şikayet veya teklif istekleriniz için aşağıdaki formu doldurabilirsiniz. Uzman ekibimiz en kısa sürede size dönüş yapacaktır.</p>
+					
+					<form class="page-contact-form">
+						<div class="form-row">
+							<div class="input-group">
+								<label>Adınız Soyadınız</label>
+								<input type="text" placeholder="John Doe" />
+							</div>
+							<div class="input-group">
+								<label>E-posta Adresiniz</label>
+								<input type="email" placeholder="ornek@mail.com" />
+							</div>
+						</div>
+						
+						<div class="input-group">
+							<label>Konu</label>
+							<select>
+								<option>Fiyat Teklifi İstiyorum</option>
+								<option>Ürünler Hakkında Bilgi</option>
+								<option>Bayilik Başvurusu</option>
+								<option>Diğer</option>
+							</select>
+						</div>
+						
+						<div class="input-group">
+							<label>Mesajınız</label>
+							<textarea placeholder="Size nasıl yardımcı olabiliriz?" rows="6"></textarea>
+						</div>
+						
+						<button type="button" class="btn-primary">Gönder</button>
+					</form>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+	
 	<Footer />
 </Layout>
+
+<style>
+	.contact-page-section {
+		padding: 80px 0;
+		background: #f4f8fb;
+	}
+	.contact-page-container {
+		display: flex;
+		flex-direction: column;
+		gap: 60px;
+	}
+	
+	/* Info Cards */
+	.contact-info-cards {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	@media (min-width: 768px) {
+		.contact-info-cards {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.info-card {
+		background: #fff;
+		padding: 40px 30px;
+		border-radius: 8px;
+		text-align: center;
+		box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+		transition: transform 0.3s;
+	}
+	.info-card:hover {
+		transform: translateY(-5px);
+	}
+	.icon-circle {
+		width: 70px;
+		height: 70px;
+		background: rgba(18, 52, 71, 0.05);
+		color: var(--color-primary);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 20px auto;
+	}
+	.info-card h3 {
+		font-size: 1.3rem;
+		margin-bottom: 15px;
+		color: var(--color-primary);
+	}
+	.info-card p, .info-card a {
+		color: #666;
+		line-height: 1.6;
+		font-size: 1rem;
+		text-decoration: none;
+	}
+	.info-card a:hover {
+		color: var(--color-primary);
+		text-decoration: underline;
+	}
+	
+	/* Map & Form Wrapper */
+	.map-form-wrapper {
+		display: flex;
+		flex-direction: column;
+		background: #fff;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+	}
+	@media (min-width: 1024px) {
+		.map-form-wrapper {
+			flex-direction: row;
+		}
+	}
+	.map-container {
+		flex: 1;
+		min-height: 400px;
+		background: #eaeaea;
+	}
+	.map-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		color: #999;
+		gap: 15px;
+		background: #e5e9ec;
+	}
+	.form-container {
+		flex: 1;
+		padding: 50px;
+	}
+	@media (max-width: 768px) {
+		.form-container {
+			padding: 30px 20px;
+		}
+	}
+	.form-container h2 {
+		font-size: 2rem;
+		margin-bottom: 15px;
+		color: var(--color-primary);
+	}
+	.form-container p {
+		color: #666;
+		margin-bottom: 30px;
+		line-height: 1.6;
+	}
+	
+	/* Form Elements */
+	.page-contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.form-row {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	@media (min-width: 640px) {
+		.form-row {
+			flex-direction: row;
+		}
+	}
+	.input-group {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		flex: 1;
+	}
+	.input-group label {
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: #555;
+	}
+	.input-group input, .input-group select, .input-group textarea {
+		padding: 12px 15px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		outline: none;
+		font-family: var(--font-secondary);
+		transition: border-color 0.3s;
+		background: #fcfcfc;
+	}
+	.input-group input:focus, .input-group select:focus, .input-group textarea:focus {
+		border-color: var(--color-primary);
+		background: #fff;
+	}
+	.btn-primary {
+		align-self: flex-start;
+		padding: 15px 40px;
+		margin-top: 10px;
+	}
+</style>

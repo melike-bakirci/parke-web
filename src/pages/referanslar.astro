@@ -3,14 +3,177 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import Stats from '../components/Stats.astro';
-import Testimonials from '../components/Testimonials.astro';
 import Footer from '../components/Footer.astro';
+
+const projects = [
+	{ title: "Modern Villa Salonu", category: "Masif Parke", img: "/images/about-1.jpg" },
+	{ title: "Dağ Evi Konsepti", category: "Lamine Parke", img: "/images/about-2.jpg" },
+	{ title: "Lüks Rezidans Zemin", category: "Özel Kesim", img: "/images/about-3.jpg" },
+	{ title: "Ofis Alanı", category: "Vinil Kaplama", img: "/images/hero-bg.jpg" },
+	{ title: "Otel Lobisi", category: "Lamine Parke", img: "/images/about-1.jpg" },
+	{ title: "Klasik Mimari Ev", category: "Masif Parke", img: "/images/about-2.jpg" }
+];
 ---
 
-<Layout title="Referanslarımız - Woodcove Flooring">
+<Layout title="Referanslarımız & Projeler - Woodcove Flooring">
 	<Header />
-	<PageHero title="Referanslar ve İstatistikler" subtitle="Bizi tercih eden yüzlerce mutlu müşterimiz ve başarılarımızla gurur duyuyoruz." />
+	<PageHero title="Referanslarımız" subtitle="Tamamladığımız seçkin projelerden ilham alın." />
+	
+	<!-- Project Portfolio Section -->
+	<section class="portfolio-section">
+		<div class="container">
+			
+			<div class="portfolio-filter">
+				<button class="filter-btn active">Tümü</button>
+				<button class="filter-btn">Masif Parke</button>
+				<button class="filter-btn">Lamine Parke</button>
+				<button class="filter-btn">Ticari Alanlar</button>
+			</div>
+			
+			<div class="portfolio-grid">
+				{projects.map(project => (
+					<div class="portfolio-item">
+						<img src={project.img} alt={project.title} />
+						<div class="portfolio-overlay">
+							<div class="overlay-content">
+								<span class="category">{project.category}</span>
+								<h3>{project.title}</h3>
+								<button class="view-btn">İncele</button>
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+			
+			<div class="load-more">
+				<button class="btn-primary">Daha Fazla Göster</button>
+			</div>
+			
+		</div>
+	</section>
+	
+	<!-- Existing Stats to build trust -->
 	<Stats />
-	<Testimonials />
+	
 	<Footer />
 </Layout>
+
+<style>
+	.portfolio-section {
+		padding: 100px 0;
+		background: #fff;
+	}
+	.portfolio-filter {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 15px;
+		margin-bottom: 50px;
+	}
+	.filter-btn {
+		background: transparent;
+		border: 1px solid #ddd;
+		padding: 10px 25px;
+		border-radius: 30px;
+		font-weight: 600;
+		color: #555;
+		cursor: pointer;
+		transition: all 0.3s;
+	}
+	.filter-btn.active, .filter-btn:hover {
+		background: var(--color-primary);
+		color: #fff;
+		border-color: var(--color-primary);
+	}
+	
+	.portfolio-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	@media (min-width: 640px) {
+		.portfolio-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (min-width: 1024px) {
+		.portfolio-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	
+	.portfolio-item {
+		position: relative;
+		border-radius: 8px;
+		overflow: hidden;
+		aspect-ratio: 4/3;
+		cursor: pointer;
+	}
+	.portfolio-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	.portfolio-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(18, 52, 71, 0.85);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+	.portfolio-item:hover .portfolio-overlay {
+		opacity: 1;
+	}
+	.portfolio-item:hover img {
+		transform: scale(1.1);
+	}
+	.overlay-content {
+		text-align: center;
+		color: #fff;
+		transform: translateY(20px);
+		transition: transform 0.3s ease;
+	}
+	.portfolio-item:hover .overlay-content {
+		transform: translateY(0);
+	}
+	.category {
+		font-size: 0.8rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: var(--color-secondary);
+		font-weight: 600;
+		margin-bottom: 10px;
+		display: block;
+	}
+	.overlay-content h3 {
+		font-size: 1.5rem;
+		margin-bottom: 20px;
+		color: #fff;
+	}
+	.view-btn {
+		background: transparent;
+		border: 2px solid #fff;
+		color: #fff;
+		padding: 8px 20px;
+		border-radius: 4px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.3s, color 0.3s;
+	}
+	.view-btn:hover {
+		background: #fff;
+		color: var(--color-primary);
+	}
+	
+	.load-more {
+		text-align: center;
+		margin-top: 60px;
+	}
+</style>
