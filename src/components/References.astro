@@ -1,0 +1,203 @@
+---
+const partnerCompanies = [
+	{
+		name: "Hilton Hotels & Resorts",
+		category: "Otelcilik & Turizm"
+	},
+	{
+		name: "Rönesans Gayrimenkul",
+		category: "İnşaat & GYO"
+	},
+	{
+		name: "Divan Grubu",
+		category: "Turizm & Konaklama"
+	},
+	{
+		name: "Sinpaş GYO",
+		category: "Konut Projeleri"
+	}
+];
+
+const galleryImages = [
+	{ img: "/images/about-1.jpg", alt: "ZenFlor Parke Zemin Uygulaması 1" },
+	{ img: "/images/about-2.jpg", alt: "ZenFlor Parke Zemin Uygulaması 2" },
+	{ img: "/images/about-3.jpg", alt: "ZenFlor Parke Zemin Uygulaması 3" },
+	{ img: "/images/collection-1.jpg", alt: "ZenFlor Parke Zemin Uygulaması 4" }
+];
+---
+
+<section class="home-references" id="referanslar">
+  <div class="container">
+    <div class="ref-header">
+      <h2>Referanslarımız</h2>
+      <p>Türkiye'nin önde gelen kurumsal markaları ve hayata geçirdiğimiz yüzlerce seçkin parke zemin uygulaması.</p>
+    </div>
+
+    <!-- Markalar Grid -->
+    <div class="brands-grid">
+      {partnerCompanies.map((company) => (
+        <div class="brand-card">
+          <div class="brand-logo-wrap">
+            <div class="brand-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"></path>
+                <path d="M5 21V7l8-4v18"></path>
+                <path d="M19 21V11l-6-4"></path>
+                <path d="M9 9v.01"></path>
+                <path d="M9 12v.01"></path>
+                <path d="M9 15v.01"></path>
+                <path d="M9 18v.01"></path>
+              </svg>
+            </div>
+            <div class="brand-info">
+              <span class="brand-name">{company.name}</span>
+              <span class="brand-category">{company.category}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Uygulama Galerisi Grid -->
+    <div class="gallery-grid">
+      {galleryImages.map((item) => (
+        <div class="gallery-card">
+          <img src={item.img} alt={item.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-references {
+    padding: 70px 0;
+    background: #ffffff;
+  }
+
+  .ref-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 2.5rem auto;
+  }
+
+  .ref-header h2 {
+    font-size: 2.2rem;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+  }
+
+  .ref-header p {
+    font-size: 1rem;
+    color: #5a6872;
+    line-height: 1.6;
+  }
+
+  /* Markalar */
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 900px) {
+    .brands-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+
+  .brand-card {
+    background: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 10px;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .brand-logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #f0f5fa;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--color-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: var(--font-primary);
+  }
+
+  .brand-category {
+    font-size: 0.76rem;
+    color: #788896;
+    margin-top: 2px;
+  }
+
+  /* Galeri */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    .gallery-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .gallery-card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #edf2f7;
+    border: 1px solid #e8edf2;
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .home-references {
+      padding: 50px 0;
+    }
+    .ref-header h2 {
+      font-size: 1.85rem;
+    }
+  }
+</style>
