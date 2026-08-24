@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import PageHero from '../../components/PageHero.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Blog - Woodcove Flooring">
+	<Header />
+	<PageHero title="Blog & Haberler" subtitle="Sektörel gelişmeler, parke bakım ipuçları ve dekorasyon trendleri." />
+	
+	<section class="blog-section">
+		<div class="container blog-container">
+			<div class="blog-grid">
+				
+				<div class="blog-card">
+					<div class="blog-img placeholder-bg1"></div>
+					<div class="blog-content">
+						<span class="blog-date">24 Ağustos 2026</span>
+						<h3>Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural</h3>
+						<p>Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü parlaklığını korumak için uygulayabileceğiniz basit ama etkili yöntemler.</p>
+						<a href="#" class="read-more">Devamını Oku &rarr;</a>
+					</div>
+				</div>
+
+				<div class="blog-card">
+					<div class="blog-img placeholder-bg2"></div>
+					<div class="blog-content">
+						<span class="blog-date">12 Ağustos 2026</span>
+						<h3>2026 Yılının Zemin Kaplama Trendleri</h3>
+						<p>Yeni yılda iç mekanlarda öne çıkan renkler, dokular ve çevre dostu malzeme seçenekleri hakkında bilmeniz gereken her şey.</p>
+						<a href="#" class="read-more">Devamını Oku &rarr;</a>
+					</div>
+				</div>
+
+				<div class="blog-card">
+					<div class="blog-img placeholder-bg3"></div>
+					<div class="blog-content">
+						<span class="blog-date">05 Ağustos 2026</span>
+						<h3>Laminat mı Lamine mi? Doğru Seçimi Yapmak</h3>
+						<p>Projeniz için hangi malzemenin daha uygun olduğuna karar vermekte zorlanıyorsanız, bu karşılaştırmalı rehber tam size göre.</p>
+						<a href="#" class="read-more">Devamını Oku &rarr;</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	
+	<Footer />
+</Layout>
+
+<style>
+	.blog-section {
+		padding: 100px 0;
+		background: var(--color-light);
+	}
+	.blog-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	@media (min-width: 768px) {
+		.blog-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	@media (min-width: 1024px) {
+		.blog-grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+	.blog-card {
+		background: #fff;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+		transition: transform 0.3s;
+	}
+	.blog-card:hover {
+		transform: translateY(-5px);
+	}
+	.blog-img {
+		width: 100%;
+		height: 240px;
+		background-size: cover;
+		background-position: center;
+	}
+	/* Fallback gradient backgrounds since quota is empty */
+	.placeholder-bg1 { background: linear-gradient(135deg, var(--color-primary), #2a5a75); }
+	.placeholder-bg2 { background: linear-gradient(135deg, var(--color-secondary), #e88c52); }
+	.placeholder-bg3 { background: linear-gradient(135deg, var(--color-dark), #334351); }
+	
+	.blog-content {
+		padding: 2rem;
+	}
+	.blog-date {
+		font-size: 0.85rem;
+		color: var(--color-secondary);
+		font-weight: 600;
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: 0.8rem;
+	}
+	.blog-content h3 {
+		font-family: var(--font-secondary);
+		font-size: 1.3rem;
+		margin-bottom: 1rem;
+		line-height: 1.4;
+	}
+	.blog-content p {
+		color: #666;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		font-size: 0.95rem;
+	}
+	.read-more {
+		color: var(--color-primary);
+		font-weight: 700;
+		font-size: 0.9rem;
+	}
+	.read-more:hover {
+		text-decoration: underline;
+	}
+</style>
