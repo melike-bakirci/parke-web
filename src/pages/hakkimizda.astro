@@ -1,28 +1,170 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import PageHero from '../components/PageHero.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Biz Kimiz? - ZenFlor Parke Çözümleri">
 	<Header />
-	<PageHero title="Biz Kimiz?" subtitle="Bizi daha yakından tanıyın. Kalite ve estetiği zeminlerinizle buluşturuyoruz." />
-	
-	<!-- Vision & Mission Section -->
-	<section class="vision-section">
-		<div class="container vision-container">
-			<div class="vision-text">
-				<span class="subtitle">VİZYONUMUZ & MİSYONUMUZ</span>
-				<h2>Yaşam Alanlarınızı Doğanın Sıcaklığıyla Buluşturuyoruz</h2>
-				<p>ZenFlor olarak en kaliteli ahşap ve parke malzemelerini işleyerek, modern ve dayanıklı zemin çözümleri sunuyoruz. Amacımız sadece zemin kaplamak değil, aynı zamanda estetik, dayanıklılık ve sürdürülebilirliği bir araya getirerek zamana meydan okuyan mekanlar yaratmaktır.</p>
-				<p>Sürdürülebilir orman yönetimini destekliyor, çevreye duyarlı üretim süreçleriyle geleceğe değer katıyoruz.</p>
+	<PageHero
+		title="Biz Kimiz?"
+		subtitle="Bizi daha yakından tanıyın. Kalite ve estetiği zeminlerinizle buluşturuyoruz."
+	/>
+
+	<!-- Story Section -->
+	<section class="story-section">
+		<div class="container story-container">
+			<div class="story-text">
+				<h2>Hikayemiz</h2>
+				<p>
+					ZenFlor, yaşam alanlarına doğallık, zarafet ve kalite katma tutkusuyla kuruldu. Ahşabın sıcaklığını ve zamansız estetiğini modern mimariyle buluşturan markamız; yıllar içinde sektörün güvenilir, yenilikçi ve öncü zemin kaplama çözümleri sağlayıcısı haline geldi.
+				</p>
+				<p>
+					Geniş lamine, laminat ve masif parke koleksiyonlarımız, uzman işçiliğimiz ve müşteri odaklı yaklaşımımızla konutlardan ticari alanlara kadar yüzlerce projede zeminlere hayat verdik. Sürdürülebilir orman yönetimini destekliyor, çevreye duyarlı ve uzun ömürlü malzemelerle geleceğe değer katıyoruz.
+				</p>
 			</div>
-			<div class="vision-image">
-				<img src="/images/about-3.jpg" alt="ZenFlor Vizyon" />
-				<div class="experience-badge">
-					<strong>20+</strong>
-					<span>Yıllık<br/>Tecrübe</span>
+
+			<div class="story-visual-wrap">
+				<div class="story-image">
+					<img src="/images/about-3.jpg" alt="ZenFlor Hikayemiz" />
+				</div>
+
+				<!-- 4 Standalone Website Icons Under Photo -->
+				<div class="story-social-icons">
+					<a
+						href="https://mineflofiyatlar.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="story-icon-btn"
+						aria-label="Mineflo Fiyatları Web Sitesi"
+						title="mineflofiyatlar.com"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="2" y1="12" x2="22" y2="12"></line>
+							<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+						</svg>
+					</a>
+
+					<a
+						href="https://mineflofiyatlar.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="story-icon-btn"
+						aria-label="Mineflo Fiyatları Web Sitesi"
+						title="mineflofiyatlar.com"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="2" y1="12" x2="22" y2="12"></line>
+							<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+						</svg>
+					</a>
+
+					<a
+						href="https://mineflofiyatlar.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="story-icon-btn"
+						aria-label="Mineflo Fiyatları Web Sitesi"
+						title="mineflofiyatlar.com"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="2" y1="12" x2="22" y2="12"></line>
+							<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+						</svg>
+					</a>
+
+					<a
+						href="https://mineflofiyatlar.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="story-icon-btn"
+						aria-label="Mineflo Fiyatları Web Sitesi"
+						title="mineflofiyatlar.com"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="2" y1="12" x2="22" y2="12"></line>
+							<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+						</svg>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Vision & Mission Section -->
+	<section class="vm-section">
+		<div class="container">
+			<div class="vm-grid">
+				<div class="vm-card">
+					<div class="vm-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="10"></circle>
+							<line x1="2" y1="12" x2="22" y2="12"></line>
+							<path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+						</svg>
+					</div>
+					<h3>Vizyonumuz</h3>
+					<p>
+						Doğal ve estetik zemin çözümlerinde yenilikçi tasarımlar, çevreye duyarlı üretim ve üstün kalite standartlarıyla Türkiye’nin en çok güvenilen ve ilham veren lider parke markası olmak.
+					</p>
+				</div>
+
+				<div class="vm-card">
+					<div class="vm-icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+							<polyline points="9 12 11 14 15 10"></polyline>
+						</svg>
+					</div>
+					<h3>Misyonumuz</h3>
+					<p>
+						Her mekânın ruhuna ve ihtiyacına uygun, dayanıklı ve estetik parke ürünlerini en kaliteli işçilik ve kusursuz müşteri deneyimiyle sunarak, yaşam alanlarına kalıcı değer ve konfor katmak.
+					</p>
 				</div>
 			</div>
 		</div>
@@ -32,81 +174,157 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-	.subtitle {
-		font-size: 0.85rem;
-		font-weight: 700;
-		color: var(--color-secondary);
-		letter-spacing: 2px;
-		text-transform: uppercase;
-		display: block;
-		margin-bottom: 1rem;
-	}
-	
-	/* Vision Section */
-	.vision-section {
-		padding: 100px 0;
+	/* Story Section */
+	.story-section {
+		padding: 90px 0 60px;
 		background: #fff;
 	}
-	.vision-container {
+	.story-container {
 		display: flex;
 		flex-direction: column;
-		gap: 60px;
+		gap: 50px;
 	}
 	@media (min-width: 1024px) {
-		.vision-container {
+		.story-container {
 			flex-direction: row;
-			align-items: center;
+			align-items: flex-start;
 		}
 	}
-	.vision-text {
+	.story-text {
 		flex: 1;
 	}
-	.vision-text h2 {
+	.story-text h2 {
 		font-size: 2.5rem;
 		line-height: 1.2;
-		margin-bottom: 2rem;
-	}
-	.vision-text p {
-		color: #666;
-		font-size: 1.05rem;
-		line-height: 1.7;
 		margin-bottom: 1.5rem;
+		color: var(--color-primary);
 	}
-	.vision-image {
+	.story-text p {
+		color: #5a6a78;
+		font-size: 1.05rem;
+		line-height: 1.75;
+		margin-bottom: 1.25rem;
+	}
+
+	/* Story Visual & 4 Social/Web Icons */
+	.story-visual-wrap {
 		flex: 1;
-		position: relative;
-	}
-	.vision-image img {
-		width: 100%;
-		border-radius: 8px;
-		box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-	}
-	.experience-badge {
-		position: absolute;
-		bottom: -30px;
-		left: -30px;
-		background: var(--color-primary);
-		color: #fff;
-		padding: 30px;
-		border-radius: 50%;
-		width: 140px;
-		height: 140px;
 		display: flex;
 		flex-direction: column;
+		gap: 20px;
+	}
+	.story-image {
+		width: 100%;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	}
+	.story-image img {
+		width: 100%;
+		height: 320px;
+		object-fit: cover;
+		display: block;
+		border-radius: 12px;
+	}
+
+	.story-social-icons {
+		display: flex;
 		align-items: center;
 		justify-content: center;
-		text-align: center;
-		box-shadow: 0 10px 20px rgba(18, 52, 71, 0.3);
+		gap: 16px;
+		padding-top: 4px;
 	}
-	.experience-badge strong {
-		font-size: 2.5rem;
+	.story-icon-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: #f8fafc;
+		border: 1px solid #e2e8f0;
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: all 0.25s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+	}
+	.story-icon-btn:hover {
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		color: #ffffff;
+		transform: translateY(-3px);
+		box-shadow: 0 8px 20px rgba(18, 52, 71, 0.2);
+	}
+
+	/* Vision & Mission Section */
+	.vm-section {
+		padding: 20px 0 100px;
+		background: #fff;
+	}
+	.vm-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
+	@media (min-width: 768px) {
+		.vm-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+	.vm-card {
+		background: #f8fafc;
+		border: 1px solid #e2e8f0;
+		border-radius: 12px;
+		padding: 40px 36px;
+		transition: all 0.3s ease;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.vm-card:hover {
+		transform: translateY(-4px);
+		border-color: rgba(18, 52, 71, 0.2);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+		background: #ffffff;
+	}
+	.vm-icon {
+		width: 60px;
+		height: 60px;
+		border-radius: 12px;
+		background: rgba(18, 52, 71, 0.08);
+		color: var(--color-primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 22px;
+		transition: all 0.3s ease;
+	}
+	.vm-card:hover .vm-icon {
+		background: var(--color-primary);
+		color: #ffffff;
+	}
+	.vm-card h3 {
+		font-size: 1.5rem;
+		color: var(--color-primary);
+		margin-bottom: 14px;
 		font-family: var(--font-primary);
-		line-height: 1;
 	}
-	.experience-badge span {
-		font-size: 0.9rem;
-		font-weight: 600;
-		text-transform: uppercase;
-		margin-top: 5px;
+	.vm-card p {
+		color: #5a6a78;
+		line-height: 1.7;
+		font-size: 1rem;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.story-section {
+			padding: 60px 0 30px;
+		}
+		.vm-section {
+			padding: 10px 0 70px;
+		}
+		.vm-card {
+			padding: 30px 24px;
+		}
 	}
 </style>
