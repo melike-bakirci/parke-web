@@ -1,34 +1,43 @@
 ---
+const testimonials = [
+  {
+    quote: "Evimizin tüm parke yenileme sürecinde ZenFlor ekibiyle çalıştık. Hem malzeme kalitesi hem de montaj ekibinin titizliği ve ustalığı gerçekten mükemmeldi. Yaşam alanımız bambaşka bir havaya büründü.",
+    name: "Ahmet Yılmaz",
+    title: "Konut Sahibi"
+  },
+  {
+    quote: "Ofis ve plaza projemiz için tercih ettiğimiz parkeler mekâna olağanüstü bir prestij kattı. Zamanında teslimat, kusursuz işçilik ve profesyonel yaklaşım için ZenFlor ailesine çok teşekkürler.",
+    name: "Selin Kaya",
+    title: "İç Mimar / Proje Yöneticisi"
+  }
+];
 ---
-<section class="testimonials">
+
+<section class="testimonials" id="testimonials">
   <div class="container test-container">
     <div class="test-header">
-      <h2>What <span>Our Customers</span> Say</h2>
-      <p>Here you will see our customers' feedback. There are so many customers who are very happy to choose us as their flooring partner.</p>
+      <span class="section-tag">GÜVEN & MEMNUNİYET</span>
+      <h2>Müşterilerimiz <span>Ne Diyor?</span></h2>
+      <p>Yüzlerce konut, ofis ve ticari projede sunduğumuz parke zemin çözümleriyle müşterilerimizin memnuniyetini en üst düzeyde tutuyoruz.</p>
     </div>
     
     <div class="test-grid">
-      <div class="test-card">
-        <div class="quote-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+      {testimonials.map((item) => (
+        <div class="test-card">
+          <div class="stars">
+            {[...Array(5)].map(() => (
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#E36414" stroke="#E36414" stroke-width="1">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            ))}
+          </div>
+          <p>"{item.quote}"</p>
+          <div class="test-author">
+            <h4>{item.name}</h4>
+            <span>{item.title}</span>
+          </div>
         </div>
-        <p>"Woodcove Flooring has truly amazed me! We love the quality of the hardwood and the amazing job of the installation. Highly recommend them for anyone!"</p>
-        <div class="test-author">
-          <h4>Sarah M.</h4>
-          <span>Müşteri</span>
-        </div>
-      </div>
-      
-      <div class="test-card">
-        <div class="quote-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
-        </div>
-        <p>"The entire process was smooth and hassle-free. The floors are stunning and incredibly durable. I am extremely pleased with Woodcove's service."</p>
-        <div class="test-author">
-          <h4>James L.</h4>
-          <span>Müşteri</span>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
@@ -44,28 +53,39 @@
   }
   .test-header {
     text-align: center;
-    max-width: 600px;
+    max-width: 680px;
     margin: 0 auto 3.5rem auto;
   }
+  .section-tag {
+    display: inline-block;
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
   .test-header h2 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
     color: var(--color-primary);
     margin-bottom: 1rem;
-    font-weight: 500;
+    font-family: var(--font-primary);
+    font-weight: 700;
   }
   .test-header h2 span {
-    font-weight: 800;
     color: var(--color-secondary);
   }
   .test-header p {
     font-size: 1.05rem;
-    color: #666;
-    line-height: 1.6;
+    color: #5a6872;
+    line-height: 1.65;
   }
   .test-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
   @media (min-width: 768px) {
     .test-grid {
@@ -74,46 +94,60 @@
   }
   .test-card {
     background: #ffffff;
-    border: 1px solid #f0f0f0;
-    padding: 3rem 2.5rem 2.5rem 2.5rem;
-    border-radius: 8px;
+    border: 1px solid rgba(18, 52, 71, 0.08);
+    padding: 2.5rem 2rem 2rem 2rem;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
+    align-items: flex-start;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
   .test-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(18, 52, 71, 0.1);
+    border-color: rgba(227, 100, 20, 0.2);
   }
-  .quote-icon {
-    color: var(--color-secondary);
-    margin-bottom: 1.5rem;
-    opacity: 0.85;
+  .stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.25rem;
   }
   .test-card p {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    font-style: italic;
-    color: #555;
-    margin-bottom: 2rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: #4a5568;
+    margin-bottom: 1.75rem;
+    flex-grow: 1;
   }
   .test-author {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #edf2f7;
+    width: 100%;
   }
   .test-author h4 {
     color: var(--color-primary);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    font-family: var(--font-primary);
     font-weight: 700;
     margin: 0;
   }
   .test-author span {
-    font-size: 0.85rem;
-    color: #888;
+    font-size: 0.82rem;
+    color: #718096;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials {
+      padding: 60px 0;
+    }
+    .test-header h2 {
+      font-size: 1.85rem;
+    }
   }
 </style>
