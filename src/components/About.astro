@@ -1,29 +1,27 @@
 ---
 ---
-<section class="about">
+<section class="about" id="about">
   <div class="container about-container">
     <div class="about-images">
       <div class="image-grid">
-        <img src="/images/about-1.jpg" alt="Trendy woodwork 1" class="img-1" />
-        <img src="/images/about-2.jpg" alt="Trendy woodwork 2" class="img-2" />
-        <img src="/images/about-3.jpg" alt="Trendy woodwork 3" class="img-3" />
-        <div class="award-badge">
-          <span>Company Of The<br/>Year Award<br/>Winner</span>
-        </div>
+        <img src="/images/about-1.jpg" alt="Zemin Kaplama Çözümleri" class="img-1" />
+        <img src="/images/about-2.jpg" alt="Ofis ve Konut Zemin Uygulamaları" class="img-2" />
+        <img src="/images/about-3.jpg" alt="Parke Zemin Kaplama" class="img-3" />
       </div>
     </div>
     
     <div class="about-text">
-      <h2>A Trendy Woodwork<br/>for Trendy Home</h2>
-      <p>We take pride in building beautiful interiors with elegant woodwork solutions that fit your style. We will make sure to provide you the best quality of services.</p>
-      <button class="btn-primary">Read more</button>
+      <span class="section-tag">BİZ KİMİZ?</span>
+      <h2>20 Yıllık Deneyimle<br/>Zemin Kaplama Çözümleri</h2>
+      <p>ZenFlor olarak 2006'dan bu yana ofis, otel, plaza ve konut projelerinde parke çözümleri sunuyoruz. Yüzlerce kurumsal referans ve binlerce başarılı uygulama ile sektörde güvenilir bir isim olmaya devam ediyoruz.</p>
+      <a href="#contact" class="btn-primary">Daha Fazla Bilgi</a>
     </div>
   </div>
 </section>
 
 <style>
   .about {
-    padding: 120px 0;
+    padding: 100px 0;
     background: #fff;
   }
   .about-container {
@@ -45,7 +43,7 @@
   .image-grid {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 480px;
   }
   .img-1 {
     position: absolute;
@@ -54,6 +52,7 @@
     width: 45%;
     height: 60%;
     object-fit: cover;
+    border-radius: 8px;
     z-index: 1;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
@@ -64,6 +63,7 @@
     width: 45%;
     height: 50%;
     object-fit: cover;
+    border-radius: 8px;
     z-index: 2;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
@@ -74,36 +74,46 @@
     width: 50%;
     height: 70%;
     object-fit: cover;
+    border-radius: 8px;
     z-index: 0;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
-  .award-badge {
-    position: absolute;
-    top: 55%;
-    right: 15%;
-    background: var(--color-primary);
-    color: #fff;
-    padding: 20px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    text-align: center;
-    z-index: 3;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
   .about-text {
     flex: 1;
-    max-width: 450px;
+    max-width: 520px;
+  }
+  .section-tag {
+    display: inline-block;
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
   }
   .about-text h2 {
-    font-size: 2.8rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary);
+    font-family: var(--font-primary);
   }
   .about-text p {
-    color: #555;
-    line-height: 1.6;
+    color: #5a6872;
+    line-height: 1.7;
     margin-bottom: 2rem;
     font-size: 1.05rem;
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 60px 0;
+    }
+    .about-text h2 {
+      font-size: 1.85rem;
+    }
+    .image-grid {
+      height: 380px;
+    }
   }
 </style>
