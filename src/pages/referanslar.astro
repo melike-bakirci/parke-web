@@ -2,178 +2,387 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
-import Stats from '../components/Stats.astro';
 import Footer from '../components/Footer.astro';
 
-const projects = [
-	{ title: "Modern Villa Salonu", category: "Masif Parke", img: "/images/about-1.jpg" },
-	{ title: "Dağ Evi Konsepti", category: "Lamine Parke", img: "/images/about-2.jpg" },
-	{ title: "Lüks Rezidans Zemin", category: "Özel Kesim", img: "/images/about-3.jpg" },
-	{ title: "Ofis Alanı", category: "Vinil Kaplama", img: "/images/hero-bg.jpg" },
-	{ title: "Otel Lobisi", category: "Lamine Parke", img: "/images/about-1.jpg" },
-	{ title: "Klasik Mimari Ev", category: "Masif Parke", img: "/images/about-2.jpg" }
+// 4 Adet Şirket / Kurumsal İş Ortağı
+const partnerCompanies = [
+	{
+		name: "Hilton Hotels & Resorts",
+		category: "Otelcilik & Turizm"
+	},
+	{
+		name: "Rönesans Gayrimenkul",
+		category: "İnşaat & GYO"
+	},
+	{
+		name: "Divan Grubu",
+		category: "Turizm & Konaklama"
+	},
+	{
+		name: "Sinpaş GYO",
+		category: "Konut Projeleri"
+	}
+];
+
+// Yan Yana 4 Adet Uygulama Fotoğrafı
+const galleryImages = [
+	{ id: 1, img: "/images/about-1.jpg", alt: "ZenFlor Parke Uygulaması 1" },
+	{ id: 2, img: "/images/about-2.jpg", alt: "ZenFlor Parke Uygulaması 2" },
+	{ id: 3, img: "/images/about-3.jpg", alt: "ZenFlor Parke Uygulaması 3" },
+	{ id: 4, img: "/images/collection-1.jpg", alt: "ZenFlor Parke Uygulaması 4" }
 ];
 ---
 
-<Layout title="Referanslarımız & Projeler - Woodcove Flooring">
+<Layout title="Referanslarımız & Uygulama Galerisi - ZenFlor">
 	<Header />
-	<PageHero title="Referanslarımız" subtitle="Tamamladığımız seçkin projelerden ilham alın." />
+	<PageHero 
+		title="Referanslarımız" 
+		subtitle="Kurumsal iş ortaklarımız ve hayata geçirdiğimiz seçkin zemin uygulama projeleri." 
+	/>
 	
-	<!-- Project Portfolio Section -->
-	<section class="portfolio-section">
+	<!-- 1. BÖLÜM: ŞİRKET LOGOLARI / KURUMSAL İŞ ORTAKLARI (4 ADET) -->
+	<section class="corporate-section">
 		<div class="container">
-			
-			<div class="portfolio-filter">
-				<button class="filter-btn active">Tümü</button>
-				<button class="filter-btn">Masif Parke</button>
-				<button class="filter-btn">Lamine Parke</button>
-				<button class="filter-btn">Ticari Alanlar</button>
+			<div class="section-intro">
+				<h2>Birlikte Çalıştığımız <span>Markalar</span></h2>
+				<p>Türkiye'nin önde gelen inşaat, turizm, mimarlık ve gayrimenkul markalarının zemin çözümlerinde güvenilir çözüm ortağıyız.</p>
 			</div>
-			
-			<div class="portfolio-grid">
-				{projects.map(project => (
-					<div class="portfolio-item">
-						<img src={project.img} alt={project.title} />
-						<div class="portfolio-overlay">
-							<div class="overlay-content">
-								<span class="category">{project.category}</span>
-								<h3>{project.title}</h3>
-								<button class="view-btn">İncele</button>
+
+			<div class="brands-grid">
+				{partnerCompanies.map((company) => (
+					<div class="brand-card">
+						<div class="brand-logo-wrap">
+							<div class="brand-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M3 21h18"></path>
+									<path d="M5 21V7l8-4v18"></path>
+									<path d="M19 21V11l-6-4"></path>
+									<path d="M9 9v.01"></path>
+									<path d="M9 12v.01"></path>
+									<path d="M9 15v.01"></path>
+									<path d="M9 18v.01"></path>
+								</svg>
+							</div>
+							<div class="brand-info">
+								<span class="brand-name">{company.name}</span>
+								<span class="brand-category">{company.category}</span>
 							</div>
 						</div>
 					</div>
 				))}
 			</div>
-			
-			<div class="load-more">
-				<button class="btn-primary">Daha Fazla Göster</button>
+		</div>
+	</section>
+
+	<!-- 2. BÖLÜM: UYGULAMA GALERİSİ (SADECE 4 FOTOĞRAF) -->
+	<section class="gallery-section">
+		<div class="container">
+			<div class="section-intro">
+				<h2>Uygulama <span>Galerisi</span></h2>
+				<p>Konutlardan ticari alanlara kadar tamamladığımız zemin uygulamalarından seçkin örnekleri inceleyebilirsiniz.</p>
 			</div>
+			
+			<!-- Yan Yana 4 Fotoğraf Grid -->
+			<div class="gallery-grid">
+				{galleryImages.map((item) => (
+					<div class="gallery-card" data-img={item.img}>
+						<img src={item.img} alt={item.alt} loading="lazy" />
+					</div>
+				))}
+			</div>
+
 			
 		</div>
 	</section>
-	
-	<!-- Existing Stats to build trust -->
-	<Stats />
+
+	<!-- Basit & Hızlı Lightbox Modal -->
+	<div class="lightbox-modal" id="lightboxModal">
+		<div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+		<div class="lightbox-container">
+			<button class="lightbox-close" id="lightboxClose" aria-label="Kapat">
+				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<line x1="18" y1="6" x2="6" y2="18"></line>
+					<line x1="6" y1="6" x2="18" y2="18"></line>
+				</svg>
+			</button>
+			<div class="lightbox-content">
+				<img id="lightboxImage" src="" alt="Proje Görseli" />
+			</div>
+		</div>
+	</div>
 	
 	<Footer />
 </Layout>
 
+<script>
+	// Lightbox Modal İşlevleri
+	const modal = document.getElementById('lightboxModal');
+	const modalImg = document.getElementById('lightboxImage') as HTMLImageElement;
+	const closeBtn = document.getElementById('lightboxClose');
+	const backdrop = document.getElementById('lightboxBackdrop');
+	const galleryCards = document.querySelectorAll<HTMLElement>('.gallery-card');
+
+	galleryCards.forEach(card => {
+		card.addEventListener('click', () => {
+			const imgUrl = card.getAttribute('data-img') || '';
+			if (modalImg && modal) {
+				modalImg.src = imgUrl;
+				modal.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+		});
+	});
+
+	const closeModal = () => {
+		if (modal) {
+			modal.classList.remove('active');
+			document.body.style.overflow = '';
+		}
+	};
+
+	closeBtn?.addEventListener('click', closeModal);
+	backdrop?.addEventListener('click', closeModal);
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape' && modal?.classList.contains('active')) {
+			closeModal();
+		}
+	});
+</script>
+
 <style>
-	.portfolio-section {
-		padding: 100px 0;
-		background: #fff;
-	}
-	.portfolio-filter {
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 15px;
-		margin-bottom: 50px;
-	}
-	.filter-btn {
-		background: transparent;
-		border: 1px solid #ddd;
-		padding: 10px 25px;
-		border-radius: 30px;
-		font-weight: 600;
-		color: #555;
-		cursor: pointer;
-		transition: all 0.3s;
-	}
-	.filter-btn.active, .filter-btn:hover {
-		background: var(--color-primary);
-		color: #fff;
-		border-color: var(--color-primary);
+	/* =========================================
+	   GENEL BÖLÜM STİLLERİ (Hafif ve Sade Efektler)
+	   ========================================= */
+	.section-intro {
+		text-align: center;
+		max-width: 680px;
+		margin: 0 auto 2.5rem auto;
 	}
 	
-	.portfolio-grid {
+	.section-intro h2 {
+		font-size: 2.2rem;
+		color: var(--color-primary);
+		margin-bottom: 0.75rem;
+		font-family: var(--font-primary);
+		font-weight: 700;
+	}
+	
+	.section-intro h2 span {
+		color: var(--color-secondary);
+	}
+	
+	.section-intro p {
+		font-size: 1rem;
+		color: #5a6872;
+		line-height: 1.6;
+	}
+
+	/* =========================================
+	   1. BÖLÜM: ŞİRKET LOGOLARI / İŞ ORTAKLARI (4 ADET YAN YANA)
+	   ========================================= */
+	.corporate-section {
+		padding: 70px 0 60px 0;
+		background: #f8fafc;
+		border-bottom: 1px solid #e9eff5;
+	}
+
+	.brands-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 30px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 16px;
 	}
-	@media (min-width: 640px) {
-		.portfolio-grid {
-			grid-template-columns: repeat(2, 1fr);
+
+	@media (min-width: 900px) {
+		.brands-grid {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
 		}
 	}
-	@media (min-width: 1024px) {
-		.portfolio-grid {
-			grid-template-columns: repeat(3, 1fr);
-		}
+
+	.brand-card {
+		background: #ffffff;
+		border: 1px solid #e5eaf0;
+		border-radius: 10px;
+		padding: 1.2rem 1.25rem;
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
 	}
-	
-	.portfolio-item {
-		position: relative;
+
+	.brand-card:hover {
+		border-color: #cbd5e1;
+		box-shadow: 0 4px 12px rgba(18, 52, 71, 0.05);
+	}
+
+	.brand-logo-wrap {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.brand-icon {
+		width: 40px;
+		height: 40px;
 		border-radius: 8px;
-		overflow: hidden;
-		aspect-ratio: 4/3;
-		cursor: pointer;
+		background: #f0f5fa;
+		color: var(--color-primary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
 	}
-	.portfolio-item img {
+
+	.brand-info {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.brand-name {
+		font-weight: 700;
+		font-size: 0.92rem;
+		color: var(--color-primary);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-family: var(--font-primary);
+	}
+
+	.brand-category {
+		font-size: 0.76rem;
+		color: #788896;
+		margin-top: 2px;
+	}
+
+	/* =========================================
+	   2. BÖLÜM: UYGULAMA GALERİSİ (SADECE 4 FOTOĞRAF)
+	   ========================================= */
+	.gallery-section {
+		padding: 80px 0 90px 0;
+		background: #ffffff;
+	}
+
+	.gallery-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+
+	@media (min-width: 1024px) {
+		.gallery-grid {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 20px;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.gallery-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.gallery-card {
+		border-radius: 12px;
+		overflow: hidden;
+		background: #edf2f7;
+		border: 1px solid #e8edf2;
+		cursor: pointer;
+		aspect-ratio: 4/3;
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.gallery-card:hover {
+		border-color: #cbd5e1;
+		box-shadow: 0 6px 16px rgba(18, 52, 71, 0.08);
+	}
+
+	.gallery-card img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.5s ease;
+		display: block;
 	}
-	.portfolio-overlay {
+
+
+	/* =========================================
+	   LIGHTBOX MODAL
+	   ========================================= */
+	.lightbox-modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.2s ease, visibility 0.2s ease;
+	}
+
+	.lightbox-modal.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.lightbox-backdrop {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(18, 52, 71, 0.85);
+		background: rgba(15, 25, 34, 0.85);
+	}
+
+	.lightbox-container {
+		position: relative;
+		z-index: 1;
+		max-width: 850px;
+		width: 90%;
+		background: #ffffff;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		background: rgba(0, 0, 0, 0.6);
+		color: #ffffff;
+		border: none;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		opacity: 0;
-		transition: opacity 0.3s ease;
+		cursor: pointer;
+		z-index: 2;
+		transition: background-color 0.2s ease;
 	}
-	.portfolio-item:hover .portfolio-overlay {
-		opacity: 1;
+
+	.lightbox-close:hover {
+		background: rgba(0, 0, 0, 0.9);
 	}
-	.portfolio-item:hover img {
-		transform: scale(1.1);
-	}
-	.overlay-content {
-		text-align: center;
-		color: #fff;
-		transform: translateY(20px);
-		transition: transform 0.3s ease;
-	}
-	.portfolio-item:hover .overlay-content {
-		transform: translateY(0);
-	}
-	.category {
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		color: var(--color-secondary);
-		font-weight: 600;
-		margin-bottom: 10px;
+
+	.lightbox-content img {
+		width: 100%;
+		max-height: 80vh;
+		object-fit: cover;
 		display: block;
 	}
-	.overlay-content h3 {
-		font-size: 1.5rem;
-		margin-bottom: 20px;
-		color: #fff;
-	}
-	.view-btn {
-		background: transparent;
-		border: 2px solid #fff;
-		color: #fff;
-		padding: 8px 20px;
-		border-radius: 4px;
-		font-weight: 600;
-		cursor: pointer;
-		transition: background 0.3s, color 0.3s;
-	}
-	.view-btn:hover {
-		background: #fff;
-		color: var(--color-primary);
-	}
-	
-	.load-more {
-		text-align: center;
-		margin-top: 60px;
+
+	@media (max-width: 768px) {
+		.corporate-section,
+		.gallery-section {
+			padding: 45px 0;
+		}
+		
+		.section-intro h2 {
+			font-size: 1.75rem;
+		}
 	}
 </style>

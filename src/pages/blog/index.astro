@@ -1,52 +1,80 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/Header.astro';
-import PageHero from '../../components/PageHero.astro';
-import Footer from '../../components/Footer.astro';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
+import Footer from "../../components/Footer.astro";
 ---
 
-<Layout title="Blog & Haberler - ZenFlor Parke">
+<Layout title="Blog - ZenFlor Parke">
 	<Header />
-	<PageHero title="Blog & Haberler" subtitle="Sektörel gelişmeler, parke bakım ipuçları ve dekorasyon trendleri." />
-	
+	<PageHero
+		title="Blog"
+		subtitle="Sektörel gelişmeler, parke bakım ipuçları ve dekorasyon trendleri."
+	/>
+
 	<section class="blog-section">
 		<div class="container blog-container">
 			<div class="blog-grid">
-				
 				<div class="blog-card">
-					<div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80');"></div>
+					<div
+						class="blog-img"
+						style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80');"
+					>
+					</div>
 					<div class="blog-content">
 						<span class="blog-date">24 Ağustos 2026</span>
-						<h3>Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural</h3>
-						<p>Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü parlaklığını korumak için uygulayabileceğiniz basit ama etkili yöntemler.</p>
+						<h3>
+							Parke Bakımında Dikkat Edilmesi Gereken 5 Altın
+							Kural
+						</h3>
+						<p>
+							Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü
+							parlaklığını korumak için uygulayabileceğiniz basit
+							ama etkili yöntemler.
+						</p>
 						<a href="#" class="read-more">Oku &rarr;</a>
 					</div>
 				</div>
 
 				<div class="blog-card">
-					<div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');"></div>
+					<div
+						class="blog-img"
+						style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');"
+					>
+					</div>
 					<div class="blog-content">
 						<span class="blog-date">12 Ağustos 2026</span>
 						<h3>2026 Yılının Zemin Kaplama Trendleri</h3>
-						<p>Yeni yılda iç mekanlarda öne çıkan renkler, dokular ve çevre dostu malzeme seçenekleri hakkında bilmeniz gereken her şey.</p>
+						<p>
+							Yeni yılda iç mekanlarda öne çıkan renkler, dokular
+							ve çevre dostu malzeme seçenekleri hakkında bilmeniz
+							gereken her şey.
+						</p>
 						<a href="#" class="read-more">Oku &rarr;</a>
 					</div>
 				</div>
 
 				<div class="blog-card">
-					<div class="blog-img" style="background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80');"></div>
+					<div
+						class="blog-img"
+						style="background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80');"
+					>
+					</div>
 					<div class="blog-content">
 						<span class="blog-date">05 Ağustos 2026</span>
 						<h3>Laminat mı Lamine mi? Doğru Seçimi Yapmak</h3>
-						<p>Projeniz için hangi malzemenin daha uygun olduğuna karar vermekte zorlanıyorsanız, bu karşılaştırmalı rehber tam size göre.</p>
+						<p>
+							Projeniz için hangi malzemenin daha uygun olduğuna
+							karar vermekte zorlanıyorsanız, bu karşılaştırmalı
+							rehber tam size göre.
+						</p>
 						<a href="#" class="read-more">Oku &rarr;</a>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
-	
+
 	<Footer />
 </Layout>
 
@@ -74,7 +102,7 @@ import Footer from '../../components/Footer.astro';
 		background: #fff;
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 		transition: transform 0.3s;
 	}
 	.blog-card:hover {
@@ -87,10 +115,16 @@ import Footer from '../../components/Footer.astro';
 		background-position: center;
 	}
 	/* Fallback gradient backgrounds since quota is empty */
-	.placeholder-bg1 { background: linear-gradient(135deg, var(--color-primary), #2a5a75); }
-	.placeholder-bg2 { background: linear-gradient(135deg, var(--color-secondary), #e88c52); }
-	.placeholder-bg3 { background: linear-gradient(135deg, var(--color-dark), #334351); }
-	
+	.placeholder-bg1 {
+		background: linear-gradient(135deg, var(--color-primary), #2a5a75);
+	}
+	.placeholder-bg2 {
+		background: linear-gradient(135deg, var(--color-secondary), #e88c52);
+	}
+	.placeholder-bg3 {
+		background: linear-gradient(135deg, var(--color-dark), #334351);
+	}
+
 	.blog-content {
 		padding: 2rem;
 	}
