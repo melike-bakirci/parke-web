@@ -4,94 +4,94 @@ import Header from "../components/Header.astro";
 import PageHero from "../components/PageHero.astro";
 import Footer from "../components/Footer.astro";
 
-// Product data for the catalog
+// 24 Adet Parke Ürünü (Sayfa başına 12 adet, toplam 2 sayfa)
 const products = [
 	{
 		id: 1,
-		name: "Naturesville Meşe - Seri 110",
-		category: "Masif Parke",
-		color: "Açık Meşe",
-		price: "₺480",
-		unit: "/ m²",
-		desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 2,
-		name: "Walnut Dark Koyu Ceviz - Seri 400",
-		category: "Lamine Parke",
-		color: "Koyu Ceviz",
-		price: "₺560",
-		unit: "/ m²",
-		desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
-		img: "/images/collection-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 3,
-		name: "Nordic Ash Kül Grisi - Seri 220",
-		category: "Masif Parke",
-		color: "Kül Rengi",
-		price: "₺520",
-		unit: "/ m²",
-		desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 4,
 		name: "Vintage Rustic Çam - Seri 310",
 		category: "Lamine Parke",
 		color: "Çam",
-		price: "₺420",
+		price: "420,00 ₺",
 		unit: "/ m²",
 		desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
 		img: "/images/about-2.jpg",
 		link: "/parke",
 	},
 	{
-		id: 5,
-		name: "Herringbone Balıksırtı Meşe",
-		category: "Lüks Seri",
-		color: "Doğal",
-		price: "₺690",
+		id: 2,
+		name: "Alp Çamı Doğal Mat",
+		category: "Lamine Parke",
+		color: "Açık Çam",
+		price: "430,00 ₺",
 		unit: "/ m²",
-		desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
+		desc: "Yüksek dayanımlı yüzeyi ve ipeksi mat dokusuyla aydınlık, ferah ve huzurlu odalar sunar.",
+		img: "/images/collection-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 3,
+		name: "Loft Grafit Gri Zemin",
+		category: "Vinil & Lamine",
+		color: "Gri/Kül",
+		price: "440,00 ₺",
+		unit: "/ m²",
+		desc: "Endüstriyel ve modern iç mekan tasarımları için özel olarak geliştirilmiş mat gri tonlu yüzey.",
 		img: "/images/about-3.jpg",
 		link: "/parke",
 	},
 	{
-		id: 6,
-		name: "Royal Akçaağaç Premium",
+		id: 4,
+		name: "Modern Sand Meşe - Seri 120",
 		category: "Lamine Parke",
-		color: "Kızıl Kahve",
-		price: "₺510",
+		color: "Açık Meşe",
+		price: "450,00 ₺",
 		unit: "/ m²",
-		desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
+		desc: "Kum beji sıcak alt tonları ve doğal ahşap damarlarıyla dingin ve modern bir atmosfer sağlar.",
 		img: "/images/hero-bg.jpg",
 		link: "/parke",
 	},
 	{
-		id: 7,
+		id: 5,
 		name: "Silver Grey Meşe - Seri 500",
 		category: "Lamine Parke",
 		color: "Gri/Kül",
-		price: "₺460",
+		price: "460,00 ₺",
 		unit: "/ m²",
 		desc: "Trend gri alt tonları ve mat yüzey dokusu ile çağdaş mimari tasarımlara kusursuz uyum sağlar.",
 		img: "/images/collection-1.jpg",
 		link: "/parke",
 	},
 	{
+		id: 6,
+		name: "Kumsal Açık Bej Meşe",
+		category: "Lamine Parke",
+		color: "Açık Meşe",
+		price: "460,00 ₺",
+		unit: "/ m²",
+		desc: "Geniş alanlarda ferahlık hissi yaratan açık renk dokusu ve çizilmez koruyucu üst katmanı.",
+		img: "/images/about-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 7,
+		name: "Toros Sedir Doğal Doku",
+		category: "Lamine Parke",
+		color: "Kızıl Kahve",
+		price: "470,00 ₺",
+		unit: "/ m²",
+		desc: "Akdeniz sedir ağacının zengin dokusundan esinlenen, sıcak ve samimi yaşam alanları.",
+		img: "/images/about-2.jpg",
+		link: "/parke",
+	},
+	{
 		id: 8,
-		name: "Artisan Chevron Doğal Meşe",
+		name: "Naturesville Meşe - Seri 110",
 		category: "Masif Parke",
 		color: "Açık Meşe",
-		price: "₺720",
+		price: "480,00 ₺",
 		unit: "/ m²",
-		desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
-		img: "/images/collection-2.jpg",
+		desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
+		img: "/images/collection-1.jpg",
 		link: "/parke",
 	},
 	{
@@ -99,13 +99,186 @@ const products = [
 		name: "Kapadokya Doğal Kestane",
 		category: "Lamine Parke",
 		color: "Koyu Ceviz",
-		price: "₺490",
+		price: "490,00 ₺",
 		unit: "/ m²",
 		desc: "Zengin hare yapısı ve derin renk geçişleriyle doğal ahşabın en sıcak ve canlı tonlarını sunar.",
 		img: "/images/about-1.jpg",
 		link: "/parke",
 	},
+	{
+		id: 10,
+		name: "Royal Akçaağaç Premium",
+		category: "Lamine Parke",
+		color: "Kızıl Kahve",
+		price: "510,00 ₺",
+		unit: "/ m²",
+		desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
+		img: "/images/hero-bg.jpg",
+		link: "/parke",
+	},
+	{
+		id: 11,
+		name: "Nordic Ash Kül Grisi - Seri 220",
+		category: "Masif Parke",
+		color: "Kül Rengi",
+		price: "520,00 ₺",
+		unit: "/ m²",
+		desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
+		img: "/images/about-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 12,
+		name: "İskandinav Beyaz Meşe",
+		category: "Lamine Parke",
+		color: "Açık Meşe",
+		price: "530,00 ₺",
+		unit: "/ m²",
+		desc: "Beyazlatılmış doğal meşe dokusuyla ferah, aydınlık ve zarif yaşam alanları oluşturur.",
+		img: "/images/collection-2.jpg",
+		link: "/parke",
+	},
+	// 2. SAYFA ÜRÜNLERİ (13 - 24)
+	{
+		id: 13,
+		name: "Elegance Açık Kayın - Seri 200",
+		category: "Masif Parke",
+		color: "Açık Meşe",
+		price: "540,00 ₺",
+		unit: "/ m²",
+		desc: "Pürüzsüz yüzey dokusu ve homojen rengiyle konforlu ve şık zemin uygulamaları sağlar.",
+		img: "/images/about-3.jpg",
+		link: "/parke",
+	},
+	{
+		id: 14,
+		name: "Viyana Klasik Meşe Plank",
+		category: "Lamine Parke",
+		color: "Doğal",
+		price: "550,00 ₺",
+		unit: "/ m²",
+		desc: "Avrupa klasik mimarisinden ilham alan geniş plank kesim ve derin ahşap dokusu.",
+		img: "/images/collection-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 15,
+		name: "Walnut Dark Koyu Ceviz - Seri 400",
+		category: "Lamine Parke",
+		color: "Koyu Ceviz",
+		price: "560,00 ₺",
+		unit: "/ m²",
+		desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
+		img: "/images/collection-2.jpg",
+		link: "/parke",
+	},
+	{
+		id: 16,
+		name: "Bosphorus Antik Meşe",
+		category: "Masif Parke",
+		color: "Koyu Ceviz",
+		price: "580,00 ₺",
+		unit: "/ m²",
+		desc: "Zamanın izlerini taşıyan antik meşe dokusu ve özel el işçiliği yüzey cilası.",
+		img: "/images/about-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 17,
+		name: "Venedik Rustik Kestane",
+		category: "Masif Parke",
+		color: "Kızıl Kahve",
+		price: "650,00 ₺",
+		unit: "/ m²",
+		desc: "Doğal budak ve hare zenginliğiyle mekanlara sıcaklık, karakter ve derinlik katar.",
+		img: "/images/about-2.jpg",
+		link: "/parke",
+	},
+	{
+		id: 18,
+		name: "Atlas Duman Grisi Premium",
+		category: "Masif Parke",
+		color: "Gri/Kül",
+		price: "670,00 ₺",
+		unit: "/ m²",
+		desc: "Sofistike duman grisi tonları ve mat koruyucu tabakasıyla lüks iç mekanlar için tasarlandı.",
+		img: "/images/hero-bg.jpg",
+		link: "/parke",
+	},
+	{
+		id: 19,
+		name: "Herringbone Balıksırtı Meşe",
+		category: "Lüks Seri",
+		color: "Doğal",
+		price: "690,00 ₺",
+		unit: "/ m²",
+		desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
+		img: "/images/about-3.jpg",
+		link: "/parke",
+	},
+	{
+		id: 20,
+		name: "Marmaris Doğal Tik Doku",
+		category: "Masif Parke",
+		color: "Kızıl Kahve",
+		price: "710,00 ₺",
+		unit: "/ m²",
+		desc: "Yoğun neme ve suya ekstra dayanıklı yapısıyla banyo ve mutfak geçişlerinde de mükemmel.",
+		img: "/images/collection-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 21,
+		name: "Artisan Chevron Doğal Meşe",
+		category: "Masif Parke",
+		color: "Açık Meşe",
+		price: "720,00 ₺",
+		unit: "/ m²",
+		desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
+		img: "/images/collection-2.jpg",
+		link: "/parke",
+	},
+	{
+		id: 22,
+		name: "Palermo Koyu Meşe Chevron",
+		category: "Lüks Seri",
+		color: "Koyu Ceviz",
+		price: "740,00 ₺",
+		unit: "/ m²",
+		desc: "İtalyan zemin mimarisi estetiğini koyu meşe tonlarıyla buluşturan özel kesim tasarım.",
+		img: "/images/about-1.jpg",
+		link: "/parke",
+	},
+	{
+		id: 23,
+		name: "Monaco Balıksırtı Ceviz",
+		category: "Lüks Seri",
+		color: "Koyu Ceviz",
+		price: "780,00 ₺",
+		unit: "/ m²",
+		desc: "Seçkin villalar ve prestijli ofisler için üretilmiş asil ceviz balıksırtı parke.",
+		img: "/images/about-2.jpg",
+		link: "/parke",
+	},
+	{
+		id: 24,
+		name: "Boğaziçi Yalı Meşesi",
+		category: "Masif Parke",
+		color: "Doğal",
+		price: "820,00 ₺",
+		unit: "/ m²",
+		desc: "Geleneksel yalı mimarisinin asaletiyle üretilen, zamansız ve ekstra kalın masif gövde.",
+		img: "/images/about-3.jpg",
+		link: "/parke",
+	},
 ];
+
+// Standart (varsayılan) sıralama: Fiyata göre artan
+products.sort((a, b) => {
+	const priceA = parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+	const priceB = parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+	return priceA - priceB;
+});
 ---
 
 <Layout title="Parke Koleksiyonlarımız - Woodcove Flooring">
@@ -115,7 +288,7 @@ const products = [
 		subtitle="Her tarza ve ihtiyaca uygun birinci sınıf parke çeşitlerimizi keşfedin."
 	/>
 
-	<section class="catalog-section">
+	<section class="catalog-section" id="catalogSection">
 		<div class="container catalog-container">
 			<!-- Sidebar Filters -->
 			<aside class="sidebar-filters">
@@ -138,15 +311,15 @@ const products = [
 						</li>
 						<li>
 							<label
-								><input type="checkbox" /> Vinil <span
-									>(15)</span
+								><input type="checkbox" /> Lüks Seri <span
+									>(4)</span
 								></label
 							>
 						</li>
 						<li>
 							<label
-								><input type="checkbox" /> Aksesuarlar <span
-									>(24)</span
+								><input type="checkbox" /> Vinil & Özel <span
+									>(2)</span
 								></label
 							>
 						</li>
@@ -189,8 +362,8 @@ const products = [
 						class="price-slider"
 					/>
 					<div class="price-labels">
-						<span>₺300</span>
-						<span>₺800+</span>
+						<span>300,00 ₺</span>
+						<span>800,00 ₺+</span>
 					</div>
 				</div>
 
@@ -200,89 +373,136 @@ const products = [
 
 			<!-- Product List Area -->
 			<div class="catalog-content">
-				<!-- Top Bar: Sort & Count -->
+				<!-- Top Bar: Search, Count & Sort -->
 				<div class="catalog-topbar">
-					<div class="result-count">
-						<strong>{products.length}</strong> ürün gösteriliyor
+					<div class="catalog-search">
+						<div class="search-input-wrap">
+							<input
+								type="text"
+								id="productSearchInput"
+								placeholder="Parke modellerinde ara..."
+								autocomplete="off"
+								aria-label="Parke modellerinde ara"
+							/>
+							<button id="productSearchBtn" class="search-btn" type="button" aria-label="Ara">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<circle cx="11" cy="11" r="8"></circle>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+								</svg>
+								<span>Ara</span>
+							</button>
+						</div>
 					</div>
-					<div class="sort-by">
-						<label for="sort">Sırala:</label>
-						<select id="sort">
-							<option>En Yeniler</option>
-							<option>Fiyata Göre Artan</option>
-							<option>Fiyata Göre Azalan</option>
-							<option>Popülerlik</option>
-						</select>
+
+					<div class="catalog-controls">
+						<div class="sort-by">
+							<label for="sort">Sırala:</label>
+							<select id="sort">
+								<option value="price-asc" selected>Fiyata Göre Artan</option>
+								<option value="price-desc">Fiyata Göre Azalan</option>
+								<option value="name-asc">A'dan Z'ye</option>
+								<option value="name-desc">Z'den A'ya</option>
+							</select>
+						</div>
+						<div class="result-count">
+							<strong id="productCount">{products.length}</strong> farklı ürün
+						</div>
 					</div>
+				</div>
+
+				<!-- Arama Sonucu Bulunamadı Mesajı -->
+				<div id="noResultsMessage" class="no-results" style="display: none;">
+					<p>Aradığınız kritere uygun ürün bulunamadı. Lütfen farklı bir arama terimi deneyin.</p>
 				</div>
 
 				<!-- Product Grid -->
-				<div class="product-grid">
+				<div class="product-grid" id="productGrid">
 					{
-						products.map((product) => (
-							<div class="product-card">
-								<div class="product-img-wrapper">
-									<img
-										src={product.img}
-										alt={product.name}
-										loading="lazy"
-									/>
-								</div>
-								<div class="product-info">
-									<h3>{product.name}</h3>
-									<p
-										class="product-desc"
-										title={product.desc}
-									>
-										{product.desc}
-									</p>
-									<div class="product-footer">
-										<div class="price-box">
-											<span class="price-val">
-												{product.price}
-											</span>
-											<span class="price-unit">
-												{product.unit}
-											</span>
-										</div>
-										<a
-											href={product.link}
-											class="btn-review"
+						products.map((product, idx) => {
+							const numericPrice = parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+							const isInitiallyVisible = idx < 12;
+							return (
+								<div 
+									class="product-card" 
+									data-name={product.name} 
+									data-desc={product.desc}
+									data-category={product.category}
+									data-price={numericPrice}
+									style={isInitiallyVisible ? "display: flex;" : "display: none;"}
+								>
+									<div class="product-img-wrapper">
+										<img
+											src={product.img}
+											alt={product.name}
+											loading="lazy"
+										/>
+									</div>
+									<div class="product-info">
+										<h3>{product.name}</h3>
+										<p
+											class="product-desc"
+											title={product.desc}
 										>
-											<span>İncele</span>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="16"
-												height="16"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2.5"
-												stroke-linecap="round"
-												stroke-linejoin="round"
+											{product.desc}
+										</p>
+										<div class="product-footer">
+											<div class="price-box">
+												<span class="price-val">
+													{product.price}
+												</span>
+												<span class="price-unit">
+													{product.unit}
+												</span>
+											</div>
+											<a
+												href={product.link}
+												class="btn-review"
 											>
-												<line
-													x1="5"
-													y1="12"
-													x2="19"
-													y2="12"
-												/>
-												<polyline points="12 5 19 12 12 19" />
-											</svg>
-										</a>
+												<span>İncele</span>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="16"
+													height="16"
+													viewBox="0 0 24 24"
+													fill="none"
+													stroke="currentColor"
+													stroke-width="2.5"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												>
+													<line
+														x1="5"
+														y1="12"
+														x2="19"
+														y2="12"
+													/>
+													<polyline points="12 5 19 12 12 19" />
+												</svg>
+											</a>
+										</div>
 									</div>
 								</div>
-							</div>
-						))
+							);
+						})
 					}
 				</div>
 
-				<!-- Pagination -->
-				<div class="pagination">
-					<button class="page-btn active">1</button>
-					<button class="page-btn">2</button>
-					<button class="page-btn">3</button>
-					<button class="page-btn next">&rarr;</button>
+				<!-- Pagination (2 Sayfa, Sayfa Başına 12 Ürün) -->
+				<div class="pagination" id="catalogPagination">
+					<button class="page-btn prev-btn" id="prevPageBtn" disabled aria-label="Önceki Sayfa">&larr;</button>
+					<button class="page-btn page-num-btn active" data-page="1">1</button>
+					<button class="page-btn page-num-btn" data-page="2">2</button>
+					<button class="page-btn next-btn" id="nextPageBtn" aria-label="Sonraki Sayfa">&rarr;</button>
 				</div>
 			</div>
 		</div>
@@ -290,6 +510,179 @@ const products = [
 
 	<Footer />
 </Layout>
+
+<script>
+	const sortSelect = document.getElementById("sort") as HTMLSelectElement | null;
+	const productGrid = document.getElementById("productGrid");
+	const searchInput = document.getElementById("productSearchInput") as HTMLInputElement | null;
+	const searchBtn = document.getElementById("productSearchBtn");
+	const countDisplay = document.getElementById("productCount");
+	const noResultsMsg = document.getElementById("noResultsMessage");
+	const paginationContainer = document.getElementById("catalogPagination");
+	const prevBtn = document.getElementById("prevPageBtn") as HTMLButtonElement | null;
+	const nextBtn = document.getElementById("nextPageBtn") as HTMLButtonElement | null;
+	const pageNumBtns = document.querySelectorAll<HTMLButtonElement>(".page-num-btn");
+	const catalogSection = document.getElementById("catalogSection");
+
+	const ITEMS_PER_PAGE = 12;
+	let currentPage = 1;
+
+	function getFilteredAndSortedCards(): HTMLElement[] {
+		if (!productGrid) return [];
+		const query = (searchInput?.value || "").trim().toLocaleLowerCase("tr");
+		const sortValue = sortSelect?.value || "price-asc";
+		const cards = Array.from(productGrid.querySelectorAll<HTMLElement>(".product-card"));
+
+		// Filter
+		const matchingCards = cards.filter((card) => {
+			const name = (card.getAttribute("data-name") || "").toLocaleLowerCase("tr");
+			const desc = (card.getAttribute("data-desc") || "").toLocaleLowerCase("tr");
+			const category = (card.getAttribute("data-category") || "").toLocaleLowerCase("tr");
+			return !query || name.includes(query) || desc.includes(query) || category.includes(query);
+		});
+
+		// Sort
+		matchingCards.sort((a, b) => {
+			const nameA = a.getAttribute("data-name") || "";
+			const nameB = b.getAttribute("data-name") || "";
+			const priceA = parseFloat(a.getAttribute("data-price") || "0");
+			const priceB = parseFloat(b.getAttribute("data-price") || "0");
+
+			switch (sortValue) {
+				case "price-asc":
+					return priceA - priceB;
+				case "price-desc":
+					return priceB - priceA;
+				case "name-asc":
+					return nameA.localeCompare(nameB, "tr");
+				case "name-desc":
+					return nameB.localeCompare(nameA, "tr");
+				default:
+					return 0;
+			}
+		});
+
+		// Reorder in DOM
+		matchingCards.forEach((card) => productGrid.appendChild(card));
+
+		return matchingCards;
+	}
+
+	function renderCurrentPage(scrollToTop = false) {
+		if (!productGrid) return;
+		const matchingCards = getFilteredAndSortedCards();
+		const allCards = Array.from(productGrid.querySelectorAll<HTMLElement>(".product-card"));
+		const totalMatching = matchingCards.length;
+		const totalPages = Math.max(1, Math.ceil(totalMatching / ITEMS_PER_PAGE));
+
+		if (currentPage > totalPages) {
+			currentPage = 1;
+		}
+
+		const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+		const endIndex = startIndex + ITEMS_PER_PAGE;
+
+		// Hide all cards first
+		allCards.forEach((card) => {
+			card.style.display = "none";
+		});
+
+		// Show only current page matching cards
+		matchingCards.slice(startIndex, endIndex).forEach((card) => {
+			card.style.display = "flex";
+		});
+
+		// Update count display
+		if (countDisplay) {
+			countDisplay.textContent = totalMatching.toString();
+		}
+
+		// Update no results message
+		if (noResultsMsg) {
+			noResultsMsg.style.display = totalMatching === 0 ? "block" : "none";
+		}
+
+		// Update pagination UI
+		if (paginationContainer) {
+			if (totalMatching <= ITEMS_PER_PAGE) {
+				pageNumBtns.forEach((btn) => {
+					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
+					btn.style.display = page === 1 ? "flex" : "none";
+				});
+				if (prevBtn) prevBtn.disabled = true;
+				if (nextBtn) nextBtn.disabled = true;
+			} else {
+				pageNumBtns.forEach((btn) => {
+					btn.style.display = "flex";
+					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
+					if (page === currentPage) {
+						btn.classList.add("active");
+					} else {
+						btn.classList.remove("active");
+					}
+				});
+				if (prevBtn) prevBtn.disabled = currentPage === 1;
+				if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+			}
+		}
+
+		if (scrollToTop && catalogSection) {
+			const rect = catalogSection.getBoundingClientRect();
+			if (rect.top < 0) {
+				catalogSection.scrollIntoView({ behavior: "smooth" });
+			}
+		}
+	}
+
+	// Pagination button events
+	pageNumBtns.forEach((btn) => {
+		btn.addEventListener("click", () => {
+			const page = parseInt(btn.getAttribute("data-page") || "1", 10);
+			if (currentPage !== page) {
+				currentPage = page;
+				renderCurrentPage(true);
+			}
+		});
+	});
+
+	prevBtn?.addEventListener("click", () => {
+		if (currentPage > 1) {
+			currentPage--;
+			renderCurrentPage(true);
+		}
+	});
+
+	nextBtn?.addEventListener("click", () => {
+		if (currentPage < 2) {
+			currentPage++;
+			renderCurrentPage(true);
+		}
+	});
+
+	// Filter & Sort events
+	searchBtn?.addEventListener("click", () => {
+		currentPage = 1;
+		renderCurrentPage(false);
+	});
+
+	searchInput?.addEventListener("input", () => {
+		currentPage = 1;
+		renderCurrentPage(false);
+	});
+
+	searchInput?.addEventListener("keydown", (e) => {
+		if (e.key === "Enter") {
+			e.preventDefault();
+			currentPage = 1;
+			renderCurrentPage(false);
+		}
+	});
+
+	sortSelect?.addEventListener("change", () => {
+		currentPage = 1;
+		renderCurrentPage(false);
+	});
+</script>
 
 <style>
 	.catalog-section {
@@ -401,10 +794,65 @@ const products = [
 		justify-content: space-between;
 		align-items: center;
 		background: #fff;
-		padding: 15px 25px;
+		padding: 16px 22px;
 		border-radius: 8px;
 		margin-bottom: 30px;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		gap: 16px;
+	}
+	.catalog-search {
+		flex: 1;
+		min-width: 250px;
+		max-width: 420px;
+	}
+	.search-input-wrap {
+		display: flex;
+		align-items: center;
+		position: relative;
+		width: 100%;
+	}
+	.search-input-wrap input {
+		width: 100%;
+		padding: 10px 85px 10px 14px;
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		font-family: var(--font-secondary);
+		font-size: 0.92rem;
+		outline: none;
+		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		background-color: #f8fafc;
+	}
+	.search-input-wrap input:focus {
+		background-color: #ffffff;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 3px rgba(18, 52, 71, 0.08);
+	}
+	.search-btn {
+		position: absolute;
+		right: 4px;
+		top: 4px;
+		bottom: 4px;
+		background: var(--color-primary);
+		color: #ffffff;
+		border: none;
+		border-radius: 4px;
+		padding: 0 14px;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-weight: 600;
+		font-size: 0.85rem;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+	.search-btn:hover {
+		background: var(--color-dark);
+	}
+	.catalog-controls {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		flex-wrap: wrap;
 	}
 	.result-count {
 		color: #666;
@@ -426,6 +874,18 @@ const products = [
 		border-radius: 4px;
 		outline: none;
 		font-family: var(--font-secondary);
+		background-color: #fff;
+		cursor: pointer;
+	}
+	.no-results {
+		text-align: center;
+		padding: 60px 20px;
+		background: #ffffff;
+		border-radius: 8px;
+		border: 1px dashed #cbd5e1;
+		color: #64748b;
+		font-size: 1.05rem;
+		margin-bottom: 30px;
 	}
 
 	/* Product Grid */
@@ -558,26 +1018,36 @@ const products = [
 	.pagination {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		gap: 10px;
+		margin-top: 20px;
 	}
 	.page-btn {
-		width: 40px;
-		height: 40px;
+		width: 42px;
+		height: 42px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: #fff;
 		border: 1px solid #ddd;
-		border-radius: 4px;
+		border-radius: 6px;
 		cursor: pointer;
 		font-weight: 600;
+		font-size: 0.95rem;
 		color: #555;
-		transition: all 0.2s;
+		transition: all 0.2s ease;
 	}
 	.page-btn.active,
-	.page-btn:hover {
+	.page-btn:hover:not(:disabled) {
 		background: var(--color-primary);
 		color: #fff;
 		border-color: var(--color-primary);
+	}
+	.page-btn:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+		background: #f1f5f9;
+		border-color: #e2e8f0;
+		color: #94a3b8;
 	}
 </style>
