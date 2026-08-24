@@ -1,7 +1,6 @@
 ---
 ---
 <section class="testimonials">
-  <div class="test-overlay"></div>
   <div class="container test-container">
     <div class="test-header">
       <h2>What <span>Our Customers</span> Say</h2>
@@ -10,24 +9,25 @@
     
     <div class="test-grid">
       <div class="test-card">
-        <div class="test-author">
-          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." />
-          <h4>Sarah M.</h4>
+        <div class="quote-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
         </div>
-        <p>"Woodcove Flooring has truly amazed me! We love the quality of the hardwood and the amazing job of the installation team. Highly recommend them for anyone!"</p>
-        <div class="dots">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
+        <p>"Woodcove Flooring has truly amazed me! We love the quality of the hardwood and the amazing job of the installation. Highly recommend them for anyone!"</p>
+        <div class="test-author">
+          <h4>Sarah M.</h4>
+          <span>Müşteri</span>
         </div>
       </div>
       
       <div class="test-card">
-        <div class="test-author">
-          <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="James L." />
-          <h4>James L.</h4>
+        <div class="quote-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
         </div>
         <p>"The entire process was smooth and hassle-free. The floors are stunning and incredibly durable. I am extremely pleased with Woodcove's service."</p>
+        <div class="test-author">
+          <h4>James L.</h4>
+          <span>Müşteri</span>
+        </div>
       </div>
     </div>
   </div>
@@ -35,21 +35,8 @@
 
 <style>
   .testimonials {
-    position: relative;
     padding: 100px 0;
-    background-image: url('/images/hero-bg.jpg'); /* Reusing hero bg due to quota */
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    background-attachment: fixed;
-  }
-  .test-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(18, 52, 71, 0.85);
+    background: #ffffff;
   }
   .test-container {
     position: relative;
@@ -58,20 +45,21 @@
   .test-header {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 3.5rem auto;
   }
   .test-header h2 {
     font-size: 2.5rem;
-    color: #fff;
+    color: var(--color-primary);
     margin-bottom: 1rem;
     font-weight: 500;
   }
   .test-header h2 span {
     font-weight: 800;
+    color: var(--color-secondary);
   }
   .test-header p {
     font-size: 1.05rem;
-    opacity: 0.8;
+    color: #666;
     line-height: 1.6;
   }
   .test-grid {
@@ -85,52 +73,47 @@
     }
   }
   .test-card {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 2.5rem;
-    border-radius: 4px;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .test-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  .quote-icon {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+  }
+  .test-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 2rem;
   }
   .test-author {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .test-author img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    gap: 0.2rem;
   }
   .test-author h4 {
-    color: #fff;
-    font-size: 1.1rem;
+    color: var(--color-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0;
   }
-  .test-card p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    font-style: italic;
-    opacity: 0.9;
-  }
-  .dots {
-    display: flex;
-    gap: 8px;
-    margin-top: 2rem;
-  }
-  .dots .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .dots .dot:first-child {
-    background: #fff;
+  .test-author span {
+    font-size: 0.85rem;
+    color: #888;
   }
 </style>
