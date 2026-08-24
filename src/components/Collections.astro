@@ -8,7 +8,7 @@ const products = [
     unit: "/ m²",
     desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
     img: "/images/collection-1.jpg",
-    link: "/parke"
+    link: "/parke",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const products = [
     unit: "/ m²",
     desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
     img: "/images/collection-2.jpg",
-    link: "/parke"
+    link: "/parke",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const products = [
     unit: "/ m²",
     desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
     img: "/images/about-1.jpg",
-    link: "/parke"
+    link: "/parke",
   },
   {
     id: 4,
@@ -38,131 +38,38 @@ const products = [
     unit: "/ m²",
     desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
     img: "/images/about-2.jpg",
-    link: "/parke"
+    link: "/parke",
   },
-  {
-    id: 5,
-    name: "Herringbone Balıksırtı Meşe",
-    category: "Lüks Seri",
-    price: "₺690",
-    unit: "/ m²",
-    desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
-    img: "/images/about-3.jpg",
-    link: "/parke"
-  },
-  {
-    id: 6,
-    name: "Royal Akçaağaç Premium",
-    category: "Lamine Parke",
-    price: "₺510",
-    unit: "/ m²",
-    desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
-    img: "/images/hero-bg.jpg",
-    link: "/parke"
-  },
-  {
-    id: 7,
-    name: "Silver Grey Meşe - Seri 500",
-    category: "Lamine Parke",
-    price: "₺460",
-    unit: "/ m²",
-    desc: "Trend gri alt tonları ve mat yüzey dokusu ile çağdaş mimari tasarımlara kusursuz uyum sağlar.",
-    img: "/images/collection-1.jpg",
-    link: "/parke"
-  },
-  {
-    id: 8,
-    name: "Artisan Chevron Doğal Meşe",
-    category: "Masif Parke",
-    price: "₺720",
-    unit: "/ m²",
-    desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
-    img: "/images/collection-2.jpg",
-    link: "/parke"
-  },
-  {
-    id: 9,
-    name: "Kapadokya Doğal Kestane",
-    category: "Lamine Parke",
-    price: "₺490",
-    unit: "/ m²",
-    desc: "Zengin hare yapısı ve derin renk geçişleriyle doğal ahşabın en sıcak ve canlı tonlarını sunar.",
-    img: "/images/about-1.jpg",
-    link: "/parke"
-  },
-  {
-    id: 10,
-    name: "Modern Antrasit Meşe - Seri 600",
-    category: "Lüks Seri",
-    price: "₺580",
-    unit: "/ m²",
-    desc: "Koyu antrasit tonları ve fırçalanmış dokusuyla modern ofis ve loft mekanlar için mükemmel seçim.",
-    img: "/images/about-2.jpg",
-    link: "/parke"
-  },
-  {
-    id: 11,
-    name: "Alpina Beyaz Çam - Seri 150",
-    category: "Lamine Parke",
-    price: "₺440",
-    unit: "/ m²",
-    desc: "Aydınlık ve ferah zeminler için tasarlanan beyaz çam dokusu, odalara genişlik ve tazelik hissi verir.",
-    img: "/images/about-3.jpg",
-    link: "/parke"
-  },
-  {
-    id: 12,
-    name: "Elegance Teak Ağacı - Seri 800",
-    category: "Masif Parke",
-    price: "₺750",
-    unit: "/ m²",
-    desc: "Suya ve neme ekstra dayanıklı lüks teak yapısı, prestijli mekanlar ve ıslak hacim geçişleri için benzersizdir.",
-    img: "/images/hero-bg.jpg",
-    link: "/parke"
-  }
 ];
 ---
 
 <section class="collections" id="collections">
   <div class="container">
-    <!-- Header Section: Turkish Title & Description + Slider Controls -->
+    <!-- Header Section -->
     <div class="collections-header">
       <div class="header-text">
-        <span class="section-tag">SEÇKİN ÜRÜNLERİMİZ</span>
-        <h2>Parke Koleksiyonlarımızı Keşfedin</h2>
-        <p>
-          Yaşam alanlarınıza doğallık, zarafet ve dayanıklılık kazandıran zengin parke modellerimiz.
-          Evinize ve tarzınıza en uygun zemin çözümlerini inceleyin.
-        </p>
-      </div>
-
-      <div class="slider-arrows">
-        <button class="slider-arrow prev" id="sliderPrevBtn" aria-label="Önceki Ürünler">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <button class="slider-arrow next" id="sliderNextBtn" aria-label="Sonraki Ürünler">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
+        <h2>Parke Koleksiyonumuz</h2>
+        <p>En çok tercih edilen parke modellerimiz</p>
       </div>
     </div>
 
-    <!-- Products Slider Viewport -->
-    <div class="collections-slider-wrapper" id="sliderWrapper">
-      <div class="collections-track" id="sliderTrack">
-        {products.map((item) => (
+    <!-- 4 Products Grid -->
+    <div class="collections-grid">
+      {
+        products.map((item) => (
           <div class="collection-card" data-id={item.id}>
             <div class="card-image-wrap">
               <img src={item.img} alt={item.name} loading="lazy" />
             </div>
-            
+
             <div class="card-body">
-              <h3 class="card-title" title={item.name}>{item.name}</h3>
-              <p class="card-desc" title={item.desc}>{item.desc}</p>
-              
+              <h3 class="card-title" title={item.name}>
+                {item.name}
+              </h3>
+              <p class="card-desc" title={item.desc}>
+                {item.desc}
+              </p>
+
               <div class="card-footer">
                 <div class="price-box">
                   <span class="price-val">{item.price}</span>
@@ -170,20 +77,48 @@ const products = [
                 </div>
                 <a href={item.link} class="btn-review">
                   <span>İncele</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </a>
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      }
     </div>
 
-    <!-- Pagination Dots -->
-    <div class="slider-dots" id="sliderDotsContainer"></div>
+    <!-- Hepsini Göster Button -->
+    <div class="collections-action">
+      <a href="/parke" class="btn-show-all">
+        <span>Hepsini Göster</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -191,36 +126,21 @@ const products = [
   .collections {
     background-color: var(--color-light);
     padding: 90px 0 100px;
-    overflow: hidden;
   }
 
   .collections-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
     margin-bottom: 2.5rem;
-    gap: 2rem;
   }
 
   .header-text {
     max-width: 680px;
   }
 
-  .section-tag {
-    display: inline-block;
-    color: var(--color-secondary);
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 0.75rem;
-    text-transform: uppercase;
-  }
-
   .header-text h2 {
     font-size: 2.4rem;
     line-height: 1.25;
     color: var(--color-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: var(--font-primary);
   }
 
@@ -230,56 +150,23 @@ const products = [
     font-size: 1.05rem;
   }
 
-  .slider-arrows {
-    display: flex;
-    gap: 0.75rem;
-    flex-shrink: 0;
-  }
-
-  .slider-arrow {
-    background: #ffffff;
-    border: 1px solid rgba(18, 52, 71, 0.12);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-    color: var(--color-primary);
-    transition: all 0.25s ease;
-  }
-
-  .slider-arrow:hover:not(:disabled) {
-    background-color: var(--color-primary);
-    color: #ffffff;
-    border-color: var(--color-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(18, 52, 71, 0.2);
-  }
-
-  .slider-arrow:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-  }
-
-  /* Slider Container & Track */
-  .collections-slider-wrapper {
-    width: 100%;
-    overflow: hidden;
-    padding: 10px 4px 20px;
-    user-select: none;
-    touch-action: pan-y;
-  }
-
-  .collections-track {
-    display: flex;
+  /* Grid Layout for 4 items */
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 24px;
-    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: transform;
+  }
+
+  @media (min-width: 640px) {
+    .collections-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .collections-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   /* Product Card */
@@ -290,11 +177,10 @@ const products = [
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.04);
-    /* 3 cards visible at a time by default with 24px gap */
-    flex: 0 0 calc((100% - (24px * 2)) / 3);
-    min-width: 0;
   }
 
   .collection-card:hover {
@@ -330,7 +216,7 @@ const products = [
   }
 
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-family: var(--font-primary);
     color: var(--color-primary);
     margin-bottom: 0.6rem;
@@ -341,10 +227,9 @@ const products = [
     text-overflow: ellipsis;
   }
 
-  /* 2-line description clamp */
   .card-desc {
     color: #64748b;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     line-height: 1.45;
     margin-bottom: 1.4rem;
     display: -webkit-box;
@@ -355,7 +240,7 @@ const products = [
     min-height: 2.9em;
   }
 
-  /* Card Footer: Price on Left, Review Button on Right */
+  /* Card Footer */
   .card-footer {
     margin-top: auto;
     display: flex;
@@ -373,14 +258,14 @@ const products = [
   }
 
   .price-val {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: var(--color-primary);
     font-family: var(--font-primary);
   }
 
   .price-unit {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: #718096;
     font-weight: 500;
   }
@@ -389,7 +274,7 @@ const products = [
     background: transparent;
     color: var(--color-primary);
     padding: 4px 0;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
     text-decoration: none;
     display: inline-flex;
@@ -411,220 +296,53 @@ const products = [
     transform: translateX(4px);
   }
 
-  /* Slider Dots */
-  .slider-dots {
+  /* Bottom Action / Hepsini Göster Button */
+  .collections-action {
     display: flex;
     justify-content: center;
+    margin-top: 3rem;
+  }
+
+  .btn-show-all {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 1.5rem;
-  }
-
-  .slider-dots :global(.dot) {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #cbd5e1;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .slider-dots :global(.dot.active) {
+    gap: 10px;
     background: var(--color-primary);
-    width: 26px;
-    border-radius: 8px;
+    color: #ffffff;
+    padding: 14px 34px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    font-family: var(--font-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(18, 52, 71, 0.15);
   }
 
-  /* Responsive Breakpoints */
-  @media (max-width: 1024px) {
-    .collection-card {
-      /* 2 cards visible */
-      flex: 0 0 calc((100% - 24px) / 2);
-    }
-    .header-text h2 {
-      font-size: 2rem;
-    }
+  .btn-show-all:hover {
+    background: #0b2230;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(18, 52, 71, 0.25);
+  }
+
+  .btn-show-all svg {
+    transition: transform 0.25s ease;
+  }
+
+  .btn-show-all:hover svg {
+    transform: translateX(4px);
   }
 
   @media (max-width: 768px) {
     .collections {
       padding: 60px 0 70px;
     }
-    .collections-header {
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 1.75rem;
-      gap: 1.25rem;
-    }
-    .slider-arrows {
-      align-self: flex-end;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .collection-card {
-      /* 1 card visible */
-      flex: 0 0 100%;
-    }
     .header-text h2 {
-      font-size: 1.75rem;
+      font-size: 1.85rem;
     }
     .card-image-wrap {
       height: 200px;
     }
   }
 </style>
-
-<script>
-  function setupCollectionsSlider() {
-    const track = document.getElementById('sliderTrack');
-    const wrapper = document.getElementById('sliderWrapper');
-    const prevBtn = document.getElementById('sliderPrevBtn') as HTMLButtonElement | null;
-    const nextBtn = document.getElementById('sliderNextBtn') as HTMLButtonElement | null;
-    const dotsContainer = document.getElementById('sliderDotsContainer');
-
-    if (!track || !wrapper || !prevBtn || !nextBtn || !dotsContainer) return;
-
-    const currentTrack = track;
-    const currentPrevBtn = prevBtn;
-    const currentNextBtn = nextBtn;
-    const currentDotsContainer = dotsContainer;
-
-    const cards = Array.from(currentTrack.querySelectorAll('.collection-card')) as HTMLElement[];
-    const totalCards = cards.length;
-    let currentIndex = 0;
-
-    function getVisibleCardsCount(): number {
-      const width = window.innerWidth;
-      if (width > 1024) return 3;
-      if (width > 640) return 2;
-      return 1;
-    }
-
-    function getMaxIndex(): number {
-      const visible = getVisibleCardsCount();
-      return Math.max(0, totalCards - visible);
-    }
-
-    function updateSlider() {
-      const maxIndex = getMaxIndex();
-
-      if (currentIndex > maxIndex) {
-        currentIndex = maxIndex;
-      }
-      if (currentIndex < 0) {
-        currentIndex = 0;
-      }
-
-      // Calculate translation
-      const card = cards[0];
-      if (card) {
-        const gap = 24;
-        const cardWidth = card.getBoundingClientRect().width;
-        const offset = currentIndex * (cardWidth + gap);
-        currentTrack.style.transform = `translateX(-${offset}px)`;
-      }
-
-      // Update button disabled states
-      currentPrevBtn.disabled = currentIndex === 0;
-      currentNextBtn.disabled = currentIndex >= maxIndex;
-
-      // Update dots
-      updateDots();
-    }
-
-    function createDots() {
-      currentDotsContainer.innerHTML = '';
-      const visible = getVisibleCardsCount();
-      const dotCount = Math.max(1, totalCards - visible + 1);
-
-      for (let i = 0; i < dotCount; i++) {
-        const dot = document.createElement('button');
-        dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
-        dot.setAttribute('aria-label', `Slide ${i + 1}`);
-        dot.addEventListener('click', () => {
-          currentIndex = i;
-          updateSlider();
-        });
-        currentDotsContainer.appendChild(dot);
-      }
-    }
-
-    function updateDots() {
-      const dots = Array.from(currentDotsContainer.querySelectorAll('.dot'));
-      dots.forEach((dot, idx) => {
-        if (idx === currentIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-
-    // Prev / Next button listeners
-    currentPrevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateSlider();
-      }
-    });
-
-    currentNextBtn.addEventListener('click', () => {
-      const maxIndex = getMaxIndex();
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-        updateSlider();
-      }
-    });
-
-    // Handle touch swipe on mobile / tablet
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-
-    wrapper.addEventListener('touchstart', (e: TouchEvent) => {
-      startX = e.touches[0].clientX;
-      isDragging = true;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchmove', (e: TouchEvent) => {
-      if (!isDragging) return;
-      currentX = e.touches[0].clientX;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', () => {
-      if (!isDragging) return;
-      isDragging = false;
-      const diffX = startX - currentX;
-      if (Math.abs(diffX) > 40) {
-        const maxIndex = getMaxIndex();
-        if (diffX > 0 && currentIndex < maxIndex) {
-          currentIndex++;
-        } else if (diffX < 0 && currentIndex > 0) {
-          currentIndex--;
-        }
-        updateSlider();
-      }
-    });
-
-    // Resize handler
-    let resizeTimer: number;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = window.setTimeout(() => {
-        createDots();
-        updateSlider();
-      }, 100);
-    });
-
-    // Initialize
-    createDots();
-    updateSlider();
-  }
-
-  // Run on page load & Astro page swap
-  document.addEventListener('DOMContentLoaded', setupCollectionsSlider);
-  document.addEventListener('astro:page-load', setupCollectionsSlider);
-</script>
