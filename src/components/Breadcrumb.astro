@@ -1,0 +1,66 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const paths = pathname.split('/').filter(Boolean);
+
+const breadcrumbs = paths.map((path, index) => {
+  const href = '/' + paths.slice(0, index + 1).join('/');
+  // Capitalize and format text
+  const label = path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' ');
+  return { href, label };
+});
+---
+
+<nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
+    {breadcrumbs.map((crumb, index) => (
+      <li class="breadcrumb-item">
+        <span class="separator">/</span>
+        {index === breadcrumbs.length - 1 ? (
+          <span class="active" aria-current="page">{crumb.label}</span>
+        ) : (
+          <a href={crumb.href}>{crumb.label}</a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb-nav {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+  }
+  .breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    color: #5a6a78;
+  }
+  .breadcrumb-item a {
+    color: #5a6a78;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .breadcrumb-item a:hover {
+    color: var(--color-primary);
+  }
+  .separator {
+    margin: 0 0.5rem;
+    color: #cbd5e1;
+    font-size: 0.8rem;
+  }
+  .active {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+</style>

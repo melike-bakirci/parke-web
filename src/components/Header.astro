@@ -1,5 +1,5 @@
 ---
-
+const pathname = Astro.url.pathname;
 ---
 
 <header class="header">
@@ -110,12 +110,12 @@
   <nav class="header-nav">
     <div class="container nav-container">
       <ul class="nav-links">
-        <li><a href="/" class="active">Ana Sayfa</a></li>
-        <li><a href="/hakkimizda">Biz Kimiz?</a></li>
-        <li><a href="/parke">Parke</a></li>
-        <li><a href="/referanslar">Neler Yaptık?</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/iletisim">İletişim</a></li>
+        <li><a href="/" class={pathname === "/" ? "active" : ""}>Ana Sayfa</a></li>
+        <li><a href="/hakkimizda" class={pathname.startsWith("/hakkimizda") ? "active" : ""}>Biz Kimiz?</a></li>
+        <li><a href="/parke" class={pathname.startsWith("/parke") ? "active" : ""}>Parke</a></li>
+        <li><a href="/referanslar" class={pathname.startsWith("/referanslar") ? "active" : ""}>Neler Yaptık?</a></li>
+        <li><a href="/blog" class={pathname.startsWith("/blog") ? "active" : ""}>Blog</a></li>
+        <li><a href="/iletisim" class={pathname.startsWith("/iletisim") ? "active" : ""}>İletişim</a></li>
       </ul>
       <a href="tel:+905302708487" class="btn-white quote-nav-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="quote-phone-icon">
@@ -212,10 +212,25 @@
     font-size: 0.95rem;
     text-decoration: none;
     transition: color 0.3s;
+    position: relative;
+    padding-bottom: 0.2rem;
   }
-  .nav-links a:hover,
+  .nav-links a:hover {
+    color: #fff;
+  }
   .nav-links a.active {
     color: #fff;
+    font-weight: 700;
+  }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
   }
   .quote-nav-btn {
     text-decoration: none;
