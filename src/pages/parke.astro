@@ -4,56 +4,107 @@ import Header from "../components/Header.astro";
 import PageHero from "../components/PageHero.astro";
 import Footer from "../components/Footer.astro";
 
-// Placeholder product data for the catalog
+// Product data for the catalog
 const products = [
 	{
 		id: 1,
-		name: "Naturesville - Series 110",
+		name: "Naturesville Meşe - Seri 110",
 		category: "Masif Parke",
 		color: "Açık Meşe",
-		price: "$14",
+		price: "₺480",
+		unit: "/ m²",
+		desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
 		img: "/images/collection-1.jpg",
+		link: "/parke"
 	},
 	{
 		id: 2,
-		name: "Walnut Dark Series 400",
+		name: "Walnut Dark Koyu Ceviz - Seri 400",
 		category: "Lamine Parke",
 		color: "Koyu Ceviz",
-		price: "$21",
+		price: "₺560",
+		unit: "/ m²",
+		desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
 		img: "/images/collection-2.jpg",
+		link: "/parke"
 	},
 	{
 		id: 3,
-		name: "Nordic Ash - Classic",
+		name: "Nordic Ash Kül Grisi - Seri 220",
 		category: "Masif Parke",
 		color: "Kül Rengi",
-		price: "$18",
-		img: "/images/collection-1.jpg",
+		price: "₺520",
+		unit: "/ m²",
+		desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
+		img: "/images/about-1.jpg",
+		link: "/parke"
 	},
 	{
 		id: 4,
-		name: "Vintage Pine Series",
+		name: "Vintage Rustic Çam - Seri 310",
 		category: "Lamine Parke",
 		color: "Çam",
-		price: "$16",
-		img: "/images/collection-2.jpg",
+		price: "₺420",
+		unit: "/ m²",
+		desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
+		img: "/images/about-2.jpg",
+		link: "/parke"
 	},
 	{
 		id: 5,
-		name: "Royal Mahogany",
-		category: "Vinil",
-		color: "Kızıl Kahve",
-		price: "$25",
-		img: "/images/collection-1.jpg",
+		name: "Herringbone Balıksırtı Meşe",
+		category: "Lüks Seri",
+		color: "Doğal",
+		price: "₺690",
+		unit: "/ m²",
+		desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
+		img: "/images/about-3.jpg",
+		link: "/parke"
 	},
 	{
 		id: 6,
-		name: "Rustic Hickory 200",
+		name: "Royal Akçaağaç Premium",
 		category: "Lamine Parke",
-		color: "Doğal",
-		price: "$19",
-		img: "/images/collection-2.jpg",
+		color: "Kızıl Kahve",
+		price: "₺510",
+		unit: "/ m²",
+		desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
+		img: "/images/hero-bg.jpg",
+		link: "/parke"
 	},
+	{
+		id: 7,
+		name: "Silver Grey Meşe - Seri 500",
+		category: "Lamine Parke",
+		color: "Gri/Kül",
+		price: "₺460",
+		unit: "/ m²",
+		desc: "Trend gri alt tonları ve mat yüzey dokusu ile çağdaş mimari tasarımlara kusursuz uyum sağlar.",
+		img: "/images/collection-1.jpg",
+		link: "/parke"
+	},
+	{
+		id: 8,
+		name: "Artisan Chevron Doğal Meşe",
+		category: "Masif Parke",
+		color: "Açık Meşe",
+		price: "₺720",
+		unit: "/ m²",
+		desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
+		img: "/images/collection-2.jpg",
+		link: "/parke"
+	},
+	{
+		id: 9,
+		name: "Kapadokya Doğal Kestane",
+		category: "Lamine Parke",
+		color: "Koyu Ceviz",
+		price: "₺490",
+		unit: "/ m²",
+		desc: "Zengin hare yapısı ve derin renk geçişleriyle doğal ahşabın en sıcak ve canlı tonlarını sunar.",
+		img: "/images/about-1.jpg",
+		link: "/parke"
+	}
 ];
 ---
 
@@ -75,25 +126,29 @@ const products = [
 							<label
 								><input type="checkbox" checked /> Lamine Parke <span
 									>(12)</span
-								></label>
+								></label
+							>
 						</li>
 						<li>
 							<label
 								><input type="checkbox" /> Masif Parke <span
 									>(8)</span
-								></label>
+								></label
+							>
 						</li>
 						<li>
 							<label
 								><input type="checkbox" /> Vinil <span
 									>(15)</span
-								></label>
+								></label
+							>
 						</li>
 						<li>
 							<label
 								><input type="checkbox" /> Aksesuarlar <span
 									>(24)</span
-								></label>
+								></label
+							>
 						</li>
 					</ul>
 				</div>
@@ -134,8 +189,8 @@ const products = [
 						class="price-slider"
 					/>
 					<div class="price-labels">
-						<span>$10</span>
-						<span>$50+</span>
+						<span>₺300</span>
+						<span>₺800+</span>
 					</div>
 				</div>
 
@@ -148,7 +203,7 @@ const products = [
 				<!-- Top Bar: Sort & Count -->
 				<div class="catalog-topbar">
 					<div class="result-count">
-						<strong>6</strong> ürün gösteriliyor
+						<strong>{products.length}</strong> ürün gösteriliyor
 					</div>
 					<div class="sort-by">
 						<label for="sort">Sırala:</label>
@@ -167,38 +222,32 @@ const products = [
 						products.map((product) => (
 							<div class="product-card">
 								<div class="product-img-wrapper">
-									<img src={product.img} alt={product.name} />
-									<span class="product-badge">Yeni</span>
+									<img src={product.img} alt={product.name} loading="lazy" />
 								</div>
 								<div class="product-info">
-									<span class="product-category">
-										{product.category} &bull;{" "}
-										{product.color}
-									</span>
 									<h3>{product.name}</h3>
+									<p class="product-desc" title={product.desc}>{product.desc}</p>
 									<div class="product-footer">
-										<span class="product-price">
-											{product.price} <small>/ m²</small>
-										</span>
-										<a
-											href="tel:+905302708487"
-											class="product-quote-btn"
-											title="Teklif Alın"
-										>
+										<div class="price-box">
+											<span class="price-val">{product.price}</span>
+											<span class="price-unit">{product.unit}</span>
+										</div>
+										<a href={product.link} class="btn-review">
+											<span>İncele</span>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
-												width="14"
-												height="14"
+												width="16"
+												height="16"
 												viewBox="0 0 24 24"
 												fill="none"
 												stroke="currentColor"
-												stroke-width="2"
+												stroke-width="2.5"
 												stroke-linecap="round"
 												stroke-linejoin="round"
 											>
-												<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+												<line x1="5" y1="12" x2="19" y2="12"></line>
+												<polyline points="12 5 19 12 12 19"></polyline>
 											</svg>
-											Teklif Alın
 										</a>
 									</div>
 								</div>
@@ -378,95 +427,110 @@ const products = [
 
 	.product-card {
 		background: #fff;
-		border-radius: 8px;
+		border-radius: 12px;
 		overflow: hidden;
-		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		border: 1px solid rgba(0, 0, 0, 0.04);
 		transition:
-			transform 0.3s,
-			box-shadow 0.3s;
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
 	}
 	.product-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+		transform: translateY(-6px);
+		box-shadow: 0 12px 30px rgba(18, 52, 71, 0.12);
 	}
 	.product-img-wrapper {
 		position: relative;
 		height: 220px;
 		overflow: hidden;
+		background-color: #eaeef1;
 	}
 	.product-img-wrapper img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.5s;
+		transition: transform 0.5s ease;
 	}
 	.product-card:hover .product-img-wrapper img {
-		transform: scale(1.05);
-	}
-	.product-badge {
-		position: absolute;
-		top: 15px;
-		left: 15px;
-		background: var(--color-secondary);
-		color: #fff;
-		font-size: 0.75rem;
-		font-weight: bold;
-		padding: 4px 10px;
-		border-radius: 4px;
-		text-transform: uppercase;
+		transform: scale(1.06);
 	}
 	.product-info {
-		padding: 20px;
+		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		flex: 1;
-	}
-	.product-category {
-		font-size: 0.8rem;
-		color: #888;
-		margin-bottom: 8px;
-		font-weight: 600;
+		flex-grow: 1;
 	}
 	.product-info h3 {
 		font-size: 1.15rem;
-		margin-bottom: 15px;
-		line-height: 1.4;
-		flex: 1;
+		font-family: var(--font-primary);
+		color: var(--color-primary);
+		margin-bottom: 0.6rem;
+		line-height: 1.35;
+		font-weight: 700;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.product-desc {
+		color: #64748b;
+		font-size: 0.9rem;
+		line-height: 1.45;
+		margin-bottom: 1.4rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		min-height: 2.9em;
 	}
 	.product-footer {
+		margin-top: auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-top: 15px;
-		border-top: 1px solid #f0f0f0;
+		padding-top: 1rem;
+		border-top: 1px solid #edf2f7;
+		gap: 0.75rem;
 	}
-	.product-price {
+	.price-box {
+		display: flex;
+		align-items: baseline;
+		gap: 3px;
+	}
+	.price-val {
 		font-size: 1.25rem;
-		font-weight: 700;
+		font-weight: 800;
 		color: var(--color-primary);
+		font-family: var(--font-primary);
 	}
-	.product-price small {
-		font-size: 0.8rem;
-		color: #888;
-		font-weight: 400;
+	.price-unit {
+		font-size: 0.85rem;
+		color: #718096;
+		font-weight: 500;
 	}
-	.product-quote-btn {
-		background: var(--color-primary);
-		color: #fff;
+	.btn-review {
+		background: transparent;
+		color: var(--color-primary);
+		padding: 4px 0;
+		font-size: 0.95rem;
+		font-weight: 700;
 		text-decoration: none;
-		padding: 6px 14px;
-		border-radius: 20px;
 		display: inline-flex;
 		align-items: center;
 		gap: 6px;
-		font-size: 0.85rem;
-		font-weight: 500;
-		transition: background 0.3s;
+		border: none;
+		transition: color 0.25s ease;
 	}
-	.product-quote-btn:hover {
-		background: var(--color-secondary);
+	.btn-review:hover {
+		color: var(--color-secondary);
+	}
+	.btn-review svg {
+		transition: transform 0.25s ease;
+	}
+	.btn-review:hover svg {
+		transform: translateX(4px);
 	}
 
 	/* Pagination */

@@ -1,195 +1,630 @@
 ---
-
+const products = [
+  {
+    id: 1,
+    name: "Naturesville Meşe - Seri 110",
+    category: "Masif Parke",
+    price: "₺480",
+    unit: "/ m²",
+    desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
+    img: "/images/collection-1.jpg",
+    link: "/parke"
+  },
+  {
+    id: 2,
+    name: "Walnut Dark Koyu Ceviz - Seri 400",
+    category: "Lamine Parke",
+    price: "₺560",
+    unit: "/ m²",
+    desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
+    img: "/images/collection-2.jpg",
+    link: "/parke"
+  },
+  {
+    id: 3,
+    name: "Nordic Ash Kül Grisi - Seri 220",
+    category: "Masif Parke",
+    price: "₺520",
+    unit: "/ m²",
+    desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
+    img: "/images/about-1.jpg",
+    link: "/parke"
+  },
+  {
+    id: 4,
+    name: "Vintage Rustic Çam - Seri 310",
+    category: "Lamine Parke",
+    price: "₺420",
+    unit: "/ m²",
+    desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
+    img: "/images/about-2.jpg",
+    link: "/parke"
+  },
+  {
+    id: 5,
+    name: "Herringbone Balıksırtı Meşe",
+    category: "Lüks Seri",
+    price: "₺690",
+    unit: "/ m²",
+    desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
+    img: "/images/about-3.jpg",
+    link: "/parke"
+  },
+  {
+    id: 6,
+    name: "Royal Akçaağaç Premium",
+    category: "Lamine Parke",
+    price: "₺510",
+    unit: "/ m²",
+    desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
+    img: "/images/hero-bg.jpg",
+    link: "/parke"
+  },
+  {
+    id: 7,
+    name: "Silver Grey Meşe - Seri 500",
+    category: "Lamine Parke",
+    price: "₺460",
+    unit: "/ m²",
+    desc: "Trend gri alt tonları ve mat yüzey dokusu ile çağdaş mimari tasarımlara kusursuz uyum sağlar.",
+    img: "/images/collection-1.jpg",
+    link: "/parke"
+  },
+  {
+    id: 8,
+    name: "Artisan Chevron Doğal Meşe",
+    category: "Masif Parke",
+    price: "₺720",
+    unit: "/ m²",
+    desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
+    img: "/images/collection-2.jpg",
+    link: "/parke"
+  },
+  {
+    id: 9,
+    name: "Kapadokya Doğal Kestane",
+    category: "Lamine Parke",
+    price: "₺490",
+    unit: "/ m²",
+    desc: "Zengin hare yapısı ve derin renk geçişleriyle doğal ahşabın en sıcak ve canlı tonlarını sunar.",
+    img: "/images/about-1.jpg",
+    link: "/parke"
+  },
+  {
+    id: 10,
+    name: "Modern Antrasit Meşe - Seri 600",
+    category: "Lüks Seri",
+    price: "₺580",
+    unit: "/ m²",
+    desc: "Koyu antrasit tonları ve fırçalanmış dokusuyla modern ofis ve loft mekanlar için mükemmel seçim.",
+    img: "/images/about-2.jpg",
+    link: "/parke"
+  },
+  {
+    id: 11,
+    name: "Alpina Beyaz Çam - Seri 150",
+    category: "Lamine Parke",
+    price: "₺440",
+    unit: "/ m²",
+    desc: "Aydınlık ve ferah zeminler için tasarlanan beyaz çam dokusu, odalara genişlik ve tazelik hissi verir.",
+    img: "/images/about-3.jpg",
+    link: "/parke"
+  },
+  {
+    id: 12,
+    name: "Elegance Teak Ağacı - Seri 800",
+    category: "Masif Parke",
+    price: "₺750",
+    unit: "/ m²",
+    desc: "Suya ve neme ekstra dayanıklı lüks teak yapısı, prestijli mekanlar ve ıslak hacim geçişleri için benzersizdir.",
+    img: "/images/hero-bg.jpg",
+    link: "/parke"
+  }
+];
 ---
 
-<section class="collections">
-  <div class="container collections-container">
-    <div class="collections-text">
-      <h2>Explore Our Hardwood<br />Collections</h2>
-      <p>
-        Elevate your space with the timeless elegance of our premium hardwood
-        collections. Each plank is crafted to perfection, offering a blend of
-        durability, style, and natural beauty. Find the perfect fit for your
-        home today.
-      </p>
-    </div>
-
-    <div class="collections-slider">
-      <button class="slider-arrow prev">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><polyline points="15 18 9 12 15 6"></polyline></svg
-        >
-      </button>
-
-      <div class="cards-wrapper">
-        <div class="collection-card">
-          <img src="/images/collection-1.jpg" alt="Nature's First Choice" />
-          <div class="card-content">
-            <h3>Naturesville - Series 110 - White Oak Solid Hardwood</h3>
-            <div class="card-footer">
-              <a href="tel:+905302708487" class="btn-primary">Teklif Alın</a>
-              <span class="price">₺450 / m²</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="collection-card">
-          <img src="/images/collection-2.jpg" alt="Walnut Dark Choice" />
-          <div class="card-content">
-            <h3>Walnut Dark Series 400 - Real Vintage Oak Hardwood Plank</h3>
-            <div class="card-footer">
-              <a href="tel:+905302708487" class="btn-primary">Teklif Alın</a>
-              <span class="price">₺520 / m²</span>
-            </div>
-          </div>
-        </div>
+<section class="collections" id="collections">
+  <div class="container">
+    <!-- Header Section: Turkish Title & Description + Slider Controls -->
+    <div class="collections-header">
+      <div class="header-text">
+        <span class="section-tag">SEÇKİN ÜRÜNLERİMİZ</span>
+        <h2>Parke Koleksiyonlarımızı Keşfedin</h2>
+        <p>
+          Yaşam alanlarınıza doğallık, zarafet ve dayanıklılık kazandıran zengin parke modellerimiz.
+          Evinize ve tarzınıza en uygun zemin çözümlerini inceleyin.
+        </p>
       </div>
 
-      <button class="slider-arrow next">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><polyline points="9 18 15 12 9 6"></polyline></svg
-        >
-      </button>
+      <div class="slider-arrows">
+        <button class="slider-arrow prev" id="sliderPrevBtn" aria-label="Önceki Ürünler">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="slider-arrow next" id="sliderNextBtn" aria-label="Sonraki Ürünler">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="slider-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+
+    <!-- Products Slider Viewport -->
+    <div class="collections-slider-wrapper" id="sliderWrapper">
+      <div class="collections-track" id="sliderTrack">
+        {products.map((item) => (
+          <div class="collection-card" data-id={item.id}>
+            <div class="card-image-wrap">
+              <img src={item.img} alt={item.name} loading="lazy" />
+            </div>
+            
+            <div class="card-body">
+              <h3 class="card-title" title={item.name}>{item.name}</h3>
+              <p class="card-desc" title={item.desc}>{item.desc}</p>
+              
+              <div class="card-footer">
+                <div class="price-box">
+                  <span class="price-val">{item.price}</span>
+                  <span class="price-unit">{item.unit}</span>
+                </div>
+                <a href={item.link} class="btn-review">
+                  <span>İncele</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
+
+    <!-- Pagination Dots -->
+    <div class="slider-dots" id="sliderDotsContainer"></div>
   </div>
 </section>
 
 <style>
   .collections {
     background-color: var(--color-light);
-    padding: 100px 0;
+    padding: 90px 0 100px;
+    overflow: hidden;
   }
-  .collections-container {
+
+  .collections-header {
     display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
   }
-  @media (min-width: 1024px) {
-    .collections-container {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-    }
+
+  .header-text {
+    max-width: 680px;
   }
-  .collections-text {
-    flex: 1;
-    max-width: 400px;
+
+  .section-tag {
+    display: inline-block;
+    color: var(--color-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
   }
-  .collections-text h2 {
-    font-size: 2.8rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
+
+  .header-text h2 {
+    font-size: 2.4rem;
+    line-height: 1.25;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    font-family: var(--font-primary);
   }
-  .collections-text p {
-    color: #555;
-    line-height: 1.6;
+
+  .header-text p {
+    color: #5a6872;
+    line-height: 1.65;
     font-size: 1.05rem;
   }
-  .collections-slider {
-    flex: 2;
+
+  .slider-arrows {
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    position: relative;
+    gap: 0.75rem;
+    flex-shrink: 0;
   }
+
   .slider-arrow {
-    background: #fff;
-    border: none;
-    width: 40px;
-    height: 40px;
+    background: #ffffff;
+    border: 1px solid rgba(18, 52, 71, 0.12);
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
     color: var(--color-primary);
-    transition: all 0.3s;
-    flex-shrink: 0;
+    transition: all 0.25s ease;
   }
-  .slider-arrow:hover {
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+
+  .slider-arrow:hover:not(:disabled) {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-color: var(--color-primary);
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(18, 52, 71, 0.2);
   }
-  .cards-wrapper {
-    display: flex;
-    gap: 20px;
-    flex: 1;
-    overflow: hidden;
+
+  .slider-arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
   }
-  .collection-card {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    flex: 1;
-  }
-  .collection-card img {
+
+  /* Slider Container & Track */
+  .collections-slider-wrapper {
     width: 100%;
-    height: 250px;
+    overflow: hidden;
+    padding: 10px 4px 20px;
+    user-select: none;
+    touch-action: pan-y;
+  }
+
+  .collections-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  /* Product Card */
+  .collection-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    /* 3 cards visible at a time by default with 24px gap */
+    flex: 0 0 calc((100% - (24px * 2)) / 3);
+    min-width: 0;
+  }
+
+  .collection-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(18, 52, 71, 0.12);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #eaeef1;
+  }
+
+  .card-image-wrap img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
   }
-  .card-content {
+
+  .collection-card:hover .card-image-wrap img {
+    transform: scale(1.06);
+  }
+
+  /* Card Body */
+  .card-body {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
-  .card-content h3 {
-    font-size: 1.1rem;
-    font-family: var(--font-secondary);
+
+  .card-title {
+    font-size: 1.15rem;
+    font-family: var(--font-primary);
     color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    line-height: 1.4;
+    margin-bottom: 0.6rem;
+    line-height: 1.35;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+
+  /* 2-line description clamp */
+  .card-desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: 1.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 2.9em;
+  }
+
+  /* Card Footer: Price on Left, Review Button on Right */
   .card-footer {
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #edf2f7;
+    gap: 0.75rem;
   }
-  .card-footer .btn-primary {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+
+  .price-box {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
   }
-  .price {
+
+  .price-val {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    font-family: var(--font-primary);
+  }
+
+  .price-unit {
+    font-size: 0.85rem;
+    color: #718096;
+    font-weight: 500;
+  }
+
+  .btn-review {
+    background: transparent;
+    color: var(--color-primary);
+    padding: 4px 0;
+    font-size: 0.95rem;
     font-weight: 700;
-    color: #333;
-    font-size: 1.1rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    transition: color 0.25s ease;
   }
+
+  .btn-review:hover {
+    color: var(--color-secondary);
+  }
+
+  .btn-review svg {
+    transition: transform 0.25s ease;
+  }
+
+  .btn-review:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Slider Dots */
   .slider-dots {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 8px;
-    margin-top: -10px;
+    margin-top: 1.5rem;
   }
-  .slider-dots .dot {
-    width: 8px;
-    height: 8px;
+
+  .slider-dots :global(.dot) {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background: #ccc;
+    background: #cbd5e1;
+    border: none;
+    padding: 0;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
-  .slider-dots .dot.active {
+
+  .slider-dots :global(.dot.active) {
     background: var(--color-primary);
+    width: 26px;
+    border-radius: 8px;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .collection-card {
+      /* 2 cards visible */
+      flex: 0 0 calc((100% - 24px) / 2);
+    }
+    .header-text h2 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .collections {
+      padding: 60px 0 70px;
+    }
+    .collections-header {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1.75rem;
+      gap: 1.25rem;
+    }
+    .slider-arrows {
+      align-self: flex-end;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .collection-card {
+      /* 1 card visible */
+      flex: 0 0 100%;
+    }
+    .header-text h2 {
+      font-size: 1.75rem;
+    }
+    .card-image-wrap {
+      height: 200px;
+    }
   }
 </style>
+
+<script>
+  function setupCollectionsSlider() {
+    const track = document.getElementById('sliderTrack');
+    const wrapper = document.getElementById('sliderWrapper');
+    const prevBtn = document.getElementById('sliderPrevBtn') as HTMLButtonElement | null;
+    const nextBtn = document.getElementById('sliderNextBtn') as HTMLButtonElement | null;
+    const dotsContainer = document.getElementById('sliderDotsContainer');
+
+    if (!track || !wrapper || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    const currentTrack = track;
+    const currentPrevBtn = prevBtn;
+    const currentNextBtn = nextBtn;
+    const currentDotsContainer = dotsContainer;
+
+    const cards = Array.from(currentTrack.querySelectorAll('.collection-card')) as HTMLElement[];
+    const totalCards = cards.length;
+    let currentIndex = 0;
+
+    function getVisibleCardsCount(): number {
+      const width = window.innerWidth;
+      if (width > 1024) return 3;
+      if (width > 640) return 2;
+      return 1;
+    }
+
+    function getMaxIndex(): number {
+      const visible = getVisibleCardsCount();
+      return Math.max(0, totalCards - visible);
+    }
+
+    function updateSlider() {
+      const maxIndex = getMaxIndex();
+
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+      if (currentIndex < 0) {
+        currentIndex = 0;
+      }
+
+      // Calculate translation
+      const card = cards[0];
+      if (card) {
+        const gap = 24;
+        const cardWidth = card.getBoundingClientRect().width;
+        const offset = currentIndex * (cardWidth + gap);
+        currentTrack.style.transform = `translateX(-${offset}px)`;
+      }
+
+      // Update button disabled states
+      currentPrevBtn.disabled = currentIndex === 0;
+      currentNextBtn.disabled = currentIndex >= maxIndex;
+
+      // Update dots
+      updateDots();
+    }
+
+    function createDots() {
+      currentDotsContainer.innerHTML = '';
+      const visible = getVisibleCardsCount();
+      const dotCount = Math.max(1, totalCards - visible + 1);
+
+      for (let i = 0; i < dotCount; i++) {
+        const dot = document.createElement('button');
+        dot.className = `dot ${i === currentIndex ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Slide ${i + 1}`);
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateSlider();
+        });
+        currentDotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = Array.from(currentDotsContainer.querySelectorAll('.dot'));
+      dots.forEach((dot, idx) => {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Prev / Next button listeners
+    currentPrevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    currentNextBtn.addEventListener('click', () => {
+      const maxIndex = getMaxIndex();
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    // Handle touch swipe on mobile / tablet
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+
+    wrapper.addEventListener('touchstart', (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diffX = startX - currentX;
+      if (Math.abs(diffX) > 40) {
+        const maxIndex = getMaxIndex();
+        if (diffX > 0 && currentIndex < maxIndex) {
+          currentIndex++;
+        } else if (diffX < 0 && currentIndex > 0) {
+          currentIndex--;
+        }
+        updateSlider();
+      }
+    });
+
+    // Resize handler
+    let resizeTimer: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        createDots();
+        updateSlider();
+      }, 100);
+    });
+
+    // Initialize
+    createDots();
+    updateSlider();
+  }
+
+  // Run on page load & Astro page swap
+  document.addEventListener('DOMContentLoaded', setupCollectionsSlider);
+  document.addEventListener('astro:page-load', setupCollectionsSlider);
+</script>
