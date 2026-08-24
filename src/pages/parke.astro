@@ -10,7 +10,7 @@ const products = [
 		id: 1,
 		name: "Vintage Rustic Çam - Seri 310",
 		category: "Lamine Parke",
-		color: "Çam",
+		color: "Açık Çam",
 		price: "420,00 ₺",
 		unit: "/ m²",
 		desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
@@ -120,7 +120,7 @@ const products = [
 		id: 11,
 		name: "Nordic Ash Kül Grisi - Seri 220",
 		category: "Masif Parke",
-		color: "Kül Rengi",
+		color: "Gri/Kül",
 		price: "520,00 ₺",
 		unit: "/ m²",
 		desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
@@ -154,7 +154,7 @@ const products = [
 		id: 14,
 		name: "Viyana Klasik Meşe Plank",
 		category: "Lamine Parke",
-		color: "Doğal",
+		color: "Doğal Ahşap",
 		price: "550,00 ₺",
 		unit: "/ m²",
 		desc: "Avrupa klasik mimarisinden ilham alan geniş plank kesim ve derin ahşap dokusu.",
@@ -209,7 +209,7 @@ const products = [
 		id: 19,
 		name: "Herringbone Balıksırtı Meşe",
 		category: "Lüks Seri",
-		color: "Doğal",
+		color: "Doğal Ahşap",
 		price: "690,00 ₺",
 		unit: "/ m²",
 		desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
@@ -264,7 +264,7 @@ const products = [
 		id: 24,
 		name: "Boğaziçi Yalı Meşesi",
 		category: "Masif Parke",
-		color: "Doğal",
+		color: "Doğal Ahşap",
 		price: "820,00 ₺",
 		unit: "/ m²",
 		desc: "Geleneksel yalı mimarisinin asaletiyle üretilen, zamansız ve ekstra kalın masif gövde.",
@@ -292,83 +292,148 @@ products.sort((a, b) => {
 		<div class="container catalog-container">
 			<!-- Sidebar Filters -->
 			<aside class="sidebar-filters">
+				<div class="sidebar-header">
+					<div class="sidebar-title-wrap">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="19"
+							height="19"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<line x1="4" y1="21" x2="4" y2="14"></line>
+							<line x1="4" y1="10" x2="4" y2="3"></line>
+							<line x1="12" y1="21" x2="12" y2="12"></line>
+							<line x1="12" y1="8" x2="12" y2="3"></line>
+							<line x1="20" y1="21" x2="20" y2="16"></line>
+							<line x1="20" y1="12" x2="20" y2="3"></line>
+							<line x1="1" y1="14" x2="7" y2="14"></line>
+							<line x1="9" y1="8" x2="15" y2="8"></line>
+							<line x1="17" y1="16" x2="23" y2="16"></line>
+						</svg>
+						<h2>Filtreler</h2>
+					</div>
+				</div>
+
 				<div class="filter-group">
 					<h3>Kategoriler</h3>
 					<ul>
 						<li>
-							<label
-								><input type="checkbox" checked /> Lamine Parke <span
-									>(12)</span
-								></label
-							>
+							<label>
+								<input type="checkbox" class="category-filter" value="Lamine Parke" />
+								<span>Lamine Parke</span>
+								<span class="count-badge">(11)</span>
+							</label>
 						</li>
 						<li>
-							<label
-								><input type="checkbox" /> Masif Parke <span
-									>(8)</span
-								></label
-							>
+							<label>
+								<input type="checkbox" class="category-filter" value="Masif Parke" />
+								<span>Masif Parke</span>
+								<span class="count-badge">(9)</span>
+							</label>
 						</li>
 						<li>
-							<label
-								><input type="checkbox" /> Lüks Seri <span
-									>(4)</span
-								></label
-							>
+							<label>
+								<input type="checkbox" class="category-filter" value="Lüks Seri" />
+								<span>Lüks Seri</span>
+								<span class="count-badge">(3)</span>
+							</label>
 						</li>
 						<li>
-							<label
-								><input type="checkbox" /> Vinil & Özel <span
-									>(2)</span
-								></label
-							>
+							<label>
+								<input type="checkbox" class="category-filter" value="Vinil & Lamine" />
+								<span>Vinil & Lamine</span>
+								<span class="count-badge">(1)</span>
+							</label>
 						</li>
 					</ul>
 				</div>
 
 				<div class="filter-group">
 					<h3>Renkler</h3>
-					<div class="color-options">
-						<button
-							class="color-btn"
-							style="background-color: #D2B48C;"
-							title="Açık Meşe"></button>
-						<button
-							class="color-btn active"
-							style="background-color: #5C4033;"
-							title="Koyu Ceviz"></button>
-						<button
-							class="color-btn"
-							style="background-color: #A9A9A9;"
-							title="Gri/Kül"></button>
-						<button
-							class="color-btn"
-							style="background-color: #8B4513;"
-							title="Kızıl Kahve"></button>
-						<button
-							class="color-btn"
-							style="background-color: #F5DEB3;"
-							title="Açık Çam"></button>
+					<div class="color-list">
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Açık Meşe" />
+							<span class="color-swatch-dot" style="background-color: #D2B48C;"></span>
+							<span class="color-text">Açık Meşe</span>
+							<span class="count-badge">(6)</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Koyu Ceviz" />
+							<span class="color-swatch-dot" style="background-color: #5C4033;"></span>
+							<span class="color-text">Koyu Ceviz</span>
+							<span class="count-badge">(5)</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Kızıl Kahve" />
+							<span class="color-swatch-dot" style="background-color: #8B4513;"></span>
+							<span class="color-text">Kızıl Kahve</span>
+							<span class="count-badge">(4)</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Gri/Kül" />
+							<span class="color-swatch-dot" style="background-color: #A9A9A9;"></span>
+							<span class="color-text">Gri / Kül</span>
+							<span class="count-badge">(4)</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Doğal Ahşap" />
+							<span class="color-swatch-dot" style="background-color: #C4A482;"></span>
+							<span class="color-text">Doğal Ahşap</span>
+							<span class="count-badge">(3)</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Açık Çam" />
+							<span class="color-swatch-dot" style="background-color: #E8D3A7;"></span>
+							<span class="color-text">Açık Çam</span>
+							<span class="count-badge">(2)</span>
+						</label>
 					</div>
 				</div>
 
 				<div class="filter-group">
 					<h3>Fiyat Aralığı</h3>
-					<input
-						type="range"
-						min="10"
-						max="100"
-						value="50"
-						class="price-slider"
-					/>
-					<div class="price-labels">
-						<span>300,00 ₺</span>
-						<span>800,00 ₺+</span>
+					<div class="price-inputs-container">
+						<div class="price-input-field">
+							<label for="minPriceInput">Min (₺)</label>
+							<div class="price-input-box">
+								<span class="currency-sign">₺</span>
+								<input
+									type="number"
+									id="minPriceInput"
+									placeholder="400"
+									min="0"
+									step="10"
+									aria-label="Minimum Fiyat"
+								/>
+							</div>
+						</div>
+						<span class="price-range-sep">-</span>
+						<div class="price-input-field">
+							<label for="maxPriceInput">Max (₺)</label>
+							<div class="price-input-box">
+								<span class="currency-sign">₺</span>
+								<input
+									type="number"
+									id="maxPriceInput"
+									placeholder="900"
+									min="0"
+									step="10"
+									aria-label="Maksimum Fiyat"
+								/>
+							</div>
+						</div>
 					</div>
+					<button type="button" id="applyPriceBtn" class="btn-apply-price">
+						Fiyat Uygula
+					</button>
 				</div>
 
-				<button class="btn-primary reset-btn">Filtreleri Temizle</button
-				>
+				<button type="button" class="btn-primary reset-btn" id="resetFiltersBtn">Filtreleri Temizle</button>
 			</aside>
 
 			<!-- Product List Area -->
@@ -422,7 +487,7 @@ products.sort((a, b) => {
 
 				<!-- Arama Sonucu Bulunamadı Mesajı -->
 				<div id="noResultsMessage" class="no-results" style="display: none;">
-					<p>Aradığınız kritere uygun ürün bulunamadı. Lütfen farklı bir arama terimi deneyin.</p>
+					<p>Aradığınız filtreleme kriterine uygun ürün bulunamadı. Lütfen filtrelerinizi kontrol edin veya temizleyin.</p>
 				</div>
 
 				<!-- Product Grid -->
@@ -437,6 +502,7 @@ products.sort((a, b) => {
 									data-name={product.name} 
 									data-desc={product.desc}
 									data-category={product.category}
+									data-color={product.color}
 									data-price={numericPrice}
 									style={isInitiallyVisible ? "display: flex;" : "display: none;"}
 								>
@@ -524,13 +590,31 @@ products.sort((a, b) => {
 	const pageNumBtns = document.querySelectorAll<HTMLButtonElement>(".page-num-btn");
 	const catalogSection = document.getElementById("catalogSection");
 
+	const categoryCheckboxes = document.querySelectorAll<HTMLInputElement>(".category-filter");
+	const colorCheckboxes = document.querySelectorAll<HTMLInputElement>(".color-filter");
+	const minPriceInput = document.getElementById("minPriceInput") as HTMLInputElement | null;
+	const maxPriceInput = document.getElementById("maxPriceInput") as HTMLInputElement | null;
+	const applyPriceBtn = document.getElementById("applyPriceBtn") as HTMLButtonElement | null;
+	const resetFiltersBtn = document.getElementById("resetFiltersBtn") as HTMLButtonElement | null;
+
 	const ITEMS_PER_PAGE = 12;
 	let currentPage = 1;
+	let appliedMinPrice: number | null = null;
+	let appliedMaxPrice: number | null = null;
 
 	function getFilteredAndSortedCards(): HTMLElement[] {
 		if (!productGrid) return [];
 		const query = (searchInput?.value || "").trim().toLocaleLowerCase("tr");
 		const sortValue = sortSelect?.value || "price-asc";
+
+		const selectedCategories = Array.from(categoryCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value.toLocaleLowerCase("tr"));
+
+		const selectedColors = Array.from(colorCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value.toLocaleLowerCase("tr"));
+
 		const cards = Array.from(productGrid.querySelectorAll<HTMLElement>(".product-card"));
 
 		// Filter
@@ -538,7 +622,35 @@ products.sort((a, b) => {
 			const name = (card.getAttribute("data-name") || "").toLocaleLowerCase("tr");
 			const desc = (card.getAttribute("data-desc") || "").toLocaleLowerCase("tr");
 			const category = (card.getAttribute("data-category") || "").toLocaleLowerCase("tr");
-			return !query || name.includes(query) || desc.includes(query) || category.includes(query);
+			const color = (card.getAttribute("data-color") || "").toLocaleLowerCase("tr");
+			const price = parseFloat(card.getAttribute("data-price") || "0");
+
+			// Search text filter
+			if (query && !name.includes(query) && !desc.includes(query) && !category.includes(query) && !color.includes(query)) {
+				return false;
+			}
+
+			// Category filter
+			if (selectedCategories.length > 0 && !selectedCategories.includes(category)) {
+				return false;
+			}
+
+			// Color filter
+			if (selectedColors.length > 0 && !selectedColors.includes(color)) {
+				return false;
+			}
+
+			// Min price filter
+			if (appliedMinPrice !== null && price < appliedMinPrice) {
+				return false;
+			}
+
+			// Max price filter
+			if (appliedMaxPrice !== null && price > appliedMaxPrice) {
+				return false;
+			}
+
+			return true;
 		});
 
 		// Sort
@@ -608,6 +720,7 @@ products.sort((a, b) => {
 				pageNumBtns.forEach((btn) => {
 					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
 					btn.style.display = page === 1 ? "flex" : "none";
+					if (page === 1) btn.classList.add("active");
 				});
 				if (prevBtn) prevBtn.disabled = true;
 				if (nextBtn) nextBtn.disabled = true;
@@ -653,11 +766,65 @@ products.sort((a, b) => {
 	});
 
 	nextBtn?.addEventListener("click", () => {
-		if (currentPage < 2) {
+		const totalMatching = getFilteredAndSortedCards().length;
+		const totalPages = Math.max(1, Math.ceil(totalMatching / ITEMS_PER_PAGE));
+		if (currentPage < totalPages) {
 			currentPage++;
 			renderCurrentPage(true);
 		}
 	});
+
+	// Price Apply Button & Enter Key
+	function applyPriceFilter() {
+		const minVal = minPriceInput?.value.trim();
+		const maxVal = maxPriceInput?.value.trim();
+		appliedMinPrice = minVal ? parseFloat(minVal) : null;
+		appliedMaxPrice = maxVal ? parseFloat(maxVal) : null;
+		currentPage = 1;
+		renderCurrentPage(false);
+	}
+
+	applyPriceBtn?.addEventListener("click", applyPriceFilter);
+
+	[minPriceInput, maxPriceInput].forEach((input) => {
+		input?.addEventListener("keydown", (e) => {
+			if (e.key === "Enter") {
+				e.preventDefault();
+				applyPriceFilter();
+			}
+		});
+	});
+
+	// Category and Color Checkboxes
+	categoryCheckboxes.forEach((cb) => {
+		cb.addEventListener("change", () => {
+			currentPage = 1;
+			renderCurrentPage(false);
+		});
+	});
+
+	colorCheckboxes.forEach((cb) => {
+		cb.addEventListener("change", () => {
+			currentPage = 1;
+			renderCurrentPage(false);
+		});
+	});
+
+	// Reset / Clear Filters
+	function resetFilters() {
+		if (searchInput) searchInput.value = "";
+		if (minPriceInput) minPriceInput.value = "";
+		if (maxPriceInput) maxPriceInput.value = "";
+		appliedMinPrice = null;
+		appliedMaxPrice = null;
+		categoryCheckboxes.forEach((cb) => (cb.checked = false));
+		colorCheckboxes.forEach((cb) => (cb.checked = false));
+		if (sortSelect) sortSelect.value = "price-asc";
+		currentPage = 1;
+		renderCurrentPage(false);
+	}
+
+	resetFiltersBtn?.addEventListener("click", resetFilters);
 
 	// Filter & Sort events
 	searchBtn?.addEventListener("click", () => {
@@ -705,82 +872,239 @@ products.sort((a, b) => {
 	.sidebar-filters {
 		width: 100%;
 		background: #fff;
-		padding: 30px;
-		border-radius: 8px;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		padding: 26px;
+		border-radius: 10px;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+		border: 1px solid #edf2f7;
 	}
 	@media (min-width: 1024px) {
 		.sidebar-filters {
-			width: 280px;
+			width: 290px;
 			flex-shrink: 0;
+			position: sticky;
+			top: 90px;
 		}
 	}
+
+	/* Sidebar Header */
+	.sidebar-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-bottom: 18px;
+		margin-bottom: 22px;
+		border-bottom: 2px solid #f1f5f9;
+	}
+	.sidebar-title-wrap {
+		display: flex;
+		align-items: center;
+		gap: 9px;
+		color: var(--color-primary);
+	}
+	.sidebar-title-wrap svg {
+		color: var(--color-secondary);
+	}
+	.sidebar-title-wrap h2 {
+		font-size: 1.25rem;
+		font-weight: 700;
+		font-family: var(--font-primary);
+		color: var(--color-primary);
+		margin: 0;
+	}
+	.clear-all-link {
+		background: none;
+		border: none;
+		color: #94a3b8;
+		font-size: 0.85rem;
+		font-weight: 600;
+		cursor: pointer;
+		padding: 4px 6px;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+	}
+	.clear-all-link:hover {
+		color: #e11d48;
+		background: #fff1f2;
+	}
+
+	/* Filter Groups */
 	.filter-group {
-		margin-bottom: 30px;
+		margin-bottom: 24px;
 		padding-bottom: 20px;
-		border-bottom: 1px solid #eee;
+		border-bottom: 1px solid #f1f5f9;
+	}
+	.filter-group:last-of-type {
+		border-bottom: none;
+		margin-bottom: 20px;
+		padding-bottom: 0;
 	}
 	.filter-group h3 {
-		font-size: 1.1rem;
-		margin-bottom: 15px;
+		font-size: 0.98rem;
+		font-weight: 700;
+		margin-bottom: 14px;
 		color: var(--color-primary);
+		font-family: var(--font-primary);
+		letter-spacing: 0.2px;
 	}
 	.filter-group ul {
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 10px;
 	}
 	.filter-group label {
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		font-size: 0.95rem;
-		color: #555;
+		font-size: 0.92rem;
+		color: #475569;
 		cursor: pointer;
+		transition: color 0.15s ease;
 	}
-	.filter-group label span {
+	.filter-group label:hover {
+		color: var(--color-primary);
+	}
+	.filter-group input[type="checkbox"] {
+		width: 17px;
+		height: 17px;
+		accent-color: var(--color-primary);
+		cursor: pointer;
+		border-radius: 4px;
+	}
+	.count-badge {
 		margin-left: auto;
-		color: #999;
-		font-size: 0.85rem;
+		color: #94a3b8;
+		font-size: 0.82rem;
+		font-weight: 500;
 	}
-	.color-options {
+
+	/* Written Color Options */
+	.color-list {
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
 		gap: 10px;
 	}
-	.color-btn {
-		width: 35px;
-		height: 35px;
-		border-radius: 50%;
-		border: 2px solid #fff;
-		box-shadow: 0 0 0 1px #ddd;
-		cursor: pointer;
-		transition: transform 0.2s;
-	}
-	.color-btn.active,
-	.color-btn:hover {
-		box-shadow: 0 0 0 2px var(--color-primary);
-		transform: scale(1.1);
-	}
-	.price-slider {
-		width: 100%;
-		margin-bottom: 10px;
-	}
-	.price-labels {
+	.color-item {
 		display: flex;
-		justify-content: space-between;
-		font-size: 0.9rem;
-		color: #666;
-		font-weight: 600;
+		align-items: center;
+		gap: 10px;
+		cursor: pointer;
+		padding: 4px 6px;
+		border-radius: 6px;
+		transition: background-color 0.15s ease;
 	}
+	.color-item:hover {
+		background-color: #f8fafc;
+	}
+	.color-swatch-dot {
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+	}
+	.color-text {
+		font-size: 0.92rem;
+		color: #475569;
+		font-weight: 500;
+	}
+
+	/* Min-Max Price Inputs */
+	.price-inputs-container {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		margin-bottom: 12px;
+	}
+	.price-input-field {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+	.price-input-field label {
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: #64748b;
+	}
+	.price-input-box {
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	.currency-sign {
+		position: absolute;
+		left: 10px;
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: #94a3b8;
+		pointer-events: none;
+	}
+	.price-input-box input {
+		width: 100%;
+		padding: 8px 8px 8px 24px;
+		border: 1px solid #cbd5e1;
+		border-radius: 6px;
+		font-family: var(--font-secondary);
+		font-size: 0.9rem;
+		outline: none;
+		background: #f8fafc;
+		transition: all 0.2s ease;
+		-moz-appearance: textfield;
+	}
+	.price-input-box input::-webkit-outer-spin-button,
+	.price-input-box input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	.price-input-box input:focus {
+		background: #ffffff;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 0 3px rgba(18, 52, 71, 0.08);
+	}
+	.price-range-sep {
+		color: #94a3b8;
+		font-weight: 600;
+		margin-top: 18px;
+	}
+	.btn-apply-price {
+		width: 100%;
+		background: var(--color-primary);
+		color: #ffffff;
+		border: none;
+		border-radius: 6px;
+		padding: 9px 14px;
+		font-size: 0.88rem;
+		font-weight: 600;
+		font-family: var(--font-secondary);
+		cursor: pointer;
+		transition: background-color 0.2s ease, transform 0.1s ease;
+		box-shadow: 0 2px 6px rgba(18, 52, 71, 0.12);
+	}
+	.btn-apply-price:hover {
+		background: var(--color-dark);
+		transform: translateY(-1px);
+	}
+	.btn-apply-price:active {
+		transform: translateY(0);
+	}
+
+	/* Reset Filter Button */
 	.reset-btn {
 		width: 100%;
-		background: #f0f0f0;
-		color: #333;
+		background: #f1f5f9;
+		color: #475569;
+		border: 1px solid #e2e8f0;
+		padding: 10px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		border-radius: 6px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		margin-top: 6px;
 	}
 	.reset-btn:hover {
-		background: #e0e0e0;
-		color: #111;
+		background: #e2e8f0;
+		color: var(--color-primary);
 	}
 
 	/* Catalog Content */
