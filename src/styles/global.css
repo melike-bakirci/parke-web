@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  --color-primary: #123447; /* Dark Teal / Blue from design */
-  --color-secondary: #E36414; /* Orange accent */
-  --color-dark: #0F1922; /* Darker sections */
-  --color-light: #F4F8FB; /* Light background */
-  --color-text-dark: #2E3A45;
+  --color-primary: #8C6A53; /* Warm Nude / Wood */
+  --color-secondary: #D4B895; /* Light Nude / Sand */
+  --color-dark: #4A3B32; /* Dark Wood */
+  --color-light: #F9F6F0; /* Cream background */
+  --color-text-dark: #4A3B32;
   --color-text-light: #FFFFFF;
   
   --font-primary: 'Outfit', sans-serif;
