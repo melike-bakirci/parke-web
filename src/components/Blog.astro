@@ -3,100 +3,147 @@ const blogs = [
   {
     id: 1,
     title: "Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural",
-    summary: "Ahşap ve laminat zeminlerinizin ömrünü uzatmak, ilk günkü parlaklığını ve dokusunu korumak için uygulayabileceğiniz uzman yöntemler.",
+    summary:
+      "Ahşap ve laminat zeminlerinizin ömrünü uzatmak, ilk günkü parlaklığını ve dokusunu korumak için uygulayabileceğiniz uzman yöntemler.",
     date: "24 Ağustos 2026",
     category: "Bakım Rehberi",
     readTime: "4 dk okuma",
-    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-    link: "/blog"
+    image:
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    link: "/blog",
   },
   {
     id: 2,
     title: "2026 Yılının En Popüler Zemin Kaplama Trendleri",
-    summary: "Modern mimaride öne çıkan sıcak meşe tonları, doğal mat dokular ve suya dayanıklı hibrit parke çözümleri hakkında her şey.",
+    summary:
+      "Modern mimaride öne çıkan sıcak meşe tonları, doğal mat dokular ve suya dayanıklı hibrit parke çözümleri hakkında her şey.",
     date: "18 Ağustos 2026",
     category: "Trendler & Tasarım",
     readTime: "6 dk okuma",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-    link: "/blog"
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    link: "/blog",
   },
   {
     id: 3,
     title: "Laminat mı Lamine mi? Eviniz İçin Doğru Parke Seçimi",
-    summary: "Yaşam alanınızın kullanım yoğunluğuna, bütçenize ve dekorasyon tarzınıza en uygun parke türünü seçerken bilmeniz gereken temel farklar.",
+    summary:
+      "Yaşam alanınızın kullanım yoğunluğuna, bütçenize ve dekorasyon tarzınıza en uygun parke türünü seçerken bilmeniz gereken temel farklar.",
     date: "05 Ağustos 2026",
     category: "Satın Alma Rehberi",
     readTime: "5 dk okuma",
-    image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80",
-    link: "/blog"
-  }
+    image:
+      "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80",
+    link: "/blog",
+  },
 ];
 ---
 
 <section class="blog-section" id="blog">
   <div class="container">
     <div class="blog-header">
-      <h2>Parke Dünyasından En Son Yazılar</h2>
-      <p>
-        Zemin dekorasyonu, doğru parke seçimi ve uzun ömürlü kullanım için hazırladığımız rehber içeriklere göz atın.
-      </p>
-    </div>
-
-    <div class="blog-grid">
-      {blogs.map((post) => (
-        <article class="blog-card">
-          <a href={post.link} class="blog-img-wrapper" aria-label={post.title}>
-            <img src={post.image} alt={post.title} loading="lazy" />
-          </a>
-          <div class="blog-content">
-            <div class="blog-meta">
-              <span class="meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                {post.date}
-              </span>
-              <span class="meta-dot">•</span>
-              <span class="meta-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                {post.readTime}
-              </span>
-            </div>
-
-            <h3 class="blog-title">
-              <a href={post.link}>{post.title}</a>
-            </h3>
-
-            <p class="blog-desc">
-              {post.summary}
-            </p>
-
-            <a href={post.link} class="blog-link">
-              <span>Oku</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
-          </div>
-        </article>
-      ))}
-    </div>
-
-    <div class="blog-cta">
-      <a href="/blog" class="btn-all-blogs">
-        Tüm Blog Yazılarını İncele
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="header-text">
+        <h2>Parke Dünyasından En Son Yazılar</h2>
+        <p>Zemin dekorasyonu, trendler ve pratik ipuçları</p>
+      </div>
+      <a href="/blog" class="btn-view-all">
+        <span>Hepsini Göster</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <line x1="5" y1="12" x2="19" y2="12"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </a>
+    </div>
+
+    <div class="blog-grid">
+      {
+        blogs.map((post) => (
+          <article class="blog-card">
+            <a
+              href={post.link}
+              class="blog-img-wrapper"
+              aria-label={post.title}
+            >
+              <img src={post.image} alt={post.title} loading="lazy" />
+            </a>
+            <div class="blog-content">
+              <div class="blog-meta">
+                <span class="meta-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                  {post.date}
+                </span>
+                <span class="meta-dot">•</span>
+                <span class="meta-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  {post.readTime}
+                </span>
+              </div>
+
+              <h3 class="blog-title">
+                <a href={post.link}>{post.title}</a>
+              </h3>
+
+              <p class="blog-desc">{post.summary}</p>
+
+              <a href={post.link} class="blog-link">
+                <span>Oku</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -109,9 +156,16 @@ const blogs = [
   }
 
   .blog-header {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .header-text {
     max-width: 680px;
-    margin: 0 auto 3.5rem auto;
   }
 
   .section-tag {
@@ -126,8 +180,9 @@ const blogs = [
 
   .blog-header h2 {
     font-size: 2.4rem;
+    line-height: 1.25;
     color: var(--color-primary);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-family: var(--font-primary);
     font-weight: 700;
   }
@@ -165,7 +220,10 @@ const blogs = [
     border: 1px solid rgba(18, 52, 71, 0.08);
     display: flex;
     flex-direction: column;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
   }
 
   .blog-card:hover {
@@ -294,36 +352,36 @@ const blogs = [
     transform: translateX(4px);
   }
 
-  .blog-cta {
-    text-align: center;
-  }
-
-  .btn-all-blogs {
+  .btn-view-all {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
-    padding: 14px 28px;
-    background: #ffffff;
+    gap: 8px;
     color: var(--color-primary);
-    border: 2px solid var(--color-primary);
-    border-radius: 6px;
     font-weight: 700;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    font-family: var(--font-secondary);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1.5px solid #d0dbe5;
+    transition: all 0.25s ease;
+    white-space: nowrap;
   }
 
-  .btn-all-blogs:hover {
+  .btn-view-all:hover {
     background: var(--color-primary);
     color: #ffffff;
+    border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(18, 52, 71, 0.15);
+    box-shadow: 0 6px 16px rgba(18, 52, 71, 0.15);
   }
 
-  .btn-all-blogs svg {
-    transition: transform 0.3s ease;
+  .btn-view-all svg {
+    transition: transform 0.25s ease;
   }
 
-  .btn-all-blogs:hover svg {
+  .btn-view-all:hover svg {
     transform: translateX(4px);
   }
 

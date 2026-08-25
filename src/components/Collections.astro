@@ -51,6 +51,23 @@ const products = [
         <h2>Parke Koleksiyonumuz</h2>
         <p>En çok tercih edilen parke modellerimiz</p>
       </div>
+      <a href="/parke" class="btn-view-all">
+        <span>Hepsini Göster</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
     </div>
 
     <!-- 4 Products Grid -->
@@ -98,27 +115,6 @@ const products = [
         ))
       }
     </div>
-
-    <!-- Hepsini Göster Button -->
-    <div class="collections-action">
-      <a href="/parke" class="btn-show-all">
-        <span>Hepsini Göster</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
-      </a>
-    </div>
   </div>
 </section>
 
@@ -129,7 +125,12 @@ const products = [
   }
 
   .collections-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
     margin-bottom: 2.5rem;
+    flex-wrap: wrap;
   }
 
   .header-text {
@@ -296,41 +297,36 @@ const products = [
     transform: translateX(4px);
   }
 
-  /* Bottom Action / Hepsini Göster Button */
-  .collections-action {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-  }
-
-  .btn-show-all {
+  .btn-view-all {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    background: var(--color-primary);
-    color: #ffffff;
-    padding: 14px 34px;
-    border-radius: 6px;
+    gap: 8px;
+    color: var(--color-primary);
     font-weight: 700;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     font-family: var(--font-secondary);
     text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 14px rgba(18, 52, 71, 0.15);
+    padding: 10px 20px;
+    border-radius: 6px;
+    background: #ffffff;
+    border: 1.5px solid #d0dbe5;
+    transition: all 0.25s ease;
+    white-space: nowrap;
   }
 
-  .btn-show-all:hover {
-    background: #0b2230;
+  .btn-view-all:hover {
+    background: var(--color-primary);
     color: #ffffff;
+    border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(18, 52, 71, 0.25);
+    box-shadow: 0 6px 16px rgba(18, 52, 71, 0.15);
   }
 
-  .btn-show-all svg {
+  .btn-view-all svg {
     transition: transform 0.25s ease;
   }
 
-  .btn-show-all:hover svg {
+  .btn-view-all:hover svg {
     transform: translateX(4px);
   }
 
