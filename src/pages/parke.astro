@@ -8,14 +8,12 @@ import productsRaw from "../data/products.json";
 
 // Standart (varsayılan) sıralama: Fiyata göre artan
 const products = [...productsRaw].sort((a, b) => {
-	const priceA = parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
-	const priceB = parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+	const priceA =
+		parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+	const priceB =
+		parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 	return priceA - priceB;
 });
-
-const numericPrices = products.map((p) => parseFloat(p.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0);
-const minProductPrice = Math.min(...numericPrices);
-const maxProductPrice = Math.max(...numericPrices);
 ---
 
 <Layout title="Parke Koleksiyonları, Lamine & Masif Çeşitleri | ZenFlor">
@@ -61,74 +59,62 @@ const maxProductPrice = Math.max(...numericPrices);
 					<ul>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Platinum" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Platinum"
+								/>
 								<span>Platinum</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Modern Long" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Modern Long"
+								/>
 								<span>Modern Long</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Modern" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Modern"
+								/>
 								<span>Modern</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Klasik" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Klasik"
+								/>
 								<span>Klasik</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Silver" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Silver"
+								/>
 								<span>Silver</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Gloria" />
+								<input
+									type="checkbox"
+									class="category-filter"
+									value="Gloria"
+								/>
 								<span>Gloria</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-
-				<div class="filter-group">
-					<h3>Kenar Tipi</h3>
-					<ul>
-						<li>
-							<label>
-								<input type="checkbox" class="edge-filter" value="Derzli" />
-								<span>Derzli</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input type="checkbox" class="edge-filter" value="Derzsiz" />
-								<span>Derzsiz</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-
-				<div class="filter-group">
-					<h3>Kalınlık</h3>
-					<ul>
-						<li>
-							<label>
-								<input type="checkbox" class="thickness-filter" value="8 mm" />
-								<span>8 mm</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input type="checkbox" class="thickness-filter" value="10 mm" />
-								<span>10 mm</span>
 							</label>
 						</li>
 					</ul>
@@ -138,18 +124,36 @@ const maxProductPrice = Math.max(...numericPrices);
 					<h3>Renkler</h3>
 					<div class="color-list">
 						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Açık" />
-							<span class="color-swatch-dot" style="background-color: #E8D3A7;"></span>
+							<input
+								type="checkbox"
+								class="color-filter"
+								value="Açık"
+							/>
+							<span
+								class="color-swatch-dot"
+								style="background-color: #E8D3A7;"></span>
 							<span class="color-text">Açık</span>
 						</label>
 						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Orta" />
-							<span class="color-swatch-dot" style="background-color: #D2B48C;"></span>
+							<input
+								type="checkbox"
+								class="color-filter"
+								value="Orta"
+							/>
+							<span
+								class="color-swatch-dot"
+								style="background-color: #D2B48C;"></span>
 							<span class="color-text">Orta</span>
 						</label>
 						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Koyu" />
-							<span class="color-swatch-dot" style="background-color: #5C4033;"></span>
+							<input
+								type="checkbox"
+								class="color-filter"
+								value="Koyu"
+							/>
+							<span
+								class="color-swatch-dot"
+								style="background-color: #5C4033;"></span>
 							<span class="color-text">Koyu</span>
 						</label>
 					</div>
@@ -165,10 +169,9 @@ const maxProductPrice = Math.max(...numericPrices);
 								<input
 									type="number"
 									id="minPriceInput"
-									placeholder={minProductPrice.toString()}
-									min={minProductPrice}
-									max={maxProductPrice}
-									step="5"
+									placeholder="400"
+									min="0"
+									step="10"
 									aria-label="Minimum Fiyat"
 								/>
 							</div>
@@ -181,21 +184,28 @@ const maxProductPrice = Math.max(...numericPrices);
 								<input
 									type="number"
 									id="maxPriceInput"
-									placeholder={maxProductPrice.toString()}
-									min={minProductPrice}
-									max={maxProductPrice}
-									step="5"
+									placeholder="900"
+									min="0"
+									step="10"
 									aria-label="Maksimum Fiyat"
 								/>
 							</div>
 						</div>
 					</div>
-					<button type="button" id="applyPriceBtn" class="btn-apply-price">
+					<button
+						type="button"
+						id="applyPriceBtn"
+						class="btn-apply-price"
+					>
 						Fiyat Uygula
 					</button>
 				</div>
 
-				<button type="button" class="btn-primary reset-btn" id="resetFiltersBtn">Filtreleri Temizle</button>
+				<button
+					type="button"
+					class="btn-primary reset-btn"
+					id="resetFiltersBtn">Filtreleri Temizle</button
+				>
 			</aside>
 
 			<!-- Product List Area -->
@@ -211,7 +221,12 @@ const maxProductPrice = Math.max(...numericPrices);
 								autocomplete="off"
 								aria-label="Parke modellerinde ara"
 							/>
-							<button id="productSearchBtn" class="search-btn" type="button" aria-label="Ara">
+							<button
+								id="productSearchBtn"
+								class="search-btn"
+								type="button"
+								aria-label="Ara"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									width="16"
@@ -224,7 +239,8 @@ const maxProductPrice = Math.max(...numericPrices);
 									stroke-linejoin="round"
 								>
 									<circle cx="11" cy="11" r="8"></circle>
-									<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+									<line x1="21" y1="21" x2="16.65" y2="16.65"
+									></line>
 								</svg>
 								<span>Ara</span>
 							</button>
@@ -235,41 +251,59 @@ const maxProductPrice = Math.max(...numericPrices);
 						<div class="sort-by">
 							<label for="sort">Sırala:</label>
 							<select id="sort">
-								<option value="price-asc" selected>Fiyata Göre Artan</option>
-								<option value="price-desc">Fiyata Göre Azalan</option>
+								<option value="price-asc" selected
+									>Fiyata Göre Artan</option
+								>
+								<option value="price-desc"
+									>Fiyata Göre Azalan</option
+								>
 								<option value="name-asc">A'dan Z'ye</option>
 								<option value="name-desc">Z'den A'ya</option>
 							</select>
 						</div>
 						<div class="result-count">
-							<strong id="productCount">{products.length}</strong> farklı ürün
+							<strong id="productCount">{products.length}</strong> farklı
+							ürün
 						</div>
 					</div>
 				</div>
 
 				<!-- Arama Sonucu Bulunamadı Mesajı -->
-				<div id="noResultsMessage" class="no-results" style="display: none;">
-					<p>Aradığınız filtreleme kriterine uygun ürün bulunamadı. Lütfen filtrelerinizi kontrol edin veya temizleyin.</p>
+				<div
+					id="noResultsMessage"
+					class="no-results"
+					style="display: none;"
+				>
+					<p>
+						Aradığınız filtreleme kriterine uygun ürün bulunamadı.
+						Lütfen filtrelerinizi kontrol edin veya temizleyin.
+					</p>
 				</div>
 
 				<!-- Product Grid -->
 				<div class="product-grid" id="productGrid">
 					{
 						products.map((product, idx) => {
-							const numericPrice = parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+							const numericPrice =
+								parseFloat(
+									product.price
+										.replace(/[^\d,]/g, "")
+										.replace(",", "."),
+								) || 0;
 							const isInitiallyVisible = idx < 12;
 							return (
-								<a 
-									href={`/parke/${product.id}`}
-									class="product-card" 
-									data-name={product.name} 
+								<div
+									class="product-card"
+									data-name={product.name}
 									data-desc={product.surface}
 									data-category={product.series}
 									data-color={product.color}
-									data-edge={product.edge}
-									data-thickness={product.thickness}
 									data-price={numericPrice}
-									style={isInitiallyVisible ? "display: flex;" : "display: none;"}
+									style={
+										isInitiallyVisible
+											? "display: flex;"
+											: "display: none;"
+									}
 								>
 									<div class="product-img-wrapper">
 										<img
@@ -278,14 +312,15 @@ const maxProductPrice = Math.max(...numericPrices);
 											class="primary-img"
 											loading="lazy"
 										/>
-										{product.images && product.images[1] && (
-											<img
-												src={product.images[1]}
-												alt={`${product.name} - Ortam Görünümü`}
-												class="secondary-img"
-												loading="lazy"
-											/>
-										)}
+										{product.images &&
+											product.images[1] && (
+												<img
+													src={product.images[1]}
+													alt={`${product.name} - Ortam Görünümü`}
+													class="secondary-img"
+													loading="lazy"
+												/>
+											)}
 									</div>
 									<div class="product-info">
 										<h3>{product.name}</h3>
@@ -304,7 +339,10 @@ const maxProductPrice = Math.max(...numericPrices);
 													/ m²
 												</span>
 											</div>
-											<span class="btn-review">
+											<a
+												href={`/parke/${product.id}`}
+												class="btn-review"
+											>
 												<span>İncele</span>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -325,10 +363,10 @@ const maxProductPrice = Math.max(...numericPrices);
 													/>
 													<polyline points="12 5 19 12 12 19" />
 												</svg>
-											</span>
+											</a>
 										</div>
 									</div>
-								</a>
+								</div>
 							);
 						})
 					}
@@ -336,13 +374,29 @@ const maxProductPrice = Math.max(...numericPrices);
 
 				<!-- Pagination -->
 				<div class="pagination" id="catalogPagination">
-					<button class="page-btn prev-btn" id="prevPageBtn" disabled aria-label="Önceki Sayfa">&larr;</button>
+					<button
+						class="page-btn prev-btn"
+						id="prevPageBtn"
+						disabled
+						aria-label="Önceki Sayfa">&larr;</button
+					>
 					{
-						Array.from({ length: Math.ceil(products.length / 12) }).map((_, i) => (
-							<button class={`page-btn page-num-btn ${i === 0 ? "active" : ""}`} data-page={i + 1}>{i + 1}</button>
+						Array.from({
+							length: Math.ceil(products.length / 12),
+						}).map((_, i) => (
+							<button
+								class={`page-btn page-num-btn ${i === 0 ? "active" : ""}`}
+								data-page={i + 1}
+							>
+								{i + 1}
+							</button>
 						))
 					}
-					<button class="page-btn next-btn" id="nextPageBtn" aria-label="Sonraki Sayfa">&rarr;</button>
+					<button
+						class="page-btn next-btn"
+						id="nextPageBtn"
+						aria-label="Sonraki Sayfa">&rarr;</button
+					>
 				</div>
 			</div>
 		</div>
@@ -352,82 +406,106 @@ const maxProductPrice = Math.max(...numericPrices);
 </Layout>
 
 <script>
-	const sortSelect = document.getElementById("sort") as HTMLSelectElement | null;
+	const sortSelect = document.getElementById(
+		"sort",
+	) as HTMLSelectElement | null;
 	const productGrid = document.getElementById("productGrid");
-	const searchInput = document.getElementById("productSearchInput") as HTMLInputElement | null;
+	const searchInput = document.getElementById(
+		"productSearchInput",
+	) as HTMLInputElement | null;
 	const searchBtn = document.getElementById("productSearchBtn");
 	const countDisplay = document.getElementById("productCount");
 	const noResultsMsg = document.getElementById("noResultsMessage");
 	const paginationContainer = document.getElementById("catalogPagination");
-	const prevBtn = document.getElementById("prevPageBtn") as HTMLButtonElement | null;
-	const nextBtn = document.getElementById("nextPageBtn") as HTMLButtonElement | null;
-	const pageNumBtns = document.querySelectorAll<HTMLButtonElement>(".page-num-btn");
+	const prevBtn = document.getElementById(
+		"prevPageBtn",
+	) as HTMLButtonElement | null;
+	const nextBtn = document.getElementById(
+		"nextPageBtn",
+	) as HTMLButtonElement | null;
+	const pageNumBtns =
+		document.querySelectorAll<HTMLButtonElement>(".page-num-btn");
 	const catalogSection = document.getElementById("catalogSection");
 
-	const categoryCheckboxes = document.querySelectorAll<HTMLInputElement>(".category-filter");
-	const edgeCheckboxes = document.querySelectorAll<HTMLInputElement>(".edge-filter");
-	const thicknessCheckboxes = document.querySelectorAll<HTMLInputElement>(".thickness-filter");
-	const colorCheckboxes = document.querySelectorAll<HTMLInputElement>(".color-filter");
-	const minPriceInput = document.getElementById("minPriceInput") as HTMLInputElement | null;
-	const maxPriceInput = document.getElementById("maxPriceInput") as HTMLInputElement | null;
-	const applyPriceBtn = document.getElementById("applyPriceBtn") as HTMLButtonElement | null;
-	const resetFiltersBtn = document.getElementById("resetFiltersBtn") as HTMLButtonElement | null;
+	const categoryCheckboxes =
+		document.querySelectorAll<HTMLInputElement>(".category-filter");
+	const colorCheckboxes =
+		document.querySelectorAll<HTMLInputElement>(".color-filter");
+	const minPriceInput = document.getElementById(
+		"minPriceInput",
+	) as HTMLInputElement | null;
+	const maxPriceInput = document.getElementById(
+		"maxPriceInput",
+	) as HTMLInputElement | null;
+	const applyPriceBtn = document.getElementById(
+		"applyPriceBtn",
+	) as HTMLButtonElement | null;
+	const resetFiltersBtn = document.getElementById(
+		"resetFiltersBtn",
+	) as HTMLButtonElement | null;
 
 	const ITEMS_PER_PAGE = 12;
 	let currentPage = 1;
 	let appliedMinPrice: number | null = null;
 	let appliedMaxPrice: number | null = null;
 
+	function normalizeText(str: string): string {
+		if (!str) return "";
+		return str
+			.trim()
+			.replace(/İ/g, "i")
+			.replace(/I/g, "i")
+			.replace(/ı/g, "i")
+			.toLocaleLowerCase("tr")
+			.replace(/ı/g, "i")
+			.replace(/ğ/g, "g")
+			.replace(/ü/g, "u")
+			.replace(/ş/g, "s")
+			.replace(/ö/g, "o")
+			.replace(/ç/g, "c");
+	}
+
 	function getFilteredAndSortedCards(): HTMLElement[] {
 		if (!productGrid) return [];
-		const query = (searchInput?.value || "").trim().toLocaleLowerCase("tr");
+		const query = normalizeText(searchInput?.value || "");
 		const sortValue = sortSelect?.value || "price-asc";
 
 		const selectedCategories = Array.from(categoryCheckboxes)
 			.filter((cb) => cb.checked)
-			.map((cb) => cb.value.toLocaleLowerCase("tr"));
-
-		const selectedEdges = Array.from(edgeCheckboxes)
-			.filter((cb) => cb.checked)
-			.map((cb) => cb.value.toLocaleLowerCase("tr"));
-
-		const selectedThicknesses = Array.from(thicknessCheckboxes)
-			.filter((cb) => cb.checked)
-			.map((cb) => cb.value.toLocaleLowerCase("tr"));
+			.map((cb) => normalizeText(cb.value));
 
 		const selectedColors = Array.from(colorCheckboxes)
 			.filter((cb) => cb.checked)
-			.map((cb) => cb.value.toLocaleLowerCase("tr"));
+			.map((cb) => normalizeText(cb.value));
 
-		const cards = Array.from(productGrid.querySelectorAll<HTMLElement>(".product-card"));
+		const cards = Array.from(
+			productGrid.querySelectorAll<HTMLElement>(".product-card"),
+		);
 
 		// Filter
 		const matchingCards = cards.filter((card) => {
-			const name = (card.getAttribute("data-name") || "").toLocaleLowerCase("tr");
-			const desc = (card.getAttribute("data-desc") || "").toLocaleLowerCase("tr");
-			const category = (card.getAttribute("data-category") || "").toLocaleLowerCase("tr");
-			const edge = (card.getAttribute("data-edge") || "").toLocaleLowerCase("tr");
-			const thickness = (card.getAttribute("data-thickness") || "").toLocaleLowerCase("tr");
-			const color = (card.getAttribute("data-color") || "").toLocaleLowerCase("tr");
+			const name = normalizeText(card.getAttribute("data-name") || "");
+			const desc = normalizeText(card.getAttribute("data-desc") || "");
+			const category = normalizeText(card.getAttribute("data-category") || "");
+			const color = normalizeText(card.getAttribute("data-color") || "");
 			const price = parseFloat(card.getAttribute("data-price") || "0");
 
 			// Search text filter
-			if (query && !name.includes(query) && !desc.includes(query) && !category.includes(query) && !edge.includes(query) && !thickness.includes(query) && !color.includes(query)) {
+			if (
+				query &&
+				!name.includes(query) &&
+				!desc.includes(query) &&
+				!category.includes(query) &&
+				!color.includes(query)
+			) {
 				return false;
 			}
 
 			// Category filter
-			if (selectedCategories.length > 0 && !selectedCategories.includes(category)) {
-				return false;
-			}
-
-			// Edge filter
-			if (selectedEdges.length > 0 && !selectedEdges.includes(edge)) {
-				return false;
-			}
-
-			// Thickness filter
-			if (selectedThicknesses.length > 0 && !selectedThicknesses.includes(thickness)) {
+			if (
+				selectedCategories.length > 0 &&
+				!selectedCategories.includes(category)
+			) {
 				return false;
 			}
 
@@ -479,9 +557,14 @@ const maxProductPrice = Math.max(...numericPrices);
 	function renderCurrentPage(scrollToTop = false) {
 		if (!productGrid) return;
 		const matchingCards = getFilteredAndSortedCards();
-		const allCards = Array.from(productGrid.querySelectorAll<HTMLElement>(".product-card"));
+		const allCards = Array.from(
+			productGrid.querySelectorAll<HTMLElement>(".product-card"),
+		);
 		const totalMatching = matchingCards.length;
-		const totalPages = Math.max(1, Math.ceil(totalMatching / ITEMS_PER_PAGE));
+		const totalPages = Math.max(
+			1,
+			Math.ceil(totalMatching / ITEMS_PER_PAGE),
+		);
 
 		if (currentPage > totalPages) {
 			currentPage = 1;
@@ -514,7 +597,10 @@ const maxProductPrice = Math.max(...numericPrices);
 		if (paginationContainer) {
 			if (totalMatching <= ITEMS_PER_PAGE) {
 				pageNumBtns.forEach((btn) => {
-					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
+					const page = parseInt(
+						btn.getAttribute("data-page") || "1",
+						10,
+					);
 					btn.style.display = page === 1 ? "flex" : "none";
 					if (page === 1) btn.classList.add("active");
 				});
@@ -522,7 +608,10 @@ const maxProductPrice = Math.max(...numericPrices);
 				if (nextBtn) nextBtn.disabled = true;
 			} else {
 				pageNumBtns.forEach((btn) => {
-					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
+					const page = parseInt(
+						btn.getAttribute("data-page") || "1",
+						10,
+					);
 					if (page <= totalPages) {
 						btn.style.display = "flex";
 						if (page === currentPage) {
@@ -567,7 +656,10 @@ const maxProductPrice = Math.max(...numericPrices);
 
 	nextBtn?.addEventListener("click", () => {
 		const totalMatching = getFilteredAndSortedCards().length;
-		const totalPages = Math.max(1, Math.ceil(totalMatching / ITEMS_PER_PAGE));
+		const totalPages = Math.max(
+			1,
+			Math.ceil(totalMatching / ITEMS_PER_PAGE),
+		);
 		if (currentPage < totalPages) {
 			currentPage++;
 			renderCurrentPage(true);
@@ -595,22 +687,8 @@ const maxProductPrice = Math.max(...numericPrices);
 		});
 	});
 
-	// Checkbox Filters
+	// Category and Color Checkboxes
 	categoryCheckboxes.forEach((cb) => {
-		cb.addEventListener("change", () => {
-			currentPage = 1;
-			renderCurrentPage(false);
-		});
-	});
-
-	edgeCheckboxes.forEach((cb) => {
-		cb.addEventListener("change", () => {
-			currentPage = 1;
-			renderCurrentPage(false);
-		});
-	});
-
-	thicknessCheckboxes.forEach((cb) => {
 		cb.addEventListener("change", () => {
 			currentPage = 1;
 			renderCurrentPage(false);
@@ -632,8 +710,6 @@ const maxProductPrice = Math.max(...numericPrices);
 		appliedMinPrice = null;
 		appliedMaxPrice = null;
 		categoryCheckboxes.forEach((cb) => (cb.checked = false));
-		edgeCheckboxes.forEach((cb) => (cb.checked = false));
-		thicknessCheckboxes.forEach((cb) => (cb.checked = false));
 		colorCheckboxes.forEach((cb) => (cb.checked = false));
 		if (sortSelect) sortSelect.value = "price-asc";
 		currentPage = 1;
@@ -801,7 +877,9 @@ const maxProductPrice = Math.max(...numericPrices);
 		height: 16px;
 		border-radius: 50%;
 		flex-shrink: 0;
-		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.1);
+		box-shadow:
+			0 0 0 1px rgba(0, 0, 0, 0.15),
+			inset 0 1px 2px rgba(0, 0, 0, 0.1);
 	}
 	.color-text {
 		font-size: 0.92rem;
@@ -878,7 +956,9 @@ const maxProductPrice = Math.max(...numericPrices);
 		font-weight: 600;
 		font-family: var(--font-secondary);
 		cursor: pointer;
-		transition: background-color 0.2s ease, transform 0.1s ease;
+		transition:
+			background-color 0.2s ease,
+			transform 0.1s ease;
 		box-shadow: 0 2px 6px rgba(18, 52, 71, 0.12);
 	}
 	.btn-apply-price:hover {
@@ -944,7 +1024,9 @@ const maxProductPrice = Math.max(...numericPrices);
 		font-family: var(--font-secondary);
 		font-size: 0.92rem;
 		outline: none;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
 		background-color: #f8fafc;
 	}
 	.search-input-wrap input:focus {
@@ -1040,9 +1122,6 @@ const maxProductPrice = Math.max(...numericPrices);
 		transition: box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
-		text-decoration: none;
-		color: inherit;
-		cursor: pointer;
 	}
 	.product-card:hover {
 		box-shadow: 0 8px 24px rgba(18, 52, 71, 0.09);
