@@ -9,7 +9,9 @@ import Footer from "../components/Footer.astro";
 	<Header />
 	<PageHero
 		title="Bize Ulaşın"
-		subtitle="Projeniz için ücretsiz keşif ve fiyat teklifi almak üzere bizimle iletişime geçin."
+		subtitle="Aklınızdaki projeyi konuşmak için sabırsızlanıyoruz! Bir mesaj atmaya ne dersiniz?
+
+"
 	/>
 
 	<section class="contact-page-section">
@@ -291,21 +293,52 @@ import Footer from "../components/Footer.astro";
 					</p>
 
 					<form class="page-contact-form" id="contactForm">
-						<div id="formSuccessMessage" class="form-success-alert" role="alert">
-							<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+						<div
+							id="formSuccessMessage"
+							class="form-success-alert"
+							role="alert"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="22"
+								height="22"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"
+								></path><polyline points="22 4 12 14.01 9 11.01"
+								></polyline></svg
+							>
 							<div>
 								<strong>Mesajınız başarıyla iletildi!</strong>
-								<p>En kısa süre içerisinde sizinle iletişime geçeceğiz.</p>
+								<p>
+									En kısa süre içerisinde sizinle iletişime
+									geçeceğiz.
+								</p>
 							</div>
 						</div>
 
 						<div class="form-row">
 							<div class="input-group">
-								<label>Adınız <span class="required">*</span></label>
-								<input type="text" required placeholder="Size nasıl hitap edelim?" />
+								<label
+									>Adınız <span class="required">*</span
+									></label
+								>
+								<input
+									type="text"
+									required
+									placeholder="Size nasıl hitap edelim?"
+								/>
 							</div>
 							<div class="input-group">
-								<label>Telefon Numaranız <span class="required">*</span></label>
+								<label
+									>Telefon Numaranız <span class="required"
+										>*</span
+									></label
+								>
 								<input
 									type="tel"
 									required
@@ -315,14 +348,19 @@ import Footer from "../components/Footer.astro";
 						</div>
 
 						<div class="input-group">
-							<label>Mesajınız <span class="required">*</span></label>
+							<label
+								>Mesajınız <span class="required">*</span
+								></label
+							>
 							<textarea
 								required
 								placeholder="Aklınızdan geçenleri bizimle paylaşın..."
 								rows="6"></textarea>
 						</div>
 
-						<button type="submit" class="btn-primary" id="submitBtn">Mesajı Gönder</button>
+						<button type="submit" class="btn-primary" id="submitBtn"
+							>Mesajı Gönder</button
+						>
 					</form>
 				</div>
 			</div>
@@ -330,13 +368,17 @@ import Footer from "../components/Footer.astro";
 	</section>
 
 	<script>
-		const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
-		const successAlert = document.getElementById('formSuccessMessage');
-		const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+		const contactForm = document.getElementById(
+			"contactForm",
+		) as HTMLFormElement | null;
+		const successAlert = document.getElementById("formSuccessMessage");
+		const submitBtn = document.getElementById(
+			"submitBtn",
+		) as HTMLButtonElement | null;
 
-		contactForm?.addEventListener('submit', (e) => {
+		contactForm?.addEventListener("submit", (e) => {
 			e.preventDefault();
-			
+
 			if (submitBtn) {
 				submitBtn.disabled = true;
 				submitBtn.innerHTML = `
@@ -350,18 +392,21 @@ import Footer from "../components/Footer.astro";
 			// Simulate submission feedback
 			setTimeout(() => {
 				contactForm.reset();
-				
+
 				if (submitBtn) {
 					submitBtn.disabled = false;
-					submitBtn.textContent = 'Mesajı Gönder';
+					submitBtn.textContent = "Mesajı Gönder";
 				}
 
 				if (successAlert) {
-					successAlert.classList.add('show');
-					successAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+					successAlert.classList.add("show");
+					successAlert.scrollIntoView({
+						behavior: "smooth",
+						block: "nearest",
+					});
 
 					setTimeout(() => {
-						successAlert.classList.remove('show');
+						successAlert.classList.remove("show");
 					}, 6000);
 				}
 			}, 600);
@@ -635,11 +680,21 @@ import Footer from "../components/Footer.astro";
 		margin-right: 8px;
 	}
 	@keyframes spin {
-		from { transform: rotate(0deg); }
-		to { transform: rotate(360deg); }
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
 	}
 	@keyframes fadeIn {
-		from { opacity: 0; transform: translateY(-6px); }
-		to { opacity: 1; transform: translateY(0); }
+		from {
+			opacity: 0;
+			transform: translateY(-6px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
 	}
 </style>

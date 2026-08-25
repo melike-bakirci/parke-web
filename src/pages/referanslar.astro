@@ -1,27 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import PageHero from '../components/PageHero.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Footer from "../components/Footer.astro";
 
 // 4 Adet Şirket / Kurumsal İş Ortağı
 const partnerCompanies = [
 	{
 		name: "Hilton Hotels & Resorts",
-		category: "Otelcilik & Turizm"
+		category: "Otelcilik & Turizm",
 	},
 	{
 		name: "Rönesans Gayrimenkul",
-		category: "İnşaat & GYO"
+		category: "İnşaat & GYO",
 	},
 	{
 		name: "Divan Grubu",
-		category: "Turizm & Konaklama"
+		category: "Turizm & Konaklama",
 	},
 	{
 		name: "Sinpaş GYO",
-		category: "Konut Projeleri"
-	}
+		category: "Konut Projeleri",
+	},
 ];
 
 // Yan Yana 4 Adet Uygulama Fotoğrafı
@@ -29,47 +29,71 @@ const galleryImages = [
 	{ id: 1, img: "/images/about-1.jpg", alt: "ZenFlor Parke Uygulaması 1" },
 	{ id: 2, img: "/images/about-2.jpg", alt: "ZenFlor Parke Uygulaması 2" },
 	{ id: 3, img: "/images/about-3.jpg", alt: "ZenFlor Parke Uygulaması 3" },
-	{ id: 4, img: "/images/collection-1.jpg", alt: "ZenFlor Parke Uygulaması 4" }
+	{
+		id: 4,
+		img: "/images/collection-1.jpg",
+		alt: "ZenFlor Parke Uygulaması 4",
+	},
 ];
 ---
 
 <Layout title="Referans Projelerimiz & Uygulama Galerisi | ZenFlor">
 	<Header />
-	<PageHero 
-		title="Referanslarımız" 
-		subtitle="Kurumsal iş ortaklarımız ve hayata geçirdiğimiz seçkin zemin uygulama projeleri." 
+	<PageHero
+		title="Referanslarımız"
+		subtitle="Ev, ofis, otel vb. projelerde tamamlanan zemin kaplama uygulamalarımız ve referanslarımız."
 	/>
-	
+
 	<!-- 1. BÖLÜM: ŞİRKET LOGOLARI / KURUMSAL İŞ ORTAKLARI (4 ADET) -->
 	<section class="corporate-section">
 		<div class="container">
 			<div class="section-intro">
 				<h2>Birlikte Çalıştığımız Markalar</h2>
-				<p>Türkiye'nin önde gelen inşaat, turizm, mimarlık ve gayrimenkul markalarının zemin çözümlerinde güvenilir çözüm ortağıyız.</p>
+				<p>
+					Türkiye'nin önde gelen inşaat, turizm, mimarlık ve
+					gayrimenkul markalarının zemin çözümlerinde güvenilir çözüm
+					ortağıyız.
+				</p>
 			</div>
 
 			<div class="brands-grid">
-				{partnerCompanies.map((company) => (
-					<div class="brand-card">
-						<div class="brand-logo-wrap">
-							<div class="brand-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-									<path d="M3 21h18"></path>
-									<path d="M5 21V7l8-4v18"></path>
-									<path d="M19 21V11l-6-4"></path>
-									<path d="M9 9v.01"></path>
-									<path d="M9 12v.01"></path>
-									<path d="M9 15v.01"></path>
-									<path d="M9 18v.01"></path>
-								</svg>
-							</div>
-							<div class="brand-info">
-								<span class="brand-name">{company.name}</span>
-								<span class="brand-category">{company.category}</span>
+				{
+					partnerCompanies.map((company) => (
+						<div class="brand-card">
+							<div class="brand-logo-wrap">
+								<div class="brand-icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="22"
+										height="22"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.75"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path d="M3 21h18" />
+										<path d="M5 21V7l8-4v18" />
+										<path d="M19 21V11l-6-4" />
+										<path d="M9 9v.01" />
+										<path d="M9 12v.01" />
+										<path d="M9 15v.01" />
+										<path d="M9 18v.01" />
+									</svg>
+								</div>
+								<div class="brand-info">
+									<span class="brand-name">
+										{company.name}
+									</span>
+									<span class="brand-category">
+										{company.category}
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
-				))}
+					))
+				}
 			</div>
 		</div>
 	</section>
@@ -79,19 +103,22 @@ const galleryImages = [
 		<div class="container">
 			<div class="section-intro">
 				<h2>Uygulama Galerisi</h2>
-				<p>Konutlardan ticari alanlara kadar tamamladığımız zemin uygulamalarından seçkin örnekleri inceleyebilirsiniz.</p>
-			</div>
-			
-			<!-- Yan Yana 4 Fotoğraf Grid -->
-			<div class="gallery-grid">
-				{galleryImages.map((item) => (
-					<div class="gallery-card" data-img={item.img}>
-						<img src={item.img} alt={item.alt} loading="lazy" />
-					</div>
-				))}
+				<p>
+					Konutlardan ticari alanlara kadar tamamladığımız zemin
+					uygulamalarından seçkin örnekleri inceleyebilirsiniz.
+				</p>
 			</div>
 
-			
+			<!-- Yan Yana 4 Fotoğraf Grid -->
+			<div class="gallery-grid">
+				{
+					galleryImages.map((item) => (
+						<div class="gallery-card" data-img={item.img}>
+							<img src={item.img} alt={item.alt} loading="lazy" />
+						</div>
+					))
+				}
+			</div>
 		</div>
 	</section>
 
@@ -99,8 +126,22 @@ const galleryImages = [
 	<div class="lightbox-modal" id="lightboxModal">
 		<div class="lightbox-backdrop" id="lightboxBackdrop"></div>
 		<div class="lightbox-container">
-			<button class="lightbox-close" id="lightboxClose" aria-label="Kapat">
-				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<button
+				class="lightbox-close"
+				id="lightboxClose"
+				aria-label="Kapat"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="22"
+					height="22"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
 					<line x1="18" y1="6" x2="6" y2="18"></line>
 					<line x1="6" y1="6" x2="18" y2="18"></line>
 				</svg>
@@ -110,41 +151,44 @@ const galleryImages = [
 			</div>
 		</div>
 	</div>
-	
+
 	<Footer />
 </Layout>
 
 <script>
 	// Lightbox Modal İşlevleri
-	const modal = document.getElementById('lightboxModal');
-	const modalImg = document.getElementById('lightboxImage') as HTMLImageElement;
-	const closeBtn = document.getElementById('lightboxClose');
-	const backdrop = document.getElementById('lightboxBackdrop');
-	const galleryCards = document.querySelectorAll<HTMLElement>('.gallery-card');
+	const modal = document.getElementById("lightboxModal");
+	const modalImg = document.getElementById(
+		"lightboxImage",
+	) as HTMLImageElement;
+	const closeBtn = document.getElementById("lightboxClose");
+	const backdrop = document.getElementById("lightboxBackdrop");
+	const galleryCards =
+		document.querySelectorAll<HTMLElement>(".gallery-card");
 
-	galleryCards.forEach(card => {
-		card.addEventListener('click', () => {
-			const imgUrl = card.getAttribute('data-img') || '';
+	galleryCards.forEach((card) => {
+		card.addEventListener("click", () => {
+			const imgUrl = card.getAttribute("data-img") || "";
 			if (modalImg && modal) {
 				modalImg.src = imgUrl;
-				modal.classList.add('active');
-				document.body.style.overflow = 'hidden';
+				modal.classList.add("active");
+				document.body.style.overflow = "hidden";
 			}
 		});
 	});
 
 	const closeModal = () => {
 		if (modal) {
-			modal.classList.remove('active');
-			document.body.style.overflow = '';
+			modal.classList.remove("active");
+			document.body.style.overflow = "";
 		}
 	};
 
-	closeBtn?.addEventListener('click', closeModal);
-	backdrop?.addEventListener('click', closeModal);
+	closeBtn?.addEventListener("click", closeModal);
+	backdrop?.addEventListener("click", closeModal);
 
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && modal?.classList.contains('active')) {
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && modal?.classList.contains("active")) {
 			closeModal();
 		}
 	});
@@ -159,7 +203,7 @@ const galleryImages = [
 		max-width: 680px;
 		margin: 0 auto 2.5rem auto;
 	}
-	
+
 	.section-intro h2 {
 		font-size: 2.2rem;
 		color: var(--color-primary);
@@ -167,7 +211,7 @@ const galleryImages = [
 		font-family: var(--font-primary);
 		font-weight: 700;
 	}
-	
+
 	.section-intro p {
 		font-size: 1rem;
 		color: #5a6872;
@@ -201,7 +245,9 @@ const galleryImages = [
 		border: 1px solid #e5eaf0;
 		border-radius: 10px;
 		padding: 1.2rem 1.25rem;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
 	}
 
 	.brand-card:hover {
@@ -283,7 +329,10 @@ const galleryImages = [
 		border: 1px solid #e8edf2;
 		cursor: pointer;
 		aspect-ratio: 4/3;
-		transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+		transition:
+			transform 0.35s ease,
+			box-shadow 0.35s ease,
+			border-color 0.35s ease;
 	}
 
 	.gallery-card:hover {
@@ -304,7 +353,6 @@ const galleryImages = [
 		transform: scale(1.05);
 	}
 
-
 	/* =========================================
 	   LIGHTBOX MODAL
 	   ========================================= */
@@ -320,7 +368,9 @@ const galleryImages = [
 		justify-content: center;
 		opacity: 0;
 		visibility: hidden;
-		transition: opacity 0.2s ease, visibility 0.2s ease;
+		transition:
+			opacity 0.2s ease,
+			visibility 0.2s ease;
 	}
 
 	.lightbox-modal.active {
@@ -382,7 +432,7 @@ const galleryImages = [
 		.gallery-section {
 			padding: 45px 0;
 		}
-		
+
 		.section-intro h2 {
 			font-size: 1.75rem;
 		}
