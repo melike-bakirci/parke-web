@@ -14,6 +14,10 @@ const products = [...productsRaw].sort((a, b) => {
 		parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 	return priceA - priceB;
 });
+
+const numericPrices = products.map((p) => parseFloat(p.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0);
+const minProductPrice = Math.min(...numericPrices);
+const maxProductPrice = Math.max(...numericPrices);
 ---
 
 <Layout title="Parke Koleksiyonları, Lamine & Masif Çeşitleri | ZenFlor">
@@ -121,6 +125,58 @@ const products = [...productsRaw].sort((a, b) => {
 				</div>
 
 				<div class="filter-group">
+					<h3>Kenar Tipi</h3>
+					<ul>
+						<li>
+							<label>
+								<input
+									type="checkbox"
+									class="edge-filter"
+									value="Derzli"
+								/>
+								<span>Derzli</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input
+									type="checkbox"
+									class="edge-filter"
+									value="Derzsiz"
+								/>
+								<span>Derzsiz</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="filter-group">
+					<h3>Kalınlık</h3>
+					<ul>
+						<li>
+							<label>
+								<input
+									type="checkbox"
+									class="thickness-filter"
+									value="8 mm"
+								/>
+								<span>8 mm</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input
+									type="checkbox"
+									class="thickness-filter"
+									value="10 mm"
+								/>
+								<span>10 mm</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+
+				<div class="filter-group">
 					<h3>Renkler</h3>
 					<div class="color-list">
 						<label class="color-item">
@@ -169,9 +225,10 @@ const products = [...productsRaw].sort((a, b) => {
 								<input
 									type="number"
 									id="minPriceInput"
-									placeholder="400"
-									min="0"
-									step="10"
+									placeholder={minProductPrice.toString()}
+									min={minProductPrice}
+									max={maxProductPrice}
+									step="5"
 									aria-label="Minimum Fiyat"
 								/>
 							</div>
@@ -184,9 +241,10 @@ const products = [...productsRaw].sort((a, b) => {
 								<input
 									type="number"
 									id="maxPriceInput"
-									placeholder="900"
-									min="0"
-									step="10"
+									placeholder={maxProductPrice.toString()}
+									min={minProductPrice}
+									max={maxProductPrice}
+									step="5"
 									aria-label="Maksimum Fiyat"
 								/>
 							</div>
@@ -292,12 +350,15 @@ const products = [...productsRaw].sort((a, b) => {
 								) || 0;
 							const isInitiallyVisible = idx < 12;
 							return (
-								<div
+								<a
+									href={`/parke/${product.id}`}
 									class="product-card"
 									data-name={product.name}
 									data-desc={product.surface}
 									data-category={product.series}
 									data-color={product.color}
+									data-edge={product.edge}
+									data-thickness={product.thickness}
 									data-price={numericPrice}
 									style={
 										isInitiallyVisible
@@ -339,10 +400,7 @@ const products = [...productsRaw].sort((a, b) => {
 													/ m²
 												</span>
 											</div>
-											<a
-												href={`/parke/${product.id}`}
-												class="btn-review"
-											>
+											<span class="btn-review">
 												<span>İncele</span>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -363,10 +421,10 @@ const products = [...productsRaw].sort((a, b) => {
 													/>
 													<polyline points="12 5 19 12 12 19" />
 												</svg>
-											</a>
+											</span>
 										</div>
 									</div>
-								</div>
+								</a>
 							);
 						})
 					}
@@ -429,6 +487,10 @@ const products = [...productsRaw].sort((a, b) => {
 
 	const categoryCheckboxes =
 		document.querySelectorAll<HTMLInputElement>(".category-filter");
+	const edgeCheckboxes =
+		document.querySelectorAll<HTMLInputElement>(".edge-filter");
+	const thicknessCheckboxes =
+		document.querySelectorAll<HTMLInputElement>(".thickness-filter");
 	const colorCheckboxes =
 		document.querySelectorAll<HTMLInputElement>(".color-filter");
 	const minPriceInput = document.getElementById(
@@ -474,6 +536,14 @@ const products = [...productsRaw].sort((a, b) => {
 			.filter((cb) => cb.checked)
 			.map((cb) => normalizeText(cb.value));
 
+		const selectedEdges = Array.from(edgeCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => normalizeText(cb.value));
+
+		const selectedThicknesses = Array.from(thicknessCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => normalizeText(cb.value));
+
 		const selectedColors = Array.from(colorCheckboxes)
 			.filter((cb) => cb.checked)
 			.map((cb) => normalizeText(cb.value));
@@ -487,6 +557,8 @@ const products = [...productsRaw].sort((a, b) => {
 			const name = normalizeText(card.getAttribute("data-name") || "");
 			const desc = normalizeText(card.getAttribute("data-desc") || "");
 			const category = normalizeText(card.getAttribute("data-category") || "");
+			const edge = normalizeText(card.getAttribute("data-edge") || "");
+			const thickness = normalizeText(card.getAttribute("data-thickness") || "");
 			const color = normalizeText(card.getAttribute("data-color") || "");
 			const price = parseFloat(card.getAttribute("data-price") || "0");
 
@@ -496,6 +568,8 @@ const products = [...productsRaw].sort((a, b) => {
 				!name.includes(query) &&
 				!desc.includes(query) &&
 				!category.includes(query) &&
+				!edge.includes(query) &&
+				!thickness.includes(query) &&
 				!color.includes(query)
 			) {
 				return false;
@@ -505,6 +579,22 @@ const products = [...productsRaw].sort((a, b) => {
 			if (
 				selectedCategories.length > 0 &&
 				!selectedCategories.includes(category)
+			) {
+				return false;
+			}
+
+			// Edge filter
+			if (
+				selectedEdges.length > 0 &&
+				!selectedEdges.includes(edge)
+			) {
+				return false;
+			}
+
+			// Thickness filter
+			if (
+				selectedThicknesses.length > 0 &&
+				!selectedThicknesses.includes(thickness)
 			) {
 				return false;
 			}
@@ -687,8 +777,22 @@ const products = [...productsRaw].sort((a, b) => {
 		});
 	});
 
-	// Category and Color Checkboxes
+	// Checkbox Filters
 	categoryCheckboxes.forEach((cb) => {
+		cb.addEventListener("change", () => {
+			currentPage = 1;
+			renderCurrentPage(false);
+		});
+	});
+
+	edgeCheckboxes.forEach((cb) => {
+		cb.addEventListener("change", () => {
+			currentPage = 1;
+			renderCurrentPage(false);
+		});
+	});
+
+	thicknessCheckboxes.forEach((cb) => {
 		cb.addEventListener("change", () => {
 			currentPage = 1;
 			renderCurrentPage(false);
@@ -710,6 +814,8 @@ const products = [...productsRaw].sort((a, b) => {
 		appliedMinPrice = null;
 		appliedMaxPrice = null;
 		categoryCheckboxes.forEach((cb) => (cb.checked = false));
+		edgeCheckboxes.forEach((cb) => (cb.checked = false));
+		thicknessCheckboxes.forEach((cb) => (cb.checked = false));
 		colorCheckboxes.forEach((cb) => (cb.checked = false));
 		if (sortSelect) sortSelect.value = "price-asc";
 		currentPage = 1;
@@ -1122,6 +1228,9 @@ const products = [...productsRaw].sort((a, b) => {
 		transition: box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
+		text-decoration: none;
+		color: inherit;
+		cursor: pointer;
 	}
 	.product-card:hover {
 		box-shadow: 0 8px 24px rgba(18, 52, 71, 0.09);
