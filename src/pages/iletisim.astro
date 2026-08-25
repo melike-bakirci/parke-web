@@ -18,7 +18,12 @@ import Footer from "../components/Footer.astro";
 		<div class="container contact-page-container">
 			<!-- Contact Info Cards -->
 			<div class="contact-info-cards">
-				<div class="info-card">
+				<a
+					href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="info-card"
+				>
 					<div class="icon-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -37,16 +42,14 @@ import Footer from "../components/Footer.astro";
 					</div>
 					<h3>Adresimiz</h3>
 					<p>
-						<a
-							href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA"
-							target="_blank"
-							rel="noopener noreferrer"
-							>Leman Sk. No:4,<br />Sancaktepe / İstanbul</a
-						>
+						Leman Sk. No:4,<br />Sancaktepe / İstanbul
 					</p>
-				</div>
+				</a>
 
-				<div class="info-card">
+				<a
+					href="tel:+905302708487"
+					class="info-card"
+				>
 					<div class="icon-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -64,10 +67,13 @@ import Footer from "../components/Footer.astro";
 						>
 					</div>
 					<h3>Telefonumuz</h3>
-					<p><a href="tel:+905302708487">+90 (530) 270 84 87</a></p>
-				</div>
+					<p>+90 (530) 270 84 87</p>
+				</a>
 
-				<div class="info-card">
+				<a
+					href="mailto:zenflormarket@gmail.com"
+					class="info-card"
+				>
 					<div class="icon-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -87,13 +93,11 @@ import Footer from "../components/Footer.astro";
 					</div>
 					<h3>E-postamız</h3>
 					<p>
-						<a href="mailto:zenflormarket@gmail.com"
-							>zenflormarket@gmail.com</a
-						>
+						zenflormarket@gmail.com
 					</p>
-				</div>
+				</a>
 
-				<div class="info-card">
+				<div class="info-card static-card">
 					<div class="icon-circle">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -287,10 +291,6 @@ import Footer from "../components/Footer.astro";
 				<!-- Contact Form -->
 				<div class="form-container">
 					<h2>Bize Ulaşın</h2>
-					<p>
-						Aklınızdaki projeyi konuşmak için sabırsızlanıyoruz! Bir
-						mesaj atmaya ne dersiniz?
-					</p>
 
 					<form class="page-contact-form" id="contactForm">
 						<div
@@ -455,10 +455,22 @@ import Footer from "../components/Footer.astro";
 		border-radius: 8px;
 		text-align: center;
 		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-		transition: transform 0.3s;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		text-decoration: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		color: inherit;
+	}
+	a.info-card {
+		cursor: pointer;
+	}
+	.info-card.static-card {
+		cursor: default;
 	}
 	.info-card:hover {
 		transform: translateY(-5px);
+		box-shadow: 0 10px 25px rgba(18, 52, 71, 0.09);
 	}
 	.icon-circle {
 		width: 70px;
@@ -470,22 +482,22 @@ import Footer from "../components/Footer.astro";
 		align-items: center;
 		justify-content: center;
 		margin: 0 auto 20px auto;
+		transition: background-color 0.3s ease, color 0.3s ease;
+	}
+	.info-card:hover .icon-circle {
+		background: var(--color-primary);
+		color: #fff;
 	}
 	.info-card h3 {
 		font-size: 1.3rem;
 		margin-bottom: 15px;
 		color: var(--color-primary);
 	}
-	.info-card p,
-	.info-card a {
+	.info-card p {
 		color: #666;
 		line-height: 1.6;
 		font-size: 1rem;
-		text-decoration: none;
-	}
-	.info-card a:hover {
-		color: var(--color-primary);
-		text-decoration: underline;
+		margin: 0;
 	}
 
 	/* Map & Form Wrapper */
@@ -529,7 +541,7 @@ import Footer from "../components/Footer.astro";
 	}
 	.form-container h2 {
 		font-size: 2rem;
-		margin-bottom: 15px;
+		margin-bottom: 25px;
 		color: var(--color-primary);
 	}
 	.form-container p {

@@ -217,7 +217,8 @@ const products = [...productsRaw].sort((a, b) => {
 							const numericPrice = parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 							const isInitiallyVisible = idx < 12;
 							return (
-								<div 
+								<a 
+									href={`/parke/${product.id}`}
 									class="product-card" 
 									data-name={product.name} 
 									data-desc={product.surface}
@@ -259,10 +260,7 @@ const products = [...productsRaw].sort((a, b) => {
 													/ m²
 												</span>
 											</div>
-											<a
-												href={`/parke/${product.id}`}
-												class="btn-review"
-											>
+											<span class="btn-review">
 												<span>İncele</span>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -283,10 +281,10 @@ const products = [...productsRaw].sort((a, b) => {
 													/>
 													<polyline points="12 5 19 12 12 19" />
 												</svg>
-											</a>
+											</span>
 										</div>
 									</div>
-								</div>
+								</a>
 							);
 						})
 					}
@@ -960,6 +958,9 @@ const products = [...productsRaw].sort((a, b) => {
 		transition: box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
+		text-decoration: none;
+		color: inherit;
+		cursor: pointer;
 	}
 	.product-card:hover {
 		box-shadow: 0 8px 24px rgba(18, 52, 71, 0.09);
