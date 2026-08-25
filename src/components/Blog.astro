@@ -36,7 +36,7 @@ const blogs = [
 <section class="blog-section" id="blog">
   <div class="container">
     <div class="blog-header">
-      <h2>Parke Dünyasından <span>En Son Yazılar</span></h2>
+      <h2>Parke Dünyasından En Son Yazılar</h2>
       <p>
         Zemin dekorasyonu, doğru parke seçimi ve uzun ömürlü kullanım için hazırladığımız rehber içeriklere göz atın.
       </p>
@@ -130,10 +130,6 @@ const blogs = [
     margin-bottom: 1rem;
     font-family: var(--font-primary);
     font-weight: 700;
-  }
-
-  .blog-header h2 span {
-    color: var(--color-secondary);
   }
 
   .blog-header p {
@@ -267,6 +263,11 @@ const blogs = [
     line-height: 1.6;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .blog-link {

@@ -71,7 +71,7 @@ const { ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
     </div>
     
     <div class="footer-col">
-      <h3 class="footer-title">İletişim</h3>
+      <h3 class="footer-title">BİZE ULAŞIN</h3>
       <ul class="footer-contact-list">
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -94,8 +94,14 @@ const { ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
   </div>
   
   <div class="footer-bottom">
-    <div class="container">
-      <p>&copy; Copyright 2026. Tüm hakları saklıdır. ZenFlor Parke Çözümleri.</p>
+    <div class="container footer-bottom-container">
+      <p>&copy; 2026 ZenFlor Parke. Tüm hakları saklıdır.</p>
+      <div class="footer-legal-links">
+        <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
+        <a href="/kullanim-kosullari">Kullanım Koşulları</a>
+        <a href="/kvkk">KVKK Aydınlatma Metni</a>
+        <a href="/cerez-politikasi">Çerez Politikası</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -158,6 +164,19 @@ const { ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 8px;
+    display: inline-block;
+  }
+  .footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
   }
   .footer-col p {
     color: #aaa;
@@ -231,10 +250,39 @@ const { ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
   .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 25px 0;
+  }
+  .footer-bottom-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
     text-align: center;
+  }
+  @media (min-width: 768px) {
+    .footer-bottom-container {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
   }
   .footer-bottom p {
     color: #777;
     font-size: 0.9rem;
+    margin: 0;
+  }
+  .footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  .footer-legal-links a {
+    color: #777;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-legal-links a:hover {
+    color: #fff;
   }
 </style>

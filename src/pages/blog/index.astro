@@ -5,7 +5,7 @@ import PageHero from "../../components/PageHero.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
-<Layout title="Blog - ZenFlor Parke">
+<Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">
 	<Header />
 	<PageHero
 		title="Blog"
@@ -147,6 +147,11 @@ import Footer from "../../components/Footer.astro";
 		line-height: 1.6;
 		margin-bottom: 1.5rem;
 		font-size: 0.95rem;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 	.read-more {
 		color: var(--color-primary);

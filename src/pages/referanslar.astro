@@ -33,7 +33,7 @@ const galleryImages = [
 ];
 ---
 
-<Layout title="Referanslarımız & Uygulama Galerisi - ZenFlor">
+<Layout title="Referans Projelerimiz & Uygulama Galerisi | ZenFlor">
 	<Header />
 	<PageHero 
 		title="Referanslarımız" 
@@ -44,7 +44,7 @@ const galleryImages = [
 	<section class="corporate-section">
 		<div class="container">
 			<div class="section-intro">
-				<h2>Birlikte Çalıştığımız <span>Markalar</span></h2>
+				<h2>Birlikte Çalıştığımız Markalar</h2>
 				<p>Türkiye'nin önde gelen inşaat, turizm, mimarlık ve gayrimenkul markalarının zemin çözümlerinde güvenilir çözüm ortağıyız.</p>
 			</div>
 
@@ -78,7 +78,7 @@ const galleryImages = [
 	<section class="gallery-section">
 		<div class="container">
 			<div class="section-intro">
-				<h2>Uygulama <span>Galerisi</span></h2>
+				<h2>Uygulama Galerisi</h2>
 				<p>Konutlardan ticari alanlara kadar tamamladığımız zemin uygulamalarından seçkin örnekleri inceleyebilirsiniz.</p>
 			</div>
 			
@@ -166,10 +166,6 @@ const galleryImages = [
 		margin-bottom: 0.75rem;
 		font-family: var(--font-primary);
 		font-weight: 700;
-	}
-	
-	.section-intro h2 span {
-		color: var(--color-secondary);
 	}
 	
 	.section-intro p {
@@ -287,12 +283,13 @@ const galleryImages = [
 		border: 1px solid #e8edf2;
 		cursor: pointer;
 		aspect-ratio: 4/3;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 	}
 
 	.gallery-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 24px rgba(18, 52, 71, 0.12);
 		border-color: #cbd5e1;
-		box-shadow: 0 6px 16px rgba(18, 52, 71, 0.08);
 	}
 
 	.gallery-card img {
@@ -300,6 +297,11 @@ const galleryImages = [
 		height: 100%;
 		object-fit: cover;
 		display: block;
+		transition: transform 0.5s ease;
+	}
+
+	.gallery-card:hover img {
+		transform: scale(1.05);
 	}
 
 
