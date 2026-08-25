@@ -4,277 +4,10 @@ import Header from "../components/Header.astro";
 import PageHero from "../components/PageHero.astro";
 import Footer from "../components/Footer.astro";
 
-// 24 Adet Parke Ürünü (Sayfa başına 12 adet, toplam 2 sayfa)
-const products = [
-	{
-		id: 1,
-		name: "Vintage Rustic Çam - Seri 310",
-		category: "Lamine Parke",
-		color: "Açık Çam",
-		price: "420,00 ₺",
-		unit: "/ m²",
-		desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
-		img: "/images/about-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 2,
-		name: "Alp Çamı Doğal Mat",
-		category: "Lamine Parke",
-		color: "Açık Çam",
-		price: "430,00 ₺",
-		unit: "/ m²",
-		desc: "Yüksek dayanımlı yüzeyi ve ipeksi mat dokusuyla aydınlık, ferah ve huzurlu odalar sunar.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 3,
-		name: "Loft Grafit Gri Zemin",
-		category: "Vinil & Lamine",
-		color: "Gri/Kül",
-		price: "440,00 ₺",
-		unit: "/ m²",
-		desc: "Endüstriyel ve modern iç mekan tasarımları için özel olarak geliştirilmiş mat gri tonlu yüzey.",
-		img: "/images/about-3.jpg",
-		link: "/parke",
-	},
-	{
-		id: 4,
-		name: "Modern Sand Meşe - Seri 120",
-		category: "Lamine Parke",
-		color: "Açık Meşe",
-		price: "450,00 ₺",
-		unit: "/ m²",
-		desc: "Kum beji sıcak alt tonları ve doğal ahşap damarlarıyla dingin ve modern bir atmosfer sağlar.",
-		img: "/images/hero-bg.jpg",
-		link: "/parke",
-	},
-	{
-		id: 5,
-		name: "Silver Grey Meşe - Seri 500",
-		category: "Lamine Parke",
-		color: "Gri/Kül",
-		price: "460,00 ₺",
-		unit: "/ m²",
-		desc: "Trend gri alt tonları ve mat yüzey dokusu ile çağdaş mimari tasarımlara kusursuz uyum sağlar.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 6,
-		name: "Kumsal Açık Bej Meşe",
-		category: "Lamine Parke",
-		color: "Açık Meşe",
-		price: "460,00 ₺",
-		unit: "/ m²",
-		desc: "Geniş alanlarda ferahlık hissi yaratan açık renk dokusu ve çizilmez koruyucu üst katmanı.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 7,
-		name: "Toros Sedir Doğal Doku",
-		category: "Lamine Parke",
-		color: "Kızıl Kahve",
-		price: "470,00 ₺",
-		unit: "/ m²",
-		desc: "Akdeniz sedir ağacının zengin dokusundan esinlenen, sıcak ve samimi yaşam alanları.",
-		img: "/images/about-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 8,
-		name: "Naturesville Meşe - Seri 110",
-		category: "Masif Parke",
-		color: "Açık Meşe",
-		price: "480,00 ₺",
-		unit: "/ m²",
-		desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 9,
-		name: "Kapadokya Doğal Kestane",
-		category: "Lamine Parke",
-		color: "Koyu Ceviz",
-		price: "490,00 ₺",
-		unit: "/ m²",
-		desc: "Zengin hare yapısı ve derin renk geçişleriyle doğal ahşabın en sıcak ve canlı tonlarını sunar.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 10,
-		name: "Royal Akçaağaç Premium",
-		category: "Lamine Parke",
-		color: "Kızıl Kahve",
-		price: "510,00 ₺",
-		unit: "/ m²",
-		desc: "İpeksi mat cilası ve çizilmelere ekstra dayanıklı yapısıyla yoğun kullanım alanlarına çok uygundur.",
-		img: "/images/hero-bg.jpg",
-		link: "/parke",
-	},
-	{
-		id: 11,
-		name: "Nordic Ash Kül Grisi - Seri 220",
-		category: "Masif Parke",
-		color: "Gri/Kül",
-		price: "520,00 ₺",
-		unit: "/ m²",
-		desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 12,
-		name: "İskandinav Beyaz Meşe",
-		category: "Lamine Parke",
-		color: "Açık Meşe",
-		price: "530,00 ₺",
-		unit: "/ m²",
-		desc: "Beyazlatılmış doğal meşe dokusuyla ferah, aydınlık ve zarif yaşam alanları oluşturur.",
-		img: "/images/collection-2.jpg",
-		link: "/parke",
-	},
-	// 2. SAYFA ÜRÜNLERİ (13 - 24)
-	{
-		id: 13,
-		name: "Elegance Açık Kayın - Seri 200",
-		category: "Masif Parke",
-		color: "Açık Meşe",
-		price: "540,00 ₺",
-		unit: "/ m²",
-		desc: "Pürüzsüz yüzey dokusu ve homojen rengiyle konforlu ve şık zemin uygulamaları sağlar.",
-		img: "/images/about-3.jpg",
-		link: "/parke",
-	},
-	{
-		id: 14,
-		name: "Viyana Klasik Meşe Plank",
-		category: "Lamine Parke",
-		color: "Doğal Ahşap",
-		price: "550,00 ₺",
-		unit: "/ m²",
-		desc: "Avrupa klasik mimarisinden ilham alan geniş plank kesim ve derin ahşap dokusu.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 15,
-		name: "Walnut Dark Koyu Ceviz - Seri 400",
-		category: "Lamine Parke",
-		color: "Koyu Ceviz",
-		price: "560,00 ₺",
-		unit: "/ m²",
-		desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
-		img: "/images/collection-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 16,
-		name: "Bosphorus Antik Meşe",
-		category: "Masif Parke",
-		color: "Koyu Ceviz",
-		price: "580,00 ₺",
-		unit: "/ m²",
-		desc: "Zamanın izlerini taşıyan antik meşe dokusu ve özel el işçiliği yüzey cilası.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 17,
-		name: "Venedik Rustik Kestane",
-		category: "Masif Parke",
-		color: "Kızıl Kahve",
-		price: "650,00 ₺",
-		unit: "/ m²",
-		desc: "Doğal budak ve hare zenginliğiyle mekanlara sıcaklık, karakter ve derinlik katar.",
-		img: "/images/about-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 18,
-		name: "Atlas Duman Grisi Premium",
-		category: "Masif Parke",
-		color: "Gri/Kül",
-		price: "670,00 ₺",
-		unit: "/ m²",
-		desc: "Sofistike duman grisi tonları ve mat koruyucu tabakasıyla lüks iç mekanlar için tasarlandı.",
-		img: "/images/hero-bg.jpg",
-		link: "/parke",
-	},
-	{
-		id: 19,
-		name: "Herringbone Balıksırtı Meşe",
-		category: "Lüks Seri",
-		color: "Doğal Ahşap",
-		price: "690,00 ₺",
-		unit: "/ m²",
-		desc: "Klasik balıksırtı dizilimi ve özel kilit sistemiyle salon ve prestijli alanlara şıklık kazandırır.",
-		img: "/images/about-3.jpg",
-		link: "/parke",
-	},
-	{
-		id: 20,
-		name: "Marmaris Doğal Tik Doku",
-		category: "Masif Parke",
-		color: "Kızıl Kahve",
-		price: "710,00 ₺",
-		unit: "/ m²",
-		desc: "Yoğun neme ve suya ekstra dayanıklı yapısıyla banyo ve mutfak geçişlerinde de mükemmel.",
-		img: "/images/collection-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 21,
-		name: "Artisan Chevron Doğal Meşe",
-		category: "Masif Parke",
-		color: "Açık Meşe",
-		price: "720,00 ₺",
-		unit: "/ m²",
-		desc: "45 derecelik açılı Fransız chevron deseniyle mekanlara derinlik ve seçkin bir estetik kazandırır.",
-		img: "/images/collection-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 22,
-		name: "Palermo Koyu Meşe Chevron",
-		category: "Lüks Seri",
-		color: "Koyu Ceviz",
-		price: "740,00 ₺",
-		unit: "/ m²",
-		desc: "İtalyan zemin mimarisi estetiğini koyu meşe tonlarıyla buluşturan özel kesim tasarım.",
-		img: "/images/about-1.jpg",
-		link: "/parke",
-	},
-	{
-		id: 23,
-		name: "Monaco Balıksırtı Ceviz",
-		category: "Lüks Seri",
-		color: "Koyu Ceviz",
-		price: "780,00 ₺",
-		unit: "/ m²",
-		desc: "Seçkin villalar ve prestijli ofisler için üretilmiş asil ceviz balıksırtı parke.",
-		img: "/images/about-2.jpg",
-		link: "/parke",
-	},
-	{
-		id: 24,
-		name: "Boğaziçi Yalı Meşesi",
-		category: "Masif Parke",
-		color: "Doğal Ahşap",
-		price: "820,00 ₺",
-		unit: "/ m²",
-		desc: "Geleneksel yalı mimarisinin asaletiyle üretilen, zamansız ve ekstra kalın masif gövde.",
-		img: "/images/about-3.jpg",
-		link: "/parke",
-	},
-];
+import productsRaw from "../data/products.json";
 
 // Standart (varsayılan) sıralama: Fiyata göre artan
-products.sort((a, b) => {
+const products = [...productsRaw].sort((a, b) => {
 	const priceA = parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 	const priceB = parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 	return priceA - priceB;
@@ -320,34 +53,42 @@ products.sort((a, b) => {
 				</div>
 
 				<div class="filter-group">
-					<h3>Kategoriler</h3>
+					<h3>Seriler</h3>
 					<ul>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Lamine Parke" />
-								<span>Lamine Parke</span>
-								<span class="count-badge">(11)</span>
+								<input type="checkbox" class="category-filter" value="Platinum" />
+								<span>Platinum</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Masif Parke" />
-								<span>Masif Parke</span>
-								<span class="count-badge">(9)</span>
+								<input type="checkbox" class="category-filter" value="Modern Long" />
+								<span>Modern Long</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Lüks Seri" />
-								<span>Lüks Seri</span>
-								<span class="count-badge">(3)</span>
+								<input type="checkbox" class="category-filter" value="Modern" />
+								<span>Modern</span>
 							</label>
 						</li>
 						<li>
 							<label>
-								<input type="checkbox" class="category-filter" value="Vinil & Lamine" />
-								<span>Vinil & Lamine</span>
-								<span class="count-badge">(1)</span>
+								<input type="checkbox" class="category-filter" value="Klasik" />
+								<span>Klasik</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="category-filter" value="Silver" />
+								<span>Silver</span>
+							</label>
+						</li>
+						<li>
+							<label>
+								<input type="checkbox" class="category-filter" value="Gloria" />
+								<span>Gloria</span>
 							</label>
 						</li>
 					</ul>
@@ -357,40 +98,19 @@ products.sort((a, b) => {
 					<h3>Renkler</h3>
 					<div class="color-list">
 						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Açık Meşe" />
-							<span class="color-swatch-dot" style="background-color: #D2B48C;"></span>
-							<span class="color-text">Açık Meşe</span>
-							<span class="count-badge">(6)</span>
-						</label>
-						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Koyu Ceviz" />
-							<span class="color-swatch-dot" style="background-color: #5C4033;"></span>
-							<span class="color-text">Koyu Ceviz</span>
-							<span class="count-badge">(5)</span>
-						</label>
-						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Kızıl Kahve" />
-							<span class="color-swatch-dot" style="background-color: #8B4513;"></span>
-							<span class="color-text">Kızıl Kahve</span>
-							<span class="count-badge">(4)</span>
-						</label>
-						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Gri/Kül" />
-							<span class="color-swatch-dot" style="background-color: #A9A9A9;"></span>
-							<span class="color-text">Gri / Kül</span>
-							<span class="count-badge">(4)</span>
-						</label>
-						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Doğal Ahşap" />
-							<span class="color-swatch-dot" style="background-color: #C4A482;"></span>
-							<span class="color-text">Doğal Ahşap</span>
-							<span class="count-badge">(3)</span>
-						</label>
-						<label class="color-item">
-							<input type="checkbox" class="color-filter" value="Açık Çam" />
+							<input type="checkbox" class="color-filter" value="Açık" />
 							<span class="color-swatch-dot" style="background-color: #E8D3A7;"></span>
-							<span class="color-text">Açık Çam</span>
-							<span class="count-badge">(2)</span>
+							<span class="color-text">Açık</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Orta" />
+							<span class="color-swatch-dot" style="background-color: #D2B48C;"></span>
+							<span class="color-text">Orta</span>
+						</label>
+						<label class="color-item">
+							<input type="checkbox" class="color-filter" value="Koyu" />
+							<span class="color-swatch-dot" style="background-color: #5C4033;"></span>
+							<span class="color-text">Koyu</span>
 						</label>
 					</div>
 				</div>
@@ -500,8 +220,8 @@ products.sort((a, b) => {
 								<div 
 									class="product-card" 
 									data-name={product.name} 
-									data-desc={product.desc}
-									data-category={product.category}
+									data-desc={product.surface}
+									data-category={product.series}
 									data-color={product.color}
 									data-price={numericPrice}
 									style={isInitiallyVisible ? "display: flex;" : "display: none;"}
@@ -517,9 +237,9 @@ products.sort((a, b) => {
 										<h3>{product.name}</h3>
 										<p
 											class="product-desc"
-											title={product.desc}
+											title={product.surface}
 										>
-											{product.desc}
+											{product.surface}
 										</p>
 										<div class="product-footer">
 											<div class="price-box">
@@ -527,11 +247,11 @@ products.sort((a, b) => {
 													{product.price}
 												</span>
 												<span class="price-unit">
-													{product.unit}
+													/ m²
 												</span>
 											</div>
 											<a
-												href={product.link}
+												href={`/parke/${product.id}`}
 												class="btn-review"
 											>
 												<span>İncele</span>
@@ -563,11 +283,14 @@ products.sort((a, b) => {
 					}
 				</div>
 
-				<!-- Pagination (2 Sayfa, Sayfa Başına 12 Ürün) -->
+				<!-- Pagination -->
 				<div class="pagination" id="catalogPagination">
 					<button class="page-btn prev-btn" id="prevPageBtn" disabled aria-label="Önceki Sayfa">&larr;</button>
-					<button class="page-btn page-num-btn active" data-page="1">1</button>
-					<button class="page-btn page-num-btn" data-page="2">2</button>
+					{
+						Array.from({ length: Math.ceil(products.length / 12) }).map((_, i) => (
+							<button class={`page-btn page-num-btn ${i === 0 ? "active" : ""}`} data-page={i + 1}>{i + 1}</button>
+						))
+					}
 					<button class="page-btn next-btn" id="nextPageBtn" aria-label="Sonraki Sayfa">&rarr;</button>
 				</div>
 			</div>
@@ -726,12 +449,16 @@ products.sort((a, b) => {
 				if (nextBtn) nextBtn.disabled = true;
 			} else {
 				pageNumBtns.forEach((btn) => {
-					btn.style.display = "flex";
 					const page = parseInt(btn.getAttribute("data-page") || "1", 10);
-					if (page === currentPage) {
-						btn.classList.add("active");
+					if (page <= totalPages) {
+						btn.style.display = "flex";
+						if (page === currentPage) {
+							btn.classList.add("active");
+						} else {
+							btn.classList.remove("active");
+						}
 					} else {
-						btn.classList.remove("active");
+						btn.style.display = "none";
 					}
 				});
 				if (prevBtn) prevBtn.disabled = currentPage === 1;

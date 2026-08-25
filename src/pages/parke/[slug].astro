@@ -1,0 +1,280 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
+import Footer from "../../components/Footer.astro";
+import products from "../../data/products.json";
+
+export async function getStaticPaths() {
+	return products.map((product) => ({
+		params: { slug: product.id },
+		props: { product },
+	}));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout title={`${product.name} | ZenFlor Parke`}>
+	<Header />
+	<PageHero
+		title={product.name}
+		subtitle={`${product.series} Serisi Premium Parke`}
+	/>
+
+	<section class="product-detail-section">
+		<div class="container detail-container">
+			<div class="detail-image-gallery">
+				{product.images && product.images.length > 0 ? (
+					product.images.map((imgSrc, index) => (
+						<div class="detail-image-wrapper">
+							<img src={imgSrc} alt={`${product.name} - Görsel ${index + 1}`} class="detail-img" loading="lazy" />
+						</div>
+					))
+				) : (
+					<div class="detail-image-wrapper">
+						<img src={product.img} alt={product.name} class="detail-img" />
+					</div>
+				)}
+			</div>
+
+			<div class="detail-info-wrapper">
+				<div class="detail-header">
+					<h2>{product.name}</h2>
+					<span class="series-badge">{product.series}</span>
+				</div>
+
+				<div class="price-section">
+					<p class="price-display">
+						<span class="price-val">{product.price}</span>
+						<span class="price-unit">/ m²</span>
+					</p>
+					<p class="price-note">* Belirtilen fiyatlar KDV hariç perakende satış fiyatlarıdır.</p>
+				</div>
+
+				<div class="specs-box">
+					<h3>Teknik Özellikler</h3>
+					<div class="specs-grid">
+						<div class="spec-item">
+							<span class="spec-label">Renk Tonu</span>
+							<span class="spec-value">{product.color}</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Kalınlık</span>
+							<span class="spec-value">{product.thickness}</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Kenar Tipi</span>
+							<span class="spec-value">{product.edge}</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">En (Genişlik)</span>
+							<span class="spec-value">{product.width}</span>
+						</div>
+						<div class="spec-item">
+							<span class="spec-label">Boy (Uzunluk)</span>
+							<span class="spec-value">{product.length}</span>
+						</div>
+						<div class="spec-item full-width">
+							<span class="spec-label">Yüzey Dayanımı & Sınıf</span>
+							<span class="spec-value">{product.surface}</span>
+						</div>
+						<div class="spec-item full-width">
+							<span class="spec-label">Paket İçeriği</span>
+							<span class="spec-value">{product.package}</span>
+						</div>
+						<div class="spec-item full-width">
+							<span class="spec-label">Palet İçeriği</span>
+							<span class="spec-value">{product.pallet}</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="action-buttons">
+					<a href="/iletisim" class="btn-primary btn-large">İletişime Geç & Teklif Al</a>
+					<a href="/parke" class="btn-outline btn-large">Tüm Ürünleri Gör</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	.product-detail-section {
+		padding: var(--spacing-4xl) 0;
+		background-color: var(--surface-50);
+	}
+
+	.detail-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--spacing-3xl);
+	}
+
+	@media (min-width: 992px) {
+		.detail-container {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+	}
+
+	.detail-image-gallery {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-lg);
+		position: sticky;
+		top: 100px;
+	}
+
+	.detail-image-wrapper {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+	}
+
+	.detail-img {
+		width: 100%;
+		height: auto;
+		display: block;
+		aspect-ratio: 4/3;
+		object-fit: cover;
+		transition: transform var(--transition-slow);
+	}
+	
+	.detail-img:hover {
+		transform: scale(1.05);
+	}
+
+	.detail-info-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xl);
+	}
+
+	.detail-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.detail-header h2 {
+		font-size: var(--text-3xl);
+		color: var(--text-900);
+		margin: 0;
+	}
+
+	.series-badge {
+		display: inline-block;
+		align-self: flex-start;
+		background-color: var(--primary-100);
+		color: var(--primary-700);
+		padding: var(--spacing-xs) var(--spacing-md);
+		border-radius: var(--radius-full);
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.price-section {
+		padding-bottom: var(--spacing-lg);
+		border-bottom: 1px solid var(--border-200);
+	}
+
+	.price-display {
+		display: flex;
+		align-items: baseline;
+		gap: var(--spacing-xs);
+		margin: 0 0 var(--spacing-xs) 0;
+	}
+
+	.price-val {
+		font-size: var(--text-3xl);
+		font-weight: 700;
+		color: var(--primary-600);
+	}
+
+	.price-unit {
+		font-size: var(--text-lg);
+		color: var(--text-500);
+	}
+
+	.price-note {
+		font-size: var(--text-sm);
+		color: var(--text-500);
+		margin: 0;
+	}
+
+	.specs-box {
+		background-color: var(--surface-100);
+		border-radius: var(--radius-md);
+		padding: var(--spacing-xl);
+		border: 1px solid var(--border-200);
+	}
+
+	.specs-box h3 {
+		font-size: var(--text-xl);
+		color: var(--text-900);
+		margin: 0 0 var(--spacing-lg) 0;
+		padding-bottom: var(--spacing-sm);
+		border-bottom: 1px solid var(--border-300);
+	}
+
+	.specs-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--spacing-md);
+	}
+
+	@media (min-width: 640px) {
+		.specs-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	.spec-item {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.spec-item.full-width {
+		grid-column: 1 / -1;
+	}
+
+	.spec-label {
+		font-size: var(--text-sm);
+		color: var(--text-500);
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		font-weight: 600;
+	}
+
+	.spec-value {
+		font-size: var(--text-base);
+		color: var(--text-800);
+		font-weight: 500;
+	}
+
+	.action-buttons {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+		margin-top: var(--spacing-md);
+	}
+
+	@media (min-width: 640px) {
+		.action-buttons {
+			flex-direction: row;
+		}
+	}
+
+	.btn-large {
+		padding: var(--spacing-md) var(--spacing-xl);
+		font-size: var(--text-lg);
+		text-align: center;
+		flex: 1;
+	}
+</style>
