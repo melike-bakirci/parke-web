@@ -1,46 +1,14 @@
 ---
-const products = [
-  {
-    id: 1,
-    name: "Naturesville Meşe - Seri 110",
-    category: "Masif Parke",
-    price: "480,00 ₺",
-    unit: "/ m²",
-    desc: "Doğal açık meşe dokusu ve yüksek yüzey dayanımı ile evinizde ferah ve aydınlık bir atmosfer oluşturur.",
-    img: "/images/collection-1.jpg",
-    link: "/parke",
-  },
-  {
-    id: 2,
-    name: "Walnut Dark Koyu Ceviz - Seri 400",
-    category: "Lamine Parke",
-    price: "560,00 ₺",
-    unit: "/ m²",
-    desc: "Zengin ceviz tonları ve otantik ahşap damarlarıyla yaşam alanlarınıza asil ve sıcak bir dokunuş katar.",
-    img: "/images/collection-2.jpg",
-    link: "/parke",
-  },
-  {
-    id: 3,
-    name: "Nordic Ash Kül Grisi - Seri 220",
-    category: "Masif Parke",
-    price: "520,00 ₺",
-    unit: "/ m²",
-    desc: "Modern İskandinav tarzını yansıtan açık kül tonları, minimal ve modern iç mekanlar için idealdir.",
-    img: "/images/about-1.jpg",
-    link: "/parke",
-  },
-  {
-    id: 4,
-    name: "Vintage Rustic Çam - Seri 310",
-    category: "Lamine Parke",
-    price: "420,00 ₺",
-    unit: "/ m²",
-    desc: "Doğal budaklı rustik yapısı ve eskitme görünümü ile samimi ve sıcak yaşam alanları oluşturur.",
-    img: "/images/about-2.jpg",
-    link: "/parke",
-  },
-];
+import productsRaw from "../data/products.json";
+
+// Parke sayfasındaki sıralama ile aynı ilk 4 ürün
+const products = [...productsRaw]
+  .sort((a, b) => {
+    const priceA = parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+    const priceB = parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+    return priceA - priceB;
+  })
+  .slice(0, 4);
 ---
 
 <section class="collections" id="collections">
@@ -73,26 +41,35 @@ const products = [
     <!-- 4 Products Grid -->
     <div class="collections-grid">
       {
-        products.map((item) => (
-          <div class="collection-card" data-id={item.id}>
-            <div class="card-image-wrap">
-              <img src={item.img} alt={item.name} loading="lazy" />
+        products.map((product) => (
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <img
+                src={product.img}
+                alt={product.name}
+                class="primary-img"
+                loading="lazy"
+              />
+              {product.images && product.images[1] && (
+                <img
+                  src={product.images[1]}
+                  alt={`${product.name} - Ortam Görünümü`}
+                  class="secondary-img"
+                  loading="lazy"
+                />
+              )}
             </div>
-
-            <div class="card-body">
-              <h3 class="card-title" title={item.name}>
-                {item.name}
-              </h3>
-              <p class="card-desc" title={item.desc}>
-                {item.desc}
+            <div class="product-info">
+              <h3>{product.name}</h3>
+              <p class="product-desc" title={product.surface}>
+                {product.surface}
               </p>
-
-              <div class="card-footer">
+              <div class="product-footer">
                 <div class="price-box">
-                  <span class="price-val">{item.price}</span>
-                  <span class="price-unit">{item.unit}</span>
+                  <span class="price-val">{product.price}</span>
+                  <span class="price-unit">/ m²</span>
                 </div>
-                <a href={item.link} class="btn-review">
+                <a href={`/parke/${product.id}`} class="btn-review">
                   <span>İncele</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -170,54 +147,65 @@ const products = [
     }
   }
 
-  /* Product Card */
-  .collection-card {
-    background: #ffffff;
+  /* Product Card matching parke.astro */
+  .product-card {
+    background: #fff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.04);
   }
 
-  .collection-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(18, 52, 71, 0.12);
+  .product-card:hover {
+    box-shadow: 0 8px 24px rgba(18, 52, 71, 0.09);
   }
 
-  .card-image-wrap {
+  .product-img-wrapper {
     position: relative;
-    width: 100%;
     height: 220px;
     overflow: hidden;
     background-color: #eaeef1;
   }
 
-  .card-image-wrap img {
+  .product-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: opacity 0.35s ease;
   }
 
-  .collection-card:hover .card-image-wrap img {
-    transform: scale(1.06);
+  .product-img-wrapper .primary-img {
+    position: relative;
+    z-index: 1;
+    opacity: 1;
   }
 
-  /* Card Body */
-  .card-body {
+  .product-img-wrapper .secondary-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .product-card:hover .secondary-img {
+    opacity: 1;
+  }
+
+  .product-info {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
 
-  .card-title {
-    font-size: 1.1rem;
+  .product-info h3 {
+    font-size: 1.15rem;
     font-family: var(--font-primary);
     color: var(--color-primary);
     margin-bottom: 0.6rem;
@@ -226,11 +214,12 @@ const products = [
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-transform: uppercase;
   }
 
-  .card-desc {
+  .product-desc {
     color: #64748b;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     line-height: 1.45;
     margin-bottom: 1.4rem;
     display: -webkit-box;
@@ -241,8 +230,7 @@ const products = [
     min-height: 2.9em;
   }
 
-  /* Card Footer */
-  .card-footer {
+  .product-footer {
     margin-top: auto;
     display: flex;
     justify-content: space-between;
@@ -259,14 +247,14 @@ const products = [
   }
 
   .price-val {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--color-primary);
     font-family: var(--font-primary);
   }
 
   .price-unit {
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: #718096;
     font-weight: 500;
   }
@@ -275,7 +263,7 @@ const products = [
     background: transparent;
     color: var(--color-primary);
     padding: 4px 0;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 700;
     text-decoration: none;
     display: inline-flex;
@@ -337,7 +325,7 @@ const products = [
     .header-text h2 {
       font-size: 1.85rem;
     }
-    .card-image-wrap {
+    .product-img-wrapper {
       height: 200px;
     }
   }

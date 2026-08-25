@@ -230,8 +230,17 @@ const products = [...productsRaw].sort((a, b) => {
 										<img
 											src={product.img}
 											alt={product.name}
+											class="primary-img"
 											loading="lazy"
 										/>
+										{product.images && product.images[1] && (
+											<img
+												src={product.images[1]}
+												alt={`${product.name} - Ortam Görünümü`}
+												class="secondary-img"
+												loading="lazy"
+											/>
+										)}
 									</div>
 									<div class="product-info">
 										<h3>{product.name}</h3>
@@ -948,15 +957,12 @@ const products = [...productsRaw].sort((a, b) => {
 		overflow: hidden;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 		border: 1px solid rgba(0, 0, 0, 0.04);
-		transition:
-			transform 0.3s ease,
-			box-shadow 0.3s ease;
+		transition: box-shadow 0.3s ease;
 		display: flex;
 		flex-direction: column;
 	}
 	.product-card:hover {
-		transform: translateY(-6px);
-		box-shadow: 0 12px 30px rgba(18, 52, 71, 0.12);
+		box-shadow: 0 8px 24px rgba(18, 52, 71, 0.09);
 	}
 	.product-img-wrapper {
 		position: relative;
@@ -968,10 +974,24 @@ const products = [...productsRaw].sort((a, b) => {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform 0.5s ease;
+		transition: opacity 0.35s ease;
 	}
-	.product-card:hover .product-img-wrapper img {
-		transform: scale(1.06);
+	.product-img-wrapper .primary-img {
+		position: relative;
+		z-index: 1;
+		opacity: 1;
+	}
+	.product-img-wrapper .secondary-img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		opacity: 0;
+	}
+	.product-card:hover .secondary-img {
+		opacity: 1;
 	}
 	.product-info {
 		padding: 1.5rem;
@@ -989,6 +1009,7 @@ const products = [...productsRaw].sort((a, b) => {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		text-transform: uppercase;
 	}
 	.product-desc {
 		color: #64748b;
