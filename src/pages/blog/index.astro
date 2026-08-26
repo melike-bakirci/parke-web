@@ -3,6 +3,30 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import PageHero from "../../components/PageHero.astro";
 import Footer from "../../components/Footer.astro";
+
+const blogs = [
+	{
+		slug: "parke-bakiminda-dikkat-edilmesi-gereken-5-altin-kural",
+		date: "24 Ağustos 2026",
+		title: "Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural",
+		description: "Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü parlaklığını korumak için uygulayabileceğiniz basit ama etkili yöntemler.",
+		image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+	},
+	{
+		slug: "2026-yilinin-zemin-kaplama-trendleri",
+		date: "12 Ağustos 2026",
+		title: "2026 Yılının Zemin Kaplama Trendleri",
+		description: "Yeni yılda iç mekanlarda öne çıkan renkler, dokular ve çevre dostu malzeme seçenekleri hakkında bilmeniz gereken her şey.",
+		image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+	},
+	{
+		slug: "laminat-mi-lamine-mi-dogru-secimi-yapmak",
+		date: "05 Ağustos 2026",
+		title: "Laminat mı Lamine mi? Doğru Seçimi Yapmak",
+		description: "Projeniz için hangi malzemenin daha uygun olduğuna karar vermekte zorlanıyorsanız, bu karşılaştırmalı rehber tam size göre.",
+		image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80",
+	},
+];
 ---
 
 <Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">
@@ -15,62 +39,23 @@ import Footer from "../../components/Footer.astro";
 	<section class="blog-section">
 		<div class="container blog-container">
 			<div class="blog-grid">
-				<div class="blog-card">
-					<div
-						class="blog-img"
-						style="background-image: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80');"
-					>
-					</div>
-					<div class="blog-content">
-						<span class="blog-date">24 Ağustos 2026</span>
-						<h3>
-							Parke Bakımında Dikkat Edilmesi Gereken 5 Altın
-							Kural
-						</h3>
-						<p>
-							Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü
-							parlaklığını korumak için uygulayabileceğiniz basit
-							ama etkili yöntemler.
-						</p>
-						<a href="/blog/parke-bakiminda-dikkat-edilmesi-gereken-5-altin-kural" class="read-more">Oku &rarr;</a>
-					</div>
-				</div>
-
-				<div class="blog-card">
-					<div
-						class="blog-img"
-						style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');"
-					>
-					</div>
-					<div class="blog-content">
-						<span class="blog-date">12 Ağustos 2026</span>
-						<h3>2026 Yılının Zemin Kaplama Trendleri</h3>
-						<p>
-							Yeni yılda iç mekanlarda öne çıkan renkler, dokular
-							ve çevre dostu malzeme seçenekleri hakkında bilmeniz
-							gereken her şey.
-						</p>
-						<a href="/blog/2026-yilinin-zemin-kaplama-trendleri" class="read-more">Oku &rarr;</a>
-					</div>
-				</div>
-
-				<div class="blog-card">
-					<div
-						class="blog-img"
-						style="background-image: url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80');"
-					>
-					</div>
-					<div class="blog-content">
-						<span class="blog-date">05 Ağustos 2026</span>
-						<h3>Laminat mı Lamine mi? Doğru Seçimi Yapmak</h3>
-						<p>
-							Projeniz için hangi malzemenin daha uygun olduğuna
-							karar vermekte zorlanıyorsanız, bu karşılaştırmalı
-							rehber tam size göre.
-						</p>
-						<a href="/blog/laminat-mi-lamine-mi-dogru-secimi-yapmak" class="read-more">Oku &rarr;</a>
-					</div>
-				</div>
+				{
+					blogs.map((item) => (
+						<a href={`/blog/${item.slug}`} class="blog-card">
+							<div
+								class="blog-img"
+								style={`background-image: url('${item.image}');`}
+							>
+							</div>
+							<div class="blog-content">
+								<span class="blog-date">{item.date}</span>
+								<h3>{item.title}</h3>
+								<p>{item.description}</p>
+								<span class="read-more">Oku &rarr;</span>
+							</div>
+						</a>
+					))
+				}
 			</div>
 		</div>
 	</section>
@@ -103,18 +88,31 @@ import Footer from "../../components/Footer.astro";
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-		transition: transform 0.3s;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+		cursor: pointer;
 	}
 	.blog-card:hover {
 		transform: translateY(-5px);
+		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+	}
+	.blog-card:hover .read-more {
+		color: var(--color-secondary);
+	}
+	.blog-card:hover .blog-img {
+		transform: scale(1.04);
 	}
 	.blog-img {
 		width: 100%;
 		height: 240px;
 		background-size: cover;
 		background-position: center;
+		transition: transform 0.4s ease;
 	}
-	/* Fallback gradient backgrounds since quota is empty */
+	/* Fallback gradient backgrounds */
 	.placeholder-bg1 {
 		background: linear-gradient(135deg, var(--color-primary), #2a5a75);
 	}
@@ -127,6 +125,9 @@ import Footer from "../../components/Footer.astro";
 
 	.blog-content {
 		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
 	}
 	.blog-date {
 		font-size: 0.85rem;
@@ -141,6 +142,7 @@ import Footer from "../../components/Footer.astro";
 		font-size: 1.3rem;
 		margin-bottom: 1rem;
 		line-height: 1.4;
+		color: var(--color-dark);
 	}
 	.blog-content p {
 		color: #666;
@@ -152,13 +154,13 @@ import Footer from "../../components/Footer.astro";
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		flex-grow: 1;
 	}
 	.read-more {
 		color: var(--color-primary);
 		font-weight: 700;
 		font-size: 0.9rem;
-	}
-	.read-more:hover {
-		text-decoration: underline;
+		transition: color 0.3s;
+		margin-top: auto;
 	}
 </style>
