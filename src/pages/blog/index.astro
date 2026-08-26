@@ -3,30 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import PageHero from "../../components/PageHero.astro";
 import Footer from "../../components/Footer.astro";
-
-const blogs = [
-	{
-		slug: "parke-bakiminda-dikkat-edilmesi-gereken-5-altin-kural",
-		date: "24 Ağustos 2026",
-		title: "Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural",
-		description: "Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü parlaklığını korumak için uygulayabileceğiniz basit ama etkili yöntemler.",
-		image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-	},
-	{
-		slug: "2026-yilinin-zemin-kaplama-trendleri",
-		date: "12 Ağustos 2026",
-		title: "2026 Yılının Zemin Kaplama Trendleri",
-		description: "Yeni yılda iç mekanlarda öne çıkan renkler, dokular ve çevre dostu malzeme seçenekleri hakkında bilmeniz gereken her şey.",
-		image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-	},
-	{
-		slug: "laminat-mi-lamine-mi-dogru-secimi-yapmak",
-		date: "05 Ağustos 2026",
-		title: "Laminat mı Lamine mi? Doğru Seçimi Yapmak",
-		description: "Projeniz için hangi malzemenin daha uygun olduğuna karar vermekte zorlanıyorsanız, bu karşılaştırmalı rehber tam size göre.",
-		image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=800&q=80",
-	},
-];
+import blogs from "../../data/blogs.json";
 ---
 
 <Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">
@@ -40,20 +17,81 @@ const blogs = [
 		<div class="container blog-container">
 			<div class="blog-grid">
 				{
-					blogs.map((item) => (
-						<a href={`/blog/${item.slug}`} class="blog-card">
-							<div
-								class="blog-img"
-								style={`background-image: url('${item.image}');`}
+					blogs.map((post) => (
+						<article class="blog-card">
+							<a
+								href={`/blog/${post.slug}`}
+								class="blog-img-wrapper"
+								aria-label={post.title}
 							>
-							</div>
+								<img src={post.image} alt={post.title} loading="lazy" />
+							</a>
 							<div class="blog-content">
-								<span class="blog-date">{item.date}</span>
-								<h3>{item.title}</h3>
-								<p>{item.description}</p>
-								<span class="read-more">Oku &rarr;</span>
+								<div class="blog-meta">
+									<span class="meta-item">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="14"
+											height="14"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+											<line x1="16" y1="2" x2="16" y2="6" />
+											<line x1="8" y1="2" x2="8" y2="6" />
+											<line x1="3" y1="10" x2="21" y2="10" />
+										</svg>
+										{post.date}
+									</span>
+									<span class="meta-dot">•</span>
+									<span class="meta-item">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="14"
+											height="14"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										>
+											<circle cx="12" cy="12" r="10" />
+											<polyline points="12 6 12 12 16 14" />
+										</svg>
+										{post.readTime}
+									</span>
+								</div>
+
+								<h2 class="blog-title">
+									<a href={`/blog/${post.slug}`}>{post.title}</a>
+								</h2>
+
+								<p class="blog-desc">{post.summary}</p>
+
+								<a href={`/blog/${post.slug}`} class="blog-link">
+									<span>Devamını Oku</span>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.5"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<line x1="5" y1="12" x2="19" y2="12" />
+										<polyline points="12 5 19 12 12 19" />
+									</svg>
+								</a>
 							</div>
-						</a>
+						</article>
 					))
 				}
 			</div>
@@ -65,8 +103,8 @@ const blogs = [
 
 <style>
 	.blog-section {
-		padding: 100px 0;
-		background: var(--color-light);
+		padding: 90px 0;
+		background: #f8fafc;
 	}
 	.blog-grid {
 		display: grid;
@@ -84,83 +122,119 @@ const blogs = [
 		}
 	}
 	.blog-card {
-		background: #fff;
-		border-radius: 8px;
+		background: #ffffff;
+		border-radius: 14px;
 		overflow: hidden;
-		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
-		text-decoration: none;
-		color: inherit;
+		box-shadow: 0 4px 20px rgba(18, 52, 71, 0.06);
+		border: 1px solid rgba(18, 52, 71, 0.08);
 		display: flex;
 		flex-direction: column;
-		cursor: pointer;
+		transition:
+			transform 0.35s ease,
+			box-shadow 0.35s ease,
+			border-color 0.35s ease;
 	}
 	.blog-card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+		transform: translateY(-7px);
+		box-shadow: 0 16px 36px rgba(18, 52, 71, 0.12);
+		border-color: rgba(200, 169, 110, 0.4);
 	}
-	.blog-card:hover .read-more {
-		color: var(--color-secondary);
-	}
-	.blog-card:hover .blog-img {
-		transform: scale(1.04);
-	}
-	.blog-img {
+	.blog-img-wrapper {
+		position: relative;
 		width: 100%;
-		height: 240px;
-		background-size: cover;
-		background-position: center;
-		transition: transform 0.4s ease;
+		height: 230px;
+		overflow: hidden;
+		display: block;
+		background: #e2e8f0;
 	}
-	/* Fallback gradient backgrounds */
-	.placeholder-bg1 {
-		background: linear-gradient(135deg, var(--color-primary), #2a5a75);
+	.blog-img-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.6s ease;
 	}
-	.placeholder-bg2 {
-		background: linear-gradient(135deg, var(--color-secondary), #e88c52);
-	}
-	.placeholder-bg3 {
-		background: linear-gradient(135deg, var(--color-dark), #334351);
+	.blog-card:hover .blog-img-wrapper img {
+		transform: scale(1.08);
 	}
 
 	.blog-content {
-		padding: 2rem;
+		padding: 1.75rem 1.5rem;
 		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
 	}
-	.blog-date {
-		font-size: 0.85rem;
+	.blog-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.8rem;
+		color: #718096;
+		margin-bottom: 0.85rem;
+	}
+	.meta-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+	.meta-item svg {
 		color: var(--color-secondary);
-		font-weight: 600;
-		text-transform: uppercase;
-		display: block;
-		margin-bottom: 0.8rem;
 	}
-	.blog-content h3 {
-		font-family: var(--font-secondary);
-		font-size: 1.3rem;
-		margin-bottom: 1rem;
-		line-height: 1.4;
-		color: var(--color-dark);
+	.meta-dot {
+		color: #cbd5e1;
 	}
-	.blog-content p {
-		color: #666;
+	.blog-title {
+		font-size: 1.18rem;
+		line-height: 1.45;
+		margin-bottom: 0.75rem;
+		font-family: var(--font-primary);
+		font-weight: 700;
+	}
+	.blog-title a {
+		color: var(--color-primary);
+		text-decoration: none;
+		transition: color 0.25s ease;
+	}
+	.blog-title a:hover {
+		color: var(--color-secondary);
+	}
+	.blog-desc {
+		color: #5a6872;
+		font-size: 0.92rem;
 		line-height: 1.6;
 		margin-bottom: 1.5rem;
-		font-size: 0.95rem;
+		flex-grow: 1;
 		display: -webkit-box;
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		flex-grow: 1;
 	}
-	.read-more {
+	.blog-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		color: var(--color-primary);
 		font-weight: 700;
 		font-size: 0.9rem;
-		transition: color 0.3s;
+		text-decoration: none;
+		transition: all 0.25s ease;
 		margin-top: auto;
+	}
+	.blog-link svg {
+		transition: transform 0.25s ease;
+	}
+	.blog-link:hover {
+		color: var(--color-secondary);
+	}
+	.blog-link:hover svg {
+		transform: translateX(4px);
+	}
+	@media (max-width: 768px) {
+		.blog-section {
+			padding: 60px 0;
+		}
+		.blog-content {
+			padding: 1.4rem 1.2rem;
+		}
 	}
 </style>
