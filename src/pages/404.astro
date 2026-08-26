@@ -1,0 +1,213 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="404 - Sayfa Bulunamadı | ZenFlor Parke">
+  <Header />
+
+  <main class="not-found-page">
+    <div class="container not-found-container">
+      <!-- Decorative Parquet Motif Graphic -->
+      <div class="motif-wrapper" aria-hidden="true">
+        <div class="parquet-badge">
+          <div class="parquet-square sq-1"></div>
+          <div class="parquet-square sq-2"></div>
+          <div class="parquet-square sq-3"></div>
+          <div class="parquet-square sq-4"></div>
+        </div>
+      </div>
+
+      <div class="not-found-content">
+        <span class="error-code">404</span>
+        <h1 class="error-title">Sayfa Bulunamadı</h1>
+        <p class="error-description">
+          Aradığınız sayfa taşınmış, silinmiş veya adı değiştirilmiş olabilir.
+          Zeminlerimizde kaybolmak keyifli olsa da, sizi doğru yere ulaştıralım.
+        </p>
+
+        <div class="action-buttons">
+          <a href="/" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Ana Sayfaya Dön</span>
+          </a>
+          <a href="/parke" class="btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/>
+              <path d="M3 9h18"/>
+              <path d="M3 15h18"/>
+              <path d="M9 3v18"/>
+              <path d="M15 3v18"/>
+            </svg>
+            <span>Parke Koleksiyonları</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer showCta={false} />
+</Layout>
+
+<style>
+  .not-found-page {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #FBF9F6 0%, #F5EFE6 100%);
+    padding: 5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle background pattern */
+  .not-found-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(var(--color-secondary) 0.75px, transparent 0.75px);
+    background-size: 24px 24px;
+    opacity: 0.25;
+    pointer-events: none;
+  }
+
+  .not-found-container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Parquet Icon Motif */
+  .motif-wrapper {
+    margin-bottom: 1.75rem;
+  }
+
+  .parquet-badge {
+    width: 64px;
+    height: 64px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(140, 106, 83, 0.15), 0 0 0 1px rgba(212, 184, 149, 0.3);
+    transition: transform 0.4s ease;
+  }
+
+  .parquet-badge:hover {
+    transform: rotate(45deg);
+  }
+
+  .parquet-square {
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+  }
+
+  .sq-1, .sq-4 {
+    background: var(--color-primary);
+  }
+
+  .sq-2, .sq-3 {
+    background: var(--color-secondary);
+    opacity: 0.85;
+  }
+
+  /* Error typography */
+  .error-code {
+    display: block;
+    font-family: var(--font-primary);
+    font-size: clamp(5rem, 12vw, 8rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 60%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    user-select: none;
+  }
+
+  .error-title {
+    font-family: var(--font-primary);
+    font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    line-height: 1.25;
+  }
+
+  .error-description {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #6E5A4E;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    gap: 0.5rem;
+    box-shadow: 0 4px 14px rgba(140, 106, 83, 0.25);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--color-dark);
+    padding: 12px 24px;
+    border: 1.5px solid var(--color-secondary);
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: var(--font-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(140, 106, 83, 0.2);
+  }
+
+  @media (max-width: 640px) {
+    .not-found-page {
+      padding: 3.5rem 1rem;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .action-buttons a {
+      width: 100%;
+    }
+  }
+</style>
