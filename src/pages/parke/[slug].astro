@@ -12,14 +12,18 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const images = product.images && product.images.length > 0 ? product.images : [product.img];
+const images =
+	product.images && product.images.length > 0
+		? product.images
+		: [product.img];
 
 // Sayısal fiyat ve paket m² hesaplama
-const rawPrice = parseFloat(product.price.replace(/[^\d,]/g, '').replace(',', '.')) || 0;
+const rawPrice =
+	parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
 let rawPackageM2 = 1.84;
 const m2Match = product.package?.match(/(\d+[.,]\d+)\s*m²/);
 if (m2Match) {
-	rawPackageM2 = parseFloat(m2Match[1].replace(',', '.')) || 1.84;
+	rawPackageM2 = parseFloat(m2Match[1].replace(",", ".")) || 1.84;
 }
 
 // Diğer / İlgili Ürünler (Öncelikle aynı seriden, toplam 4 ürün)
@@ -29,7 +33,7 @@ const otherProducts = products
 	.slice(0, 4);
 ---
 
-<Layout title={`${product.name} | ZenFlor Parke`}>
+<Layout title={`${product.name} | ZenFlor`}>
 	<Header />
 
 	<section class="product-detail">
@@ -45,48 +49,166 @@ const otherProducts = products
 			<div class="detail-layout">
 				<!-- SOL SÜTUN: FOTOĞRAF SLIDER VE HEMEN ALTINDA TEKNİK ÖZELLİKLER -->
 				<div class="detail-left">
-					<div class="product-slider" id="productSlider" data-slide-count={images.length}>
-						<div class="slider-viewport">
-							<div class="slider-track" id="sliderTrack">
-								{images.map((imgSrc, index) => (
-									<div class="slide-item" data-index={index}>
-										<img
-											src={imgSrc}
-											alt={`${product.name} - Görsel ${index + 1}`}
-											loading={index === 0 ? "eager" : "lazy"}
-										/>
-									</div>
-								))}
+					<div
+						class="product-slider"
+						id="productSlider"
+						data-slide-count={images.length}
+						data-product-name={product.name}
+						data-product-id={product.id}
+					>
+						<div class="slider-viewport" id="sliderViewport">
+							<!-- Görsel Sağ Alt Aksiyon Butonları (İncele & İndir) -->
+							<div class="slider-actions">
+								<button
+									type="button"
+									class="slider-action-btn"
+									id="quickZoomBtn"
+									title="Görseli Yakından İncele"
+									aria-label="Görseli Yakından İncele"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<circle cx="11" cy="11" r="8"></circle>
+										<line
+											x1="21"
+											y1="21"
+											x2="16.65"
+											y2="16.65"></line>
+										<line x1="11" y1="8" x2="11" y2="14"
+										></line>
+										<line x1="8" y1="11" x2="14" y2="11"
+										></line>
+									</svg>
+									<span class="action-tooltip"
+										>Yakından İncele</span
+									>
+								</button>
+								<button
+									type="button"
+									class="slider-action-btn"
+									id="quickDownloadBtn"
+									title="Görseli İndir"
+									aria-label="Görseli İndir"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<path
+											d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+										></path>
+										<polyline points="7 10 12 15 17 10"
+										></polyline>
+										<line x1="12" y1="15" x2="12" y2="3"
+										></line>
+									</svg>
+									<span class="action-tooltip"
+										>Görseli İndir</span
+									>
+								</button>
 							</div>
 
-							{images.length > 1 && (
-								<>
-									<button class="slider-btn prev-btn" id="prevBtn" type="button" aria-label="Önceki Görsel">
-										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-											<polyline points="15 18 9 12 15 6"></polyline>
-										</svg>
-									</button>
-									<button class="slider-btn next-btn" id="nextBtn" type="button" aria-label="Sonraki Görsel">
-										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-											<polyline points="9 18 15 12 9 6"></polyline>
-										</svg>
-									</button>
-								</>
-							)}
+							<div class="slider-track" id="sliderTrack">
+								{
+									images.map((imgSrc, index) => (
+										<div
+											class="slide-item"
+											data-index={index}
+											title="Görseli büyütmek için tıklayın"
+										>
+											<img
+												src={imgSrc}
+												alt={`${product.name} - Görsel ${index + 1}`}
+												loading={
+													index === 0
+														? "eager"
+														: "lazy"
+												}
+												data-index={index}
+											/>
+										</div>
+									))
+								}
+							</div>
+
+							{
+								images.length > 1 && (
+									<>
+										<button
+											class="slider-btn prev-btn"
+											id="prevBtn"
+											type="button"
+											aria-label="Önceki Görsel"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="22"
+												height="22"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<polyline points="15 18 9 12 15 6" />
+											</svg>
+										</button>
+										<button
+											class="slider-btn next-btn"
+											id="nextBtn"
+											type="button"
+											aria-label="Sonraki Görsel"
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="22"
+												height="22"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												stroke-width="2.5"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											>
+												<polyline points="9 18 15 12 9 6" />
+											</svg>
+										</button>
+									</>
+								)
+							}
 						</div>
 
-						{images.length > 1 && (
-							<div class="slider-dots" id="sliderDots">
-								{images.map((_, index) => (
-									<button
-										class={`dot-btn ${index === 0 ? 'active' : ''}`}
-										type="button"
-										data-dot-index={index}
-										aria-label={`Görsel ${index + 1}'e git`}
-									></button>
-								))}
-							</div>
-						)}
+						{
+							images.length > 1 && (
+								<div class="slider-dots" id="sliderDots">
+									{images.map((_, index) => (
+										<button
+											class={`dot-btn ${index === 0 ? "active" : ""}`}
+											type="button"
+											data-dot-index={index}
+											aria-label={`Görsel ${index + 1}'e git`}
+										/>
+									))}
+								</div>
+							)
+						}
 					</div>
 
 					<!-- Fotonun hemen altındaki Teknik Özellikler Bölümü -->
@@ -99,7 +221,9 @@ const otherProducts = products
 							</li>
 							<li>
 								<span class="spec-name">Kalınlık</span>
-								<span class="spec-value">{product.thickness}</span>
+								<span class="spec-value"
+									>{product.thickness}</span
+								>
 							</li>
 							<li>
 								<span class="spec-name">Kenar Tipi</span>
@@ -107,15 +231,19 @@ const otherProducts = products
 							</li>
 							<li>
 								<span class="spec-name">Boyut (En x Boy)</span>
-								<span class="spec-value">{product.width} x {product.length}</span>
+								<span class="spec-value"
+									>{product.width} x {product.length}</span
+								>
 							</li>
 							<li>
 								<span class="spec-name">Yüzey Dayanımı</span>
-								<span class="spec-value">{product.surface}</span>
+								<span class="spec-value">{product.surface}</span
+								>
 							</li>
 							<li>
 								<span class="spec-name">Paket İçeriği</span>
-								<span class="spec-value">{product.package}</span>
+								<span class="spec-value">{product.package}</span
+								>
 							</li>
 							<li>
 								<span class="spec-name">Palet İçeriği</span>
@@ -137,17 +265,32 @@ const otherProducts = products
 							<span class="price-value">{product.price}</span>
 							<span class="price-unit">/ m²</span>
 						</div>
-						<p class="price-disclaimer">* Belirtilen fiyatlar KDV hariç birim satış fiyatıdır.</p>
 					</div>
 
 					<!-- MALİYETİNİZİ HEMEN HESAPLAYIN BÖLÜMÜ -->
 					<div class="calculator-card">
 						<div class="calc-header">
 							<div class="calc-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<rect x="4" y="2" width="16" height="20" rx="2"></rect>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="22"
+									height="22"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect
+										x="4"
+										y="2"
+										width="16"
+										height="20"
+										rx="2"></rect>
 									<line x1="8" y1="6" x2="16" y2="6"></line>
-									<line x1="16" y1="14" x2="16" y2="18"></line>
+									<line x1="16" y1="14" x2="16" y2="18"
+									></line>
 									<path d="M16 10h.01"></path>
 									<path d="M12 10h.01"></path>
 									<path d="M8 10h.01"></path>
@@ -158,14 +301,21 @@ const otherProducts = products
 								</svg>
 							</div>
 							<div>
-								<h3 class="calc-title">Maliyetinizi Hemen Hesaplayın</h3>
-								<p class="calc-subtitle">Uygulanacak alanı girin, tahmini toplam maliyetinizi anında görün.</p>
+								<h3 class="calc-title">
+									Maliyetinizi Hemen Hesaplayın
+								</h3>
+								<p class="calc-subtitle">
+									Uygulanacak alanı girin, tahmini toplam
+									maliyetinizi anında görün.
+								</p>
 							</div>
 						</div>
 
 						<div class="calc-body">
 							<div class="input-group">
-								<label for="calcArea" class="input-label">Uygulanacak Alan (m²)</label>
+								<label for="calcArea" class="input-label"
+									>Uygulanacak Alan (m²)</label
+								>
 								<div class="input-wrapper">
 									<input
 										type="number"
@@ -184,11 +334,20 @@ const otherProducts = products
 							</div>
 
 							<!-- Sadece girdi girilince görünen sonuç ve buton alanı -->
-							<div class="calc-output-wrapper" id="calcOutputWrapper" style="display: none;">
+							<div
+								class="calc-output-wrapper"
+								id="calcOutputWrapper"
+								style="display: none;"
+							>
 								<div class="calc-results">
 									<div class="result-row total-row">
-										<span class="total-label">Tahmini Toplam Maliyet:</span>
-										<span class="total-price" id="calcTotalPrice">0,00 ₺</span>
+										<span class="total-label"
+											>Tahmini Toplam Maliyet:</span
+										>
+										<span
+											class="total-price"
+											id="calcTotalPrice">0,00 ₺</span
+										>
 									</div>
 								</div>
 
@@ -200,10 +359,20 @@ const otherProducts = products
 										rel="noopener noreferrer"
 										class="btn-whatsapp-outline"
 									>
-										<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-											<path d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="20"
+											height="20"
+											viewBox="0 0 24 24"
+											fill="currentColor"
+										>
+											<path
+												d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"
+											></path>
 										</svg>
-										<span>Bu Ölçü İçin WhatsApp Teklifi Al</span>
+										<span
+											>Bu Ölçü İçin WhatsApp Teklifi Al</span
+										>
 									</a>
 								</div>
 							</div>
@@ -212,14 +381,40 @@ const otherProducts = products
 
 					<!-- HESAPLAYICI ALTINDA NUMUNE TALEBİ VE TÜM ÜRÜNLER BUTONLARI -->
 					<div class="bottom-actions">
-						<a href="tel:+905302708487" class="btn-bottom btn-sample" title="Numune Talebi İçin Arayın">
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+						<a
+							href="tel:+905302708487"
+							class="btn-bottom btn-sample"
+							title="Numune Talebi İçin Arayın"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path
+									d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+								></path>
 							</svg>
 							<span>Numune Talebi</span>
 						</a>
 						<a href="/parke" class="btn-bottom btn-all-products">
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
 								<rect x="3" y="3" width="7" height="7"></rect>
 								<rect x="14" y="3" width="7" height="7"></rect>
 								<rect x="14" y="14" width="7" height="7"></rect>
@@ -243,8 +438,16 @@ const otherProducts = products
 								title="WhatsApp'ta Paylaş"
 								aria-label="WhatsApp'ta Paylaş"
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-									<path d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="18"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"
+									></path>
 								</svg>
 							</a>
 
@@ -256,11 +459,31 @@ const otherProducts = products
 								title="Bağlantıyı Kopyala"
 								aria-label="Bağlantıyı Kopyala"
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-									<rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-									<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="18"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<rect
+										x="9"
+										y="9"
+										width="13"
+										height="13"
+										rx="2"
+										ry="2"></rect>
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+									></path>
 								</svg>
-								<span class="copy-tooltip" id="copyTooltip">Kopyalandı!</span>
+								<span class="copy-tooltip" id="copyTooltip"
+									>Kopyalandı!</span
+								>
 							</button>
 
 							<!-- LinkedIn Paylaş -->
@@ -273,8 +496,16 @@ const otherProducts = products
 								title="LinkedIn'de Paylaş"
 								aria-label="LinkedIn'de Paylaş"
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-									<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="currentColor"
+								>
+									<path
+										d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+									></path>
 								</svg>
 							</a>
 
@@ -286,12 +517,30 @@ const otherProducts = products
 								title="Paylaş"
 								aria-label="Genel Paylaşım"
 							>
-								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="18"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
 									<circle cx="18" cy="5" r="3"></circle>
 									<circle cx="6" cy="12" r="3"></circle>
 									<circle cx="18" cy="19" r="3"></circle>
-									<line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-									<line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+									<line
+										x1="8.59"
+										y1="13.51"
+										x2="15.42"
+										y2="17.49"></line>
+									<line
+										x1="15.41"
+										y1="6.51"
+										x2="8.59"
+										y2="10.49"></line>
 								</svg>
 							</button>
 						</div>
@@ -301,13 +550,304 @@ const otherProducts = products
 		</div>
 	</section>
 
+	<!-- FOTOĞRAF YAKINDAN İNCELEME VE İNDİRME MODAL LIGHTBOX -->
+	<div
+		class="photo-modal"
+		id="photoModal"
+		aria-hidden="true"
+		role="dialog"
+		aria-label="Görsel İnceleme Modalı"
+	>
+		<div class="photo-modal-backdrop" id="photoModalBackdrop"></div>
+		<div class="photo-modal-container">
+			<!-- Modal Üst Çubuk -->
+			<div class="photo-modal-header">
+				<div class="modal-product-info">
+					<span class="modal-series-tag">{product.series} Serisi</span
+					>
+					<h3 class="modal-product-title">{product.name}</h3>
+					<span class="modal-counter" id="modalCounter"
+						>1 / {images.length}</span
+					>
+				</div>
+
+				<div class="modal-actions">
+					<!-- Yakınlaştır / Uzaklaştır / Sıfırla -->
+					<div class="zoom-controls">
+						<button
+							type="button"
+							class="modal-btn"
+							id="modalZoomOutBtn"
+							title="Uzaklaştır (-)"
+							aria-label="Uzaklaştır"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="11" cy="11" r="8"></circle>
+								<line x1="21" y1="21" x2="16.65" y2="16.65"
+								></line>
+								<line x1="8" y1="11" x2="14" y2="11"></line>
+							</svg>
+						</button>
+						<span class="zoom-level-text" id="modalZoomLevel"
+							>100%</span
+						>
+						<button
+							type="button"
+							class="modal-btn"
+							id="modalZoomInBtn"
+							title="Yakınlaştır (+)"
+							aria-label="Yakınlaştır"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="18"
+								height="18"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="11" cy="11" r="8"></circle>
+								<line x1="21" y1="21" x2="16.65" y2="16.65"
+								></line>
+								<line x1="11" y1="8" x2="11" y2="14"></line>
+								<line x1="8" y1="11" x2="14" y2="11"></line>
+							</svg>
+						</button>
+						<button
+							type="button"
+							class="modal-btn"
+							id="modalZoomResetBtn"
+							title="Sıfırla (1:1)"
+							aria-label="Görsel Boyutunu Sıfırla"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<path
+									d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+								></path>
+								<path d="M3 3v5h5"></path>
+							</svg>
+						</button>
+					</div>
+
+					<!-- İndir Butonu -->
+					<button
+						type="button"
+						class="modal-btn modal-download-btn"
+						id="modalDownloadBtn"
+						title="Bu Görseli Yüksek Çözünürlükte İndir"
+						aria-label="Görseli İndir"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+							></path>
+							<polyline points="7 10 12 15 17 10"></polyline>
+							<line x1="12" y1="15" x2="12" y2="3"></line>
+						</svg>
+						<span class="btn-text">İndir</span>
+					</button>
+
+					<!-- Kapat Butonu -->
+					<button
+						type="button"
+						class="modal-btn modal-close-btn"
+						id="modalCloseBtn"
+						title="Kapat (Esc)"
+						aria-label="Kapat"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="22"
+							height="22"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
+					</button>
+				</div>
+			</div>
+
+			<!-- Modal Görsel Alanı (Pan & Zoom Özellikli) -->
+			<div class="photo-modal-body" id="modalBody">
+				<div class="modal-canvas" id="modalCanvas">
+					<img
+						src={images[0]}
+						alt={`${product.name} - Yüksek Çözünürlüklü Görsel`}
+						id="modalImage"
+						draggable="false"
+					/>
+				</div>
+
+				<!-- Gezinme Okları -->
+				{
+					images.length > 1 && (
+						<>
+							<button
+								type="button"
+								class="modal-nav-btn modal-prev-btn"
+								id="modalPrevBtn"
+								aria-label="Önceki Görsel"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="28"
+									height="28"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="15 18 9 12 15 6" />
+								</svg>
+							</button>
+							<button
+								type="button"
+								class="modal-nav-btn modal-next-btn"
+								id="modalNextBtn"
+								aria-label="Sonraki Görsel"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="28"
+									height="28"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="9 18 15 12 9 6" />
+								</svg>
+							</button>
+						</>
+					)
+				}
+
+				<!-- Alt İpucu -->
+				<div class="modal-pan-hint" id="modalPanHint">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="14"
+						height="14"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					>
+						<circle cx="12" cy="12" r="10"></circle>
+						<line x1="12" y1="8" x2="12" y2="12"></line>
+						<line x1="12" y1="16" x2="12.01" y2="16"></line>
+					</svg>
+					<span
+						>Çift tıklayarak veya fare tekerleğiyle
+						yakınlaştırabilir, sürükleyerek dokuyu
+						inceleyebilirsiniz</span
+					>
+				</div>
+			</div>
+
+			<!-- Alt Küçük Önizleme Şeridi (Birden Fazla Görsel Varsa) -->
+			{
+				images.length > 1 && (
+					<div class="modal-thumbnails" id="modalThumbnails">
+						{images.map((imgSrc, index) => (
+							<button
+								type="button"
+								class={`modal-thumb-btn ${index === 0 ? "active" : ""}`}
+								data-thumb-index={index}
+								aria-label={`Görsel ${index + 1}`}
+							>
+								<img
+									src={imgSrc}
+									alt={`Küçük görsel ${index + 1}`}
+								/>
+							</button>
+						))}
+					</div>
+				)
+			}
+		</div>
+	</div>
+
+	<!-- İndirme Bildirimi Toast -->
+	<div class="download-toast" id="downloadToast" aria-live="polite">
+		<div class="toast-icon">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="20"
+				height="20"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			>
+				<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+				<polyline points="22 4 12 14.01 9 11.01"></polyline>
+			</svg>
+		</div>
+		<div class="toast-content">
+			<span class="toast-title" id="toastTitle">Görsel İndirildi</span>
+			<span class="toast-desc" id="toastDesc"
+				>Yüksek çözünürlüklü görsel cihazınıza kaydedildi.</span
+			>
+		</div>
+	</div>
+
 	<!-- DİĞER ÜRÜNLERE GÖZ ATIN BÖLÜMÜ -->
 	<section class="related-products-section">
 		<div class="container">
 			<div class="related-header-wrap">
 				<div class="section-tag">Koleksiyonu Keşfedin</div>
 				<h2 class="related-main-title">Diğer Ürünlere Göz Atın</h2>
-				<p class="related-sub-text">Mekanınıza en uygun rengi ve dokuyu bulabileceğiniz diğer parke modellerimiz</p>
+				<p class="related-sub-text">
+					Mekanınıza en uygun rengi ve dokuyu bulabileceğiniz diğer
+					parke modellerimiz
+				</p>
 			</div>
 
 			<div class="product-grid-related">
@@ -333,7 +873,10 @@ const otherProducts = products
 							<div class="product-info">
 								<h3>{item.name}</h3>
 								<div class="product-desc">
-									<span>{item.thickness}, {item.edge}, {item.color} Renk</span>
+									<span>
+										{item.thickness}, {item.edge},{" "}
+										{item.color} Renk
+									</span>
 									<span>{item.surface}</span>
 								</div>
 								<div class="product-footer">
@@ -341,9 +884,7 @@ const otherProducts = products
 										<span class="price-val">
 											{item.price}
 										</span>
-										<span class="price-unit">
-											/ m²
-										</span>
+										<span class="price-unit">/ m²</span>
 									</div>
 									<span class="btn-review">
 										<span>İncele</span>
@@ -358,7 +899,12 @@ const otherProducts = products
 											stroke-linecap="round"
 											stroke-linejoin="round"
 										>
-											<line x1="5" y1="12" x2="19" y2="12" />
+											<line
+												x1="5"
+												y1="12"
+												x2="19"
+												y2="12"
+											/>
 											<polyline points="12 5 19 12 12 19" />
 										</svg>
 									</span>
@@ -375,21 +921,123 @@ const otherProducts = products
 </Layout>
 
 <script is:inline>
-	function setupProductSlider() {
-		const slider = document.getElementById('productSlider');
+	// Toast Bildirim Sistemi
+	function showDownloadToast(title, desc) {
+		const toast = document.getElementById("downloadToast");
+		const toastTitle = document.getElementById("toastTitle");
+		const toastDesc = document.getElementById("toastDesc");
+		if (!toast) return;
+
+		if (toastTitle && title) toastTitle.textContent = title;
+		if (toastDesc && desc) toastDesc.textContent = desc;
+
+		toast.classList.add("show");
+		if (window._downloadToastTimer)
+			clearTimeout(window._downloadToastTimer);
+		window._downloadToastTimer = setTimeout(() => {
+			toast.classList.remove("show");
+		}, 3500);
+	}
+
+	// Yüksek Kalitede Görsel İndirme Fonksiyonu
+	async function downloadImageFile(imgUrl, fileName) {
+		showDownloadToast(
+			"Görsel İndiriliyor...",
+			"Yüksek çözünürlüklü dosya hazırlanıyor.",
+		);
+		try {
+			const response = await fetch(imgUrl);
+			if (!response.ok) throw new Error("Dosya indirilemedi");
+			const blob = await response.blob();
+			const blobUrl = URL.createObjectURL(blob);
+			const link = document.createElement("a");
+			link.href = blobUrl;
+			link.download = fileName;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			setTimeout(() => URL.revokeObjectURL(blobUrl), 2000);
+			showDownloadToast(
+				"Görsel İndirildi",
+				"Görsel başarıyla cihazınıza kaydedildi.",
+			);
+		} catch (err) {
+			console.warn("Doğrudan indirme alternatifi çalıştırılıyor:", err);
+			const link = document.createElement("a");
+			link.href = imgUrl;
+			link.download = fileName;
+			link.target = "_blank";
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			showDownloadToast(
+				"Görsel Açıldı / İndirildi",
+				"Görsel indirme işlemi başlatıldı.",
+			);
+		}
+	}
+
+	function setupProductGalleryAndModal() {
+		const slider = document.getElementById("productSlider");
 		if (!slider) return;
 
-		const track = document.getElementById('sliderTrack');
-		const prevBtn = document.getElementById('prevBtn');
-		const nextBtn = document.getElementById('nextBtn');
-		const dots = slider.querySelectorAll('.dot-btn');
-		const slides = slider.querySelectorAll('.slide-item');
+		const track = document.getElementById("sliderTrack");
+		const viewport = document.getElementById("sliderViewport");
+		const prevBtn = document.getElementById("prevBtn");
+		const nextBtn = document.getElementById("nextBtn");
+		const dots = slider.querySelectorAll(".dot-btn");
+		const slides = slider.querySelectorAll(".slide-item");
+		const quickZoomBtn = document.getElementById("quickZoomBtn");
+		const quickDownloadBtn = document.getElementById("quickDownloadBtn");
+
+		const productName =
+			slider.getAttribute("data-product-name") || "ZenFlor Parke";
+		const productId =
+			slider.getAttribute("data-product-id") || "parke-model";
 		const totalSlides = slides.length;
 
-		if (totalSlides <= 1 || !track) return;
+		// Modal Elemanları
+		const modal = document.getElementById("photoModal");
+		const modalBackdrop = document.getElementById("photoModalBackdrop");
+		const modalCloseBtn = document.getElementById("modalCloseBtn");
+		const modalImage = document.getElementById("modalImage");
+		const modalCanvas = document.getElementById("modalCanvas");
+		const modalCounter = document.getElementById("modalCounter");
+		const modalZoomInBtn = document.getElementById("modalZoomInBtn");
+		const modalZoomOutBtn = document.getElementById("modalZoomOutBtn");
+		const modalZoomResetBtn = document.getElementById("modalZoomResetBtn");
+		const modalZoomLevel = document.getElementById("modalZoomLevel");
+		const modalDownloadBtn = document.getElementById("modalDownloadBtn");
+		const modalPrevBtn = document.getElementById("modalPrevBtn");
+		const modalNextBtn = document.getElementById("modalNextBtn");
+		const modalThumbBtns = document.querySelectorAll(".modal-thumb-btn");
+
+		// Tüm görsel URL'lerini topla
+		const imageList = [];
+		slides.forEach((s) => {
+			const img = s.querySelector("img");
+			if (img && img.src) imageList.push(img.src);
+		});
 
 		let currentIndex = 0;
 
+		function sanitizeFilename(name, idx, url) {
+			const ext = url.split(".").pop().split("?")[0] || "jpg";
+			const cleanName = name
+				.toLowerCase()
+				.replace(/ğ/g, "g")
+				.replace(/ü/g, "u")
+				.replace(/ş/g, "s")
+				.replace(/ı/g, "i")
+				.replace(/ö/g, "o")
+				.replace(/ç/g, "c")
+				.replace(/[^a-z0-9]/g, "-")
+				.replace(/-+/g, "-")
+				.replace(/^-|-$/g, "");
+			return `zenflor-${cleanName}-gorsel-${idx + 1}.${ext}`;
+		}
+
+		// --- SLIDER FONKSİYONLARI ---
 		function goToSlide(index) {
 			if (index < 0) {
 				currentIndex = totalSlides - 1;
@@ -399,100 +1047,488 @@ const otherProducts = products
 				currentIndex = index;
 			}
 
-			track.style.transform = `translateX(-${currentIndex * 100}%)`;
+			if (track) {
+				track.style.transform = `translateX(-${currentIndex * 100}%)`;
+			}
 
 			dots.forEach((dot, i) => {
 				if (i === currentIndex) {
-					dot.classList.add('active');
+					dot.classList.add("active");
 				} else {
-					dot.classList.remove('active');
+					dot.classList.remove("active");
 				}
 			});
 		}
 
-		prevBtn?.addEventListener('click', (e) => {
-			e.preventDefault();
-			goToSlide(currentIndex - 1);
-		});
+		if (prevBtn) {
+			prevBtn.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				goToSlide(currentIndex - 1);
+			});
+		}
 
-		nextBtn?.addEventListener('click', (e) => {
-			e.preventDefault();
-			goToSlide(currentIndex + 1);
-		});
+		if (nextBtn) {
+			nextBtn.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				goToSlide(currentIndex + 1);
+			});
+		}
 
 		dots.forEach((dot) => {
-			dot.addEventListener('click', (e) => {
+			dot.addEventListener("click", (e) => {
 				e.preventDefault();
-				const idx = parseInt(dot.getAttribute('data-dot-index') || '0', 10);
+				e.stopPropagation();
+				const idx = parseInt(
+					dot.getAttribute("data-dot-index") || "0",
+					10,
+				);
 				goToSlide(idx);
 			});
 		});
 
-		// Touch swipe
-		let startX = 0;
-		let endX = 0;
+		// Slider Üstü Hızlı Butonlar
+		if (quickZoomBtn) {
+			quickZoomBtn.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				openModal(currentIndex);
+			});
+		}
 
-		track.addEventListener('touchstart', (e) => {
-			startX = e.touches[0].clientX;
-		}, { passive: true });
+		if (quickDownloadBtn) {
+			quickDownloadBtn.addEventListener("click", (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				const currentUrl = imageList[currentIndex] || "";
+				if (currentUrl) {
+					const fileName = sanitizeFilename(
+						productName,
+						currentIndex,
+						currentUrl,
+					);
+					downloadImageFile(currentUrl, fileName);
+				}
+			});
+		}
 
-		track.addEventListener('touchend', (e) => {
-			endX = e.changedTouches[0].clientX;
-			const diff = startX - endX;
-			if (Math.abs(diff) > 40) {
-				if (diff > 0) {
-					goToSlide(currentIndex + 1);
+		// Slider'a veya Görsele Tıklayınca Modalı Aç
+		slides.forEach((slide) => {
+			slide.addEventListener("click", (e) => {
+				// Butonlara tıklanmadıysa modalı aç
+				if (
+					!e.target.closest(".slider-btn") &&
+					!e.target.closest(".slider-action-btn")
+				) {
+					const idx = parseInt(
+						slide.getAttribute("data-index") || "0",
+						10,
+					);
+					openModal(idx);
+				}
+			});
+		});
+
+		// Touch swipe slider
+		let touchStartX = 0;
+		let touchEndX = 0;
+
+		if (track) {
+			track.addEventListener(
+				"touchstart",
+				(e) => {
+					touchStartX = e.touches[0].clientX;
+				},
+				{ passive: true },
+			);
+
+			track.addEventListener(
+				"touchend",
+				(e) => {
+					touchEndX = e.changedTouches[0].clientX;
+					const diff = touchStartX - touchEndX;
+					if (Math.abs(diff) > 45) {
+						if (diff > 0) {
+							goToSlide(currentIndex + 1);
+						} else {
+							goToSlide(currentIndex - 1);
+						}
+					}
+				},
+				{ passive: true },
+			);
+		}
+
+		// --- MODAL & ZOOM / PAN FONKSİYONLARI ---
+		if (!modal || !modalImage) return;
+
+		let modalIndex = 0;
+		let scale = 1;
+		let panX = 0;
+		let panY = 0;
+		let isDragging = false;
+		let dragStartX = 0;
+		let dragStartY = 0;
+		let initialPanX = 0;
+		let initialPanY = 0;
+
+		function updateTransform(withTransition = true) {
+			if (!modalImage) return;
+			modalImage.style.transition = withTransition
+				? "transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)"
+				: "none";
+
+			// Pan limitlerini sınırla
+			if (scale > 1 && modalCanvas) {
+				const rect = modalImage.getBoundingClientRect();
+				const maxPanX = Math.max(
+					0,
+					(modalImage.offsetWidth * scale - modalCanvas.clientWidth) /
+						2 +
+						80,
+				);
+				const maxPanY = Math.max(
+					0,
+					(modalImage.offsetHeight * scale -
+						modalCanvas.clientHeight) /
+						2 +
+						80,
+				);
+				panX = Math.max(-maxPanX, Math.min(maxPanX, panX));
+				panY = Math.max(-maxPanY, Math.min(maxPanY, panY));
+			} else {
+				panX = 0;
+				panY = 0;
+			}
+
+			modalImage.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+
+			if (modalZoomLevel) {
+				modalZoomLevel.textContent = `${Math.round(scale * 100)}%`;
+			}
+
+			if (modalCanvas) {
+				if (scale > 1) {
+					modalCanvas.style.cursor = isDragging ? "grabbing" : "grab";
 				} else {
-					goToSlide(currentIndex - 1);
+					modalCanvas.style.cursor = "zoom-in";
 				}
 			}
-		}, { passive: true });
+		}
+
+		function setZoom(newScale, withTransition = true) {
+			const clamped = Math.max(1, Math.min(4, newScale));
+			scale = Math.round(clamped * 100) / 100;
+			if (scale === 1) {
+				panX = 0;
+				panY = 0;
+			}
+			updateTransform(withTransition);
+		}
+
+		function setModalSlide(index) {
+			if (index < 0) {
+				modalIndex = imageList.length - 1;
+			} else if (index >= imageList.length) {
+				modalIndex = 0;
+			} else {
+				modalIndex = index;
+			}
+
+			if (imageList[modalIndex]) {
+				modalImage.src = imageList[modalIndex];
+			}
+
+			if (modalCounter) {
+				modalCounter.textContent = `${modalIndex + 1} / ${imageList.length}`;
+			}
+
+			modalThumbBtns.forEach((thumb, i) => {
+				if (i === modalIndex) {
+					thumb.classList.add("active");
+					thumb.scrollIntoView({
+						behavior: "smooth",
+						block: "nearest",
+						inline: "center",
+					});
+				} else {
+					thumb.classList.remove("active");
+				}
+			});
+
+			// Zoom sıfırla
+			setZoom(1, false);
+		}
+
+		function openModal(index) {
+			modalIndex = index >= 0 && index < imageList.length ? index : 0;
+			modal.classList.add("open");
+			modal.setAttribute("aria-hidden", "false");
+			document.body.classList.add("modal-open");
+			setModalSlide(modalIndex);
+			window.addEventListener("keydown", handleModalKeydown);
+		}
+
+		function closeModal() {
+			modal.classList.remove("open");
+			modal.setAttribute("aria-hidden", "true");
+			document.body.classList.remove("modal-open");
+			window.removeEventListener("keydown", handleModalKeydown);
+			// Slider'ı modalın son görseliyle eşitle
+			goToSlide(modalIndex);
+		}
+
+		function handleModalKeydown(e) {
+			if (e.key === "Escape") {
+				closeModal();
+			} else if (e.key === "ArrowLeft") {
+				setModalSlide(modalIndex - 1);
+			} else if (e.key === "ArrowRight") {
+				setModalSlide(modalIndex + 1);
+			} else if (e.key === "+" || e.key === "=") {
+				setZoom(scale + 0.3);
+			} else if (e.key === "-") {
+				setZoom(scale - 0.3);
+			} else if (e.key === "0") {
+				setZoom(1);
+			}
+		}
+
+		// Modal Kapatma
+		if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
+		if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+
+		// Modal Önceki / Sonraki
+		if (modalPrevBtn) {
+			modalPrevBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				setModalSlide(modalIndex - 1);
+			});
+		}
+
+		if (modalNextBtn) {
+			modalNextBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				setModalSlide(modalIndex + 1);
+			});
+		}
+
+		// Modal Thumbnails
+		modalThumbBtns.forEach((thumb) => {
+			thumb.addEventListener("click", (e) => {
+				e.stopPropagation();
+				const idx = parseInt(
+					thumb.getAttribute("data-thumb-index") || "0",
+					10,
+				);
+				setModalSlide(idx);
+			});
+		});
+
+		// Modal Zoom Butonları
+		if (modalZoomInBtn) {
+			modalZoomInBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				setZoom(scale + 0.4);
+			});
+		}
+
+		if (modalZoomOutBtn) {
+			modalZoomOutBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				setZoom(scale - 0.4);
+			});
+		}
+
+		if (modalZoomResetBtn) {
+			modalZoomResetBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				setZoom(1);
+			});
+		}
+
+		// Modal İndirme Butonu
+		if (modalDownloadBtn) {
+			modalDownloadBtn.addEventListener("click", (e) => {
+				e.stopPropagation();
+				const currentUrl = imageList[modalIndex] || "";
+				if (currentUrl) {
+					const fileName = sanitizeFilename(
+						productName,
+						modalIndex,
+						currentUrl,
+					);
+					downloadImageFile(currentUrl, fileName);
+				}
+			});
+		}
+
+		// Modal Fare Tekerleği İle Yakınlaştırma (Smooth Wheel Zoom)
+		if (modalCanvas) {
+			modalCanvas.addEventListener(
+				"wheel",
+				(e) => {
+					e.preventDefault();
+					const delta = e.deltaY < 0 ? 0.25 : -0.25;
+					setZoom(scale + delta);
+				},
+				{ passive: false },
+			);
+
+			// Çift Tıklama İle Hızlı Büyüt / Sıfırla
+			modalCanvas.addEventListener("dblclick", (e) => {
+				e.preventDefault();
+				if (scale > 1) {
+					setZoom(1);
+				} else {
+					setZoom(2.5);
+				}
+			});
+
+			// Sürükleme / Pan Mekanizması (Mouse)
+			modalCanvas.addEventListener("mousedown", (e) => {
+				// Sadece sol tık ve görsel alanı
+				if (e.button !== 0) return;
+				if (scale > 1) {
+					isDragging = true;
+					dragStartX = e.clientX;
+					dragStartY = e.clientY;
+					initialPanX = panX;
+					initialPanY = panY;
+					updateTransform(false);
+				}
+			});
+
+			window.addEventListener("mousemove", (e) => {
+				if (!isDragging || scale <= 1) return;
+				const deltaX = e.clientX - dragStartX;
+				const deltaY = e.clientY - dragStartY;
+				panX = initialPanX + deltaX;
+				panY = initialPanY + deltaY;
+				updateTransform(false);
+			});
+
+			window.addEventListener("mouseup", () => {
+				if (isDragging) {
+					isDragging = false;
+					updateTransform(true);
+				}
+			});
+
+			// Dokunmatik Cihazlar (Touch Drag & Pinch Zoom)
+			let touchStartDistance = 0;
+			let initialScale = 1;
+
+			modalCanvas.addEventListener(
+				"touchstart",
+				(e) => {
+					if (e.touches.length === 1 && scale > 1) {
+						isDragging = true;
+						dragStartX = e.touches[0].clientX;
+						dragStartY = e.touches[0].clientY;
+						initialPanX = panX;
+						initialPanY = panY;
+					} else if (e.touches.length === 2) {
+						isDragging = false;
+						touchStartDistance = Math.hypot(
+							e.touches[0].clientX - e.touches[1].clientX,
+							e.touches[0].clientY - e.touches[1].clientY,
+						);
+						initialScale = scale;
+					}
+				},
+				{ passive: true },
+			);
+
+			modalCanvas.addEventListener(
+				"touchmove",
+				(e) => {
+					if (e.touches.length === 1 && isDragging && scale > 1) {
+						const deltaX = e.touches[0].clientX - dragStartX;
+						const deltaY = e.touches[0].clientY - dragStartY;
+						panX = initialPanX + deltaX;
+						panY = initialPanY + deltaY;
+						updateTransform(false);
+					} else if (
+						e.touches.length === 2 &&
+						touchStartDistance > 0
+					) {
+						const dist = Math.hypot(
+							e.touches[0].clientX - e.touches[1].clientX,
+							e.touches[0].clientY - e.touches[1].clientY,
+						);
+						const factor = dist / touchStartDistance;
+						setZoom(initialScale * factor, false);
+					}
+				},
+				{ passive: true },
+			);
+
+			modalCanvas.addEventListener(
+				"touchend",
+				() => {
+					isDragging = false;
+					touchStartDistance = 0;
+					updateTransform(true);
+				},
+				{ passive: true },
+			);
+		}
 	}
 
 	function setupCalculator() {
-		const areaInput = document.getElementById('calcArea');
-		const outputWrapper = document.getElementById('calcOutputWrapper');
-		const totalPriceEl = document.getElementById('calcTotalPrice');
-		const whatsappBtn = document.getElementById('calcWhatsappBtn');
+		const areaInput = document.getElementById("calcArea");
+		const outputWrapper = document.getElementById("calcOutputWrapper");
+		const totalPriceEl = document.getElementById("calcTotalPrice");
+		const whatsappBtn = document.getElementById("calcWhatsappBtn");
 
 		if (!areaInput || !totalPriceEl || !outputWrapper) return;
 
-		const unitPrice = parseFloat(areaInput.getAttribute('data-price') || '0');
-		const productName = areaInput.getAttribute('data-product-name') || '';
+		const unitPrice = parseFloat(
+			areaInput.getAttribute("data-price") || "0",
+		);
+		const productName = areaInput.getAttribute("data-product-name") || "";
 
 		function calculate() {
 			const val = areaInput.value.trim();
 			const area = parseFloat(val);
 
 			if (!val || isNaN(area) || area <= 0) {
-				outputWrapper.style.display = 'none';
+				outputWrapper.style.display = "none";
 				return;
 			}
 
 			const totalCost = area * unitPrice;
-			totalPriceEl.textContent = totalCost.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' ₺';
+			totalPriceEl.textContent =
+				totalCost.toLocaleString("tr-TR", {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2,
+				}) + " ₺";
 
 			if (whatsappBtn) {
 				const text = `Merhaba, ${productName} parke modeli için ${area} m² alan hesapladım. Fiyat ve montaj teklifi almak istiyorum.`;
 				whatsappBtn.href = `https://wa.me/905302708487?text=${encodeURIComponent(text)}`;
 			}
 
-			outputWrapper.style.display = 'flex';
+			outputWrapper.style.display = "flex";
 		}
 
-		areaInput.addEventListener('input', calculate);
+		areaInput.addEventListener("input", calculate);
 		calculate();
 	}
 
 	function setupShareButtons() {
 		const currentUrl = window.location.href;
-		const productName = document.querySelector('.product-title')?.textContent || 'ZenFlor Parke';
+		const productName =
+			document.querySelector(".product-title")?.textContent ||
+			"ZenFlor Parke";
 
-		const shareWhatsapp = document.getElementById('shareWhatsapp');
-		const shareLinkedin = document.getElementById('shareLinkedin');
-		const shareCopyBtn = document.getElementById('shareCopyBtn');
-		const copyTooltip = document.getElementById('copyTooltip');
-		const shareNativeBtn = document.getElementById('shareNativeBtn');
+		const shareWhatsapp = document.getElementById("shareWhatsapp");
+		const shareLinkedin = document.getElementById("shareLinkedin");
+		const shareCopyBtn = document.getElementById("shareCopyBtn");
+		const copyTooltip = document.getElementById("copyTooltip");
+		const shareNativeBtn = document.getElementById("shareNativeBtn");
 
 		if (shareWhatsapp) {
 			shareWhatsapp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(`${productName} | ZenFlor Parke: ${currentUrl}`)}`;
@@ -503,22 +1539,25 @@ const otherProducts = products
 		}
 
 		if (shareCopyBtn) {
-			shareCopyBtn.addEventListener('click', async (e) => {
+			shareCopyBtn.addEventListener("click", async (e) => {
 				e.preventDefault();
 				try {
 					await navigator.clipboard.writeText(currentUrl);
 					if (copyTooltip) {
-						copyTooltip.classList.add('show');
-						setTimeout(() => copyTooltip.classList.remove('show'), 2000);
+						copyTooltip.classList.add("show");
+						setTimeout(
+							() => copyTooltip.classList.remove("show"),
+							2000,
+						);
 					}
 				} catch (err) {
-					console.error('Kopyalama hatası:', err);
+					console.error("Kopyalama hatası:", err);
 				}
 			});
 		}
 
 		if (shareNativeBtn) {
-			shareNativeBtn.addEventListener('click', async (e) => {
+			shareNativeBtn.addEventListener("click", async (e) => {
 				e.preventDefault();
 				if (navigator.share) {
 					try {
@@ -538,17 +1577,17 @@ const otherProducts = products
 	}
 
 	function initAll() {
-		setupProductSlider();
+		setupProductGalleryAndModal();
 		setupCalculator();
 		setupShareButtons();
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initAll);
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initAll);
 	} else {
 		initAll();
 	}
-	document.addEventListener('astro:page-load', initAll);
+	document.addEventListener("astro:page-load", initAll);
 </script>
 
 <style>
@@ -572,7 +1611,9 @@ const otherProducts = products
 	.breadcrumb a {
 		color: inherit;
 		text-decoration: none;
-		transition: color 0.2s ease, opacity 0.2s ease;
+		transition:
+			color 0.2s ease,
+			opacity 0.2s ease;
 	}
 
 	.breadcrumb a:hover {
@@ -622,11 +1663,91 @@ const otherProducts = products
 	.slider-viewport {
 		position: relative;
 		width: 100%;
-		aspect-ratio: 4 / 3;
+		aspect-ratio: 1 / 1;
 		border-radius: 16px;
 		overflow: hidden;
-		background: #fff;
+		background: #ffffff;
 		box-shadow: 0 10px 30px rgba(74, 59, 50, 0.07);
+		cursor: zoom-in;
+		border: 1px solid rgba(140, 106, 83, 0.12);
+	}
+
+	/* Görsel Sağ Alt Aksiyon Butonları */
+	.slider-actions {
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		z-index: 10;
+		background: rgba(255, 255, 255, 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		padding: 4px;
+		border-radius: 30px;
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+	}
+
+	.slider-action-btn {
+		position: relative;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		background: transparent;
+		border: none;
+		color: var(--color-dark);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.25s ease;
+		padding: 0;
+	}
+
+	.slider-action-btn:hover {
+		background: var(--color-primary);
+		color: #ffffff;
+		transform: scale(1.08);
+		box-shadow: 0 4px 12px rgba(140, 106, 83, 0.3);
+	}
+
+	.action-tooltip {
+		position: absolute;
+		bottom: calc(100% + 8px);
+		right: 50%;
+		transform: translateX(50%);
+		background: var(--color-dark);
+		color: #ffffff;
+		font-size: 0.75rem;
+		font-weight: 600;
+		font-family: var(--font-secondary);
+		padding: 0.35rem 0.65rem;
+		border-radius: 6px;
+		white-space: nowrap;
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.2s ease;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		z-index: 20;
+	}
+
+	.action-tooltip::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translateX(-50%);
+		border: 4px solid transparent;
+		border-top-color: var(--color-dark);
+	}
+
+	.slider-action-btn:hover .action-tooltip {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(50%) translateY(0);
 	}
 
 	.slider-track {
@@ -646,7 +1767,8 @@ const otherProducts = products
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: #fff;
+		background: #ffffff;
+		cursor: zoom-in;
 	}
 
 	.slide-item img {
@@ -709,7 +1831,9 @@ const otherProducts = products
 		border: none;
 		cursor: pointer;
 		padding: 0;
-		transition: background-color 0.25s ease, transform 0.25s ease;
+		transition:
+			background-color 0.25s ease,
+			transform 0.25s ease;
 	}
 
 	.dot-btn:hover {
@@ -834,14 +1958,6 @@ const otherProducts = products
 		padding-bottom: 0.15rem;
 	}
 
-	.price-disclaimer {
-		font-family: var(--font-secondary);
-		font-size: 0.825rem;
-		color: var(--color-text-dark);
-		opacity: 0.6;
-		margin: 0;
-	}
-
 	/* MALİYET HESAPLAMA KARTI */
 	.calculator-card {
 		background: #ffffff;
@@ -924,7 +2040,9 @@ const otherProducts = products
 		border: 2px solid rgba(140, 106, 83, 0.25);
 		border-radius: 10px;
 		outline: none;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
+		transition:
+			border-color 0.2s ease,
+			box-shadow 0.2s ease;
 	}
 
 	.area-input:focus {
@@ -963,7 +2081,7 @@ const otherProducts = products
 
 	/* HESAPLAMA SONUÇLARI KUTUSU */
 	.calc-results {
-		background: #FAF7F2;
+		background: #faf7f2;
 		border-radius: 12px;
 		padding: 1.25rem;
 		border: 1px solid rgba(140, 106, 83, 0.15);
@@ -1116,7 +2234,7 @@ const otherProducts = products
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
-		background: #FAF7F2;
+		background: #faf7f2;
 		border: 1px solid rgba(140, 106, 83, 0.2);
 		color: var(--color-dark);
 		display: flex;
@@ -1157,7 +2275,7 @@ const otherProducts = products
 	}
 
 	.copy-tooltip::after {
-		content: '';
+		content: "";
 		position: absolute;
 		top: 100%;
 		left: 50%;
@@ -1238,7 +2356,9 @@ const otherProducts = products
 		overflow: hidden;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 		border: 1px solid rgba(0, 0, 0, 0.04);
-		transition: box-shadow 0.3s ease, transform 0.3s ease;
+		transition:
+			box-shadow 0.3s ease,
+			transform 0.3s ease;
 		display: flex;
 		flex-direction: column;
 		text-decoration: none;
@@ -1377,5 +2497,429 @@ const otherProducts = products
 
 	.btn-review:hover svg {
 		transform: translateX(4px);
+	}
+
+	/* PHOTO MODAL & LIGHTBOX */
+	body.modal-open {
+		overflow: hidden !important;
+		touch-action: none;
+	}
+
+	.photo-modal {
+		position: fixed;
+		inset: 0;
+		z-index: 99999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+			visibility 0.3s;
+	}
+
+	.photo-modal.open {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.photo-modal-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(10, 15, 22, 0.92);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		cursor: pointer;
+	}
+
+	.photo-modal-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		z-index: 2;
+		user-select: none;
+	}
+
+	/* Modal Header */
+	.photo-modal-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 1.5rem;
+		background: rgba(10, 15, 22, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		color: #ffffff;
+		gap: 1rem;
+		z-index: 10;
+	}
+
+	.modal-product-info {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		flex-wrap: wrap;
+	}
+
+	.modal-series-tag {
+		font-family: var(--font-secondary);
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		background: rgba(140, 106, 83, 0.35);
+		color: #dfba9d;
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+		border: 1px solid rgba(140, 106, 83, 0.5);
+	}
+
+	.modal-product-title {
+		font-family: var(--font-primary);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: #ffffff;
+		margin: 0;
+	}
+
+	.modal-counter {
+		font-family: var(--font-secondary);
+		font-size: 0.85rem;
+		color: rgba(255, 255, 255, 0.6);
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.2rem 0.55rem;
+		border-radius: 12px;
+	}
+
+	.modal-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+
+	.zoom-controls {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		background: rgba(255, 255, 255, 0.08);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 30px;
+		padding: 3px 6px;
+	}
+
+	.zoom-level-text {
+		font-family: var(--font-secondary);
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #ffffff;
+		min-width: 45px;
+		text-align: center;
+	}
+
+	.modal-btn {
+		background: transparent;
+		color: rgba(255, 255, 255, 0.85);
+		border: none;
+		border-radius: 50%;
+		width: 36px;
+		height: 36px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		padding: 0;
+	}
+
+	.modal-btn:hover {
+		background: rgba(255, 255, 255, 0.18);
+		color: #ffffff;
+		transform: scale(1.08);
+	}
+
+	.modal-download-btn {
+		width: auto;
+		border-radius: 20px;
+		padding: 0 1rem;
+		height: 36px;
+		background: var(--color-primary);
+		color: #ffffff;
+		font-weight: 600;
+		font-size: 0.85rem;
+		font-family: var(--font-secondary);
+		gap: 0.4rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+	}
+
+	.modal-download-btn:hover {
+		background: #a67c5b;
+		color: #ffffff;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 14px rgba(140, 106, 83, 0.4);
+	}
+
+	.modal-close-btn {
+		background: rgba(255, 255, 255, 0.12);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	.modal-close-btn:hover {
+		background: rgba(239, 68, 68, 0.85);
+		border-color: rgba(239, 68, 68, 0.9);
+		color: #ffffff;
+	}
+
+	/* Modal Body / Canvas */
+	.photo-modal-body {
+		flex: 1;
+		width: 100%;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.modal-canvas {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+		position: relative;
+		cursor: zoom-in;
+	}
+
+	#modalImage {
+		max-width: 90vw;
+		max-height: 75vh;
+		object-fit: contain;
+		border-radius: 8px;
+		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+		transform-origin: center center;
+		user-select: none;
+		-webkit-user-drag: none;
+		pointer-events: none;
+	}
+
+	.modal-nav-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background: rgba(15, 23, 42, 0.7);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.25s ease;
+		z-index: 15;
+		padding: 0;
+	}
+
+	.modal-nav-btn:hover {
+		background: var(--color-primary);
+		color: #ffffff;
+		transform: translateY(-50%) scale(1.1);
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+	}
+
+	.modal-prev-btn {
+		left: 1.5rem;
+	}
+
+	.modal-next-btn {
+		right: 1.5rem;
+	}
+
+	.modal-pan-hint {
+		position: absolute;
+		bottom: 1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		display: flex;
+		align-items: center;
+		gap: 0.45rem;
+		background: rgba(10, 15, 22, 0.75);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		color: rgba(255, 255, 255, 0.75);
+		font-family: var(--font-secondary);
+		font-size: 0.8rem;
+		padding: 0.4rem 1rem;
+		border-radius: 20px;
+		pointer-events: none;
+		z-index: 10;
+		text-align: center;
+		white-space: nowrap;
+		max-width: 90vw;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/* Modal Thumbnails */
+	.modal-thumbnails {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6rem;
+		padding: 0.75rem 1.5rem;
+		background: rgba(10, 15, 22, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		overflow-x: auto;
+		z-index: 10;
+	}
+
+	.modal-thumb-btn {
+		width: 54px;
+		height: 54px;
+		border-radius: 8px;
+		overflow: hidden;
+		border: 2px solid transparent;
+		background: rgba(255, 255, 255, 0.05);
+		padding: 0;
+		cursor: pointer;
+		opacity: 0.55;
+		transition: all 0.25s ease;
+		flex-shrink: 0;
+	}
+
+	.modal-thumb-btn img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.modal-thumb-btn:hover {
+		opacity: 0.85;
+		transform: translateY(-2px);
+	}
+
+	.modal-thumb-btn.active {
+		opacity: 1;
+		border-color: var(--color-primary);
+		box-shadow: 0 0 12px rgba(140, 106, 83, 0.6);
+		transform: scale(1.05);
+	}
+
+	/* TOAST NOTIFICATION */
+	.download-toast {
+		position: fixed;
+		bottom: 2rem;
+		right: 2rem;
+		background: #1e293b;
+		color: #ffffff;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+		border-radius: 12px;
+		padding: 0.85rem 1.25rem;
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		z-index: 999999;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(20px);
+		transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+		pointer-events: none;
+		max-width: 360px;
+	}
+
+	.download-toast.show {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+		pointer-events: auto;
+	}
+
+	.toast-icon {
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: rgba(34, 197, 94, 0.15);
+		color: #4ade80;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.toast-content {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.toast-title {
+		font-family: var(--font-primary);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: #ffffff;
+	}
+
+	.toast-desc {
+		font-family: var(--font-secondary);
+		font-size: 0.8rem;
+		color: #cbd5e1;
+		line-height: 1.35;
+	}
+
+	@media (max-width: 768px) {
+		.modal-product-info {
+			gap: 0.4rem;
+		}
+
+		.modal-product-title {
+			font-size: 0.95rem;
+		}
+
+		.modal-download-btn .btn-text {
+			display: none;
+		}
+
+		.modal-download-btn {
+			width: 36px;
+			padding: 0;
+			border-radius: 50%;
+		}
+
+		.modal-pan-hint {
+			font-size: 0.725rem;
+			padding: 0.35rem 0.75rem;
+		}
+
+		.modal-prev-btn {
+			left: 0.75rem;
+			width: 40px;
+			height: 40px;
+		}
+
+		.modal-next-btn {
+			right: 0.75rem;
+			width: 40px;
+			height: 40px;
+		}
+
+		.download-toast {
+			bottom: 1rem;
+			right: 1rem;
+			left: 1rem;
+			max-width: none;
+		}
 	}
 </style>
