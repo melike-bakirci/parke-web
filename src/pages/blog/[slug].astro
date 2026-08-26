@@ -1,0 +1,521 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+
+export async function getStaticPaths() {
+  const blogs = [
+    {
+      slug: "parke-bakiminda-dikkat-edilmesi-gereken-5-altin-kural",
+      title: "Parke Bakımında Dikkat Edilmesi Gereken 5 Altın Kural",
+      date: "24 Ağustos 2026",
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
+      content: `
+        <p>Ahşap zeminlerinizin ömrünü uzatmak ve ilk günkü parlaklığını korumak için uygulayabileceğiniz basit ama etkili yöntemler.</p>
+        <h2>1. Düzenli Temizlik</h2>
+        <p>Parkelerinizi her gün yumuşak uçlu bir süpürge veya mikrofiber mop ile tozdan arındırın. Toz ve kum tanecikleri zamanla zemin çiziklerine neden olabilir.</p>
+        <h2>2. Doğru Temizlik Ürünleri</h2>
+        <p>Sert kimyasallar ahşap yüzeyine zarar verir. Yalnızca ahşap zeminler için özel olarak formüle edilmiş, pH nötr temizleyiciler kullanın.</p>
+        <h2>3. Su Temasından Kaçının</h2>
+        <p>Ahşap ve su iyi anlaşamaz. Dökülen sıvıları anında kurulamalı ve ıslak paspas yerine sadece nemli mop kullanmalısınız.</p>
+        <h2>4. Mobilya Altlıkları Kullanın</h2>
+        <p>Sandalye, masa ve diğer ağır mobilyaların ayaklarına keçe koruyucular takarak zeminin çizilmesini engelleyin.</p>
+        <h2>5. Güneş Işığından Koruyun</h2>
+        <p>Uzun süreli doğrudan güneş ışığı parkelerin rengini soldurabilir. Pencerelerde perde veya jaluzi kullanarak UV ışınlarının etkisini azaltın.</p>
+      `
+    },
+    {
+      slug: "2026-yilinin-zemin-kaplama-trendleri",
+      title: "2026 Yılının Zemin Kaplama Trendleri",
+      date: "12 Ağustos 2026",
+      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      content: `
+        <p>Yeni yılda iç mekanlarda öne çıkan renkler, dokular ve çevre dostu malzeme seçenekleri hakkında bilmeniz gereken her şey.</p>
+        <h2>Doğallığa Dönüş</h2>
+        <p>2026 yılında sentetik görünümlerden uzaklaşıp, malzemenin en doğal haline odaklanıyoruz. Belirgin ahşap damarları, budaklar ve mat yüzeyler çok revaçta.</p>
+        <h2>Geniş ve Uzun Plakalar</h2>
+        <p>Mekanları daha geniş ve ferah göstermek için XXL boyutlarında parke plakaları tercih ediliyor. Bu sayede daha az birleşim çizgisi oluşarak kesintisiz bir görünüm sağlanıyor.</p>
+        <h2>Çevre Dostu Seçimler</h2>
+        <p>Sürdürülebilirlik artık bir trend değil, standart. Geri dönüştürülmüş malzemeler ve sürdürülebilir ormanlardan elde edilen ahşap kaplamalar en çok tercih edilenler arasında.</p>
+      `
+    },
+    {
+      slug: "laminat-mi-lamine-mi-dogru-secimi-yapmak",
+      title: "Laminat mı Lamine mi? Doğru Seçimi Yapmak",
+      date: "05 Ağustos 2026",
+      image: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1200&q=80",
+      content: `
+        <p>Projeniz için hangi malzemenin daha uygun olduğuna karar vermekte zorlanıyorsanız, bu karşılaştırmalı rehber tam size göre.</p>
+        <h2>Laminat Parke Nedir?</h2>
+        <p>Laminat, preslenmiş ahşap tozu (HDF) üzerine yüksek çözünürlüklü ahşap desenli kağıt ve koruyucu tabaka kaplanmasıyla üretilir. Çizilmelere ve darbelere karşı son derece dayanıklıdır.</p>
+        <h2>Lamine Parke Nedir?</h2>
+        <p>Lamine parke ise tamamen doğal ahşaptır. Alt katmanlarda ucuz ahşap, en üstte ise değerli ve estetik ağaç katmanı bulunur. Doğallığı ve sıcaklığıyla öne çıkar.</p>
+        <h2>Hangisini Seçmeli?</h2>
+        <p>Eğer yoğun trafiği olan bir alan (örneğin ofis veya çocuklu bir ev) için zemin arıyorsanız, çizilme direnci yüksek laminat daha iyi bir seçim olabilir. Ancak bütçeniz uygunsa ve evinizde %100 doğal bir doku istiyorsanız lamine parke eşsizdir.</p>
+      `
+    }
+  ];
+
+  return blogs.map(blog => {
+    const otherBlogs = blogs.filter(b => b.slug !== blog.slug).slice(0, 4);
+    return {
+      params: { slug: blog.slug },
+      props: { blog, otherBlogs },
+    };
+  });
+}
+
+const { blog, otherBlogs } = Astro.props;
+---
+
+<Layout title={`${blog.title} | ZenFlor Blog`}>
+  <Header />
+  <PageHero title="Blog Detay" subtitle={blog.title} />
+
+  <section class="blog-detail-section">
+    <div class="container">
+      
+      <div class="blog-header">
+        <span class="blog-date">{blog.date}</span>
+        <h1 class="blog-title">{blog.title}</h1>
+      </div>
+
+      <div class="blog-layout">
+        <div class="blog-main">
+          <div class="blog-content-flex">
+          <aside class="blog-toolbar-wrapper no-print">
+            <div class="blog-toolbar">
+              <button class="tool-btn" id="btn-zoom-in" title="Yazıyı Büyüt" aria-label="Yazıyı Büyüt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              </button>
+              <button class="tool-btn" id="btn-zoom-out" title="Yazıyı Küçült" aria-label="Yazıyı Küçült">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              </button>
+              <button class="tool-btn" id="btn-speak" title="Sesli Dinle" aria-label="Sesli Dinle">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              </button>
+              <button class="tool-btn" id="btn-print" title="Yazdır" aria-label="Yazdır">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+              </button>
+              <button class="tool-btn" id="btn-share" title="Paylaş" aria-label="Paylaş">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+              </button>
+            </div>
+          </aside>
+          
+          <div class="blog-content-body">
+            <img src={blog.image} alt={blog.title} class="blog-featured-image" />
+            <div class="blog-content" id="blog-content" set:html={blog.content}></div>
+          </div>
+        </div>
+      </div>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar no-print">
+          <div class="sidebar-widget">
+            <h3 class="widget-title">Yazılarda Ara</h3>
+            <div class="search-form">
+              <input type="text" placeholder="Arama yapın..." class="search-input" />
+              <button class="search-btn" aria-label="Ara">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3 class="widget-title">Diğer Yazılarımız</h3>
+            <div class="other-blogs-list">
+              {otherBlogs.map(ob => (
+                <a href={`/blog/${ob.slug}`} class="other-blog-item">
+                  <div class="other-blog-img-wrap">
+                    <img src={ob.image} alt={ob.title} class="other-blog-img" />
+                  </div>
+                  <div class="other-blog-info">
+                    <h4>{ob.title}</h4>
+                    <span>{ob.date}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .blog-detail-section {
+    padding: 80px 0;
+    background: var(--color-light);
+  }
+  .blog-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 1200px;
+  }
+  @media (min-width: 992px) {
+    .blog-layout {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  .blog-main {
+    width: 100%;
+  }
+  .blog-sidebar {
+    width: 100%;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+  .blog-header {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    max-width: 1200px;
+  }
+  .blog-date {
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .blog-title {
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    line-height: 1.2;
+    font-family: var(--font-secondary);
+  }
+  
+  .blog-content-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .blog-content-body {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  @media (min-width: 768px) {
+    .blog-content-flex {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 25px;
+    }
+    .blog-toolbar-wrapper {
+      position: sticky;
+      top: 100px;
+      flex-shrink: 0;
+    }
+    .blog-toolbar {
+      flex-direction: column !important;
+      padding: 10px 6px !important;
+      border-radius: 40px !important;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  .blog-toolbar {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: fit-content;
+  }
+  
+  .tool-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+    padding: 0;
+  }
+  
+  .tool-btn:hover {
+    background: rgba(42, 90, 117, 0.1); /* primary with opacity */
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  .tool-btn.active {
+    background: var(--color-primary);
+    color: white;
+  }
+  
+  .blog-featured-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    object-fit: cover;
+    max-height: 500px;
+  }
+  
+  .blog-content {
+    font-size: 1.1rem; /* Base size */
+    line-height: 1.8;
+    color: #444;
+    transition: font-size 0.3s ease;
+  }
+  
+  .blog-content p {
+    margin-bottom: 1.5rem;
+  }
+  
+  .blog-content h2 {
+    font-family: var(--font-secondary);
+    font-size: 1.8rem;
+    color: var(--color-dark);
+    margin: 2.5rem 0 1rem;
+  }
+
+  /* Sidebar Styles */
+  .sidebar-widget {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+  }
+  .widget-title {
+    font-family: var(--font-secondary);
+    font-size: 1.4rem;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  .search-form {
+    display: flex;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .search-input:focus {
+    border-color: var(--color-primary);
+  }
+  .search-btn {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: 10px;
+  }
+
+  .other-blogs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .other-blog-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s;
+  }
+  .other-blog-item:hover {
+    transform: translateX(5px);
+  }
+  .other-blog-item:hover h4 {
+    color: var(--color-primary);
+  }
+  .other-blog-img-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .other-blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .other-blog-info h4 {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    color: var(--color-dark);
+    transition: color 0.3s;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .other-blog-info span {
+    font-size: 0.8rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+
+  /* Print Styles */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .no-print {
+      display: none !important;
+    }
+    .blog-detail-section, .blog-detail-section * {
+      visibility: visible;
+    }
+    .blog-detail-section {
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 0;
+      background: white;
+    }
+    .blog-container {
+      max-width: 100%;
+    }
+    .blog-featured-image {
+      box-shadow: none;
+      border-radius: 0;
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 2rem;
+    }
+    .blog-toolbar {
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .tool-btn {
+      padding: 6px 12px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Zoom Functionality
+    const content = document.getElementById('blog-content');
+    const btnZoomIn = document.getElementById('btn-zoom-in');
+    const btnZoomOut = document.getElementById('btn-zoom-out');
+    let currentFontSize = 1.1; // Base rem
+
+    btnZoomIn?.addEventListener('click', () => {
+      if (content && currentFontSize < 1.6) {
+        currentFontSize += 0.1;
+        content.style.fontSize = `${currentFontSize}rem`;
+      }
+    });
+
+    btnZoomOut?.addEventListener('click', () => {
+      if (content && currentFontSize > 0.9) {
+        currentFontSize -= 0.1;
+        content.style.fontSize = `${currentFontSize}rem`;
+      }
+    });
+
+    // Print Functionality
+    const btnPrint = document.getElementById('btn-print');
+    btnPrint?.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Share Functionality
+    const btnShare = document.getElementById('btn-share');
+    btnShare?.addEventListener('click', async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.title,
+            url: window.location.href
+          });
+        } catch (err) {
+          console.error('Share failed:', err);
+        }
+      } else {
+        // Fallback: Copy to clipboard
+        navigator.clipboard.writeText(window.location.href).then(() => {
+          alert('Bağlantı kopyalandı!');
+        });
+      }
+    });
+
+    // Text to Speech Functionality
+    const btnSpeak = document.getElementById('btn-speak');
+    let isSpeaking = false;
+    let utterance = null;
+
+    btnSpeak?.addEventListener('click', () => {
+      if (!('speechSynthesis' in window)) {
+        alert('Tarayıcınız sesli okumayı desteklemiyor.');
+        return;
+      }
+
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        btnSpeak.setAttribute('title', 'Sesli Dinle');
+        btnSpeak.classList.remove('active');
+      } else {
+        const textToRead = content?.innerText || '';
+        if (textToRead) {
+          utterance = new SpeechSynthesisUtterance(textToRead);
+          utterance.lang = 'tr-TR';
+          utterance.rate = 1;
+          
+          utterance.onend = () => {
+            isSpeaking = false;
+            btnSpeak.setAttribute('title', 'Sesli Dinle');
+            btnSpeak.classList.remove('active');
+          };
+
+          window.speechSynthesis.speak(utterance);
+          isSpeaking = true;
+          btnSpeak.setAttribute('title', 'Durdur');
+          btnSpeak.classList.add('active');
+        }
+      }
+    });
+
+    // Stop speaking when leaving page
+    window.addEventListener('beforeunload', () => {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    });
+  });
+</script>
