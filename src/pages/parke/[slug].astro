@@ -1,7 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
-import PageHero from "../../components/PageHero.astro";
 import Footer from "../../components/Footer.astro";
 import products from "../../data/products.json";
 
@@ -13,86 +12,121 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+const images = product.images && product.images.length > 0 ? product.images : [product.img];
 ---
 
 <Layout title={`${product.name} | ZenFlor Parke`}>
 	<Header />
-	<PageHero
-		title={product.name}
-		subtitle={`${product.series} Serisi Premium Parke`}
-	/>
 
-	<section class="product-detail-section">
-		<div class="container detail-container">
-			<div class="detail-image-gallery">
-				{product.images && product.images.length > 0 ? (
-					product.images.map((imgSrc, index) => (
-						<div class="detail-image-wrapper">
-							<img src={imgSrc} alt={`${product.name} - Görsel ${index + 1}`} class="detail-img" loading="lazy" />
-						</div>
-					))
-				) : (
-					<div class="detail-image-wrapper">
-						<img src={product.img} alt={product.name} class="detail-img" />
-					</div>
-				)}
-			</div>
+	<section class="product-detail">
+		<div class="container">
+			<nav class="breadcrumb" aria-label="Ekmek kırıntısı navigasyonu">
+				<a href="/">Ana Sayfa</a>
+				<span class="sep">/</span>
+				<a href="/parke">Parke Koleksiyonu</a>
+				<span class="sep">/</span>
+				<span class="current">{product.name}</span>
+			</nav>
 
-			<div class="detail-info-wrapper">
-				<div class="detail-header">
-					<h2>{product.name}</h2>
-					<span class="series-badge">{product.series}</span>
-				</div>
+			<div class="detail-layout">
+				<div class="detail-gallery">
+					<div class="product-slider" id="productSlider" data-slide-count={images.length}>
+						<div class="slider-viewport">
+							<div class="slider-track" id="sliderTrack">
+								{images.map((imgSrc, index) => (
+									<div class="slide-item" data-index={index}>
+										<img
+											src={imgSrc}
+											alt={`${product.name} - Görsel ${index + 1}`}
+											loading={index === 0 ? "eager" : "lazy"}
+										/>
+									</div>
+								))}
+							</div>
 
-				<div class="price-section">
-					<p class="price-display">
-						<span class="price-val">{product.price}</span>
-						<span class="price-unit">/ m²</span>
-					</p>
-					<p class="price-note">* Belirtilen fiyatlar KDV hariç perakende satış fiyatlarıdır.</p>
-				</div>
+							{images.length > 1 && (
+								<>
+									<button class="slider-btn prev-btn" id="prevBtn" type="button" aria-label="Önceki Görsel">
+										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+											<polyline points="15 18 9 12 15 6"></polyline>
+										</svg>
+									</button>
+									<button class="slider-btn next-btn" id="nextBtn" type="button" aria-label="Sonraki Görsel">
+										<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+											<polyline points="9 18 15 12 9 6"></polyline>
+										</svg>
+									</button>
+								</>
+							)}
+						</div>
 
-				<div class="specs-box">
-					<h3>Teknik Özellikler</h3>
-					<div class="specs-grid">
-						<div class="spec-item">
-							<span class="spec-label">Renk Tonu</span>
-							<span class="spec-value">{product.color}</span>
-						</div>
-						<div class="spec-item">
-							<span class="spec-label">Kalınlık</span>
-							<span class="spec-value">{product.thickness}</span>
-						</div>
-						<div class="spec-item">
-							<span class="spec-label">Kenar Tipi</span>
-							<span class="spec-value">{product.edge}</span>
-						</div>
-						<div class="spec-item">
-							<span class="spec-label">En (Genişlik)</span>
-							<span class="spec-value">{product.width}</span>
-						</div>
-						<div class="spec-item">
-							<span class="spec-label">Boy (Uzunluk)</span>
-							<span class="spec-value">{product.length}</span>
-						</div>
-						<div class="spec-item full-width">
-							<span class="spec-label">Yüzey Dayanımı & Sınıf</span>
-							<span class="spec-value">{product.surface}</span>
-						</div>
-						<div class="spec-item full-width">
-							<span class="spec-label">Paket İçeriği</span>
-							<span class="spec-value">{product.package}</span>
-						</div>
-						<div class="spec-item full-width">
-							<span class="spec-label">Palet İçeriği</span>
-							<span class="spec-value">{product.pallet}</span>
-						</div>
+						{images.length > 1 && (
+							<div class="slider-dots" id="sliderDots">
+								{images.map((_, index) => (
+									<button
+										class={`dot-btn ${index === 0 ? 'active' : ''}`}
+										type="button"
+										data-dot-index={index}
+										aria-label={`Görsel ${index + 1}'e git`}
+									></button>
+								))}
+							</div>
+						)}
 					</div>
 				</div>
 
-				<div class="action-buttons">
-					<a href="/iletisim" class="btn-primary btn-large">İletişime Geç & Teklif Al</a>
-					<a href="/parke" class="btn-outline btn-large">Tüm Ürünleri Gör</a>
+				<div class="detail-content">
+					<div class="detail-header">
+						<span class="series-tag">{product.series} Serisi</span>
+						<h2 class="product-title">{product.name}</h2>
+					</div>
+
+					<div class="price-block">
+						<div class="price-display">
+							<span class="price-value">{product.price}</span>
+							<span class="price-unit">/ m²</span>
+						</div>
+						<p class="price-disclaimer">* Fiyatlarımıza KDV dahil değildir.</p>
+					</div>
+
+					<div class="specs-section">
+						<h3 class="specs-title">Teknik Özellikler</h3>
+						<ul class="specs-list">
+							<li>
+								<span class="spec-name">Renk Tonu</span>
+								<span class="spec-value">{product.color}</span>
+							</li>
+							<li>
+								<span class="spec-name">Kalınlık</span>
+								<span class="spec-value">{product.thickness}</span>
+							</li>
+							<li>
+								<span class="spec-name">Kenar Tipi</span>
+								<span class="spec-value">{product.edge}</span>
+							</li>
+							<li>
+								<span class="spec-name">Boyut (En x Boy)</span>
+								<span class="spec-value">{product.width} x {product.length}</span>
+							</li>
+							<li>
+								<span class="spec-name">Yüzey Dayanımı</span>
+								<span class="spec-value">{product.surface}</span>
+							</li>
+							<li>
+								<span class="spec-name">Paket İçeriği</span>
+								<span class="spec-value">{product.package}</span>
+							</li>
+							<li>
+								<span class="spec-name">Palet İçeriği</span>
+								<span class="spec-value">{product.pallet}</span>
+							</li>
+						</ul>
+					</div>
+
+					<div class="action-group">
+						<a href="/iletisim" class="btn-primary">Hemen Teklif Al</a>
+						<a href="/parke" class="btn-outline">Tüm Koleksiyonu İncele</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -101,181 +135,419 @@ const { product } = Astro.props;
 	<Footer />
 </Layout>
 
-<style>
-	.product-detail-section {
-		padding: var(--spacing-4xl) 0;
-		background-color: var(--surface-50);
+<script is:inline>
+	function setupProductSlider() {
+		const slider = document.getElementById('productSlider');
+		if (!slider) return;
+
+		const track = document.getElementById('sliderTrack');
+		const prevBtn = document.getElementById('prevBtn');
+		const nextBtn = document.getElementById('nextBtn');
+		const dots = slider.querySelectorAll('.dot-btn');
+		const slides = slider.querySelectorAll('.slide-item');
+		const totalSlides = slides.length;
+
+		if (totalSlides <= 1 || !track) return;
+
+		let currentIndex = 0;
+
+		function goToSlide(index) {
+			if (index < 0) {
+				currentIndex = totalSlides - 1;
+			} else if (index >= totalSlides) {
+				currentIndex = 0;
+			} else {
+				currentIndex = index;
+			}
+
+			track.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+			dots.forEach((dot, i) => {
+				if (i === currentIndex) {
+					dot.classList.add('active');
+				} else {
+					dot.classList.remove('active');
+				}
+			});
+		}
+
+		prevBtn?.addEventListener('click', (e) => {
+			e.preventDefault();
+			goToSlide(currentIndex - 1);
+		});
+
+		nextBtn?.addEventListener('click', (e) => {
+			e.preventDefault();
+			goToSlide(currentIndex + 1);
+		});
+
+		dots.forEach((dot) => {
+			dot.addEventListener('click', (e) => {
+				e.preventDefault();
+				const idx = parseInt(dot.getAttribute('data-dot-index') || '0', 10);
+				goToSlide(idx);
+			});
+		});
+
+		// Touch swipe
+		let startX = 0;
+		let endX = 0;
+
+		track.addEventListener('touchstart', (e) => {
+			startX = e.touches[0].clientX;
+		}, { passive: true });
+
+		track.addEventListener('touchend', (e) => {
+			endX = e.changedTouches[0].clientX;
+			const diff = startX - endX;
+			if (Math.abs(diff) > 40) {
+				if (diff > 0) {
+					goToSlide(currentIndex + 1);
+				} else {
+					goToSlide(currentIndex - 1);
+				}
+			}
+		}, { passive: true });
 	}
 
-	.detail-container {
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupProductSlider);
+	} else {
+		setupProductSlider();
+	}
+	document.addEventListener('astro:page-load', setupProductSlider);
+</script>
+
+<style>
+	.product-detail {
+		padding: 2.5rem 0 5rem 0;
+		background-color: var(--color-light);
+	}
+
+	.breadcrumb {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		font-family: var(--font-secondary);
+		font-size: 0.875rem;
+		color: var(--color-text-dark);
+		opacity: 0.75;
+		margin-bottom: 2rem;
+	}
+
+	.breadcrumb a {
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.2s ease, opacity 0.2s ease;
+	}
+
+	.breadcrumb a:hover {
+		color: var(--color-primary);
+		opacity: 1;
+	}
+
+	.breadcrumb .sep {
+		font-size: 0.75rem;
+		opacity: 0.4;
+	}
+
+	.breadcrumb .current {
+		font-weight: 600;
+		color: var(--color-primary);
+		opacity: 1;
+	}
+
+	.detail-layout {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: var(--spacing-3xl);
+		gap: 3rem;
 	}
 
 	@media (min-width: 992px) {
-		.detail-container {
+		.detail-layout {
 			grid-template-columns: 1fr 1fr;
+			gap: 5rem;
 			align-items: start;
 		}
 	}
 
-	.detail-image-gallery {
-		display: flex;
-		flex-direction: column;
-		gap: var(--spacing-lg);
+	.detail-gallery {
 		position: sticky;
-		top: 100px;
+		top: 120px;
 	}
 
-	.detail-image-wrapper {
-		border-radius: var(--radius-lg);
-		overflow: hidden;
-		box-shadow: var(--shadow-md);
-	}
-
-	.detail-img {
-		width: 100%;
-		height: auto;
-		display: block;
-		aspect-ratio: 4/3;
-		object-fit: cover;
-		transition: transform var(--transition-slow);
-	}
-	
-	.detail-img:hover {
-		transform: scale(1.05);
-	}
-
-	.detail-info-wrapper {
+	.product-slider {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-xl);
+		gap: 1.25rem;
+	}
+
+	.slider-viewport {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		border-radius: 16px;
+		overflow: hidden;
+		background: #fff;
+		box-shadow: 0 10px 30px rgba(74, 59, 50, 0.07);
+	}
+
+	.slider-track {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+		touch-action: pan-y pinch-zoom;
+	}
+
+	.slide-item {
+		min-width: 100%;
+		width: 100%;
+		height: 100%;
+		flex-shrink: 0;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: #fff;
+	}
+
+	.slide-item img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		user-select: none;
+		-webkit-user-drag: none;
+	}
+
+	.slider-btn {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.9);
+		backdrop-filter: blur(8px);
+		border: 1px solid rgba(255, 255, 255, 0.8);
+		color: var(--color-dark);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+		transition: all 0.25s ease;
+		z-index: 2;
+	}
+
+	.slider-btn:hover {
+		background: #ffffff;
+		color: var(--color-primary);
+		transform: translateY(-50%) scale(1.08);
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+	}
+
+	.prev-btn {
+		left: 1rem;
+	}
+
+	.next-btn {
+		right: 1rem;
+	}
+
+	.slider-dots {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6rem;
+		padding: 0.25rem 0;
+	}
+
+	.dot-btn {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: rgba(140, 106, 83, 0.25);
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		transition: background-color 0.25s ease, transform 0.25s ease;
+	}
+
+	.dot-btn:hover {
+		background: rgba(140, 106, 83, 0.55);
+	}
+
+	.dot-btn.active {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: var(--color-primary);
+		transform: scale(1.2);
+	}
+
+	.detail-content {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		padding: 0.5rem 0;
 	}
 
 	.detail-header {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-sm);
+		gap: 0.5rem;
 	}
 
-	.detail-header h2 {
-		font-size: var(--text-3xl);
-		color: var(--text-900);
-		margin: 0;
-		text-transform: uppercase;
-	}
-
-	.series-badge {
-		display: inline-block;
+	.series-tag {
 		align-self: flex-start;
-		background-color: var(--primary-100);
-		color: var(--primary-700);
-		padding: var(--spacing-xs) var(--spacing-md);
-		border-radius: var(--radius-full);
-		font-size: var(--text-sm);
+		font-family: var(--font-secondary);
+		font-size: 0.85rem;
 		font-weight: 600;
+		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		letter-spacing: 0.5px;
+		color: var(--color-secondary);
+		border-bottom: 1px solid var(--color-secondary);
+		padding-bottom: 4px;
 	}
 
-	.price-section {
-		padding-bottom: var(--spacing-lg);
-		border-bottom: 1px solid var(--border-200);
+	.product-title {
+		font-family: var(--font-primary);
+		font-size: 3rem;
+		color: var(--color-dark);
+		line-height: 1.1;
+		margin: 0;
+	}
+
+	.price-block {
+		padding-bottom: 2rem;
+		border-bottom: 1px solid rgba(140, 106, 83, 0.2);
 	}
 
 	.price-display {
 		display: flex;
-		align-items: baseline;
-		gap: var(--spacing-xs);
-		margin: 0 0 var(--spacing-xs) 0;
+		align-items: flex-end;
+		gap: 0.5rem;
+		margin-bottom: 0.5rem;
 	}
 
-	.price-val {
-		font-size: var(--text-3xl);
-		font-weight: 700;
-		color: var(--primary-600);
+	.price-value {
+		font-family: var(--font-primary);
+		font-size: 2.5rem;
+		font-weight: 600;
+		color: var(--color-primary);
+		line-height: 1;
 	}
 
 	.price-unit {
-		font-size: var(--text-lg);
-		color: var(--text-500);
+		font-family: var(--font-secondary);
+		font-size: 1.1rem;
+		color: var(--color-text-dark);
+		opacity: 0.7;
+		padding-bottom: 0.2rem;
 	}
 
-	.price-note {
-		font-size: var(--text-sm);
-		color: var(--text-500);
+	.price-disclaimer {
+		font-family: var(--font-secondary);
+		font-size: 0.85rem;
+		color: var(--color-text-dark);
+		opacity: 0.6;
 		margin: 0;
 	}
 
-	.specs-box {
-		background-color: var(--surface-100);
-		border-radius: var(--radius-md);
-		padding: var(--spacing-xl);
-		border: 1px solid var(--border-200);
-	}
-
-	.specs-box h3 {
-		font-size: var(--text-xl);
-		color: var(--text-900);
-		margin: 0 0 var(--spacing-lg) 0;
-		padding-bottom: var(--spacing-sm);
-		border-bottom: 1px solid var(--border-300);
-	}
-
-	.specs-grid {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--spacing-md);
-	}
-
-	@media (min-width: 640px) {
-		.specs-grid {
-			grid-template-columns: 1fr 1fr;
-		}
-	}
-
-	.spec-item {
+	.specs-section {
 		display: flex;
 		flex-direction: column;
-		gap: 4px;
+		gap: 1.5rem;
 	}
 
-	.spec-item.full-width {
-		grid-column: 1 / -1;
+	.specs-title {
+		font-family: var(--font-primary);
+		font-size: 1.5rem;
+		color: var(--color-dark);
+		margin: 0;
 	}
 
-	.spec-label {
-		font-size: var(--text-sm);
-		color: var(--text-500);
-		text-transform: uppercase;
-		letter-spacing: 0.5px;
-		font-weight: 600;
+	.specs-list {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.specs-list li {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 0;
+		border-bottom: 1px solid rgba(140, 106, 83, 0.1);
+	}
+
+	.specs-list li:last-child {
+		border-bottom: none;
+	}
+
+	.spec-name {
+		font-family: var(--font-secondary);
+		font-size: 0.95rem;
+		color: var(--color-text-dark);
+		opacity: 0.7;
 	}
 
 	.spec-value {
-		font-size: var(--text-base);
-		color: var(--text-800);
-		font-weight: 500;
+		font-family: var(--font-secondary);
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--color-dark);
+		text-align: right;
 	}
 
-	.action-buttons {
+	.action-group {
 		display: flex;
 		flex-direction: column;
-		gap: var(--spacing-md);
-		margin-top: var(--spacing-md);
+		gap: 1rem;
+		margin-top: 1rem;
 	}
 
 	@media (min-width: 640px) {
-		.action-buttons {
+		.action-group {
 			flex-direction: row;
 		}
 	}
 
-	.btn-large {
-		padding: var(--spacing-md) var(--spacing-xl);
-		font-size: var(--text-lg);
+	.btn-primary, .btn-outline {
+		padding: 1rem 2rem;
+		font-size: 1rem;
 		text-align: center;
 		flex: 1;
+		border-radius: 6px;
+		font-weight: 600;
+		font-family: var(--font-secondary);
+		transition: all 0.3s ease;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.btn-primary {
+		background-color: var(--color-primary);
+		color: var(--color-text-light);
+		border: 1px solid var(--color-primary);
+	}
+
+	.btn-primary:hover {
+		background-color: var(--color-dark);
+		border-color: var(--color-dark);
+		transform: translateY(-2px);
+	}
+
+	.btn-outline {
+		background-color: transparent;
+		color: var(--color-dark);
+		border: 1px solid var(--color-dark);
+	}
+
+	.btn-outline:hover {
+		background-color: var(--color-dark);
+		color: var(--color-text-light);
+		transform: translateY(-2px);
 	}
 </style>
