@@ -17,19 +17,18 @@ const images =
 		? product.images
 		: [product.img];
 
-// Sayısal fiyat ve paket m² hesaplama
+// Sayısal fiyat hesaplama
 const rawPrice =
 	parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
-let rawPackageM2 = 1.84;
-const m2Match = product.package?.match(/(\d+[.,]\d+)\s*m²/);
-if (m2Match) {
-	rawPackageM2 = parseFloat(m2Match[1].replace(",", ".")) || 1.84;
-}
 
 // Diğer / İlgili Ürünler (Öncelikle aynı seriden, toplam 4 ürün)
 const otherProducts = products
 	.filter((p) => p.id !== product.id)
-	.sort((a, b) => (a.series === product.series ? -1 : 1))
+	.sort((a, b) => {
+		if (a.series === product.series && b.series !== product.series) return -1;
+		if (a.series !== product.series && b.series === product.series) return 1;
+		return 0;
+	})
 	.slice(0, 4);
 ---
 
@@ -982,7 +981,6 @@ const otherProducts = products
 		if (!slider) return;
 
 		const track = document.getElementById("sliderTrack");
-		const viewport = document.getElementById("sliderViewport");
 		const prevBtn = document.getElementById("prevBtn");
 		const nextBtn = document.getElementById("nextBtn");
 		const dots = slider.querySelectorAll(".dot-btn");
@@ -992,8 +990,6 @@ const otherProducts = products
 
 		const productName =
 			slider.getAttribute("data-product-name") || "ZenFlor Parke";
-		const productId =
-			slider.getAttribute("data-product-id") || "parke-model";
 		const totalSlides = slides.length;
 
 		// Modal Elemanları
@@ -1181,7 +1177,6 @@ const otherProducts = products
 
 			// Pan limitlerini sınırla
 			if (scale > 1 && modalCanvas) {
-				const rect = modalImage.getBoundingClientRect();
 				const maxPanX = Math.max(
 					0,
 					(modalImage.offsetWidth * scale - modalCanvas.clientWidth) /
