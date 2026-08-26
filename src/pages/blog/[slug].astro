@@ -21,7 +21,14 @@ const { blog, otherBlogs } = Astro.props;
 
 <Layout title={`${blog.title} | ZenFlor Blog`}>
   <Header />
-  <PageHero title="Blog Detay" subtitle={blog.title} />
+  <PageHero
+    title="Blog Detay"
+    subtitle={blog.title}
+    breadcrumbs={[
+      { label: "Blog", href: "/blog" },
+      { label: blog.title },
+    ]}
+  />
 
   <section class="blog-detail-section">
     <div class="container">

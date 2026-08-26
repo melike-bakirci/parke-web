@@ -1,12 +1,14 @@
 ---
-import Breadcrumb from './Breadcrumb.astro';
+import Breadcrumb, { type BreadcrumbItem } from "./Breadcrumb.astro";
 
 interface Props {
   title: string;
   subtitle?: string;
+  breadcrumbs?: BreadcrumbItem[];
+  showBreadcrumb?: boolean;
 }
 
-const { title, subtitle } = Astro.props;
+const { title, subtitle, breadcrumbs, showBreadcrumb = true } = Astro.props;
 ---
 
 <section class="page-hero">
@@ -16,11 +18,15 @@ const { title, subtitle } = Astro.props;
   </div>
 </section>
 
-<div class="breadcrumb-outer">
-  <div class="container">
-    <Breadcrumb />
-  </div>
-</div>
+{
+  showBreadcrumb && (
+    <div class="breadcrumb-outer">
+      <div class="container">
+        <Breadcrumb items={breadcrumbs} />
+      </div>
+    </div>
+  )
+}
 
 <style>
   .page-hero {

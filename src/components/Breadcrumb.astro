@@ -1,49 +1,163 @@
 ---
-const pathname = new URL(Astro.request.url).pathname;
-const paths = pathname.split('/').filter(Boolean);
+import products from "../data/products.json";
+import blogs from "../data/blogs.json";
 
+export interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items?: BreadcrumbItem[];
+  showHomeIcon?: boolean;
+}
+
+const { items, showHomeIcon = true } = Astro.props;
+
+const pathname = new URL(Astro.request.url).pathname;
+const paths = pathname.split("/").filter(Boolean);
+
+// Standart sayfa slug -> Türkçe başlık eşleştirmesi
 const labelMap: Record<string, string> = {
-  'hakkimizda': 'Biz Kimiz?',
-  'parke': 'Parke',
-  'referanslar': 'Neler Yaptık?',
-  'blog': 'Blog',
-  'iletisim': 'İletişim',
-  'gizlilik-politikasi': 'Gizlilik Politikası',
-  'kullanim-kosullari': 'Kullanım Koşulları',
-  'kvkk': 'KVKK Aydınlatma Metni',
-  'cerez-politikasi': 'Çerez Politikası',
+  hakkimizda: "Biz Kimiz?",
+  parke: "Parke",
+  referanslar: "Neler Yaptık?",
+  blog: "Blog",
+  iletisim: "İletişim",
+  "gizlilik-politikasi": "Gizlilik Politikası",
+  "kullanim-kosullari": "Kullanım Koşulları",
+  kvkk: "KVKK Aydınlatma Metni",
+  "cerez-politikasi": "Çerez Politikası",
 };
 
-const breadcrumbs = paths.map((path, index) => {
-  const href = '/' + paths.slice(0, index + 1).join('/');
-  // Capitalize and format text or use mapping
-  const label = labelMap[path] || (path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' '));
-  return { href, label };
-});
+// Dinamik ürün ve blog başlıkları haritası
+const productMap = new Map<string, string>(
+  products.map((p) => [p.id, p.name])
+);
+const blogMap = new Map<string, string>(
+  blogs.map((b) => [b.slug, b.title])
+);
+
+// Breadcrumb listesi oluşturma
+const breadcrumbItems: BreadcrumbItem[] =
+  items && items.length > 0
+    ? items
+    : paths.map((path, index) => {
+        const href = "/" + paths.slice(0, index + 1).join("/");
+        let label = labelMap[path];
+
+        if (!label) {
+          if (productMap.has(path)) {
+            label = productMap.get(path)!;
+          } else if (blogMap.has(path)) {
+            label = blogMap.get(path)!;
+          } else {
+            // Bilinmeyen slug durumunda Türkçe uyumlu baş harf büyütme
+            const decoded = decodeURIComponent(path).replace(/-/g, " ");
+            label = decoded.charAt(0).toLocaleUpperCase("tr-TR") + decoded.slice(1);
+          }
+        }
+
+        return { href, label };
+      });
+
+// Schema.org BreadcrumbList JSON-LD
+const origin = Astro.site ? Astro.site.origin : "https://zenflor.com.tr";
+const schemaList = [
+  {
+    "@type": "ListItem",
+    position: 1,
+    name: "Ana Sayfa",
+    item: `${origin}/`,
+  },
+  ...breadcrumbItems.map((crumb, idx) => ({
+    "@type": "ListItem",
+    position: idx + 2,
+    name: crumb.label,
+    item: crumb.href ? `${origin}${crumb.href}` : undefined,
+  })),
+];
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: schemaList,
+};
 ---
 
-<nav aria-label="breadcrumb" class="breadcrumb-nav">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/">Ana Sayfa</a></li>
-    {breadcrumbs.map((crumb, index) => (
-      <li class="breadcrumb-item">
-        <span class="separator">/</span>
-        {index === breadcrumbs.length - 1 ? (
-          <span class="active" aria-current="page">{crumb.label}</span>
-        ) : (
-          <a href={crumb.href}>{crumb.label}</a>
+<!-- Schema.org Yapılandırılmış Veri -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<nav aria-label="Ekmek kırıntısı navigasyonu" class="breadcrumb-nav">
+  <ol class="breadcrumb-list">
+    <li class="breadcrumb-item">
+      <a href="/" class="breadcrumb-link home-link" title="Ana Sayfaya Dön">
+        {showHomeIcon && (
+          <svg
+            class="home-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
         )}
-      </li>
-    ))}
+        <span>Ana Sayfa</span>
+      </a>
+    </li>
+
+    {breadcrumbItems.map((crumb, index) => {
+      const isLast = index === breadcrumbItems.length - 1;
+      return (
+        <li class="breadcrumb-item">
+          <span class="breadcrumb-separator" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+          {isLast ? (
+            <span class="breadcrumb-current" aria-current="page" title={crumb.label}>
+              {crumb.label}
+            </span>
+          ) : (
+            <a href={crumb.href} class="breadcrumb-link">
+              {crumb.label}
+            </a>
+          )}
+        </li>
+      );
+    })}
   </ol>
 </nav>
 
 <style>
   .breadcrumb-nav {
-    margin-bottom: 0;
-    font-size: 0.95rem;
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.4;
   }
-  .breadcrumb {
+
+  .breadcrumb-list {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -51,28 +165,81 @@ const breadcrumbs = paths.map((path, index) => {
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 0.25rem;
+    gap: 0.35rem 0.5rem;
   }
+
   .breadcrumb-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    color: #5a6a78;
+    color: #64748b;
+    font-weight: 400;
   }
-  .breadcrumb-item a {
-    color: #5a6a78;
+
+  .breadcrumb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #64748b;
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.15s ease, transform 0.15s ease;
+    border-radius: 4px;
+    padding: 2px 4px;
+    margin: -2px -4px;
   }
-  .breadcrumb-item a:hover {
-    color: var(--color-primary);
+
+  .breadcrumb-link:hover {
+    color: var(--color-primary, #c8a96e);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
-  .separator {
-    margin: 0 0.5rem;
-    color: #cbd5e1;
-    font-size: 0.8rem;
-  }
-  .active {
-    color: var(--color-primary);
+
+  .home-link {
     font-weight: 500;
+  }
+
+  .home-icon {
+    display: inline-block;
+    flex-shrink: 0;
+    color: #94a3b8;
+    transition: color 0.15s ease;
+  }
+
+  .home-link:hover .home-icon {
+    color: var(--color-primary, #c8a96e);
+  }
+
+  .breadcrumb-separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .breadcrumb-separator svg {
+    display: block;
+  }
+
+  .breadcrumb-current {
+    color: #0f172a;
+    font-weight: 600;
+    white-space: normal;
+    word-break: break-word;
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumb-nav {
+      font-size: 0.8125rem;
+    }
+    .breadcrumb-current {
+      max-width: 260px;
+    }
   }
 </style>

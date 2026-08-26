@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import products from "../../data/products.json";
 
 export async function getStaticPaths() {
@@ -37,13 +38,14 @@ const otherProducts = products
 
 	<section class="product-detail">
 		<div class="container">
-			<nav class="breadcrumb" aria-label="Ekmek kırıntısı navigasyonu">
-				<a href="/">Ana Sayfa</a>
-				<span class="sep">/</span>
-				<a href="/parke">Parke Koleksiyonu</a>
-				<span class="sep">/</span>
-				<span class="current">{product.name}</span>
-			</nav>
+			<div class="product-breadcrumb-wrapper">
+				<Breadcrumb
+					items={[
+						{ label: "Parke Koleksiyonu", href: "/parke" },
+						{ label: product.name },
+					]}
+				/>
+			</div>
 
 			<div class="detail-layout">
 				<!-- SOL SÜTUN: FOTOĞRAF SLIDER VE HEMEN ALTINDA TEKNİK ÖZELLİKLER -->
@@ -1591,40 +1593,9 @@ const otherProducts = products
 		background-color: var(--color-light);
 	}
 
-	.breadcrumb {
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		font-family: var(--font-secondary);
-		font-size: 0.875rem;
-		color: var(--color-text-dark);
-		opacity: 0.75;
+	.product-breadcrumb-wrapper {
 		margin-bottom: 2rem;
-	}
-
-	.breadcrumb a {
-		color: inherit;
-		text-decoration: none;
-		transition:
-			color 0.2s ease,
-			opacity 0.2s ease;
-	}
-
-	.breadcrumb a:hover {
-		color: var(--color-primary);
-		opacity: 1;
-	}
-
-	.breadcrumb .sep {
-		font-size: 0.75rem;
-		opacity: 0.4;
-	}
-
-	.breadcrumb .current {
-		font-weight: 600;
-		color: var(--color-primary);
-		opacity: 1;
+		padding: 0.5rem 0;
 	}
 
 	/* İKİ SÜTUNLU ANA YAPI */
