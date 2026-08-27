@@ -3,6 +3,9 @@ import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 
 import blogs from "../../data/blogs.json";
+import { Image } from "astro:assets";
+
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp,svg}');
 
 export async function getStaticPaths() {
   return blogs.map((blog) => {
@@ -15,9 +18,27 @@ export async function getStaticPaths() {
 }
 
 const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
+import { siteInfo } from "../../data/siteInfo";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": blog.title,
+  "image": new URL(blog.image, Astro.site ? Astro.site.origin : siteInfo.url).href,
+  "description": blog.summary,
+  "author": {
+    "@type": "Organization",
+    "name": "ZenFlor"
+  }
+};
 ---
 
-<Layout title={`${blog.title} | ZenFlor Blog`}>
+<Layout 
+  title={`${blog.title} | ZenFlor Blog`}
+  description={blog.summary}
+  image={blog.image}
+  schema={articleSchema}
+>
   <PageHero
     title="Blog Detay"
     subtitle={blog.title}
@@ -59,7 +80,13 @@ const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
           </aside>
           
           <div class="blog-content-body">
-            <img src={blog.image} alt={blog.title} class="blog-featured-image" />
+            {
+              imagesGlob[`/public${blog.image}`] ? (
+                <Image src={imagesGlob[`/public${blog.image}`]()} alt={blog.title} class="blog-featured-image" width={1200} height={600} loading="eager" />
+              ) : (
+                <img src={blog.image} alt={blog.title} class="blog-featured-image" />
+              )
+            }
             <div class="blog-content" id="blog-content" set:html={blog.content}></div>
           </div>
         </div>
@@ -113,7 +140,13 @@ const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
                     data-content={b.content.replace(/<[^>]+>/g, " ")}
                   >
                     <div class="search-item-img-wrap">
-                      <img src={b.image} alt={b.title} class="search-item-img" loading="lazy" />
+                      {
+                        imagesGlob[`/public${b.image}`] ? (
+                          <Image src={imagesGlob[`/public${b.image}`]()} alt={b.title} class="search-item-img" width={150} height={150} loading="lazy" />
+                        ) : (
+                          <img src={b.image} alt={b.title} class="search-item-img" loading="lazy" />
+                        )
+                      }
                     </div>
                     <div class="search-item-info">
                       <h4>{b.title}</h4>
@@ -139,7 +172,13 @@ const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
               {otherBlogs.map((ob) => (
                 <a href={`/blog/${ob.slug}`} class="other-blog-item">
                   <div class="other-blog-img-wrap">
-                    <img src={ob.image} alt={ob.title} class="other-blog-img" loading="lazy" />
+                    {
+                      imagesGlob[`/public${ob.image}`] ? (
+                        <Image src={imagesGlob[`/public${ob.image}`]()} alt={ob.title} class="other-blog-img" width={150} height={150} loading="lazy" />
+                      ) : (
+                        <img src={ob.image} alt={ob.title} class="other-blog-img" loading="lazy" />
+                      )
+                    }
                   </div>
                   <div class="other-blog-info">
                     <h4>{ob.title}</h4>

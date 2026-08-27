@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import { Image } from "astro:assets";
+
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp}');
 
 // 4 Adet Şirket / Kurumsal İş Ortağı
 const partnerCompanies = [
@@ -113,11 +116,18 @@ const galleryImages = [
 			<!-- Yan Yana 4 Fotoğraf Grid -->
 			<div class="gallery-grid">
 				{
-					galleryImages.map((item) => (
-						<div class="gallery-card" data-img={item.img}>
-							<img src={item.img} alt={item.alt} loading="lazy" />
-						</div>
-					))
+					galleryImages.map((item) => {
+						const globPath = `/public${item.img}`;
+						return (
+							<div class="gallery-card" data-img={item.img}>
+								{imagesGlob[globPath] ? (
+									<Image src={imagesGlob[globPath]()} alt={item.alt} width={800} height={600} loading="lazy" decoding="async" />
+								) : (
+									<img src={item.img} alt={item.alt} loading="lazy" decoding="async" />
+								)}
+							</div>
+						);
+					})
 				}
 			</div>
 		</div>

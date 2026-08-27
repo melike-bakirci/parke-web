@@ -4,6 +4,9 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProductCard from "../../components/ProductCard.astro";
 import products from "../../data/products.json";
 import { siteInfo } from "../../data/siteInfo";
+import { Image } from "astro:assets";
+
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp,svg}');
 
 export async function getStaticPaths() {
 	return products.map((product) => ({
@@ -31,9 +34,30 @@ const otherProducts = products
 		return 0;
 	})
 	.slice(0, 4);
+	.slice(0, 4);
+
+const productSchema = {
+	"@context": "https://schema.org/",
+	"@type": "Product",
+	"name": product.name,
+	"image": new URL(images[0], Astro.site ? Astro.site.origin : siteInfo.url).href,
+	"description": `${product.series} serisi, ${product.thickness} kalınlığında, ${product.color} renginde ${product.name} laminat parke.`,
+	"offers": {
+		"@type": "Offer",
+		"priceCurrency": "TRY",
+		"price": rawPrice,
+		"availability": "https://schema.org/InStock",
+		"url": new URL(Astro.url.pathname, Astro.site ? Astro.site.origin : siteInfo.url).href
+	}
+};
 ---
 
-<Layout title={`${product.name} | ZenFlor`}>
+<Layout 
+	title={`${product.name} | ZenFlor`}
+	description={`${product.series} serisi, ${product.thickness} kalınlığında, ${product.color} renginde ${product.name} laminat parke modeli. ZenFlor kalitesiyle.`}
+	image={images[0]}
+	schema={productSchema}
+>
 
 	<section class="product-detail">
 		<div class="container">
@@ -132,16 +156,25 @@ const otherProducts = products
 											data-index={index}
 											title="Görseli büyütmek için tıklayın"
 										>
-											<img
-												src={imgSrc}
-												alt={`${product.name} - Görsel ${index + 1}`}
-												loading={
-													index === 0
-														? "eager"
-														: "lazy"
-												}
-												data-index={index}
-											/>
+											{
+												imagesGlob[`/public${imgSrc}`] ? (
+													<Image
+														src={imagesGlob[`/public${imgSrc}`]()}
+														alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke - Görsel ${index + 1}`}
+														width={1200}
+														height={800}
+														loading={index === 0 ? "eager" : "lazy"}
+														data-index={index}
+													/>
+												) : (
+													<img
+														src={imgSrc}
+														alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke - Görsel ${index + 1}`}
+														loading={index === 0 ? "eager" : "lazy"}
+														data-index={index}
+													/>
+												)
+											}
 										</div>
 									))
 								}
@@ -709,12 +742,25 @@ const otherProducts = products
 			<!-- Modal Görsel Alanı (Pan & Zoom Özellikli) -->
 			<div class="photo-modal-body" id="modalBody">
 				<div class="modal-canvas" id="modalCanvas">
-					<img
-						src={images[0]}
-						alt={`${product.name} - Yüksek Çözünürlüklü Görsel`}
-						id="modalImage"
-						draggable="false"
-					/>
+					{
+						imagesGlob[`/public${images[0]}`] ? (
+							<Image
+								src={imagesGlob[`/public${images[0]}`]()}
+								alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke Yüksek Çözünürlüklü Görsel`}
+								id="modalImage"
+								draggable="false"
+								width={1920}
+								height={1280}
+							/>
+						) : (
+							<img
+								src={images[0]}
+								alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke Yüksek Çözünürlüklü Görsel`}
+								id="modalImage"
+								draggable="false"
+							/>
+						)
+					}
 				</div>
 
 				<!-- Gezinme Okları -->
@@ -801,10 +847,22 @@ const otherProducts = products
 								data-thumb-index={index}
 								aria-label={`Görsel ${index + 1}`}
 							>
-								<img
-									src={imgSrc}
-									alt={`Küçük görsel ${index + 1}`}
-								/>
+								{
+									imagesGlob[`/public${imgSrc}`] ? (
+										<Image
+											src={imagesGlob[`/public${imgSrc}`]()}
+											alt={`${product.name} parke küçük görsel ${index + 1}`}
+											width={150}
+											height={100}
+											loading="lazy"
+										/>
+									) : (
+										<img
+											src={imgSrc}
+											alt={`${product.name} parke küçük görsel ${index + 1}`}
+										/>
+									)
+								}
 							</button>
 						))}
 					</div>

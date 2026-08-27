@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import { Image } from "astro:assets";
+
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp}');
 ---
 
 <Layout
@@ -37,7 +40,11 @@ import PageHero from "../components/PageHero.astro";
 
 			<div class="story-visual-wrap">
 				<div class="story-image">
-					<img src="/images/about-3.webp" alt="ZenFlor Hikayemiz" />
+					{imagesGlob['/public/images/about-3.webp'] ? (
+						<Image src={imagesGlob['/public/images/about-3.webp']()} alt="ZenFlor Hikayemiz" width={800} height={600} loading="lazy" decoding="async" />
+					) : (
+						<img src="/images/about-3.webp" alt="ZenFlor Hikayemiz" loading="lazy" decoding="async" />
+					)}
 				</div>
 
 				<!-- 4 Standalone Website Icons Under Photo -->

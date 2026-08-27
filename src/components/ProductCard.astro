@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import { Image } from "astro:assets";
 
 export interface Product {
   id: string;
@@ -28,6 +29,10 @@ const { product, isInitiallyVisible = true, class: className = "" } = Astro.prop
 
 const numericPrice =
   parseFloat(product.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp}');
+const primaryImagePath = `/public${product.img}`;
+const secondaryImagePath = product.images && product.images[1] ? `/public${product.images[1]}` : null;
 ---
 
 <a
@@ -43,21 +48,49 @@ const numericPrice =
   style={isInitiallyVisible ? "display: flex;" : "display: none;"}
 >
   <div class="product-img-wrapper">
-    <img
-      src={product.img}
-      alt={product.name}
-      class="primary-img"
-      loading="lazy"
-    />
+    {imagesGlob[primaryImagePath] ? (
+      <Image
+        src={imagesGlob[primaryImagePath]()}
+        alt={`${product.name} parke modeli`}
+        class="primary-img"
+        width={600}
+        height={400}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <img
+        src={product.img}
+        alt={`${product.name} parke modeli`}
+        class="primary-img"
+        width={600}
+        height={400}
+        loading="lazy"
+        decoding="async"
+      />
+    )}
     {
-      product.images && product.images[1] && (
+      secondaryImagePath && imagesGlob[secondaryImagePath] ? (
+        <Image
+          src={imagesGlob[secondaryImagePath]()}
+          alt={`${product.name} - Ortam Görünümü`}
+          class="secondary-img"
+          width={600}
+          height={400}
+          loading="lazy"
+          decoding="async"
+        />
+      ) : secondaryImagePath ? (
         <img
           src={product.images[1]}
           alt={`${product.name} - Ortam Görünümü`}
           class="secondary-img"
+          width={600}
+          height={400}
           loading="lazy"
+          decoding="async"
         />
-      )
+      ) : null
     }
   </div>
   <div class="product-info">

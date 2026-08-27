@@ -20,6 +20,7 @@ interface Props {
 	ctaDescription?: string;
 	ctaWhatsappMsg?: string;
 	ctaPhoneText?: string;
+	schema?: any;
 }
 
 const {
@@ -68,6 +69,7 @@ const schemaData = {
 	}
 };
 
+const finalSchema = Astro.props.schema || schemaData;
 ---
 
 <!doctype html>
@@ -81,6 +83,7 @@ const schemaData = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="canonical" href={canonicalURL} />
+		<meta name="robots" content="index, follow" />
 		
 		<!-- Google Search Console -->
 		<meta name="google-site-verification" content="NPsb6XH8U2d9DXOVUxDBaOw7Ll5zujq5KW0-yH8u3Kw" />
@@ -105,7 +108,7 @@ const schemaData = {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		
 		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+		<script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 	</head>
 	<body>
 		{showHeader && <Header />}
