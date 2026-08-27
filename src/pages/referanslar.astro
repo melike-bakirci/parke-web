@@ -27,13 +27,13 @@ const partnerCompanies = [
 
 // Yan Yana 4 Adet Uygulama Fotoğrafı
 const galleryImages = [
-	{ id: 1, img: "/images/about-1.webp", alt: "ZenFlor Parke Uygulaması 1" },
-	{ id: 2, img: "/images/about-2.webp", alt: "ZenFlor Parke Uygulaması 2" },
-	{ id: 3, img: "/images/about-3.webp", alt: "ZenFlor Parke Uygulaması 3" },
+	{ id: 1, img: "/images/about-1.webp", alt: "Sancaktepe ofis laminat parke zemin kaplama uygulama projesi" },
+	{ id: 2, img: "/images/about-2.webp", alt: "İstanbul lamine parke ev zemin kaplama ve döşeme uygulaması" },
+	{ id: 3, img: "/images/about-3.webp", alt: "Modern serisi suya dayanıklı derzli parke profesyonel montajı" },
 	{
 		id: 4,
 		img: "/images/collection-1.webp",
-		alt: "ZenFlor Parke Uygulaması 4",
+		alt: "Kaliteli ve uygun fiyatlı parke döşeme referans çalışmamız",
 	},
 ];
 ---
@@ -178,8 +178,12 @@ const galleryImages = [
 	galleryCards.forEach((card) => {
 		card.addEventListener("click", () => {
 			const imgUrl = card.getAttribute("data-img") || "";
+			const imgElement = card.querySelector("img");
+			const altText = imgElement ? imgElement.getAttribute("alt") : "Proje Görseli";
+			
 			if (modalImg && modal) {
 				modalImg.src = imgUrl;
+				modalImg.alt = altText || "Proje Görseli";
 				modal.classList.add("active");
 				document.body.style.overflow = "hidden";
 			}
