@@ -32,7 +32,7 @@ import img3 from "../../public/images/hero-bg.webp";
       <h2>20 Yıllık Deneyimle<br />Zemin Kaplama Çözümleri</h2>
       <p>
         ZenFlor olarak 2006'dan bu yana ofis, otel, plaza ve konut projelerinde
-        parke çözümleri sunuyoruz. Yüzlerce kurumsal referans ve binlerce
+        <a href="/parke" class="text-link">parke çözümleri</a> sunuyoruz. Yüzlerce kurumsal <a href="/referanslar" class="text-link">referans</a> ve binlerce
         başarılı uygulama ile sektörde güvenilir bir isim olmaya devam ediyoruz.
       </p>
       <a href="/hakkimizda" class="btn-primary">Bizi Yakından Tanıyın</a>
@@ -41,6 +41,15 @@ import img3 from "../../public/images/hero-bg.webp";
 </section>
 
 <style>
+  .text-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  .text-link:hover {
+    color: var(--color-dark);
+  }
   .about {
     padding: 100px 0;
     background: #fff;

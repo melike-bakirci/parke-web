@@ -25,16 +25,15 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 					ZenFlor, yaşam alanlarına doğallık, zarafet ve kalite katma
 					tutkusuyla kuruldu. Ahşabın sıcaklığını ve zamansız
 					estetiğini modern mimariyle buluşturan markamız; yıllar
-					içinde sektörün güvenilir, yenilikçi ve öncü zemin kaplama
-					çözümleri sağlayıcısı haline geldi.
+					içinde sektörün güvenilir, yenilikçi ve öncü <a href="/parke" class="text-link">zemin kaplama çözümleri</a> sağlayıcısı haline geldi.
 				</p>
 				<p>
-					Geniş lamine, laminat ve masif parke koleksiyonlarımız,
+					Geniş lamine, laminat ve masif <a href="/parke" class="text-link">parke koleksiyonlarımız</a>,
 					uzman işçiliğimiz ve müşteri odaklı yaklaşımımızla
 					konutlardan ticari alanlara kadar yüzlerce projede zeminlere
-					hayat verdik. Sürdürülebilir orman yönetimini destekliyor,
+					hayat verdik. <a href="/referanslar" class="text-link">Referanslarımızı inceleyerek</a> kalitemizi yakından görebilirsiniz. Sürdürülebilir orman yönetimini destekliyor,
 					çevreye duyarlı ve uzun ömürlü malzemelerle geleceğe değer
-					katıyoruz.
+					katıyoruz. Sorularınız için <a href="/iletisim" class="text-link">iletişim sayfamızdan</a> bize ulaşabilirsiniz.
 				</p>
 			</div>
 
@@ -257,6 +256,15 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 		font-size: 1.05rem;
 		line-height: 1.75;
 		margin-bottom: 1.25rem;
+	}
+	.text-link {
+		color: var(--color-primary);
+		text-decoration: underline;
+		font-weight: 600;
+		transition: color 0.2s ease;
+	}
+	.text-link:hover {
+		color: var(--color-dark);
 	}
 
 	/* Story Visual & 4 Social/Web Icons */
