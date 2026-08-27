@@ -647,6 +647,8 @@ const maxProductPrice = Math.max(...numericPrices);
 				catalogSection.scrollIntoView({ behavior: "smooth" });
 			}
 		}
+
+		updateURL();
 	}
 
 	// Pagination button events
@@ -770,6 +772,104 @@ const maxProductPrice = Math.max(...numericPrices);
 		currentPage = 1;
 		renderCurrentPage(false);
 	});
+
+	function updateURL() {
+		const url = new URL(window.location.href);
+		
+		if (searchInput && searchInput.value) url.searchParams.set("q", searchInput.value);
+		else url.searchParams.delete("q");
+
+		if (sortSelect && sortSelect.value !== "price-asc") url.searchParams.set("sort", sortSelect.value);
+		else url.searchParams.delete("sort");
+
+		const selectedCategories = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+		if (selectedCategories.length) url.searchParams.set("category", selectedCategories.join(","));
+		else url.searchParams.delete("category");
+
+		const selectedEdges = Array.from(edgeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+		if (selectedEdges.length) url.searchParams.set("edge", selectedEdges.join(","));
+		else url.searchParams.delete("edge");
+
+		const selectedThicknesses = Array.from(thicknessCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+		if (selectedThicknesses.length) url.searchParams.set("thickness", selectedThicknesses.join(","));
+		else url.searchParams.delete("thickness");
+
+		const selectedColors = Array.from(colorCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+		if (selectedColors.length) url.searchParams.set("color", selectedColors.join(","));
+		else url.searchParams.delete("color");
+
+		if (appliedMinPrice !== null) url.searchParams.set("min", appliedMinPrice.toString());
+		else url.searchParams.delete("min");
+
+		if (appliedMaxPrice !== null) url.searchParams.set("max", appliedMaxPrice.toString());
+		else url.searchParams.delete("max");
+
+		if (currentPage > 1) url.searchParams.set("page", currentPage.toString());
+		else url.searchParams.delete("page");
+
+		window.history.replaceState({}, "", url);
+	}
+
+	function initFromURL() {
+		const params = new URLSearchParams(window.location.search);
+		let hasParams = false;
+
+		if (params.has("q")) {
+			if (searchInput) searchInput.value = params.get("q") || "";
+			hasParams = true;
+		}
+		if (params.has("sort")) {
+			if (sortSelect) sortSelect.value = params.get("sort") || "price-asc";
+			hasParams = true;
+		}
+
+		if (params.has("category")) {
+			const cats = params.get("category")?.split(",") || [];
+			categoryCheckboxes.forEach(cb => { cb.checked = cats.includes(cb.value); });
+			hasParams = true;
+		}
+		
+		if (params.has("edge")) {
+			const edges = params.get("edge")?.split(",") || [];
+			edgeCheckboxes.forEach(cb => { cb.checked = edges.includes(cb.value); });
+			hasParams = true;
+		}
+
+		if (params.has("thickness")) {
+			const thick = params.get("thickness")?.split(",") || [];
+			thicknessCheckboxes.forEach(cb => { cb.checked = thick.includes(cb.value); });
+			hasParams = true;
+		}
+
+		if (params.has("color")) {
+			const colors = params.get("color")?.split(",") || [];
+			colorCheckboxes.forEach(cb => { cb.checked = colors.includes(cb.value); });
+			hasParams = true;
+		}
+
+		if (params.has("min")) {
+			appliedMinPrice = parseFloat(params.get("min") || "0");
+			if (minPriceInput && appliedMinPrice) minPriceInput.value = appliedMinPrice.toString();
+			hasParams = true;
+		}
+		if (params.has("max")) {
+			appliedMaxPrice = parseFloat(params.get("max") || "0");
+			if (maxPriceInput && appliedMaxPrice) maxPriceInput.value = appliedMaxPrice.toString();
+			hasParams = true;
+		}
+
+		if (params.has("page")) {
+			currentPage = parseInt(params.get("page") || "1", 10);
+			hasParams = true;
+		}
+
+		if (hasParams) {
+			renderCurrentPage(false);
+		}
+	}
+
+	// Sayfa yüklendiğinde URL'den filtreleri uygula
+	initFromURL();
 </script>
 
 <style>
