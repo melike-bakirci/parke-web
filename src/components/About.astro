@@ -1,23 +1,26 @@
 ---
-
+import { Image } from "astro:assets";
+import img1 from "../../public/images/collection-1.webp";
+import img2 from "../../public/images/collection-2.webp";
+import img3 from "../../public/images/hero-bg.webp";
 ---
 
 <section class="about" id="about">
   <div class="container about-container">
     <div class="about-images">
       <div class="image-grid">
-        <img
-          src="/images/collection-1.webp"
+        <Image
+          src={img1}
           alt="Açık Meşe Parke Uygulaması"
           class="img-1"
         />
-        <img
-          src="/images/collection-2.webp"
+        <Image
+          src={img2}
           alt="Koyu Ceviz Parke Uygulaması"
           class="img-2"
         />
-        <img
-          src="/images/hero-bg.webp"
+        <Image
+          src={img3}
           alt="Doğal Ahşap Parke Zemin"
           class="img-3"
         />

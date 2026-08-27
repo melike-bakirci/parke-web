@@ -1,4 +1,10 @@
 ---
+import { Image } from "astro:assets";
+import img1 from "../../public/images/about-1.webp";
+import img2 from "../../public/images/about-2.webp";
+import img3 from "../../public/images/about-3.webp";
+import img4 from "../../public/images/collection-1.webp";
+
 const partnerCompanies = [
 	{
 		name: "Hilton Hotels & Resorts",
@@ -19,10 +25,10 @@ const partnerCompanies = [
 ];
 
 const galleryImages = [
-	{ img: "/images/about-1.webp", alt: "ZenFlor Parke Zemin Uygulaması 1" },
-	{ img: "/images/about-2.webp", alt: "ZenFlor Parke Zemin Uygulaması 2" },
-	{ img: "/images/about-3.webp", alt: "ZenFlor Parke Zemin Uygulaması 3" },
-	{ img: "/images/collection-1.webp", alt: "ZenFlor Parke Zemin Uygulaması 4" }
+	{ img: img1, alt: "ZenFlor Parke Zemin Uygulaması 1" },
+	{ img: img2, alt: "ZenFlor Parke Zemin Uygulaması 2" },
+	{ img: img3, alt: "ZenFlor Parke Zemin Uygulaması 3" },
+	{ img: img4, alt: "ZenFlor Parke Zemin Uygulaması 4" }
 ];
 ---
 
@@ -81,7 +87,7 @@ const galleryImages = [
     <div class="gallery-grid">
       {galleryImages.map((item) => (
         <div class="gallery-card">
-          <img src={item.img} alt={item.alt} loading="lazy" />
+          <Image src={item.img} alt={item.alt} loading="lazy" />
         </div>
       ))}
     </div>
