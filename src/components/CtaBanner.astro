@@ -42,7 +42,7 @@ if (pathname === '/hakkimizda') {
 const activeTitle = title || defaultTitle;
 const activeDesc = description || defaultDesc;
 const rawWaMsg = whatsappMessage || defaultWaMsg;
-const activePhoneText = phoneText || siteInfo.contact.phone.formatted;
+const activePhoneText = phoneText || "Hemen Arayın";
 const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
 ---
 
@@ -70,7 +70,7 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <path d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/>
         </svg>
-        <span>WhatsApp ile Teklif Al</span>
+        <span>WhatsApp ile Teklif Alın</span>
       </a>
     </div>
   </div>
@@ -78,10 +78,10 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
 
 <style>
   .cta-banner-section {
-    padding: 22px 0;
-    background: #f8fafc;
-    border-top: 1px solid #e8edf2;
-    border-bottom: 1px solid #e8edf2;
+    padding: 38px 0;
+    background: #fbf9f6;
+    border-top: 1px solid #ede5dc;
+    border-bottom: 1px solid #ede5dc;
   }
 
   .cta-banner-container {
@@ -89,28 +89,29 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 16px;
   }
 
   .cta-banner-content {
+    max-width: 620px;
+    margin-bottom: 18px;
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    align-items: center;
   }
 
   .cta-banner-title {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-dark);
     line-height: 1.3;
-    margin: 0;
-    letter-spacing: -0.2px;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.3px;
   }
 
   .cta-banner-desc {
-    color: #64748b;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    color: #6c625a;
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin: 0;
   }
 
@@ -118,8 +119,9 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .cta-btn {
@@ -127,13 +129,13 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 9px 18px;
+    padding: 11px 22px;
     border-radius: 6px;
     font-weight: 600;
-    font-size: 0.88rem;
+    font-size: 0.92rem;
     font-family: var(--font-secondary);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
   }
 
@@ -141,53 +143,57 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
     background: var(--color-primary);
     color: #ffffff;
     border: 1px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(140, 106, 83, 0.18);
   }
 
   .cta-btn-phone:hover {
     background: var(--color-dark);
     border-color: var(--color-dark);
     color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(74, 59, 50, 0.25);
   }
 
   .cta-btn-whatsapp {
     background: #25D366;
     color: #ffffff;
     border: 1px solid #25D366;
+    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.18);
   }
 
   .cta-btn-whatsapp:hover {
     background: #1ebc59;
     border-color: #1ebc59;
     color: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
   }
 
   .cta-btn svg {
     flex-shrink: 0;
   }
 
-  @media (min-width: 860px) {
-    .cta-banner-container {
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-      gap: 24px;
-    }
-
-    .cta-banner-content {
-      text-align: left;
+  @media (max-width: 640px) {
+    .cta-banner-section {
+      padding: 30px 0;
     }
 
     .cta-banner-title {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
+    }
+
+    .cta-banner-desc {
+      font-size: 0.9rem;
     }
 
     .cta-banner-actions {
-      flex-shrink: 0;
-      justify-content: flex-end;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cta-btn {
+      width: 100%;
+      max-width: 320px;
     }
   }
 </style>
