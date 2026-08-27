@@ -2,22 +2,27 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 
-import blogs from "../../data/blogs.json";
+import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 
 const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp,svg}');
 
 export async function getStaticPaths() {
-  return blogs.map((blog) => {
-    const otherBlogs = blogs.filter((b) => b.slug !== blog.slug).slice(0, 4);
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map((entry) => {
+    const otherBlogs = blogEntries.filter((b) => b.id !== entry.id).slice(0, 4).map(e => ({slug: e.id, ...e.data}));
+    const allBlogs = blogEntries.map(e => ({slug: e.id, ...e.data, content: e.body}));
     return {
-      params: { slug: blog.slug },
-      props: { blog, otherBlogs, allBlogs: blogs },
+      params: { slug: entry.id },
+      props: { entry, otherBlogs, allBlogs },
     };
   });
 }
 
-const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
+const { entry, otherBlogs = [], allBlogs = [] } = Astro.props;
+const { Content } = await render(entry);
+const blog = { slug: entry.id, ...entry.data };
+
 import { siteInfo } from "../../data/siteInfo";
 
 const articleSchema = {
@@ -87,7 +92,7 @@ const articleSchema = {
                 <img src={blog.image} alt={blog.title} class="blog-featured-image" />
               )
             }
-            <div class="blog-content" id="blog-content" set:html={blog.content}></div>
+            <div class="blog-content" id="blog-content"><Content /></div>
           </div>
         </div>
       </div>
@@ -137,7 +142,7 @@ const articleSchema = {
                     data-slug={b.slug}
                     data-title={b.title}
                     data-summary={b.summary}
-                    data-content={b.content.replace(/<[^>]+>/g, " ")}
+                    data-content={(b.content || "").replace(/<[^>]+>/g, " ")}
                   >
                     <div class="search-item-img-wrap">
                       {

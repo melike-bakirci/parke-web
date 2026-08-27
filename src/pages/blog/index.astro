@@ -2,7 +2,17 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import BlogCard from "../../components/BlogCard.astro";
-import blogs from "../../data/blogs.json";
+import { getCollection } from 'astro:content';
+
+const blogEntries = await getCollection('blog');
+const blogs = blogEntries.map(entry => ({
+  slug: entry.id,
+  title: entry.data.title,
+  summary: entry.data.summary,
+  image: entry.data.image,
+  date: entry.data.date,
+  readTime: entry.data.readTime
+}));
 ---
 
 <Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">

@@ -1,6 +1,8 @@
 ---
 import products from "../data/products.json";
-import blogs from "../data/blogs.json";
+import { getCollection } from "astro:content";
+
+const blogEntries = await getCollection('blog');
 
 export interface BreadcrumbItem {
   label: string;
@@ -35,7 +37,7 @@ const productMap = new Map<string, string>(
   products.map((p) => [p.id, p.name])
 );
 const blogMap = new Map<string, string>(
-  blogs.map((b) => [b.slug, b.title])
+  blogEntries.map((b) => [b.id, b.data.title])
 );
 
 // Breadcrumb listesi oluşturma

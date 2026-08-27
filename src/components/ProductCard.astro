@@ -82,7 +82,7 @@ const secondaryImagePath = product.images && product.images[1] ? `/public${produ
         />
       ) : secondaryImagePath ? (
         <img
-          src={product.images[1]}
+          src={product.images?.[1] || product.image}
           alt={`${product.name} - Ortam Görünümü`}
           class="secondary-img"
           width={600}

@@ -1,7 +1,13 @@
 ---
-import blogs from "../data/blogs.json";
+import { getCollection } from "astro:content";
 import BlogCard from "./BlogCard.astro";
 import Icon from "./Icon.astro";
+
+const blogEntries = await getCollection('blog');
+const blogs = blogEntries.map(entry => ({
+  slug: entry.id,
+  ...entry.data
+}));
 ---
 
 <section class="blog-section" id="blog">
