@@ -3,6 +3,36 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
 import { siteInfo } from "../data/siteInfo";
+
+// Sayfa ilk yüklendiğinde Türkiye saatine göre (UTC+3) başlangıç durumu
+let isInitiallyOpen = false;
+try {
+	const now = new Date();
+	const parts = new Intl.DateTimeFormat("en-US", {
+		timeZone: "Europe/Istanbul",
+		weekday: "short",
+		hour: "numeric",
+		minute: "numeric",
+		hour12: false,
+	}).formatToParts(now);
+
+	let weekday = "";
+	let hour = 0;
+	let minute = 0;
+
+	for (const p of parts) {
+		if (p.type === "weekday") weekday = p.value;
+		if (p.type === "hour") hour = parseInt(p.value, 10);
+		if (p.type === "minute") minute = parseInt(p.value, 10);
+	}
+
+	if (weekday !== "Sun") {
+		const currentMinutes = hour * 60 + minute;
+		isInitiallyOpen = currentMinutes >= 9 * 60 && currentMinutes < 19 * 60;
+	}
+} catch (e) {
+	isInitiallyOpen = false;
+}
 ---
 
 <Layout title="İletişim, Ücretsiz Keşif & Fiyat Teklifi | ZenFlor">
@@ -56,11 +86,55 @@ import { siteInfo } from "../data/siteInfo";
 					</p>
 				</a>
 
-				<div class="info-card static-card">
+				<div class="info-card static-card hours-card">
 					<div class="icon-circle">
 						<Icon name="clock" size={24} />
 					</div>
 					<h3>Çalışma Saatlerimiz</h3>
+					<div id="statusBadge" class={`status-badge ${isInitiallyOpen ? 'status-open' : 'status-closed'}`} aria-live="polite">
+						<span class="status-dot"></span>
+						<span class="status-text">{isInitiallyOpen ? 'ŞU AN AÇIĞIZ!' : 'ŞU AN KAPALIYIZ!'}</span>
+					</div>
+					<script is:inline>
+						(function() {
+							try {
+								var badge = document.getElementById("statusBadge");
+								if (!badge) return;
+								var text = badge.querySelector(".status-text");
+								var now = new Date();
+								var parts = new Intl.DateTimeFormat("en-US", {
+									timeZone: "Europe/Istanbul",
+									weekday: "short",
+									hour: "numeric",
+									minute: "numeric",
+									hour12: false,
+								}).formatToParts(now);
+
+								var weekday = "";
+								var hour = 0;
+								var minute = 0;
+								for (var i = 0; i < parts.length; i++) {
+									if (parts[i].type === "weekday") weekday = parts[i].value;
+									if (parts[i].type === "hour") hour = parseInt(parts[i].value, 10);
+									if (parts[i].type === "minute") minute = parseInt(parts[i].value, 10);
+								}
+
+								var isOpen = false;
+								if (weekday !== "Sun") {
+									var curMin = hour * 60 + minute;
+									isOpen = curMin >= 9 * 60 && curMin < 19 * 60;
+								}
+
+								if (isOpen) {
+									badge.className = "status-badge status-open";
+									if (text) text.textContent = "ŞU AN AÇIĞIZ!";
+								} else {
+									badge.className = "status-badge status-closed";
+									if (text) text.textContent = "ŞU AN KAPALIYIZ!";
+								}
+							} catch (e) {}
+						})();
+					</script>
 					<p>
 						{siteInfo.contact.workingHours.weekdays}<br /><span class="text-muted"
 							>{siteInfo.contact.workingHours.weekend}</span
@@ -305,11 +379,115 @@ import { siteInfo } from "../data/siteInfo";
 				}
 			}
 		});
+		// Canlı Açık / Kapalı Durum Algılama (Türkiye Saati: UTC+3)
+		function updateWorkingStatus() {
+			const badge = document.getElementById("statusBadge");
+			if (!badge) return;
+
+			const text = badge.querySelector(".status-text");
+
+			let isOpen = false;
+			try {
+				const now = new Date();
+				const parts = new Intl.DateTimeFormat("en-US", {
+					timeZone: "Europe/Istanbul",
+					weekday: "short",
+					hour: "numeric",
+					minute: "numeric",
+					hour12: false,
+				}).formatToParts(now);
+
+				let weekday = "";
+				let hour = 0;
+				let minute = 0;
+
+				for (const p of parts) {
+					if (p.type === "weekday") weekday = p.value;
+					if (p.type === "hour") hour = parseInt(p.value, 10);
+					if (p.type === "minute") minute = parseInt(p.value, 10);
+				}
+
+				// Pazar günleri kapalı (Sun)
+				// Pazartesi - Cumartesi: 09:00 - 19:00 arası açık
+				if (weekday !== "Sun") {
+					const currentMinutes = hour * 60 + minute;
+					isOpen = currentMinutes >= 9 * 60 && currentMinutes < 19 * 60;
+				}
+			} catch (e) {
+				const d = new Date();
+				const day = d.getDay(); // 0: Pazar
+				const h = d.getHours();
+				isOpen = day !== 0 && h >= 9 && h < 19;
+			}
+
+			if (isOpen) {
+				badge.className = "status-badge status-open";
+				if (text) text.textContent = "ŞU AN AÇIĞIZ!";
+			} else {
+				badge.className = "status-badge status-closed";
+				if (text) text.textContent = "ŞU AN KAPALIYIZ!";
+			}
+		}
+
+		updateWorkingStatus();
+		setInterval(updateWorkingStatus, 30000);
 	</script>
 
 </Layout>
 
 <style>
+	/* Status Badge */
+	.hours-card {
+		position: relative;
+	}
+	.status-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 4px 12px;
+		border-radius: 20px;
+		font-size: 0.76rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		margin-bottom: 12px;
+		transition: all 0.3s ease;
+	}
+	.status-badge.status-open {
+		background: #ecfdf5;
+		color: #047857;
+		border: 1px solid #a7f3d0;
+	}
+	.status-badge.status-closed {
+		background: #fef2f2;
+		color: #b91c1c;
+		border: 1px solid #fecaca;
+	}
+	.status-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+	.status-open .status-dot {
+		background: #10b981;
+		box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+		animation: statusPulse 2s infinite;
+	}
+	.status-closed .status-dot {
+		background: #ef4444;
+	}
+	@keyframes statusPulse {
+		0% {
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+		}
+		70% {
+			box-shadow: 0 0 0 5px rgba(16, 185, 129, 0);
+		}
+		100% {
+			box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+		}
+	}
+
 	.contact-page-section {
 		padding: 80px 0;
 		background: #f4f8fb;
@@ -339,7 +517,8 @@ import { siteInfo } from "../data/siteInfo";
 	.text-muted {
 		color: #888;
 		font-size: 0.88rem;
-		display: inline-block;
+		display: block;
+		text-align: center;
 		margin-top: 2px;
 	}
 	.info-card {
@@ -353,7 +532,10 @@ import { siteInfo } from "../data/siteInfo";
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		color: inherit;
+		height: 100%;
+		box-sizing: border-box;
 	}
 	a.info-card {
 		cursor: pointer;
@@ -376,6 +558,7 @@ import { siteInfo } from "../data/siteInfo";
 		justify-content: center;
 		margin: 0 auto 20px auto;
 		transition: background-color 0.3s ease, color 0.3s ease;
+		flex-shrink: 0;
 	}
 	.info-card:hover .icon-circle {
 		background: var(--color-primary);
@@ -383,14 +566,18 @@ import { siteInfo } from "../data/siteInfo";
 	}
 	.info-card h3 {
 		font-size: 1.3rem;
-		margin-bottom: 15px;
+		margin-bottom: 12px;
 		color: var(--color-primary);
+		text-align: center;
+		width: 100%;
 	}
 	.info-card p {
 		color: #666;
 		line-height: 1.6;
 		font-size: 1rem;
 		margin: 0;
+		text-align: center;
+		width: 100%;
 	}
 
 	/* Map & Form Wrapper */
