@@ -1,5 +1,6 @@
 ---
 import LegalPageLayout from "../components/LegalPageLayout.astro";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <LegalPageLayout
@@ -20,10 +21,10 @@ import LegalPageLayout from "../components/LegalPageLayout.astro";
     6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca kişisel verileriniz; veri sorumlusu olarak <strong>ZenFlor Parke</strong> tarafından aşağıda açıklanan kapsamda işlenebilecektir.
   </p>
   <ul>
-    <li><strong>Ticari Unvan:</strong> ZenFlor Parke ve Zemin Çözümleri</li>
-    <li><strong>Adres:</strong> Leman Sk. No:4, Sancaktepe / İstanbul</li>
-    <li><strong>Telefon:</strong> +90 (530) 270 84 87</li>
-    <li><strong>E-posta:</strong> zenflormarket@gmail.com</li>
+    <li><strong>Ticari Unvan:</strong> {siteInfo.title}</li>
+    <li><strong>Adres:</strong> {siteInfo.contact.address.full}</li>
+    <li><strong>Telefon:</strong> {siteInfo.contact.phone.formatted}</li>
+    <li><strong>E-posta:</strong> {siteInfo.contact.email.address}</li>
   </ul>
 
   <h2>2. İşlenen Kişisel Veri Kategorileri</h2>
@@ -88,6 +89,6 @@ import LegalPageLayout from "../components/LegalPageLayout.astro";
 
   <h2>7. Başvuru Yöntemi</h2>
   <p>
-    Yukarıda belirtilen haklarınızı kullanmak için kimliğinizi tevsik edici belgeler ile birlikte talebinizi yazılı olarak <strong>Leman Sk. No:4, Sancaktepe / İstanbul</strong> adresine ıslak imzalı olarak iletebilir veya kayıtlı e-posta adresinizden <strong>zenflormarket@gmail.com</strong> adresine başvuruda bulunabilirsiniz. Başvurularınız en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılacaktır.
+    Yukarıda belirtilen haklarınızı kullanmak için kimliğinizi tevsik edici belgeler ile birlikte talebinizi yazılı olarak <strong>{siteInfo.contact.address.full}</strong> adresine ıslak imzalı olarak iletebilir veya kayıtlı e-posta adresinizden <strong>{siteInfo.contact.email.address}</strong> adresine başvuruda bulunabilirsiniz. Başvurularınız en geç 30 (otuz) gün içinde ücretsiz olarak sonuçlandırılacaktır.
   </p>
 </LegalPageLayout>

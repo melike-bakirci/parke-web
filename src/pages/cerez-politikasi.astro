@@ -1,12 +1,13 @@
 ---
 import LegalPageLayout from "../components/LegalPageLayout.astro";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <LegalPageLayout
   title="Çerez Politikası | ZenFlor Parke"
   pageTitle="Çerez Politikası"
   subtitle="Web sitemizde kullanılan çerezler ve gizlilik tercihlerinizi nasıl yönetebileceğiniz hakkında bilgilendirme."
-  lastUpdated="26 Ağustos 2026"
+  lastUpdated="27 Ağustos 2026"
   activePath="/cerez-politikasi"
 >
   <div class="callout-box">
@@ -75,6 +76,6 @@ import LegalPageLayout from "../components/LegalPageLayout.astro";
     ZenFlor, yasal mevzuattaki güncellemeler veya kullanılan teknolojilerdeki değişiklikler doğrultusunda işbu Çerez Politikasını güncelleme hakkını saklı tutar. Değişiklikler sitede yayımlandığı andan itibaren geçerli olur.
   </p>
   <p>
-    Çerez Politikamız ile ilgili detaylı bilgi almak için <strong>zenflormarket@gmail.com</strong> adresinden bize dilediğiniz zaman ulaşabilirsiniz.
+    Çerez Politikamız ile ilgili detaylı bilgi almak için <strong>{siteInfo.contact.email.address}</strong> adresinden bize dilediğiniz zaman ulaşabilirsiniz.
   </p>
 </LegalPageLayout>
