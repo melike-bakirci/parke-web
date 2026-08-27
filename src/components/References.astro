@@ -1,43 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import img1 from "../../public/images/uygulama-galerisi/uygulama-galerisi-1.webp";
-import img2 from "../../public/images/uygulama-galerisi/uygulama-galerisi-2.webp";
-import img3 from "../../public/images/uygulama-galerisi/uygulama-galerisi-3.webp";
-import img4 from "../../public/images/uygulama-galerisi/uygulama-galerisi-4.webp";
-import img5 from "../../public/images/uygulama-galerisi/uygulama-galerisi-5.webp";
-import img6 from "../../public/images/uygulama-galerisi/uygulama-galerisi-6.webp";
-import img7 from "../../public/images/uygulama-galerisi/uygulama-galerisi-7.webp";
-import img8 from "../../public/images/uygulama-galerisi/uygulama-galerisi-8.webp";
+import { partnerCompanies, galleryImages } from "../data/references";
 
-const partnerCompanies = [
-	{
-		name: "Hilton Hotels & Resorts",
-		category: "Otelcilik & Turizm"
-	},
-	{
-		name: "Rönesans Gayrimenkul",
-		category: "İnşaat & GYO"
-	},
-	{
-		name: "Divan Grubu",
-		category: "Turizm & Konaklama"
-	},
-	{
-		name: "Sinpaş GYO",
-		category: "Konut Projeleri"
-	}
-];
-
-const galleryImages = [
-	{ img: img1, alt: "ZenFlor Parke Zemin Uygulaması 1" },
-	{ img: img2, alt: "ZenFlor Parke Zemin Uygulaması 2" },
-	{ img: img3, alt: "ZenFlor Parke Zemin Uygulaması 3" },
-	{ img: img4, alt: "ZenFlor Parke Zemin Uygulaması 4" },
-	{ img: img5, alt: "ZenFlor Parke Zemin Uygulaması 5" },
-	{ img: img6, alt: "ZenFlor Parke Zemin Uygulaması 6" },
-	{ img: img7, alt: "ZenFlor Parke Zemin Uygulaması 7" },
-	{ img: img8, alt: "ZenFlor Parke Zemin Uygulaması 8" }
-];
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/**/*.{jpeg,jpg,png,webp}');
 ---
 
 <section class="home-references" id="referanslar">
@@ -93,11 +58,18 @@ const galleryImages = [
 
     <!-- Uygulama Galerisi Grid -->
     <div class="gallery-grid">
-      {galleryImages.map((item) => (
-        <div class="gallery-card">
-          <Image src={item.img} alt={item.alt} loading="lazy" />
-        </div>
-      ))}
+      {galleryImages.slice(0, 4).map((item) => {
+        const globPath = `/public${item.img}`;
+        return (
+          <div class="gallery-card">
+            {imagesGlob[globPath] ? (
+              <Image src={imagesGlob[globPath]()} alt={item.alt} loading="lazy" />
+            ) : (
+              <img src={item.img} alt={item.alt} loading="lazy" />
+            )}
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>
