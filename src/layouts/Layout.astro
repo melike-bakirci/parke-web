@@ -80,6 +80,8 @@ const finalSchema = Astro.props.schema || schemaData;
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/favicon.svg" />
+		<meta name="theme-color" content="#123447" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="robots" content="index, follow" />
@@ -88,6 +90,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<meta name="google-site-verification" content="NPsb6XH8U2d9DXOVUxDBaOw7Ll5zujq5KW0-yH8u3Kw" />
 
 		<!-- Open Graph / Facebook -->
+		<meta property="og:locale" content="tr_TR" />
 		<meta property="og:type" content={type} />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={`${title} | ${siteInfo.name}`} />

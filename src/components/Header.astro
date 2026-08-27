@@ -9,7 +9,7 @@ const pathname = Astro.url.pathname;
   <div class="header-top">
     <div class="container top-container">
       <div class="logo">
-        <a href="/" class="logo-link">
+        <a href="/" class="logo-link" aria-label="Ana Sayfa - ZenFlor Parke">
           <div class="logo-icon">
             <svg
               viewBox="0 0 32 32"
@@ -35,11 +35,12 @@ const pathname = Astro.url.pathname;
           rel="noopener noreferrer"
           class="contact-item"
           title={siteInfo.contact.address.full}
+          aria-label={siteInfo.contact.address.short}
         >
           <Icon name="home" size={15} strokeWidth={2} />
           <span>{siteInfo.contact.address.short}</span>
         </a>
-        <a href={siteInfo.contact.phone.tel} class="contact-item" title={siteInfo.contact.phone.formatted}>
+        <a href={siteInfo.contact.phone.tel} class="contact-item" title={siteInfo.contact.phone.formatted} aria-label={siteInfo.contact.phone.formatted}>
           <Icon name="phone" size={15} strokeWidth={2} />
           <span>{siteInfo.contact.phone.formatted}</span>
         </a>
@@ -49,6 +50,7 @@ const pathname = Astro.url.pathname;
           rel="noopener noreferrer"
           class="contact-item"
           title="WhatsApp İletişim Hattı"
+          aria-label="WhatsApp İletişim Hattı"
         >
           <Icon name="whatsapp" size={15} />
           <span>WhatsApp</span>
@@ -59,6 +61,7 @@ const pathname = Astro.url.pathname;
           rel="noopener noreferrer"
           class="contact-item"
           title="Sahibinden Mağazamız"
+          aria-label="Sahibinden Mağazamız"
         >
           <Icon name="sahibinden" size={15} />
           <span>Sahibinden Mağazamız</span>
@@ -76,7 +79,7 @@ const pathname = Astro.url.pathname;
         <li><a href="/blog" class={pathname.startsWith("/blog") ? "active" : ""}>Blog</a></li>
         <li><a href="/iletisim" class={pathname.startsWith("/iletisim") ? "active" : ""}>İletişim</a></li>
       </ul>
-      <a href={siteInfo.contact.phone.tel} class="btn-white quote-nav-btn">
+      <a href={siteInfo.contact.phone.tel} class="btn-white quote-nav-btn" aria-label="Telefonla Teklif Alın">
         <Icon name="phone" size={16} strokeWidth={2.2} class="quote-phone-icon" />
         <span>Teklif Alın</span>
       </a>
