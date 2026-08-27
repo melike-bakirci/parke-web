@@ -1,7 +1,5 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProductCard from "../../components/ProductCard.astro";
 import products from "../../data/products.json";
@@ -36,7 +34,6 @@ const otherProducts = products
 ---
 
 <Layout title={`${product.name} | ZenFlor`}>
-	<Header />
 
 	<section class="product-detail">
 		<div class="container">
@@ -864,7 +861,6 @@ const otherProducts = products
 		</div>
 	</section>
 
-	<Footer />
 </Layout>
 
 <script is:inline>

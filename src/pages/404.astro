@@ -1,11 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="404 - Sayfa Bulunamadı | ZenFlor Parke">
-  <Header />
+<Layout title="404 - Sayfa Bulunamadı | ZenFlor Parke" showCta={false}>
 
   <main class="not-found-page">
     <div class="container not-found-container">
@@ -50,7 +47,6 @@ import Footer from "../components/Footer.astro";
     </div>
   </main>
 
-  <Footer showCta={false} />
 </Layout>
 
 <style>

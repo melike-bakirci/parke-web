@@ -2,11 +2,6 @@
 import { siteInfo } from "../data/siteInfo";
 import Icon from "./Icon.astro";
 
-interface Props {
-  isHome?: boolean;
-}
-
-const { isHome = false } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 

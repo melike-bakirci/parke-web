@@ -1,14 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Header from "../../components/Header.astro";
 import PageHero from "../../components/PageHero.astro";
-import Footer from "../../components/Footer.astro";
 import BlogCard from "../../components/BlogCard.astro";
 import blogs from "../../data/blogs.json";
 ---
 
 <Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">
-	<Header />
 	<PageHero
 		title="Blog"
 		subtitle="Zemin dekorasyonu, trendler ve pratik ipuçları"
@@ -25,8 +22,6 @@ import blogs from "../../data/blogs.json";
 			</div>
 		</div>
 	</section>
-
-	<Footer />
 </Layout>
 
 <style>
