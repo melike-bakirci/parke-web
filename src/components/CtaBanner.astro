@@ -12,37 +12,37 @@ const { title, description, whatsappMessage, phoneText } = Astro.props;
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 
-// Sayfaya özel dinamik başlık, açıklama ve WhatsApp mesajları
-let defaultTitle = "Projeniz için Teklif Alın!";
-let defaultDesc = "Mekanınıza en uygun parke ve zemin çözümleri için hemen bizimle iletişime geçin, uzman ekibimizden ücretsiz danışmanlık ve size özel fiyat teklifi alın.";
+// Sayfaya özel kısa ve net başlık, açıklama ve WhatsApp mesajları
+let defaultTitle = "Projeniz İçin Teklif Alın";
+let defaultDesc = "Ücretsiz keşif ve size özel avantajlı fiyat teklifi için bize hemen ulaşın.";
 let defaultWaMsg = "Merhaba, parke projem için fiyat teklifi ve detaylı bilgi almak istiyorum.";
 
 if (pathname === '/hakkimizda') {
-  defaultTitle = "Uzman Ekibimizle Tanışın & Teklif Alın!";
-  defaultDesc = "20 yılı aşkın tecrübemiz ve kaliteli işçiliğimizle yaşam alanlarınızı dönüştürmeye hazırız. Projenizi birlikte planlayalım.";
-  defaultWaMsg = "Merhaba, ZenFlor kurumsal hizmetleriniz ve parke projelerimiz için teklif almak istiyorum.";
+  defaultTitle = "Projenizi Birlikte Planlayalım";
+  defaultDesc = "20+ yıllık tecrübemiz ve uzman ekibimizle mekanınıza değer katıyoruz.";
+  defaultWaMsg = "Merhaba, kurumsal hizmetleriniz ve parke projelerimiz için teklif almak istiyorum.";
 } else if (pathname === '/parke') {
-  defaultTitle = "Koleksiyonlarımız İçin Özel Fiyat Teklifi Alın!";
-  defaultDesc = "Lamine, laminat ve masif parke çeşitlerimizde metrekare bazlı en avantajlı fiyatlar ve ücretsiz keşif için bize ulaşın.";
-  defaultWaMsg = "Merhaba, parke modelleriniz ve metrekare fiyat teklifiniz hakkında bilgi almak istiyorum.";
+  defaultTitle = "Özel Fiyat Teklifi Alın";
+  defaultDesc = "Lamine, laminat ve masif parke modellerinde avantajlı metrekare fiyatları.";
+  defaultWaMsg = "Merhaba, parke modelleriniz ve fiyat teklifiniz hakkında bilgi almak istiyorum.";
 } else if (pathname === '/referanslar') {
-  defaultTitle = "Bir Sonraki Başarı Hikayemiz Sizin Projeniz Olsun!";
-  defaultDesc = "Tamamladığımız yüzlerce prestijli konut ve ticari proje gibi sizin mekanınıza da değer katmak için buradayız.";
-  defaultWaMsg = "Merhaba, referans projelerinizi inceledim, kendi projem için teklif almak istiyorum.";
+  defaultTitle = "Mekanınıza Değer Katalım";
+  defaultDesc = "Hayalinizdeki zemin projesini uzman ekibimizle hayata geçirin.";
+  defaultWaMsg = "Merhaba, referans projelerinizi inceledim, projem için teklif almak istiyorum.";
 } else if (pathname.startsWith('/blog')) {
-  defaultTitle = "Zemin Trendlerini Yaşam Alanınıza Taşıyın!";
-  defaultDesc = "Yazılarımızda bahsettiğimiz modern zemin uygulamaları ve uygulama çözümleri için hemen teklif alın.";
-  defaultWaMsg = "Merhaba, blog yazılarınızdaki parke uygulamaları ve fiyat teklifi hakkında bilgi almak istiyorum.";
+  defaultTitle = "Uzman Danışmanlığı Alın";
+  defaultDesc = "Zemin uygulamaları ve ürün seçimi hakkında hızlı bilgi ve teklif alın.";
+  defaultWaMsg = "Merhaba, blog yazılarınızdaki parke uygulamaları ve teklif hakkında bilgi almak istiyorum.";
 } else if (pathname === '/iletisim') {
-  defaultTitle = "Hemen İletişime Geçin, Teklifinizi Hazırlayalım!";
-  defaultDesc = "Showroom'umuzu ziyaret edebilir veya WhatsApp üzerinden projenizin detaylarını ileterek anında teklif alabilirsiniz.";
-  defaultWaMsg = "Merhaba, projem için hızlı teklif ve showroom ziyareti hakkında bilgi almak istiyorum.";
+  defaultTitle = "Hızlı Teklif & Danışmanlık";
+  defaultDesc = "WhatsApp veya telefon üzerinden uzman ekibimize anında ulaşabilirsiniz.";
+  defaultWaMsg = "Merhaba, projem için hızlı teklif ve bilgi almak istiyorum.";
 }
 
 const activeTitle = title || defaultTitle;
 const activeDesc = description || defaultDesc;
 const rawWaMsg = whatsappMessage || defaultWaMsg;
-const activePhoneText = phoneText || `Hemen Arayın: ${siteInfo.contact.phone.formatted}`;
+const activePhoneText = phoneText || siteInfo.contact.phone.formatted;
 const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
 ---
 
@@ -50,14 +50,12 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
   <div class="container cta-banner-container">
     <div class="cta-banner-content">
       <h2 class="cta-banner-title">{activeTitle}</h2>
-      <p class="cta-banner-desc">
-        {activeDesc}
-      </p>
+      <p class="cta-banner-desc">{activeDesc}</p>
     </div>
     
     <div class="cta-banner-actions">
       <a href={siteInfo.contact.phone.tel} class="cta-btn cta-btn-phone">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
         </svg>
         <span>{activePhoneText}</span>
@@ -69,10 +67,10 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
         rel="noopener noreferrer" 
         class="cta-btn cta-btn-whatsapp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
           <path d="M19.05 4.91A10.87 10.87 0 0 0 11.4 1.75C5.46 1.75.64 6.57.64 12.5c0 1.9.49 3.75 1.43 5.38L.5 23.5l5.77-1.51a10.86 10.86 0 0 0 5.13 1.28h.01c5.93 0 10.75-4.82 10.75-10.76 0-2.87-1.12-5.58-3.11-7.6zM11.4 21.36h-.01a9.04 9.04 0 0 1-4.61-1.26l-.33-.2-3.43.9.92-3.34-.22-.35a9.07 9.07 0 0 1-1.39-4.87c0-5.01 4.08-9.08 9.09-9.08 2.43 0 4.71.94 6.42 2.66a9.04 9.04 0 0 1 2.67 6.43c0 5.01-4.08 9.08-9.08 9.08zm4.98-6.8c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.19-1.35-.81-.72-1.36-1.61-1.52-1.88-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.35-.02-.49-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47-.16-.01-.35-.01-.53-.01s-.49.07-.75.35c-.25.27-.98.96-.98 2.34s1 2.72 1.14 2.91c.14.18 1.97 3.01 4.77 4.22.67.29 1.19.46 1.6.59.67.21 1.28.18 1.77.11.54-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.52-.32z"/>
         </svg>
-        <span>WhatsApp ile Teklif Alın</span>
+        <span>WhatsApp ile Teklif Al</span>
       </a>
     </div>
   </div>
@@ -80,10 +78,10 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
 
 <style>
   .cta-banner-section {
-    padding: 70px 0;
+    padding: 22px 0;
     background: #f8fafc;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
+    border-top: 1px solid #e8edf2;
+    border-bottom: 1px solid #e8edf2;
   }
 
   .cta-banner-container {
@@ -91,62 +89,52 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 28px;
+    gap: 16px;
   }
 
   .cta-banner-content {
-    max-width: 760px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 3px;
   }
 
   .cta-banner-title {
-    font-size: 2.2rem;
-    font-weight: 800;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: var(--color-primary);
-    line-height: 1.25;
-    margin-bottom: 14px;
-    letter-spacing: -0.5px;
+    line-height: 1.3;
+    margin: 0;
+    letter-spacing: -0.2px;
   }
 
   .cta-banner-desc {
-    color: #5a6a78;
-    font-size: 1.05rem;
-    line-height: 1.65;
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.4;
     margin: 0;
   }
 
   .cta-banner-actions {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 14px;
-    width: 100%;
     justify-content: center;
-  }
-
-  @media (min-width: 640px) {
-    .cta-banner-actions {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 13px 24px;
+    gap: 8px;
+    padding: 9px 18px;
     border-radius: 6px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-family: var(--font-secondary);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease;
+    white-space: nowrap;
   }
 
   .cta-btn-phone {
@@ -156,32 +144,50 @@ const waLink = siteInfo.contact.whatsapp.createLink(rawWaMsg);
   }
 
   .cta-btn-phone:hover {
-    background: #0b2230;
+    background: var(--color-dark);
+    border-color: var(--color-dark);
     color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(18, 52, 71, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 59, 50, 0.15);
   }
 
   .cta-btn-whatsapp {
-    background: transparent;
-    color: #25D366;
+    background: #25D366;
+    color: #ffffff;
     border: 1px solid #25D366;
   }
 
   .cta-btn-whatsapp:hover {
-    background: #25D366;
+    background: #1ebc59;
+    border-color: #1ebc59;
     color: #ffffff;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
   }
 
   .cta-btn svg {
     flex-shrink: 0;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 860px) {
+    .cta-banner-container {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+      gap: 24px;
+    }
+
+    .cta-banner-content {
+      text-align: left;
+    }
+
     .cta-banner-title {
-      font-size: 2.5rem;
+      font-size: 1.35rem;
+    }
+
+    .cta-banner-actions {
+      flex-shrink: 0;
+      justify-content: flex-end;
     }
   }
 </style>
