@@ -4,6 +4,7 @@ import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import products from "../../data/products.json";
+import { siteInfo } from "../../data/siteInfo";
 
 export async function getStaticPaths() {
 	return products.map((product) => ({
@@ -356,6 +357,7 @@ const otherProducts = products
 									<a
 										href="#"
 										id="calcWhatsappBtn"
+										data-phone={siteInfo.contact.whatsapp.number}
 										target="_blank"
 										rel="noopener noreferrer"
 										class="btn-whatsapp-outline"
@@ -383,7 +385,7 @@ const otherProducts = products
 					<!-- HESAPLAYICI ALTINDA NUMUNE TALEBİ VE TÜM ÜRÜNLER BUTONLARI -->
 					<div class="bottom-actions">
 						<a
-							href="tel:+905302708487"
+							href={siteInfo.contact.phone.tel}
 							class="btn-bottom btn-sample"
 							title="Numune Talebi İçin Arayın"
 						>
@@ -1505,7 +1507,8 @@ const otherProducts = products
 
 			if (whatsappBtn) {
 				const text = `Merhaba, ${productName} parke modeli için ${area} m² alan hesapladım. Fiyat ve montaj teklifi almak istiyorum.`;
-				whatsappBtn.href = `https://wa.me/905302708487?text=${encodeURIComponent(text)}`;
+				const waNum = whatsappBtn.getAttribute("data-phone") || "905302708487";
+				whatsappBtn.href = `https://wa.me/${waNum}?text=${encodeURIComponent(text)}`;
 			}
 
 			outputWrapper.style.display = "flex";

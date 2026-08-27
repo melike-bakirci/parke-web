@@ -1,5 +1,6 @@
 ---
 import LegalPageLayout from "../components/LegalPageLayout.astro";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <LegalPageLayout
@@ -62,7 +63,7 @@ import LegalPageLayout from "../components/LegalPageLayout.astro";
     6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında, kişisel verilerinizin işlenip işlenmediğini öğrenme, yanlış işlenmişse düzeltilmesini isteme ve silinmesini talep etme hakkına sahipsiniz. Ayrıntılı bilgi için <a href="/kvkk" style="color: var(--color-primary); font-weight: 600; text-decoration: underline;">KVKK Aydınlatma Metnimizi</a> inceleyebilirsiniz.
   </p>
   <p>
-    Gizlilik Politikamız ile ilgili tüm sorularınız için <strong>zenflormarket@gmail.com</strong> adresine e-posta gönderebilir veya <strong>+90 (530) 270 84 87</strong> numaralı hattımızdan bize ulaşabilirsiniz.
+    Gizlilik Politikamız ile ilgili tüm sorularınız için <strong>{siteInfo.contact.email.address}</strong> adresine e-posta gönderebilir veya <strong>{siteInfo.contact.phone.formatted}</strong> numaralı hattımızdan bize ulaşabilirsiniz.
   </p>
 
   <h2>7. Politika Değişiklikleri</h2>

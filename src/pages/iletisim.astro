@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import PageHero from "../components/PageHero.astro";
 import Footer from "../components/Footer.astro";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <Layout title="İletişim, Ücretsiz Keşif & Fiyat Teklifi | ZenFlor">
@@ -19,7 +20,7 @@ import Footer from "../components/Footer.astro";
 			<!-- Contact Info Cards -->
 			<div class="contact-info-cards">
 				<a
-					href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA"
+					href={siteInfo.contact.address.mapsUrl}
 					target="_blank"
 					rel="noopener noreferrer"
 					class="info-card"
@@ -42,12 +43,12 @@ import Footer from "../components/Footer.astro";
 					</div>
 					<h3>Adresimiz</h3>
 					<p>
-						Leman Sk. No:4,<br />Sancaktepe / İstanbul
+						{siteInfo.contact.address.street},<br />{siteInfo.contact.address.district} / {siteInfo.contact.address.city}
 					</p>
 				</a>
 
 				<a
-					href="tel:+905302708487"
+					href={siteInfo.contact.phone.tel}
 					class="info-card"
 				>
 					<div class="icon-circle">
@@ -67,11 +68,11 @@ import Footer from "../components/Footer.astro";
 						>
 					</div>
 					<h3>Telefonumuz</h3>
-					<p>+90 (530) 270 84 87</p>
+					<p>{siteInfo.contact.phone.formatted}</p>
 				</a>
 
 				<a
-					href="mailto:zenflormarket@gmail.com"
+					href={siteInfo.contact.email.mailto}
 					class="info-card"
 				>
 					<div class="icon-circle">
@@ -93,7 +94,7 @@ import Footer from "../components/Footer.astro";
 					</div>
 					<h3>E-postamız</h3>
 					<p>
-						zenflormarket@gmail.com
+						{siteInfo.contact.email.address}
 					</p>
 				</a>
 
@@ -115,8 +116,8 @@ import Footer from "../components/Footer.astro";
 					</div>
 					<h3>Çalışma Saatlerimiz</h3>
 					<p>
-						Pzt - Cmt: 09:00 – 19:00<br /><span class="text-muted"
-							>Pazar: Kapalı</span
+						{siteInfo.contact.workingHours.weekdays}<br /><span class="text-muted"
+							>{siteInfo.contact.workingHours.weekend}</span
 						>
 					</p>
 				</div>
@@ -129,7 +130,7 @@ import Footer from "../components/Footer.astro";
 				</div>
 				<div class="social-bar-icons">
 					<a
-						href="https://www.instagram.com/zenflormarket/"
+						href={siteInfo.social.instagram}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"
@@ -159,7 +160,7 @@ import Footer from "../components/Footer.astro";
 						>
 					</a>
 					<a
-						href="https://www.linkedin.com/company/zenflor"
+						href={siteInfo.social.linkedin}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"
@@ -183,7 +184,7 @@ import Footer from "../components/Footer.astro";
 						>
 					</a>
 					<a
-						href="https://facebook.com/people/Zenflor/61592694338862/"
+						href={siteInfo.social.facebook}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"
@@ -206,7 +207,7 @@ import Footer from "../components/Footer.astro";
 						>
 					</a>
 					<a
-						href="https://www.youtube.com/@zenflormarket"
+						href={siteInfo.social.youtube}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"
@@ -231,7 +232,7 @@ import Footer from "../components/Footer.astro";
 						>
 					</a>
 					<a
-						href="https://www.tiktok.com/@zenflormarket"
+						href={siteInfo.social.tiktok}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"
@@ -250,7 +251,7 @@ import Footer from "../components/Footer.astro";
 						>
 					</a>
 					<a
-						href="https://zenflor.sahibinden.com/"
+						href={siteInfo.social.sahibinden}
 						target="_blank"
 						rel="noopener noreferrer"
 						class="social-icon-btn"

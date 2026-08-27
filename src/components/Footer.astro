@@ -1,5 +1,6 @@
 ---
 import CtaBanner from './CtaBanner.astro';
+import { siteInfo } from '../data/siteInfo';
 
 interface Props {
   showCta?: boolean;
@@ -33,29 +34,29 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
             </svg>
           </div>
           <div class="logo-text">
-            <span class="footer-logo-title">ZenFlor</span>
+            <span class="footer-logo-title">{siteInfo.name}</span>
             <span class="footer-logo-sub">Parke Çözümleri</span>
           </div>
         </a>
       </div>
-      <p>Yaşam alanlarınıza değer katan modern, estetik ve dayanıklı parke çözümleri sunuyoruz. Kaliteli malzeme ve uzman işçilikle hayalinizdeki zeminleri gerçeğe dönüştürüyoruz.</p>
+      <p>{siteInfo.description}</p>
       <div class="social-links">
-        <a href="https://www.instagram.com/zenflormarket/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <a href={siteInfo.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
-        <a href="https://www.linkedin.com/company/zenflor" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <a href={siteInfo.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" r="2"></circle></svg>
         </a>
-        <a href="https://facebook.com/people/Zenflor/61592694338862/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <a href={siteInfo.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
         </a>
-        <a href="https://www.youtube.com/@zenflormarket" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+        <a href={siteInfo.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon></svg>
         </a>
-        <a href="https://www.tiktok.com/@zenflormarket" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+        <a href={siteInfo.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.891 2.887 2.896 2.896 0 0 1-2.891-2.887 2.896 2.896 0 0 1 2.891-2.887c.277 0 .543.04.8.113V9.01a6.347 6.347 0 0 0-.8-.052c-3.535 0-6.4 2.865-6.4 6.4s2.865 6.4 6.4 6.4 6.4-2.865 6.4-6.4V8.307a8.214 8.214 0 0 0 4.806 1.523v-3.144h-.001z"/></svg>
         </a>
-        <a href="https://zenflor.sahibinden.com/" target="_blank" rel="noopener noreferrer" aria-label="Sahibinden" title="Sahibinden">
+        <a href={siteInfo.social.sahibinden} target="_blank" rel="noopener noreferrer" aria-label="Sahibinden" title="Sahibinden">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-4.2 6.2c-.4-.4-1.1-.7-2-.7-.9 0-1.6.3-1.6.9 0 .6.5.7 1.5 1 1.7.5 3.3 1.1 3.3 3 0 1.9-1.6 3.1-3.8 3.1-1.7 0-2.9-.6-3.7-1.4l1.3-1.5c.6.6 1.4 1 2.3 1 1 0 1.7-.4 1.7-1 0-.6-.5-.8-1.5-1.1-1.8-.5-3.3-1.1-3.3-2.9 0-1.8 1.5-3 3.5-3 1.4 0 2.5.4 3.3 1.1l-1.3 1.6z"/></svg>
         </a>
       </div>
@@ -78,19 +79,19 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
       <ul class="footer-contact-list">
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <a href="https://maps.app.goo.gl/cyQwTaXrGfFNJmyTA" target="_blank" rel="noopener noreferrer">Leman Sk. No:4, Sancaktepe/İstanbul</a>
+          <a href={siteInfo.contact.address.mapsUrl} target="_blank" rel="noopener noreferrer">{siteInfo.contact.address.full}</a>
         </li>
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <a href="tel:+905302708487">+90 (530) 270 84 87</a>
+          <a href={siteInfo.contact.phone.tel}>{siteInfo.contact.phone.formatted}</a>
         </li>
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          <a href="mailto:zenflormarket@gmail.com">zenflormarket@gmail.com</a>
+          <a href={siteInfo.contact.email.mailto}>{siteInfo.contact.email.address}</a>
         </li>
         <li>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          <span>Pzt-Cmt: 09:00 – 19:00</span>
+          <span>{siteInfo.contact.workingHours.summary}</span>
         </li>
       </ul>
     </div>
@@ -98,7 +99,7 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
   
   <div class="footer-bottom">
     <div class="container footer-bottom-container">
-      <p>&copy; 2026 ZenFlor Parke. Tüm hakları saklıdır.</p>
+      <p>&copy; {new Date().getFullYear()} {siteInfo.title}. Tüm hakları saklıdır.</p>
       <div class="footer-legal-links">
         <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
         <a href="/kullanim-kosullari">Kullanım Koşulları</a>

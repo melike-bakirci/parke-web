@@ -1,14 +1,12 @@
 ---
 // src/components/FloatingContact.astro
-const phone = "+905302708487";
-const whatsappUrl = "https://wa.me/905302708487";
-const sahibindenUrl = "https://zenflor.sahibinden.com/";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <div class="floating-contact-container" aria-label="Hızlı İletişim Butonları">
   <!-- 1. Telefon -->
   <a 
-    href={`tel:${phone}`} 
+    href={siteInfo.contact.phone.tel} 
     class="float-btn float-btn-phone" 
     aria-label="Hemen Arayın"
     title="Hemen Arayın"
@@ -22,7 +20,7 @@ const sahibindenUrl = "https://zenflor.sahibinden.com/";
 
   <!-- 2. WhatsApp -->
   <a 
-    href={whatsappUrl} 
+    href={siteInfo.contact.whatsapp.url} 
     target="_blank" 
     rel="noopener noreferrer" 
     class="float-btn float-btn-whatsapp" 
@@ -38,7 +36,7 @@ const sahibindenUrl = "https://zenflor.sahibinden.com/";
 
   <!-- 3. Sahibinden -->
   <a 
-    href={sahibindenUrl} 
+    href={siteInfo.social.sahibinden} 
     target="_blank" 
     rel="noopener noreferrer" 
     class="float-btn float-btn-sahibinden" 
