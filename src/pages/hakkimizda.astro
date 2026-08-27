@@ -8,7 +8,7 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 
 <Layout
 	title="Hakkımızda | Güvenilir ve Ucuz Parkenin Adresi"
-	description="Sancaktepe ve Sarıgazi'nin lider parkecisi ZenFlor olarak yılların tecrübesiyle tüm Türkiye'ye en uygun fiyatlı zemin kaplama çözümleri sunuyoruz. Bizi daha yakından tanıyın."
+	description="Sancaktepe'nin lider parkecisi ZenFlor olarak yılların tecrübesiyle Türkiye'ye en uygun fiyatlı zemin kaplama ve laminat parke çözümleri sunuyoruz."
 	keywords="sancaktepe parkeci, sarıgazi parke, istanbul ucuz parke, uygun parke firmaları, zenflor kurumsal, tüm türkiye zemin kaplama"
 >
 	<PageHero
@@ -25,116 +25,35 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 					ZenFlor, yaşam alanlarına doğallık, zarafet ve kalite katma
 					tutkusuyla kuruldu. Ahşabın sıcaklığını ve zamansız
 					estetiğini modern mimariyle buluşturan markamız; yıllar
-					içinde sektörün güvenilir, yenilikçi ve öncü <a href="/parke" class="text-link">zemin kaplama çözümleri</a> sağlayıcısı haline geldi.
+					içinde sektörün güvenilir, yenilikçi ve öncü <a href="/parke" class="text-link">parke ve zemin kaplama</a> sağlayıcısı haline geldi.
 				</p>
 				<p>
-					Geniş lamine, laminat ve masif <a href="/parke" class="text-link">parke koleksiyonlarımız</a>,
+					Geniş lamine, laminat ve masif <a href="/parke" class="text-link">parke modelleri koleksiyonlarımız</a>,
 					uzman işçiliğimiz ve müşteri odaklı yaklaşımımızla
 					konutlardan ticari alanlara kadar yüzlerce projede zeminlere
-					hayat verdik. <a href="/referanslar" class="text-link">Referanslarımızı inceleyerek</a> kalitemizi yakından görebilirsiniz. Sürdürülebilir orman yönetimini destekliyor,
+					hayat verdik. <a href="/referanslar" class="text-link">Uygulama referanslarımızı inceleyerek</a> kalitemizi yakından görebilirsiniz. Sürdürülebilir orman yönetimini destekliyor,
 					çevreye duyarlı ve uzun ömürlü malzemelerle geleceğe değer
-					katıyoruz. Sorularınız için <a href="/iletisim" class="text-link">iletişim sayfamızdan</a> bize ulaşabilirsiniz.
+					katıyoruz. Sorularınız için <a href="/iletisim" class="text-link">iletişim formumuzdan</a> bize ulaşabilirsiniz.
 				</p>
 			</div>
 
 			<div class="story-visual-wrap">
 				<div class="story-image">
 					{imagesGlob['/public/images/about-3.webp'] ? (
-						<Image src={imagesGlob['/public/images/about-3.webp']()} alt="ZenFlor Hikayemiz" width={800} height={600} loading="lazy" decoding="async" />
+						<Image src={imagesGlob['/public/images/about-3.webp']()} alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri" width={800} height={600} loading="lazy" decoding="async" />
 					) : (
-						<img src="/images/about-3.webp" alt="ZenFlor Hikayemiz" loading="lazy" decoding="async" />
+						<img src="/images/about-3.webp" alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri" loading="lazy" decoding="async" />
 					)}
 				</div>
 
-				<!-- 4 Standalone Website Icons Under Photo -->
+				<!-- 1 Standalone Website Icon Under Photo -->
 				<div class="story-social-icons">
 					<a
 						href="https://mineflofiyatlar.com/"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="story-icon-btn"
-						aria-label="Mineflo Fiyatları Web Sitesi"
-						title="mineflofiyatlar.com"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="22"
-							height="22"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="12" cy="12" r="10"></circle>
-							<line x1="2" y1="12" x2="22" y2="12"></line>
-							<path
-								d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-							></path>
-						</svg>
-					</a>
-
-					<a
-						href="https://mineflofiyatlar.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="story-icon-btn"
-						aria-label="Mineflo Fiyatları Web Sitesi"
-						title="mineflofiyatlar.com"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="22"
-							height="22"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="12" cy="12" r="10"></circle>
-							<line x1="2" y1="12" x2="22" y2="12"></line>
-							<path
-								d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-							></path>
-						</svg>
-					</a>
-
-					<a
-						href="https://mineflofiyatlar.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="story-icon-btn"
-						aria-label="Mineflo Fiyatları Web Sitesi"
-						title="mineflofiyatlar.com"
-					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="22"
-							height="22"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						>
-							<circle cx="12" cy="12" r="10"></circle>
-							<line x1="2" y1="12" x2="22" y2="12"></line>
-							<path
-								d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-							></path>
-						</svg>
-					</a>
-
-					<a
-						href="https://mineflofiyatlar.com/"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="story-icon-btn"
-						aria-label="Mineflo Fiyatları Web Sitesi"
+						aria-label="Mineflo Fiyatları İş Ortağı Web Sitesi"
 						title="mineflofiyatlar.com"
 					>
 						<svg
