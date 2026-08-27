@@ -11,12 +11,12 @@ export async function getStaticPaths() {
     const otherBlogs = blogs.filter((b) => b.slug !== blog.slug).slice(0, 4);
     return {
       params: { slug: blog.slug },
-      props: { blog, otherBlogs },
+      props: { blog, otherBlogs, allBlogs: blogs },
     };
   });
 }
 
-const { blog, otherBlogs } = Astro.props;
+const { blog, otherBlogs = [], allBlogs = blogs } = Astro.props;
 ---
 
 <Layout title={`${blog.title} | ZenFlor Blog`}>
@@ -70,27 +70,83 @@ const { blog, otherBlogs } = Astro.props;
 
         <!-- Sidebar -->
         <aside class="blog-sidebar no-print">
-          <div class="sidebar-widget">
+          <!-- 1. Arama Kutusu Widget'ı -->
+          <div class="sidebar-widget search-widget">
             <h3 class="widget-title">Yazılarda Ara</h3>
             <div class="search-form">
-              <input type="text" placeholder="Arama yapın..." class="search-input" />
-              <button class="search-btn" aria-label="Ara">
+              <div class="search-input-wrapper">
+                <input
+                  type="text"
+                  id="sidebarSearchInput"
+                  placeholder="Yazı veya konu ara..."
+                  class="search-input"
+                  autocomplete="off"
+                  aria-label="Yazılarda Ara"
+                />
+                <button
+                  type="button"
+                  id="sidebarClearBtn"
+                  class="search-clear-btn"
+                  aria-label="Aramayı Temizle"
+                  style="display: none;"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+              </div>
+              <button type="button" id="sidebarSearchBtn" class="search-btn" aria-label="Ara">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               </button>
             </div>
+
+            <!-- Arama Yapıldığında Açılan Özel Sonuç Alanı -->
+            <div class="search-results-area" id="searchResultsArea" style="display: none;">
+              <div class="search-results-header">
+                <span class="search-results-title">Arama Sonuçları</span>
+                <span class="search-result-badge" id="searchResultBadge"></span>
+              </div>
+
+              <div class="search-results-list" id="searchResultsList">
+                {allBlogs.map((b) => (
+                  <a
+                    href={`/blog/${b.slug}`}
+                    class="search-result-item"
+                    data-slug={b.slug}
+                    data-title={b.title}
+                    data-summary={b.summary}
+                    data-content={b.content.replace(/<[^>]+>/g, " ")}
+                  >
+                    <div class="search-item-img-wrap">
+                      <img src={b.image} alt={b.title} class="search-item-img" loading="lazy" />
+                    </div>
+                    <div class="search-item-info">
+                      <h4>{b.title}</h4>
+                      <div class="search-item-meta">
+                        <span class="search-item-date">{b.date}</span>
+                        {b.slug === blog.slug && <span class="current-badge">Şu Anki Yazı</span>}
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+
+              <div class="no-search-results" id="noSearchResults" style="display: none;">
+                <p>Aradığınız kritere uygun yazı bulunamadı.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="sidebar-widget">
+          <!-- 2. Diğer Yazılarımız Widget'ı (Her zaman sabit kalır) -->
+          <div class="sidebar-widget other-widget">
             <h3 class="widget-title">Diğer Yazılarımız</h3>
             <div class="other-blogs-list">
-              {otherBlogs.map(ob => (
+              {otherBlogs.map((ob) => (
                 <a href={`/blog/${ob.slug}`} class="other-blog-item">
                   <div class="other-blog-img-wrap">
-                    <img src={ob.image} alt={ob.title} class="other-blog-img" />
+                    <img src={ob.image} alt={ob.title} class="other-blog-img" loading="lazy" />
                   </div>
                   <div class="other-blog-info">
                     <h4>{ob.title}</h4>
-                    <span>{ob.date}</span>
+                    <span class="other-blog-date">{ob.date}</span>
                   </div>
                 </a>
               ))}
@@ -210,7 +266,7 @@ const { blog, otherBlogs } = Astro.props;
   }
   
   .tool-btn:hover {
-    background: rgba(42, 90, 117, 0.1); /* primary with opacity */
+    background: rgba(42, 90, 117, 0.1);
     color: var(--color-primary);
     transform: translateY(-2px);
   }
@@ -231,7 +287,7 @@ const { blog, otherBlogs } = Astro.props;
   }
   
   .blog-content {
-    font-size: 1.1rem; /* Base size */
+    font-size: 1.1rem;
     line-height: 1.8;
     color: #444;
     transition: font-size 0.3s ease;
@@ -252,91 +308,299 @@ const { blog, otherBlogs } = Astro.props;
   .sidebar-widget {
     background: white;
     border-radius: 12px;
-    padding: 25px;
+    padding: 22px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin-bottom: 30px;
-  }
-  .widget-title {
-    font-family: var(--font-secondary);
-    font-size: 1.4rem;
-    color: var(--color-dark);
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #eee;
-  }
-  .search-form {
-    display: flex;
-    position: relative;
-  }
-  .search-input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #e1e1e1;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  .search-input:focus {
-    border-color: var(--color-primary);
-  }
-  .search-btn {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    color: var(--color-primary);
-    cursor: pointer;
-    padding: 10px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
   }
 
-  .other-blogs-list {
+  .widget-title {
+    font-family: var(--font-secondary);
+    font-size: 1.25rem;
+    color: var(--color-dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    font-weight: 700;
+  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 8px;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 11px 34px 11px 14px;
+    border: 1.5px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-family: var(--font-secondary);
+    outline: none;
+    transition: all 0.25s ease;
+    background-color: #fcfdfe;
+    color: var(--color-dark);
+  }
+
+  .search-input:focus {
+    border-color: var(--color-primary);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(140, 106, 83, 0.12);
+  }
+
+  .search-clear-btn {
+    position: absolute;
+    right: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    border: none;
+    color: #64748b;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+  }
+
+  .search-clear-btn:hover {
+    background: #cbd5e1;
+    color: var(--color-dark);
+  }
+
+  .search-btn {
+    background: var(--color-primary);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .search-btn:hover {
+    background: var(--color-dark);
+    transform: translateY(-1px);
+  }
+
+  /* Arama Sonuçları Alanı (Search Widget İçinde) */
+  .search-results-area {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed #e2e8f0;
+  }
+
+  .search-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .search-results-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .search-result-badge {
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+
+  .search-results-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
   }
-  .other-blog-item {
+
+  .search-results-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .search-results-list::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 4px;
+  }
+
+  .search-result-item {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     align-items: center;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.3s;
-  }
-  .other-blog-item:hover {
-    transform: translateX(5px);
-  }
-  .other-blog-item:hover h4 {
-    color: var(--color-primary);
-  }
-  .other-blog-img-wrap {
-    width: 80px;
-    height: 80px;
+    padding: 6px 8px;
     border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid #edf2f7;
+    transition: all 0.2s ease;
+  }
+
+  .search-result-item:hover {
+    background: #ffffff;
+    border-color: var(--color-secondary);
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .search-item-img-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: 6px;
     overflow: hidden;
     flex-shrink: 0;
+    background: #edf2f7;
   }
-  .other-blog-img {
+
+  .search-item-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .other-blog-info h4 {
+
+  .search-item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .search-item-info h4 {
     font-family: var(--font-secondary);
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-size: 0.86rem;
+    margin-bottom: 3px;
     line-height: 1.3;
     color: var(--color-dark);
-    transition: color 0.3s;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-weight: 600;
   }
-  .other-blog-info span {
-    font-size: 0.8rem;
+
+  .search-result-item:hover .search-item-info h4 {
+    color: var(--color-primary);
+  }
+
+  .search-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .search-item-date {
+    font-size: 0.74rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+
+  .current-badge {
+    font-size: 0.68rem;
+    color: #64748b;
+    background: #e2e8f0;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .no-search-results {
+    padding: 16px 8px;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.86rem;
+  }
+
+  /* Diğer Yazılarımız Listesi */
+  .other-blogs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .other-blog-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    background: transparent;
+  }
+
+  .other-blog-item:hover {
+    background: #f8fafc;
+    transform: translateX(4px);
+  }
+
+  .other-blog-img-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #edf2f7;
+  }
+
+  .other-blog-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .other-blog-item:hover .other-blog-img {
+    transform: scale(1.08);
+  }
+
+  .other-blog-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .other-blog-info h4 {
+    font-family: var(--font-secondary);
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+    line-height: 1.35;
+    color: var(--color-dark);
+    transition: color 0.2s ease;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-weight: 600;
+  }
+
+  .other-blog-item:hover h4 {
+    color: var(--color-primary);
+  }
+
+  .other-blog-date {
+    font-size: 0.78rem;
     color: var(--color-secondary);
     font-weight: 600;
   }
@@ -474,5 +738,99 @@ const { blog, otherBlogs } = Astro.props;
         window.speechSynthesis.cancel();
       }
     });
+
+    // Sidebar Arama Alanı (Sidebar Dedicated Search Area)
+    const sidebarSearchInput = document.getElementById('sidebarSearchInput') as HTMLInputElement | null;
+    const sidebarClearBtn = document.getElementById('sidebarClearBtn') as HTMLButtonElement | null;
+    const sidebarSearchBtn = document.getElementById('sidebarSearchBtn') as HTMLButtonElement | null;
+    const searchResultsArea = document.getElementById('searchResultsArea') as HTMLElement | null;
+    const searchResultBadge = document.getElementById('searchResultBadge') as HTMLElement | null;
+    const noSearchResults = document.getElementById('noSearchResults') as HTMLElement | null;
+    const searchResultsList = document.getElementById('searchResultsList') as HTMLElement | null;
+    
+    const searchItems = searchResultsList ? Array.from(searchResultsList.querySelectorAll<HTMLElement>('.search-result-item')) : [];
+
+    function normalizeText(str: string): string {
+      if (!str) return "";
+      return str
+        .trim()
+        .replace(/İ/g, "i")
+        .replace(/I/g, "i")
+        .replace(/ı/g, "i")
+        .toLocaleLowerCase("tr-TR")
+        .replace(/ı/g, "i")
+        .replace(/ğ/g, "g")
+        .replace(/ü/g, "u")
+        .replace(/ş/g, "s")
+        .replace(/ö/g, "o")
+        .replace(/ç/g, "c");
+    }
+
+    function performSidebarSearch() {
+      const query = normalizeText(sidebarSearchInput?.value || "");
+
+      if (sidebarClearBtn) {
+        sidebarClearBtn.style.display = query.length > 0 ? 'inline-flex' : 'none';
+      }
+
+      if (!query) {
+        if (searchResultsArea) searchResultsArea.style.display = 'none';
+        return;
+      }
+
+      if (searchResultsArea) searchResultsArea.style.display = 'block';
+
+      let matchCount = 0;
+      searchItems.forEach(item => {
+        const title = normalizeText(item.getAttribute('data-title') || '');
+        const summary = normalizeText(item.getAttribute('data-summary') || '');
+        const itemContent = normalizeText(item.getAttribute('data-content') || '');
+
+        const isMatch = title.includes(query) || summary.includes(query) || itemContent.includes(query);
+
+        if (isMatch) {
+          item.style.display = 'flex';
+          matchCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (searchResultBadge) {
+        searchResultBadge.textContent = `${matchCount} yazı`;
+      }
+
+      if (noSearchResults && searchResultsList) {
+        if (matchCount === 0) {
+          noSearchResults.style.display = 'block';
+          searchResultsList.style.display = 'none';
+        } else {
+          noSearchResults.style.display = 'none';
+          searchResultsList.style.display = 'flex';
+        }
+      }
+    }
+
+    function clearSidebarSearch() {
+      if (sidebarSearchInput) {
+        sidebarSearchInput.value = "";
+        sidebarSearchInput.focus();
+      }
+      performSidebarSearch();
+    }
+
+    sidebarSearchInput?.addEventListener('input', performSidebarSearch);
+    sidebarSearchInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        clearSidebarSearch();
+      }
+    });
+
+    sidebarSearchBtn?.addEventListener('click', () => {
+      sidebarSearchInput?.focus();
+      performSidebarSearch();
+    });
+
+    sidebarClearBtn?.addEventListener('click', clearSidebarSearch);
   });
 </script>
