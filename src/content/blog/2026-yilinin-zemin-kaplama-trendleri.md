@@ -14,10 +14,10 @@ Evinizi veya ofisinizi yenilerken zemin kaplama seçimi, tüm mekanın atmosferi
 
 ## 2. Estetik ve Temiz: Derzli Modeller
 
-2026 sezonunun önde gelen trendlerinden biri de şüphesiz derzli laminat parkeler. Gelişen teknoloji sayesinde V-derz yapıları kusursuzlaştırıldı; böylece sanılanın aksine derzler arasına toz ve kir girmez, temizliği son derece kolaydır. Gerçek ahşap hissini pekiştiren açık, orta ve koyu renklerdeki ahşap tonlarına sahip <a href="/parke" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">derzli parke modellerimizi</a> inceleyerek mekanınıza modern bir hava katabilirsiniz.
+2026 sezonunun önde gelen trendlerinden biri de şüphesiz derzli laminat parkeler. Gelişen teknoloji sayesinde V-derz yapıları kusursuzlaştırıldı; böylece sanılanın aksine derzler arasına toz ve kir girmez, temizliği son derece kolaydır. Gerçek ahşap hissini pekiştiren açık, orta ve koyu renklerdeki ahşap tonlarına sahip <a href="/parke?edge=Derzli" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">derzli parke modellerimizi</a> inceleyerek mekanınıza modern bir hava katabilirsiniz.
 
 ## 3. Platinum Serisi ile Maksimum Dayanıklılık
 
-Yoğun kullanım gerektiren alanlar için özel olarak üretilen 10mm kalınlığındaki Platinum serisi, bu yıl hem ev hem de ofis dekorasyonlarında çok popüler. Ekstra kalın yapısı sayesinde mükemmel ses ve ısı yalıtımı ile darbeye karşı üstün direnç sunar. Daha dayanıklı, prestijli ve sağlam bir zemin arıyorsanız <a href="/referanslar" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">Platinum serisi referanslarımıza</a> mutlaka göz atın.
+Yoğun kullanım gerektiren alanlar için özel olarak üretilen 10mm kalınlığındaki Platinum serisi, bu yıl hem ev hem de ofis dekorasyonlarında çok popüler. Ekstra kalın yapısı sayesinde mükemmel ses ve ısı yalıtımı ile darbeye karşı üstün direnç sunar. Daha dayanıklı, prestijli ve sağlam bir zemin arıyorsanız <a href="/parke?category=Platinum" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">Platinum serisi referanslarımıza</a> mutlaka göz atın.
 
 Evinizi 2026 trendleriyle yenilemek, ücretsiz keşif hizmetimizden faydalanmak ve Sancaktepe ucuz laminat parke fiyatları hakkında detaylı bilgi almak için <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">bizimle iletişime geçin</a>. Profesyonel parke ustalarımızla hayalinizdeki zemini gerçeğe dönüştürüyoruz.
