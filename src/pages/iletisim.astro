@@ -323,36 +323,44 @@ import Footer from "../components/Footer.astro";
 
 						<div class="form-row">
 							<div class="input-group">
-								<label
+								<label for="entry_2005620554"
 									>Adınız <span class="required">*</span
 									></label
 								>
 								<input
 									type="text"
+									id="entry_2005620554"
+									name="entry.2005620554"
 									required
 									placeholder="Size nasıl hitap edelim?"
+									autocomplete="name"
 								/>
 							</div>
 							<div class="input-group">
-								<label
+								<label for="entry_1166974658"
 									>Telefon Numaranız <span class="required"
 										>*</span
 									></label
 								>
 								<input
 									type="tel"
+									id="entry_1166974658"
+									name="entry.1166974658"
 									required
 									placeholder="Size ulaşabileceğimiz telefon"
+									autocomplete="tel"
 								/>
 							</div>
 						</div>
 
 						<div class="input-group">
-							<label
+							<label for="entry_839337160"
 								>Mesajınız <span class="required">*</span
 								></label
 							>
 							<textarea
+								id="entry_839337160"
+								name="entry.839337160"
 								required
 								placeholder="Aklınızdan geçenleri bizimle paylaşın..."
 								rows="6"></textarea>
@@ -368,6 +376,9 @@ import Footer from "../components/Footer.astro";
 	</section>
 
 	<script>
+		// Google Forms formResponse URL'i
+		const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSczeA1IJbeRlC25dY_Mdk83-UWVmHIqcF4aXux-h28dwogWAQ/formResponse";
+
 		const contactForm = document.getElementById(
 			"contactForm",
 		) as HTMLFormElement | null;
@@ -376,7 +387,7 @@ import Footer from "../components/Footer.astro";
 			"submitBtn",
 		) as HTMLButtonElement | null;
 
-		contactForm?.addEventListener("submit", (e) => {
+		contactForm?.addEventListener("submit", async (e) => {
 			e.preventDefault();
 
 			if (submitBtn) {
@@ -389,14 +400,22 @@ import Footer from "../components/Footer.astro";
 				`;
 			}
 
-			// Simulate submission feedback
-			setTimeout(() => {
-				contactForm.reset();
+			try {
+				const formData = new FormData(contactForm);
 
-				if (submitBtn) {
-					submitBtn.disabled = false;
-					submitBtn.textContent = "Mesajı Gönder";
+				// Google Forms endpoint'ine no-cors modunda POST isteği gönderimi
+				if (GOOGLE_FORM_ACTION_URL && !GOOGLE_FORM_ACTION_URL.includes("FORM_ID_BURAYA")) {
+					await fetch(GOOGLE_FORM_ACTION_URL, {
+						method: "POST",
+						mode: "no-cors",
+						body: formData,
+					});
+				} else {
+					// URL henüz girilmediyse kısa bir gecikmeyle simüle et
+					await new Promise((resolve) => setTimeout(resolve, 600));
 				}
+
+				contactForm.reset();
 
 				if (successAlert) {
 					successAlert.classList.add("show");
@@ -407,9 +426,17 @@ import Footer from "../components/Footer.astro";
 
 					setTimeout(() => {
 						successAlert.classList.remove("show");
-					}, 6000);
+					}, 7000);
 				}
-			}, 600);
+			} catch (error) {
+				console.error("Form gönderim hatası:", error);
+				alert("Mesajınız gönderilirken bir hata oluştu. Lütfen doğrudan telefon veya WhatsApp üzerinden bize ulaşın.");
+			} finally {
+				if (submitBtn) {
+					submitBtn.disabled = false;
+					submitBtn.textContent = "Mesajı Gönder";
+				}
+			}
 		});
 	</script>
 
