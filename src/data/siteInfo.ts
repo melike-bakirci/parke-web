@@ -1,7 +1,9 @@
 export const siteInfo = {
   name: "ZenFlor",
+  url: "https://www.zenparke.com.tr",
   title: "ZenFlor Parke Çözümleri",
   description: "Yaşam alanlarınıza değer katan modern, estetik ve dayanıklı lamine, laminat ve masif parke zemin çözümleri.",
+  defaultKeywords: "lamine parke, laminat parke, masif parke, zenflor parke, istanbul parke, zemin kaplama, süpürgelik, parke döşeme",
   
   contact: {
     phone: {

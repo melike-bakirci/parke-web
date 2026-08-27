@@ -4,10 +4,15 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import FloatingContact from '../components/FloatingContact.astro';
+import { siteInfo } from '../data/siteInfo';
 
 interface Props {
 	title: string;
 	description?: string;
+	keywords?: string;
+	image?: string;
+	canonicalURL?: string;
+	type?: string;
 	showHeader?: boolean;
 	showFooter?: boolean;
 	showCta?: boolean;
@@ -19,7 +24,11 @@ interface Props {
 
 const {
 	title,
-	description = "ZenFlor Parke - Yaşam alanlarınıza değer katan modern, estetik ve dayanıklı lamine, laminat ve masif parke zemin çözümleri.",
+	description = siteInfo.description,
+	keywords = siteInfo.defaultKeywords,
+	image = "/images/hero-bg.jpg", // Default OG image (could be updated later)
+	canonicalURL = new URL(Astro.url.pathname, siteInfo.url).href,
+	type = "website",
 	showHeader = true,
 	showFooter = true,
 	showCta = true,
@@ -28,20 +37,75 @@ const {
 	ctaWhatsappMsg,
 	ctaPhoneText,
 } = Astro.props;
+
+const schemaData = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"name": siteInfo.name,
+	"image": new URL("/images/hero-bg.jpg", siteInfo.url).href,
+	"@id": siteInfo.url,
+	"url": siteInfo.url,
+	"telephone": siteInfo.contact.phone.raw,
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": siteInfo.contact.address.street,
+		"addressLocality": siteInfo.contact.address.district,
+		"addressRegion": siteInfo.contact.address.city,
+		"addressCountry": "TR"
+	},
+	"openingHoursSpecification": {
+		"@type": "OpeningHoursSpecification",
+		"dayOfWeek": [
+			"Monday",
+			"Tuesday",
+			"Wednesday",
+			"Thursday",
+			"Friday",
+			"Saturday"
+		],
+		"opens": "09:00",
+		"closes": "19:00"
+	}
+};
+
 ---
 
 <!doctype html>
 <html lang="tr">
 	<head>
 		<meta charset="UTF-8" />
+		<title>{title} | {siteInfo.name}</title>
 		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={canonicalURL} />
+		
+		<!-- Google Search Console -->
+		<meta name="google-site-verification" content="NPsb6XH8U2d9DXOVUxDBaOw7Ll5zujq5KW0-yH8u3Kw" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={`${title} | ${siteInfo.name}`} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL(image, siteInfo.url).href} />
+		<meta property="og:site_name" content={siteInfo.name} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={`${title} | ${siteInfo.name}`} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={new URL(image, siteInfo.url).href} />
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
-		<title>{title}</title>
+		
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 	</head>
 	<body>
 		{showHeader && <Header />}

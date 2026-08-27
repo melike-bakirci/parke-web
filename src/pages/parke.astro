@@ -14,12 +14,18 @@ const products = [...productsRaw].sort((a, b) => {
 	return priceA - priceB;
 });
 
-const numericPrices = products.map((p) => parseFloat(p.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0);
+const numericPrices = products.map(
+	(p) => parseFloat(p.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0,
+);
 const minProductPrice = Math.min(...numericPrices);
 const maxProductPrice = Math.max(...numericPrices);
 ---
 
-<Layout title="Parke Koleksiyonları, Lamine & Masif Çeşitleri | ZenFlor">
+<Layout
+	title="Laminat Parke Modelleri | En Ucuz Fiyatlar"
+	description="Her bütçeye uygun ucuz parke çeşitleri ZenFlor koleksiyonlarında! Sancaktepe mağazamızdan tüm Türkiye'ye gönderim sağladığımız parkeleri inceleyin."
+	keywords="en ucuz parke modelleri, uygun fiyatlı parke, lamine parke, laminat parke, masif parke, sancaktepe parke çeşitleri, sarıgazi parkeci, tüm türkiye parke kargo, ucuz laminat"
+>
 	<PageHero
 		title="Parke Koleksiyonumuz"
 		subtitle="Her tarza ve ihtiyaca uygun birinci sınıf parke çeşitlerimizi keşfedin."
@@ -340,7 +346,10 @@ const maxProductPrice = Math.max(...numericPrices);
 				<div class="product-grid" id="productGrid">
 					{
 						products.map((product, idx) => (
-							<ProductCard product={product} isInitiallyVisible={idx < 12} />
+							<ProductCard
+								product={product}
+								isInitiallyVisible={idx < 12}
+							/>
 						))
 					}
 				</div>
@@ -374,7 +383,6 @@ const maxProductPrice = Math.max(...numericPrices);
 			</div>
 		</div>
 	</section>
-
 </Layout>
 
 <script>
@@ -470,9 +478,13 @@ const maxProductPrice = Math.max(...numericPrices);
 		const matchingCards = cards.filter((card) => {
 			const name = normalizeText(card.getAttribute("data-name") || "");
 			const desc = normalizeText(card.getAttribute("data-desc") || "");
-			const category = normalizeText(card.getAttribute("data-category") || "");
+			const category = normalizeText(
+				card.getAttribute("data-category") || "",
+			);
 			const edge = normalizeText(card.getAttribute("data-edge") || "");
-			const thickness = normalizeText(card.getAttribute("data-thickness") || "");
+			const thickness = normalizeText(
+				card.getAttribute("data-thickness") || "",
+			);
 			const color = normalizeText(card.getAttribute("data-color") || "");
 			const price = parseFloat(card.getAttribute("data-price") || "0");
 
@@ -498,10 +510,7 @@ const maxProductPrice = Math.max(...numericPrices);
 			}
 
 			// Edge filter
-			if (
-				selectedEdges.length > 0 &&
-				!selectedEdges.includes(edge)
-			) {
+			if (selectedEdges.length > 0 && !selectedEdges.includes(edge)) {
 				return false;
 			}
 
@@ -1132,8 +1141,6 @@ const maxProductPrice = Math.max(...numericPrices);
 			grid-template-columns: repeat(3, 1fr);
 		}
 	}
-
-
 
 	/* Pagination */
 	.pagination {

@@ -35,7 +35,11 @@ try {
 }
 ---
 
-<Layout title="İletişim, Ücretsiz Keşif & Fiyat Teklifi | ZenFlor">
+<Layout
+	title="İletişim & Fiyat Teklifi Al | Sancaktepe Parke Mağazası"
+	description="İstanbul Sancaktepe ve Sarıgazi'deki mağazamızı ziyaret edin veya tüm Türkiye'den sipariş için bize ulaşın. En ucuz parke fiyatları için hemen arayın ve teklif alın."
+	keywords="sancaktepe parke iletişim, sarıgazi parkeci iletişim, istanbul ucuz parke mağazası, parke fiyat teklifi, tüm türkiye parke satışı, en uygun parke nerede"
+>
 	<PageHero
 		title="Bize Ulaşın"
 		subtitle="Aklınızdaki projeyi konuşmak için sabırsızlanıyoruz! Bir mesaj atmaya ne dersiniz?
@@ -58,14 +62,13 @@ try {
 					</div>
 					<h3>Adresimiz</h3>
 					<p>
-						{siteInfo.contact.address.street},<br />{siteInfo.contact.address.district} / {siteInfo.contact.address.city}
+						{siteInfo.contact.address.street},<br />{
+							siteInfo.contact.address.district
+						} / {siteInfo.contact.address.city}
 					</p>
 				</a>
 
-				<a
-					href={siteInfo.contact.phone.tel}
-					class="info-card"
-				>
+				<a href={siteInfo.contact.phone.tel} class="info-card">
 					<div class="icon-circle">
 						<Icon name="phone" size={24} />
 					</div>
@@ -73,10 +76,7 @@ try {
 					<p>{siteInfo.contact.phone.formatted}</p>
 				</a>
 
-				<a
-					href={siteInfo.contact.email.mailto}
-					class="info-card"
-				>
+				<a href={siteInfo.contact.email.mailto} class="info-card">
 					<div class="icon-circle">
 						<Icon name="email" size={24} />
 					</div>
@@ -91,14 +91,25 @@ try {
 						<Icon name="clock" size={24} />
 					</div>
 					<h3>Çalışma Saatlerimiz</h3>
-					<div id="statusBadge" class={`status-badge ${isInitiallyOpen ? 'status-open' : 'status-closed'}`} aria-live="polite">
+					<div
+						id="statusBadge"
+						class={`status-badge ${isInitiallyOpen ? "status-open" : "status-closed"}`}
+						aria-live="polite"
+					>
 						<span class="status-dot"></span>
-						<span class="status-text">{isInitiallyOpen ? 'ŞU AN AÇIĞIZ!' : 'ŞU AN KAPALIYIZ!'}</span>
+						<span class="status-text"
+							>{
+								isInitiallyOpen
+									? "ŞU AN AÇIĞIZ!"
+									: "ŞU AN KAPALIYIZ!"
+							}</span
+						>
 					</div>
 					<script is:inline>
-						(function() {
+						(function () {
 							try {
-								var badge = document.getElementById("statusBadge");
+								var badge =
+									document.getElementById("statusBadge");
 								if (!badge) return;
 								var text = badge.querySelector(".status-text");
 								var now = new Date();
@@ -114,29 +125,38 @@ try {
 								var hour = 0;
 								var minute = 0;
 								for (var i = 0; i < parts.length; i++) {
-									if (parts[i].type === "weekday") weekday = parts[i].value;
-									if (parts[i].type === "hour") hour = parseInt(parts[i].value, 10);
-									if (parts[i].type === "minute") minute = parseInt(parts[i].value, 10);
+									if (parts[i].type === "weekday")
+										weekday = parts[i].value;
+									if (parts[i].type === "hour")
+										hour = parseInt(parts[i].value, 10);
+									if (parts[i].type === "minute")
+										minute = parseInt(parts[i].value, 10);
 								}
 
 								var isOpen = false;
 								if (weekday !== "Sun") {
 									var curMin = hour * 60 + minute;
-									isOpen = curMin >= 9 * 60 && curMin < 19 * 60;
+									isOpen =
+										curMin >= 9 * 60 && curMin < 19 * 60;
 								}
 
 								if (isOpen) {
-									badge.className = "status-badge status-open";
-									if (text) text.textContent = "ŞU AN AÇIĞIZ!";
+									badge.className =
+										"status-badge status-open";
+									if (text)
+										text.textContent = "ŞU AN AÇIĞIZ!";
 								} else {
-									badge.className = "status-badge status-closed";
-									if (text) text.textContent = "ŞU AN KAPALIYIZ!";
+									badge.className =
+										"status-badge status-closed";
+									if (text)
+										text.textContent = "ŞU AN KAPALIYIZ!";
 								}
 							} catch (e) {}
 						})();
 					</script>
 					<p>
-						{siteInfo.contact.workingHours.weekdays}<br /><span class="text-muted"
+						{siteInfo.contact.workingHours.weekdays}<br /><span
+							class="text-muted"
 							>{siteInfo.contact.workingHours.weekend}</span
 						>
 					</p>
@@ -318,7 +338,8 @@ try {
 
 	<script>
 		// Google Forms formResponse URL'i
-		const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/d/e/1FAIpQLSczeA1IJbeRlC25dY_Mdk83-UWVmHIqcF4aXux-h28dwogWAQ/formResponse";
+		const GOOGLE_FORM_ACTION_URL =
+			"https://docs.google.com/forms/d/e/1FAIpQLSczeA1IJbeRlC25dY_Mdk83-UWVmHIqcF4aXux-h28dwogWAQ/formResponse";
 
 		const contactForm = document.getElementById(
 			"contactForm",
@@ -345,7 +366,10 @@ try {
 				const formData = new FormData(contactForm);
 
 				// Google Forms endpoint'ine no-cors modunda POST isteği gönderimi
-				if (GOOGLE_FORM_ACTION_URL && !GOOGLE_FORM_ACTION_URL.includes("FORM_ID_BURAYA")) {
+				if (
+					GOOGLE_FORM_ACTION_URL &&
+					!GOOGLE_FORM_ACTION_URL.includes("FORM_ID_BURAYA")
+				) {
 					await fetch(GOOGLE_FORM_ACTION_URL, {
 						method: "POST",
 						mode: "no-cors",
@@ -371,7 +395,9 @@ try {
 				}
 			} catch (error) {
 				console.error("Form gönderim hatası:", error);
-				alert("Mesajınız gönderilirken bir hata oluştu. Lütfen doğrudan telefon veya WhatsApp üzerinden bize ulaşın.");
+				alert(
+					"Mesajınız gönderilirken bir hata oluştu. Lütfen doğrudan telefon veya WhatsApp üzerinden bize ulaşın.",
+				);
 			} finally {
 				if (submitBtn) {
 					submitBtn.disabled = false;
@@ -411,7 +437,8 @@ try {
 				// Pazartesi - Cumartesi: 09:00 - 19:00 arası açık
 				if (weekday !== "Sun") {
 					const currentMinutes = hour * 60 + minute;
-					isOpen = currentMinutes >= 9 * 60 && currentMinutes < 19 * 60;
+					isOpen =
+						currentMinutes >= 9 * 60 && currentMinutes < 19 * 60;
 				}
 			} catch (e) {
 				const d = new Date();
@@ -432,7 +459,6 @@ try {
 		updateWorkingStatus();
 		setInterval(updateWorkingStatus, 30000);
 	</script>
-
 </Layout>
 
 <style>
@@ -527,7 +553,9 @@ try {
 		border-radius: 8px;
 		text-align: center;
 		box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
 		text-decoration: none;
 		display: flex;
 		flex-direction: column;
@@ -557,7 +585,9 @@ try {
 		align-items: center;
 		justify-content: center;
 		margin: 0 auto 20px auto;
-		transition: background-color 0.3s ease, color 0.3s ease;
+		transition:
+			background-color 0.3s ease,
+			color 0.3s ease;
 		flex-shrink: 0;
 	}
 	.info-card:hover .icon-circle {
