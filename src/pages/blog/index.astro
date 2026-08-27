@@ -2,23 +2,23 @@
 import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import BlogCard from "../../components/BlogCard.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
-const blogEntries = await getCollection('blog');
-const blogs = blogEntries.map(entry => ({
-  slug: entry.id,
-  title: entry.data.title,
-  summary: entry.data.summary,
-  image: entry.data.image,
-  date: entry.data.date,
-  readTime: entry.data.readTime
+const blogEntries = await getCollection("blog");
+const blogs = blogEntries.map((entry) => ({
+	slug: entry.id,
+	title: entry.data.title,
+	summary: entry.data.summary,
+	image: entry.data.image,
+	date: entry.data.date,
+	readTime: entry.data.readTime,
 }));
 ---
 
 <Layout title="Parke Rehberi, Zemin Trendleri & Bakım İpuçları | ZenFlor">
 	<PageHero
-		title="Blog"
-		subtitle="Zemin dekorasyonu, trendler ve pratik ipuçları"
+		title="Blog: Zemin Dekorasyon ve Bakım İpuçları"
+		subtitle="Laminat parke, ahşap zeminler ve dekorasyon hakkında tavsiyeler, yenilikler ve pratik rehberler."
 	/>
 
 	<section class="blog-section">
@@ -26,7 +26,11 @@ const blogs = blogEntries.map(entry => ({
 			<div class="blog-grid">
 				{
 					blogs.map((post) => (
-						<BlogCard post={post} titleTag="h2" readMoreText="Devamını Oku" />
+						<BlogCard
+							post={post}
+							titleTag="h2"
+							readMoreText="Devamını Oku"
+						/>
 					))
 				}
 			</div>

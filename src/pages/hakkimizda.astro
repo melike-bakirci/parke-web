@@ -3,7 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
 import { Image } from "astro:assets";
 
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp}');
+const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
+	"/public/images/*.{jpeg,jpg,png,webp}",
+);
 ---
 
 <Layout
@@ -12,38 +14,66 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 	keywords="sancaktepe parkeci, sarıgazi parke, istanbul ucuz parke, uygun parke firmaları, zenflor kurumsal, tüm türkiye zemin kaplama"
 >
 	<PageHero
-		title="Biz Kimiz?"
-		subtitle="Hayalinizdeki zeminleri gerçeğe dönüştüren yol arkadaşınız"
+		title="ZenFlor Hakkında"
+		subtitle="Yılların tecrübesiyle Türkiye genelinde ucuz ve kaliteli laminat parke, zemin kaplama çözümleri sunuyoruz."
 	/>
 
 	<!-- Story Section -->
 	<section class="story-section">
 		<div class="container story-container">
 			<div class="story-text">
-				<h2>Hikayemiz</h2>
+				<h2>
+					ZenFlor Hikayesi: Güvenilir Parke ve Zemin Kaplama Uzmanınız
+				</h2>
 				<p>
 					ZenFlor, yaşam alanlarına doğallık, zarafet ve kalite katma
 					tutkusuyla kuruldu. Ahşabın sıcaklığını ve zamansız
 					estetiğini modern mimariyle buluşturan markamız; yıllar
-					içinde sektörün güvenilir, yenilikçi ve öncü <a href="/parke" class="text-link">parke ve zemin kaplama</a> sağlayıcısı haline geldi.
+					içinde sektörün güvenilir, yenilikçi ve öncü <a
+						href="/parke"
+						class="text-link">parke ve zemin kaplama</a
+					> sağlayıcısı haline geldi.
 				</p>
 				<p>
-					Geniş lamine, laminat ve masif <a href="/parke" class="text-link">parke modelleri koleksiyonlarımız</a>,
-					uzman işçiliğimiz ve müşteri odaklı yaklaşımımızla
+					Geniş lamine, laminat ve masif <a
+						href="/parke"
+						class="text-link">parke modelleri koleksiyonlarımız</a
+					>, uzman işçiliğimiz ve müşteri odaklı yaklaşımımızla
 					konutlardan ticari alanlara kadar yüzlerce projede zeminlere
-					hayat verdik. <a href="/referanslar" class="text-link">Uygulama referanslarımızı inceleyerek</a> kalitemizi yakından görebilirsiniz. Sürdürülebilir orman yönetimini destekliyor,
-					çevreye duyarlı ve uzun ömürlü malzemelerle geleceğe değer
-					katıyoruz. Sorularınız için <a href="/iletisim" class="text-link">iletişim formumuzdan</a> bize ulaşabilirsiniz.
+					hayat verdik. <a href="/referanslar" class="text-link"
+						>Uygulama referanslarımızı inceleyerek</a
+					> kalitemizi yakından görebilirsiniz. Sürdürülebilir orman yönetimini
+					destekliyor, çevreye duyarlı ve uzun ömürlü malzemelerle geleceğe
+					değer katıyoruz. Sorularınız için <a
+						href="/iletisim"
+						class="text-link">iletişim formumuzdan</a
+					> bize ulaşabilirsiniz.
 				</p>
 			</div>
 
 			<div class="story-visual-wrap">
 				<div class="story-image">
-					{imagesGlob['/public/images/about-3.webp'] ? (
-						<Image src={imagesGlob['/public/images/about-3.webp']()} alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri" width={800} height={600} loading="lazy" decoding="async" />
-					) : (
-						<img src="/images/about-3.webp" alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri" loading="lazy" decoding="async" />
-					)}
+					{
+						imagesGlob["/public/images/about-3.webp"] ? (
+							<Image
+								src={imagesGlob[
+									"/public/images/about-3.webp"
+								]()}
+								alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri"
+								width={800}
+								height={600}
+								loading="lazy"
+								decoding="async"
+							/>
+						) : (
+							<img
+								src="/images/about-3.webp"
+								alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri"
+								loading="lazy"
+								decoding="async"
+							/>
+						)
+					}
 				</div>
 
 				<!-- 1 Standalone Website Icon Under Photo -->
@@ -103,12 +133,13 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 							></path>
 						</svg>
 					</div>
-					<h3>Vizyonumuz</h3>
+					<h3>Vizyonumuz: Parke Sektöründe Öncü Marka</h3>
 					<p>
-						Doğal ve estetik zemin çözümlerinde yenilikçi
-						tasarımlar, çevreye duyarlı üretim ve üstün kalite
-						standartlarıyla Türkiye’nin en çok güvenilen ve ilham
-						veren lider parke markası olmak.
+						Sancaktepe merkezli başladığımız yolculuğumuzda; laminat
+						parke, masif ahşap ve zemin kaplama sektöründe yenilikçi
+						çözümler, çevre dostu ürünler ve üstün hizmet
+						kalitesiyle tüm Türkiye'nin en çok tercih edilen markası
+						olmak.
 					</p>
 				</div>
 
@@ -131,12 +162,12 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 							<polyline points="9 12 11 14 15 10"></polyline>
 						</svg>
 					</div>
-					<h3>Misyonumuz</h3>
+					<h3>Misyonumuz: Kaliteli ve Uygun Fiyatlı Zeminler</h3>
 					<p>
-						Her mekânın ruhuna ve ihtiyacına uygun, dayanıklı ve
-						estetik parke ürünlerini en kaliteli işçilik ve kusursuz
-						müşteri deneyimiyle sunarak, yaşam alanlarına kalıcı
-						değer ve konfor katmak.
+						Yaşam ve çalışma alanlarınıza değer katacak suya
+						dayanıklı, uzun ömürlü ve estetik parke modellerini;
+						bütçe dostu uygun fiyatlar ve profesyonel parke ustası
+						işçiliği ile sunarak %100 müşteri memnuniyeti sağlamak.
 					</p>
 				</div>
 			</div>
