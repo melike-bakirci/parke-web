@@ -1,6 +1,7 @@
 ---
 import productsRaw from "../data/products.json";
 import ProductCard from "./ProductCard.astro";
+import Icon from "./Icon.astro";
 
 // Parke sayfasındaki sıralama ile aynı ilk 4 ürün
 const products = [...productsRaw]
@@ -22,20 +23,7 @@ const products = [...productsRaw]
       </div>
       <a href="/parke" class="btn-view-all">
         <span>Hepsini Göster</span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="5" y1="12" x2="19" y2="12"></line>
-          <polyline points="12 5 19 12 12 19"></polyline>
-        </svg>
+        <Icon name="arrow-right" size={18} strokeWidth={2.2} />
       </a>
     </div>
 
