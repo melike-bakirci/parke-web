@@ -12,6 +12,7 @@ interface Props {
 	image?: string;
 	canonicalURL?: string;
 	type?: string;
+	robots?: string;
 	showHeader?: boolean;
 	showFooter?: boolean;
 	showCta?: boolean;
@@ -29,6 +30,7 @@ const {
 	image = "/images/hero-bg.webp", // Default OG image
 	canonicalURL = new URL(Astro.url.pathname, siteInfo.url).href,
 	type = "website",
+	robots = "index, follow",
 	showHeader = true,
 	showFooter = true,
 	showCta = true,
@@ -37,6 +39,10 @@ const {
 	ctaWhatsappMsg,
 	ctaPhoneText,
 } = Astro.props;
+
+const pageTitle = title.includes(siteInfo.name)
+	? title
+	: `${title} | ${siteInfo.name}`;
 
 const schemaData = {
 	"@context": "https://schema.org",
@@ -75,7 +81,7 @@ const finalSchema = Astro.props.schema || schemaData;
 <html lang="tr">
 	<head>
 		<meta charset="UTF-8" />
-		<title>{title} | {siteInfo.name}</title>
+		<title>{pageTitle}</title>
 		<meta name="description" content={description} />
 		{keywords && <meta name="keywords" content={keywords} />}
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,7 +90,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<meta name="theme-color" content="#8C6A53" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="canonical" href={canonicalURL} />
-		<meta name="robots" content="index, follow" />
+		<meta name="robots" content={robots} />
 		
 		<!-- Google Search Console -->
 		<meta name="google-site-verification" content="NPsb6XH8U2d9DXOVUxDBaOw7Ll5zujq5KW0-yH8u3Kw" />
@@ -93,7 +99,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<meta property="og:locale" content="tr_TR" />
 		<meta property="og:type" content={type} />
 		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={`${title} | ${siteInfo.name}`} />
+		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={new URL(image, siteInfo.url).href} />
 		<meta property="og:site_name" content={siteInfo.name} />
@@ -101,7 +107,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonicalURL} />
-		<meta property="twitter:title" content={`${title} | ${siteInfo.name}`} />
+		<meta property="twitter:title" content={pageTitle} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={new URL(image, siteInfo.url).href} />
 
