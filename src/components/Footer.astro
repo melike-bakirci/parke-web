@@ -1,7 +1,7 @@
 ---
-import CtaBanner from './CtaBanner.astro';
-import { siteInfo } from '../data/siteInfo';
-import Icon from './Icon.astro';
+import CtaBanner from "./CtaBanner.astro";
+import { siteInfo } from "../data/siteInfo";
+import Icon from "./Icon.astro";
 
 interface Props {
   showCta?: boolean;
@@ -11,27 +11,64 @@ interface Props {
   ctaPhoneText?: string;
 }
 
-const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText } = Astro.props;
+const {
+  showCta = true,
+  ctaTitle,
+  ctaDescription,
+  ctaWhatsappMsg,
+  ctaPhoneText,
+} = Astro.props;
 ---
-{showCta && (
-  <CtaBanner 
-    title={ctaTitle} 
-    description={ctaDescription} 
-    whatsappMessage={ctaWhatsappMsg} 
-    phoneText={ctaPhoneText} 
-  />
-)}
+
+{
+  showCta && (
+    <CtaBanner
+      title={ctaTitle}
+      description={ctaDescription}
+      whatsappMessage={ctaWhatsappMsg}
+      phoneText={ctaPhoneText}
+    />
+  )
+}
 <footer class="footer">
   <div class="container footer-container">
     <div class="footer-col brand-col">
       <div class="logo">
         <a href="/" class="footer-logo-link">
           <div class="logo-icon">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="1" y="1" width="13" height="13" fill="var(--color-secondary, #C8A96E)" opacity="0.95"/>
-              <rect x="18" y="1" width="13" height="13" fill="var(--color-secondary, #C8A96E)" opacity="0.5"/>
-              <rect x="1" y="18" width="13" height="13" fill="var(--color-secondary, #C8A96E)" opacity="0.5"/>
-              <rect x="18" y="18" width="13" height="13" fill="var(--color-secondary, #C8A96E)" opacity="0.95"/>
+            <svg
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1"
+                width="13"
+                height="13"
+                fill="var(--color-secondary, #C8A96E)"
+                opacity="0.95"></rect>
+              <rect
+                x="18"
+                y="1"
+                width="13"
+                height="13"
+                fill="var(--color-secondary, #C8A96E)"
+                opacity="0.5"></rect>
+              <rect
+                x="1"
+                y="18"
+                width="13"
+                height="13"
+                fill="var(--color-secondary, #C8A96E)"
+                opacity="0.5"></rect>
+              <rect
+                x="18"
+                y="18"
+                width="13"
+                height="13"
+                fill="var(--color-secondary, #C8A96E)"
+                opacity="0.95"></rect>
             </svg>
           </div>
           <div class="logo-text">
@@ -42,53 +79,97 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
       </div>
       <p>{siteInfo.description}</p>
       <div class="social-links">
-        <a href={siteInfo.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+        <a
+          href={siteInfo.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          title="Instagram"
+        >
           <Icon name="instagram" size={18} />
         </a>
-        <a href={siteInfo.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <a
+          href={siteInfo.social.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          title="LinkedIn"
+        >
           <Icon name="linkedin" size={18} />
         </a>
-        <a href={siteInfo.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+        <a
+          href={siteInfo.social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          title="Facebook"
+        >
           <Icon name="facebook" size={18} />
         </a>
-        <a href={siteInfo.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+        <a
+          href={siteInfo.social.youtube}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+          title="YouTube"
+        >
           <Icon name="youtube" size={18} />
         </a>
-        <a href={siteInfo.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+        <a
+          href={siteInfo.social.tiktok}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+          title="TikTok"
+        >
           <Icon name="tiktok" size={18} />
         </a>
-        <a href={siteInfo.social.sahibinden} target="_blank" rel="noopener noreferrer" aria-label="Sahibinden" title="Sahibinden">
+        <a
+          href={siteInfo.social.sahibinden}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Sahibinden"
+          title="Sahibinden"
+        >
           <Icon name="sahibinden" size={18} />
         </a>
       </div>
     </div>
-    
+
     <div class="footer-col">
       <h3 class="footer-title">Hızlı Bağlantılar</h3>
       <ul class="footer-links">
         <li><a href="/">Ana Sayfa</a></li>
-        <li><a href="/hakkimizda">Biz Kimiz?</a></li>
+        <li><a href="/hakkimizda">Hakkımızda</a></li>
         <li><a href="/parke">Parke</a></li>
         <li><a href="/galeri">Galeri</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/iletisim">İletişim</a></li>
       </ul>
     </div>
-    
+
     <div class="footer-col">
       <h3 class="footer-title">BİZE ULAŞIN</h3>
       <ul class="footer-contact-list">
         <li>
           <Icon name="location" size={18} />
-          <a href={siteInfo.contact.address.mapsUrl} target="_blank" rel="noopener noreferrer">{siteInfo.contact.address.full}</a>
+          <a
+            href={siteInfo.contact.address.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer">{siteInfo.contact.address.full}</a
+          >
         </li>
         <li>
           <Icon name="phone" size={18} />
-          <a href={siteInfo.contact.phone.tel}>{siteInfo.contact.phone.formatted}</a>
+          <a href={siteInfo.contact.phone.tel}
+            >{siteInfo.contact.phone.formatted}</a
+          >
         </li>
         <li>
           <Icon name="email" size={18} />
-          <a href={siteInfo.contact.email.mailto}>{siteInfo.contact.email.address}</a>
+          <a href={siteInfo.contact.email.mailto}
+            >{siteInfo.contact.email.address}</a
+          >
         </li>
         <li>
           <Icon name="clock" size={18} />
@@ -97,10 +178,13 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
       </ul>
     </div>
   </div>
-  
+
   <div class="footer-bottom">
     <div class="container footer-bottom-container">
-      <p>&copy; {new Date().getFullYear()} {siteInfo.title}. Tüm hakları saklıdır.</p>
+      <p>
+        &copy; {new Date().getFullYear()}
+        {siteInfo.title}. Tüm hakları saklıdır.
+      </p>
       <div class="footer-legal-links">
         <a href="/gizlilik-politikasi">Gizlilik Politikası</a>
         <a href="/kullanim-kosullari">Kullanım Koşulları</a>
@@ -174,7 +258,7 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     display: inline-block;
   }
   .footer-title::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -184,7 +268,7 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     border-radius: 2px;
   }
   .footer-col p {
-    color: var(--color-text-light-muted, #DDD1C8);
+    color: var(--color-text-light-muted, #ddd1c8);
     font-size: 0.92rem;
     line-height: 1.65;
     margin-bottom: 1.5rem;
@@ -217,9 +301,11 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     gap: 12px;
   }
   .footer-links a {
-    color: var(--color-text-light-muted, #DDD1C8);
+    color: var(--color-text-light-muted, #ddd1c8);
     font-size: 0.95rem;
-    transition: color 0.25s ease, transform 0.2s ease;
+    transition:
+      color 0.25s ease,
+      transform 0.2s ease;
     display: inline-block;
   }
   .footer-links a:hover {
@@ -236,7 +322,7 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    color: var(--color-text-light-muted, #DDD1C8);
+    color: var(--color-text-light-muted, #ddd1c8);
     font-size: 0.92rem;
     line-height: 1.5;
   }
@@ -246,7 +332,7 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     color: var(--color-secondary);
   }
   .footer-contact-list a {
-    color: var(--color-text-light-muted, #DDD1C8);
+    color: var(--color-text-light-muted, #ddd1c8);
     transition: color 0.3s;
     text-decoration: none;
   }

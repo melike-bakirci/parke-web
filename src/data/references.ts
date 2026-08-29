@@ -18,10 +18,10 @@ export const partnerCompanies = [
 ];
 
 export const galleryImages = [
-	{ id: 1, img: "/images/uygulama-galerisi/uygulama-galerisi-1.webp", alt: "ZenFlor Parke Zemin Uygulaması 1" },
-	{ id: 5, img: "/images/uygulama-galerisi/uygulama-galerisi-5.webp", alt: "ZenFlor Parke Zemin Uygulaması 5" },
-	{ id: 6, img: "/images/uygulama-galerisi/uygulama-galerisi-6.webp", alt: "ZenFlor Parke Zemin Uygulaması 6" },
-	{ id: 14, img: "/images/uygulama-galerisi/uygulama-galerisi-14.webp", alt: "ZenFlor Parke Zemin Uygulaması 14" },
-	{ id: 15, img: "/images/uygulama-galerisi/uygulama-galerisi-15.webp", alt: "ZenFlor Parke Zemin Uygulaması 15" },
-	{ id: 16, img: "/images/uygulama-galerisi/uygulama-galerisi-16.webp", alt: "ZenFlor Parke Zemin Uygulaması 16" }
+	{ id: 1, img: "/images/uygulama-galerisi/uygulama-galerisi-1.webp", alt: "Parke Zemin Uygulaması" },
+	{ id: 5, img: "/images/uygulama-galerisi/uygulama-galerisi-5.webp", alt: "Parke Zemin Uygulaması" },
+	{ id: 6, img: "/images/uygulama-galerisi/uygulama-galerisi-6.webp", alt: "Parke Zemin Uygulaması" },
+	{ id: 14, img: "/images/uygulama-galerisi/uygulama-galerisi-14.webp", alt: "Parke Zemin Uygulaması" },
+	{ id: 15, img: "/images/uygulama-galerisi/uygulama-galerisi-15.webp", alt: "Parke Zemin Uygulaması" },
+	{ id: 16, img: "/images/uygulama-galerisi/uygulama-galerisi-16.webp", alt: "Parke Zemin Uygulaması" }
 ];
