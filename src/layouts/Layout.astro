@@ -27,7 +27,7 @@ const {
 	title,
 	description = siteInfo.description,
 	keywords = siteInfo.defaultKeywords,
-	image = "/images/hero-bg.jpg", // Default OG image (could be updated later)
+	image = "/images/hero-bg.webp", // Default OG image
 	canonicalURL = new URL(Astro.url.pathname, siteInfo.url).href,
 	type = "website",
 	showHeader = true,
@@ -43,7 +43,7 @@ const schemaData = {
 	"@context": "https://schema.org",
 	"@type": "LocalBusiness",
 	"name": siteInfo.name,
-	"image": new URL("/images/hero-bg.jpg", siteInfo.url).href,
+	"image": new URL("/images/hero-bg.webp", siteInfo.url).href,
 	"@id": siteInfo.url,
 	"url": siteInfo.url,
 	"telephone": siteInfo.contact.phone.raw,
@@ -78,6 +78,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<meta charset="UTF-8" />
 		<title>{title} | {siteInfo.name}</title>
 		<meta name="description" content={description} />
+		{keywords && <meta name="keywords" content={keywords} />}
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/favicon.svg" />
@@ -110,7 +111,7 @@ const finalSchema = Astro.props.schema || schemaData;
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		
 		<!-- JSON-LD Structured Data -->
-		<script type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
 	</head>
 	<body>
 		{showHeader && <Header />}
