@@ -1,4 +1,4 @@
-﻿---
+---
 import { siteInfo } from "../data/siteInfo";
 import Icon from "./Icon.astro";
 
@@ -383,32 +383,46 @@ const pathname = Astro.url.pathname;
         </li>
       </ul>
 
-      <!-- Drawer Call to Actions -->
-      <div class="drawer-actions">
+      <!-- Drawer Contact & Info (TopHeader Items + Working Hours) -->
+      <div class="drawer-footer">
+        <a
+          href={siteInfo.contact.address.mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="drawer-info-item"
+          title={siteInfo.contact.address.full}
+        >
+          <Icon name="home" size={15} strokeWidth={2} />
+          <span>{siteInfo.contact.address.short}</span>
+        </a>
         <a
           href={siteInfo.contact.phone.tel}
-          class="drawer-btn drawer-btn-phone"
+          class="drawer-info-item"
+          title={siteInfo.contact.phone.formatted}
         >
-          <Icon name="phone" size={18} strokeWidth={2.2} />
-          <span>Hemen Arayın: {siteInfo.contact.phone.formatted}</span>
+          <Icon name="phone" size={15} strokeWidth={2} />
+          <span>{siteInfo.contact.phone.formatted}</span>
         </a>
         <a
           href={siteInfo.contact.whatsapp.url}
           target="_blank"
           rel="noopener noreferrer"
-          class="drawer-btn drawer-btn-whatsapp"
+          class="drawer-info-item"
+          title="WhatsApp İletişim Hattı"
         >
-          <Icon name="whatsapp" size={18} />
-          <span>WhatsApp ile Teklif Alın</span>
+          <Icon name="whatsapp" size={15} />
+          <span>WhatsApp</span>
         </a>
-      </div>
-
-      <!-- Drawer Footer Info -->
-      <div class="drawer-footer">
-        <div class="drawer-info-item">
-          <Icon name="location" size={15} />
-          <span>{siteInfo.contact.address.full}</span>
-        </div>
+        <a
+          href={siteInfo.social.sahibinden}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="drawer-info-item"
+          title="Sahibinden Mağazamız"
+        >
+          <Icon name="sahibinden" size={15} />
+          <span>Sahibinden</span>
+        </a>
         <div class="drawer-info-item">
           <Icon name="clock" size={15} />
           <span>{siteInfo.contact.workingHours.summary}</span>
@@ -806,63 +820,36 @@ const pathname = Astro.url.pathname;
     transform: translateX(3px);
   }
 
-  /* Drawer Actions */
-  .drawer-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 1.75rem;
-  }
-  .drawer-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.92rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-  .drawer-btn-phone {
-    background: var(--color-primary);
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(140, 106, 83, 0.25);
-  }
-  .drawer-btn-phone:hover {
-    background: var(--color-dark);
-  }
-  .drawer-btn-whatsapp {
-    background: #25d366;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
-  }
-  .drawer-btn-whatsapp:hover {
-    background: #20ba5a;
-  }
-
-  /* Drawer Footer */
+  /* Drawer Footer (TopHeader Items & Working Hours) */
   .drawer-footer {
     margin-top: auto;
     padding-top: 1.25rem;
     border-top: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   .drawer-info-item {
     display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 0.82rem;
-    color: #64748b;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: #475569;
+    text-decoration: none;
     line-height: 1.4;
+    transition: color 0.2s ease, transform 0.2s ease;
   }
   .drawer-info-item svg {
     flex-shrink: 0;
-    color: var(--color-secondary);
-    margin-top: 2px;
+    color: var(--color-primary);
+    transition: transform 0.2s ease;
+  }
+  a.drawer-info-item:hover {
+    color: var(--color-primary);
+  }
+  a.drawer-info-item:hover svg {
+    transform: scale(1.15);
   }
 
   /* =========================================
@@ -926,9 +913,6 @@ const pathname = Astro.url.pathname;
     .mobile-drawer {
       width: 100%;
       max-width: 100%;
-    }
-    .drawer-btn span {
-      font-size: 0.85rem;
     }
   }
 </style>
