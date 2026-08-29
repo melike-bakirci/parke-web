@@ -287,15 +287,17 @@ const productSchema = {
 
 				<!-- SAĞ SÜTUN: BAŞLIK, FİYAT VE MALİYETİNİZİ HEMEN HESAPLAYIN -->
 				<div class="detail-right">
-					<div class="detail-header">
-						<span class="series-tag">{product.series} Serisi</span>
-						<h1 class="product-title">{product.name}</h1>
-					</div>
+					<div class="product-header-block">
+						<div class="detail-header">
+							<span class="series-tag">{product.series} Serisi</span>
+							<h1 class="product-title">{product.name}</h1>
+						</div>
 
-					<div class="price-block">
-						<div class="price-display">
-							<span class="price-value">{product.price}</span>
-							<span class="price-unit">/ m²</span>
+						<div class="price-block">
+							<div class="price-display">
+								<span class="price-value">{product.price}</span>
+								<span class="price-unit">/ m²</span>
+							</div>
 						</div>
 					</div>
 
@@ -1870,6 +1872,12 @@ const productSchema = {
 		gap: 2rem;
 	}
 
+	.product-header-block {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+
 	.detail-header {
 		display: flex;
 		flex-direction: column;
@@ -2300,19 +2308,21 @@ const productSchema = {
 
 	.product-grid-related {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 30px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 14px;
 	}
 
 	@media (min-width: 640px) {
 		.product-grid-related {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 24px;
 		}
 	}
 
 	@media (min-width: 992px) {
 		.product-grid-related {
 			grid-template-columns: repeat(4, 1fr);
+			gap: 30px;
 		}
 	}
 
@@ -2698,7 +2708,125 @@ const productSchema = {
 		line-height: 1.35;
 	}
 
+	/* =============================================
+	   TABLET & MOBİL SIRALAMA (max-width: 991px)
+	   1. Ürün İsmi & Fiyat
+	   2. Fotoğraf Slider
+	   3. Teknik Özellikler
+	   4. Maliyet Hesabı
+	   5. Aksiyon Butonları & Paylaş
+	   ============================================= */
+	@media (max-width: 991px) {
+		.detail-layout {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			align-items: stretch;
+			width: 100%;
+		}
+
+		.detail-left,
+		.detail-right {
+			display: contents;
+		}
+
+		.product-header-block {
+			order: 1;
+		}
+
+		.product-slider {
+			order: 2;
+		}
+
+		.specs-section {
+			order: 3;
+		}
+
+		.calculator-card {
+			order: 4;
+		}
+
+		.bottom-actions {
+			order: 5;
+		}
+
+		.share-container {
+			order: 6;
+		}
+	}
+
+	/* =============================================
+	   TABLET (max-width: 768px)
+	   ============================================= */
 	@media (max-width: 768px) {
+		/* Genel Sayfa Padding */
+		.product-detail {
+			padding: 1.25rem 0 3.5rem 0;
+		}
+
+		.product-breadcrumb-wrapper {
+			margin-bottom: 1rem;
+		}
+
+		/* Ürün Başlık & Fiyat */
+		.product-title {
+			font-size: 1.85rem;
+			word-break: break-word;
+		}
+
+		.price-value {
+			font-size: 1.85rem;
+		}
+
+		/* Hesap Makinesi Kartı */
+		.calculator-card {
+			padding: 1.5rem;
+			gap: 1.25rem;
+		}
+
+		.calc-title {
+			font-size: 1.15rem;
+		}
+
+		.total-price {
+			font-size: 1.3rem;
+		}
+
+		/* Teknik Özellikler */
+		.specs-section {
+			padding: 1.25rem;
+		}
+
+		.specs-title {
+			font-size: 1.15rem;
+		}
+
+		/* Paylaş alanı */
+		.share-container {
+			flex-direction: column;
+			gap: 0.6rem;
+			align-items: flex-start;
+		}
+
+		/* İlgili Ürünler */
+		.related-products-section {
+			padding: 3rem 0 4rem 0;
+		}
+
+		.related-main-title {
+			font-size: 1.75rem;
+		}
+
+		.related-header-wrap {
+			margin-bottom: 2rem;
+		}
+
+		/* Modal */
+		.photo-modal-header {
+			padding: 0.75rem 1rem;
+			gap: 0.6rem;
+		}
+
 		.modal-product-info {
 			gap: 0.4rem;
 		}
@@ -2739,6 +2867,268 @@ const productSchema = {
 			right: 1rem;
 			left: 1rem;
 			max-width: none;
+		}
+
+		/* Zoom kontrolleri - tablet */
+		.zoom-controls {
+			display: none;
+		}
+	}
+
+	/* =============================================
+	   MOBİL (max-width: 480px)
+	   ============================================= */
+	@media (max-width: 480px) {
+		/* Genel Sayfa */
+		.product-detail {
+			padding: 0.75rem 0 2.5rem 0;
+		}
+
+		.product-breadcrumb-wrapper {
+			margin-bottom: 0.75rem;
+		}
+
+		.detail-layout {
+			gap: 1.25rem;
+		}
+
+		/* Slider viewport - kare yerine 4:3 */
+		.slider-viewport {
+			aspect-ratio: 4 / 3;
+			border-radius: 12px;
+		}
+
+		.slider-actions {
+			bottom: 0.6rem;
+			right: 0.6rem;
+			padding: 2px;
+		}
+
+		.slider-action-btn {
+			width: 34px;
+			height: 34px;
+		}
+
+		.slider-btn {
+			width: 36px;
+			height: 36px;
+		}
+
+		.prev-btn {
+			left: 0.5rem;
+		}
+
+		.next-btn {
+			right: 0.5rem;
+		}
+
+		/* Ürün Başlık */
+		.product-title {
+			font-size: 1.5rem;
+			line-height: 1.2;
+			word-break: break-word;
+		}
+
+		.series-tag {
+			font-size: 0.75rem;
+		}
+
+		/* Fiyat */
+		.price-value {
+			font-size: 1.5rem;
+		}
+
+		.price-unit {
+			font-size: 0.9rem;
+		}
+
+		.price-block {
+			padding-bottom: 0.85rem;
+		}
+
+		/* Hesap Makinesi */
+		.calculator-card {
+			padding: 1.1rem;
+			gap: 1rem;
+			border-radius: 12px;
+		}
+
+		.calc-header {
+			gap: 0.75rem;
+		}
+
+		.calc-icon {
+			width: 36px;
+			height: 36px;
+		}
+
+		.calc-title {
+			font-size: 1.05rem;
+		}
+
+		.calc-subtitle {
+			font-size: 0.8rem;
+		}
+
+		.area-input {
+			padding: 0.75rem 2.75rem 0.75rem 0.85rem;
+			font-size: 1.05rem;
+		}
+
+		.total-row {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 0.35rem;
+			font-size: 0.95rem;
+		}
+
+		.total-price {
+			font-size: 1.35rem;
+		}
+
+		.btn-whatsapp-outline {
+			padding: 0.85rem 1rem;
+			font-size: 0.85rem;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		/* Alt Butonlar */
+		.bottom-actions {
+			flex-direction: column;
+			gap: 0.65rem;
+		}
+
+		.btn-bottom {
+			padding: 0.85rem 1rem;
+			font-size: 0.9rem;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		/* Teknik Özellikler */
+		.specs-section {
+			padding: 1rem;
+			border-radius: 12px;
+		}
+
+		.specs-title {
+			font-size: 1.05rem;
+			margin-bottom: 0.75rem;
+			padding-bottom: 0.5rem;
+		}
+
+		.specs-list li {
+			padding: 0.55rem 0;
+			gap: 8px;
+		}
+
+		.spec-name,
+		.spec-value {
+			font-size: 0.825rem;
+		}
+
+		/* Paylaş */
+		.share-container {
+			padding: 0.75rem 1rem;
+			border-radius: 8px;
+			flex-direction: column;
+			gap: 0.5rem;
+			align-items: flex-start;
+		}
+
+		.share-buttons {
+			flex-wrap: wrap;
+			gap: 0.4rem;
+		}
+
+		/* İlgili Ürünler */
+		.related-products-section {
+			padding: 2.25rem 0 3rem 0;
+		}
+
+		.related-main-title {
+			font-size: 1.4rem;
+		}
+
+		.related-header-wrap {
+			margin-bottom: 1.25rem;
+			gap: 0.35rem;
+		}
+
+		.related-sub-text {
+			font-size: 0.85rem;
+		}
+
+		.product-grid-related {
+			gap: 10px;
+		}
+
+		/* Modal - mobil iyileştirmeleri */
+		.photo-modal-header {
+			padding: 0.5rem 0.65rem;
+			gap: 0.35rem;
+		}
+
+		.modal-series-tag {
+			display: none;
+		}
+
+		.modal-product-title {
+			font-size: 0.85rem;
+		}
+
+		.modal-counter {
+			font-size: 0.75rem;
+		}
+
+		.modal-actions {
+			gap: 0.35rem;
+		}
+
+		.modal-thumb-btn {
+			width: 40px;
+			height: 40px;
+		}
+
+		#modalImage {
+			max-width: 96vw;
+			max-height: 60vh;
+		}
+
+		.modal-pan-hint {
+			display: none;
+		}
+
+		/* Toast */
+		.download-toast {
+			bottom: 0.75rem;
+			right: 0.75rem;
+			left: 0.75rem;
+			padding: 0.75rem 1rem;
+		}
+	}
+
+	/* =============================================
+	   ÇOK KÜÇÜK MOBİL (max-width: 360px)
+	   ============================================= */
+	@media (max-width: 360px) {
+		.product-title {
+			font-size: 1.35rem;
+		}
+
+		.price-value {
+			font-size: 1.35rem;
+		}
+
+		.specs-list li {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2px;
+		}
+
+		.spec-value {
+			text-align: left;
 		}
 	}
 </style>
