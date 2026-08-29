@@ -6,8 +6,10 @@ import Icon from "./Icon.astro";
 // Parke sayfasındaki sıralama ile aynı ilk 4 ürün
 const products = [...productsRaw]
   .sort((a, b) => {
-    const priceA = parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
-    const priceB = parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+    const priceA =
+      parseFloat(a.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
+    const priceB =
+      parseFloat(b.price.replace(/[^\d,]/g, "").replace(",", ".")) || 0;
     return priceA - priceB;
   })
   .slice(0, 4);
@@ -18,22 +20,18 @@ const products = [...productsRaw]
     <!-- Header Section -->
     <div class="collections-header">
       <div class="header-text">
-        <h2>Parke Koleksiyonumuz</h2>
-        <p>En çok tercih edilen parke modellerimiz</p>
+        <h2>Çamsan Parke Koleksiyonumuz</h2>
+        <p>En çok tercih edilen parke modelleri</p>
       </div>
       <a href="/parke" class="btn-view-all">
-        <span>Hepsini Göster</span>
+        <span>Tümü</span>
         <Icon name="arrow-right" size={18} strokeWidth={2.2} />
       </a>
     </div>
 
     <!-- 4 Products Grid -->
     <div class="collections-grid">
-      {
-        products.map((product) => (
-          <ProductCard product={product} />
-        ))
-      }
+      {products.map((product) => <ProductCard product={product} />)}
     </div>
   </div>
 </section>
