@@ -74,13 +74,19 @@ const products = [...productsRaw]
   /* Grid Layout for 4 items */
   .collections-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  @media (min-width: 400px) {
+    .collections-grid {
+      gap: 16px;
+    }
   }
 
   @media (min-width: 640px) {
     .collections-grid {
-      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
   }
 
@@ -127,8 +133,17 @@ const products = [...productsRaw]
     .collections {
       padding: 60px 0 70px;
     }
+    .collections-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
     .header-text h2 {
       font-size: 1.85rem;
+    }
+    .btn-view-all {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

@@ -54,6 +54,18 @@
       gap: 2rem;
     }
   }
+  @media (max-width: 480px) {
+    .stats-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .number {
+      font-size: 1.6rem;
+    }
+    .label {
+      font-size: 0.75rem;
+    }
+  }
   .stat-item {
     display: flex;
     flex-direction: column;
