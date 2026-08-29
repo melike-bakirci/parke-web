@@ -18,8 +18,27 @@ export async function getStaticPaths() {
 const { entry, otherBlogs = [], allBlogs = [] } = Astro.props;
 const { Content } = await render(entry);
 const blog = { slug: entry.id, ...entry.data };
-
 import { siteInfo } from "../../data/siteInfo";
+
+const monthsMap: Record<string, string> = {
+  "ocak": "01", "şubat": "02", "mart": "03", "nisan": "04",
+  "mayıs": "05", "haziran": "06", "temmuz": "07", "ağustos": "08",
+  "eylül": "09", "ekim": "10", "kasım": "11", "aralık": "12"
+};
+
+function formatIsoDate(dateStr: string): string {
+  if (!dateStr) return "2026-01-01";
+  const parts = dateStr.trim().split(" ");
+  if (parts.length === 3) {
+    const day = parts[0].padStart(2, "0");
+    const month = monthsMap[parts[1].toLowerCase()] || "01";
+    const year = parts[2];
+    return `${year}-${month}-${day}`;
+  }
+  return dateStr;
+}
+
+const isoDate = formatIsoDate(blog.date);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -27,9 +46,24 @@ const articleSchema = {
   "headline": blog.title,
   "image": new URL(blog.image, Astro.site ? Astro.site.origin : siteInfo.url).href,
   "description": blog.summary || blog.title,
+  "datePublished": isoDate,
+  "dateModified": isoDate,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site ? Astro.site.origin : siteInfo.url).href
+  },
   "author": {
     "@type": "Organization",
-    "name": "ZenFlor"
+    "name": "ZenFlor",
+    "url": siteInfo.url
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ZenFlor",
+    "logo": {
+      "@type": "ImageObject",
+      "url": new URL("/favicon.svg", Astro.site ? Astro.site.origin : siteInfo.url).href
+    }
   }
 };
 ---
@@ -52,7 +86,7 @@ const articleSchema = {
       </nav>
       
       <div class="blog-header">
-        <span class="blog-date">{blog.date}</span>
+        <time datetime={isoDate} class="blog-date">{blog.date}</time>
         <h1 class="blog-title">{blog.title}</h1>
       </div>
 
