@@ -1,5 +1,4 @@
 ---
-import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 
 export interface Product {
@@ -104,10 +103,6 @@ const secondaryImagePath = product.images && product.images[1] ? `/public${produ
         <span class="price-val">{product.price}</span>
         <span class="price-unit">/ m²</span>
       </div>
-      <span class="btn-review">
-        <span class="btn-review-text">İncele</span>
-        <Icon name="arrow-right" size={16} strokeWidth={2.5} />
-      </span>
     </div>
   </div>
 </a>
@@ -307,46 +302,4 @@ const secondaryImagePath = product.images && product.images[1] ? `/public${produ
     font-weight: 500;
   }
 
-  .btn-review {
-    background: transparent;
-    color: var(--color-primary);
-    padding: 4px 0;
-    font-size: 0.82rem;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    border: none;
-    transition: color 0.25s ease;
-    white-space: nowrap;
-  }
-
-  .btn-review-text {
-    display: none;
-  }
-
-  @media (min-width: 640px) {
-    .btn-review {
-      font-size: 0.95rem;
-      gap: 6px;
-    }
-
-    .btn-review-text {
-      display: inline;
-    }
-  }
-
-  .btn-review:hover {
-    color: var(--color-secondary);
-  }
-
-  .btn-review svg {
-    transition: transform 0.25s ease;
-  }
-
-  .btn-review:hover svg {
-    transform: translateX(4px);
-  }
 </style>
