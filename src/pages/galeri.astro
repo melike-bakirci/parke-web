@@ -6,7 +6,7 @@ import { galleryImages } from "../data/gallery";
 
 <Layout
 	title="Uygulama Galerisi | Kaliteli ve Uygun Parke Projeleri"
-	description="Sancaktepe, İstanbul ve tüm Türkiye genelinde başarıyla tamamladığımız parke döşeme ve zemin kaplama uygulama fotoğraflarını inceleyin."
+	description="Türkiye genelinde başarıyla tamamladığımız parke döşeme ve zemin kaplama uygulama fotoğraflarını inceleyin."
 	keywords="parke galerisi, parke uygulama galerisi, sancaktepe parke uygulamaları, sarıgazi zemin kaplama, istanbul parke projeleri, laminat parke fotoğrafları"
 >
 	<PageHero
@@ -38,7 +38,13 @@ import { galleryImages } from "../data/gallery";
 	</section>
 
 	<!-- Lightbox Modal -->
-	<div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Görsel Büyütme Modalı">
+	<div
+		class="lightbox-modal"
+		id="lightboxModal"
+		role="dialog"
+		aria-modal="true"
+		aria-label="Görsel Büyütme Modalı"
+	>
 		<div class="lightbox-backdrop" id="lightboxBackdrop"></div>
 		<div class="lightbox-container">
 			<button
@@ -83,8 +89,10 @@ import { galleryImages } from "../data/gallery";
 		card.addEventListener("click", () => {
 			const imgUrl = card.getAttribute("data-img") || "";
 			const imgElement = card.querySelector("img");
-			const altText = imgElement ? imgElement.getAttribute("alt") : "Proje Görseli";
-			
+			const altText = imgElement
+				? imgElement.getAttribute("alt")
+				: "Proje Görseli";
+
 			if (modalImg && modal) {
 				modalImg.src = imgUrl;
 				modalImg.alt = altText || "Proje Görseli";
@@ -210,7 +218,6 @@ import { galleryImages } from "../data/gallery";
 		}
 	}
 
-
 	/* =========================================
 	   LIGHTBOX MODAL
 	   ========================================= */
@@ -275,7 +282,9 @@ import { galleryImages } from "../data/gallery";
 		justify-content: center;
 		cursor: pointer;
 		z-index: 2;
-		transition: background-color 0.2s ease, transform 0.2s ease;
+		transition:
+			background-color 0.2s ease,
+			transform 0.2s ease;
 		touch-action: manipulation;
 		-webkit-tap-highlight-color: transparent;
 	}
