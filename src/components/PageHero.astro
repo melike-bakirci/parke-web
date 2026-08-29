@@ -56,4 +56,26 @@ const { title, subtitle, breadcrumbs, showBreadcrumb = true } = Astro.props;
     border-bottom: 1px solid #e2e8f0;
     padding: 12px 0;
   }
+
+  @media (max-width: 767px) {
+    .page-hero {
+      padding: 80px 0 56px;
+    }
+    .page-hero h1 {
+      font-size: 2rem;
+    }
+    .page-hero p {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero {
+      padding: 70px 0 44px;
+    }
+    .page-hero h1 {
+      font-size: 1.6rem;
+    }
+  }
 </style>
