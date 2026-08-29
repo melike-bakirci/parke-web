@@ -6,6 +6,7 @@ import { galleryImages } from "../data/gallery";
   <div class="container">
     <div class="gallery-header">
       <div class="header-text">
+        <span class="section-tag">Galeri</span>
         <h2>Uygulama Galerisi</h2>
         <p>Ev, ofis ve ticari mekanlar için parke zemin uygulamalarımız</p>
       </div>
@@ -74,7 +75,7 @@ import { galleryImages } from "../data/gallery";
 
 <style>
   .home-gallery {
-    padding: 75px 0;
+    padding: 80px 0;
     background: #ffffff;
   }
 
@@ -91,9 +92,23 @@ import { galleryImages } from "../data/gallery";
     max-width: 680px;
   }
 
+  .section-tag {
+    display: inline-block;
+    color: var(--color-primary);
+    background: var(--color-secondary-light);
+    border: 1px solid var(--color-border);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+  }
+
   .header-text h2 {
     font-size: 2.4rem;
-    line-height: 1.25;
+    line-height: 1.2;
     color: var(--color-primary);
     margin-bottom: 0.75rem;
     font-family: var(--font-primary);
@@ -102,7 +117,7 @@ import { galleryImages } from "../data/gallery";
 
   .header-text p {
     font-size: 1.05rem;
-    color: #5a6872;
+    color: var(--color-text-muted);
     line-height: 1.65;
   }
 
@@ -115,11 +130,11 @@ import { galleryImages } from "../data/gallery";
     font-size: 0.95rem;
     font-family: var(--font-secondary);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 11px 22px;
     border-radius: var(--radius-sm);
     background: #ffffff;
     border: 1.5px solid var(--color-border);
-    transition: all 0.25s ease;
+    transition: all 0.25s var(--ease-out);
     white-space: nowrap;
   }
 
@@ -132,7 +147,7 @@ import { galleryImages } from "../data/gallery";
   }
 
   .btn-view-all svg {
-    transition: transform 0.25s ease;
+    transition: transform 0.25s var(--ease-out);
   }
 
   .btn-view-all:hover svg {
@@ -171,9 +186,9 @@ import { galleryImages } from "../data/gallery";
     text-decoration: none;
     box-shadow: var(--shadow-sm);
     transition:
-      transform 0.35s ease,
-      box-shadow 0.35s ease,
-      border-color 0.35s ease;
+      transform 0.35s var(--ease-out),
+      box-shadow 0.35s var(--ease-out),
+      border-color 0.35s var(--ease-out);
   }
 
   .gallery-card:hover {
@@ -187,22 +202,23 @@ import { galleryImages } from "../data/gallery";
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s var(--ease-out);
   }
 
   .gallery-card:hover img {
-    transform: scale(1.06);
+    transform: scale(1.08);
   }
 
   .gallery-card-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(15, 25, 34, 0.4);
+    background: linear-gradient(180deg, rgba(15, 25, 34, 0) 0%, rgba(15, 25, 34, 0.5) 100%);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
+    justify-content: flex-end;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s var(--ease-out);
+    padding: 16px;
   }
 
   .gallery-card:hover .gallery-card-overlay {
@@ -219,7 +235,7 @@ import { galleryImages } from "../data/gallery";
     align-items: center;
     justify-content: center;
     transform: scale(0.85);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease-out);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   }
 

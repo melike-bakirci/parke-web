@@ -75,6 +75,9 @@ const secondaryImagePath = product.images && product.images[1] ? product.images[
         <span class="price-val">{product.price}</span>
         <span class="price-unit">/ m²</span>
       </div>
+      <span class="view-arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </span>
     </div>
   </div>
 </a>
@@ -86,7 +89,7 @@ const secondaryImagePath = product.images && product.images[1] ? product.images[
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -95,8 +98,8 @@ const secondaryImagePath = product.images && product.images[1] ? product.images[
   }
 
   .product-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
     border-color: var(--color-secondary);
   }
 
@@ -123,7 +126,7 @@ const secondaryImagePath = product.images && product.images[1] ? product.images[
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.5s var(--ease-out), transform 0.6s var(--ease-out);
     will-change: transform, opacity;
   }
 
@@ -272,6 +275,25 @@ const secondaryImagePath = product.images && product.images[1] ? product.images[
     font-size: 0.85rem;
     color: #718096;
     font-weight: 500;
+  }
+
+  .view-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--color-secondary-light);
+    color: var(--color-primary);
+    transition: all 0.25s var(--ease-out);
+    flex-shrink: 0;
+  }
+
+  .product-card:hover .view-arrow {
+    background: var(--color-primary);
+    color: #fff;
+    transform: translateX(2px);
   }
 
 </style>

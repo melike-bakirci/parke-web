@@ -20,6 +20,7 @@ const products = [...productsRaw]
     <!-- Header Section -->
     <div class="collections-header">
       <div class="header-text">
+        <span class="section-tag">Koleksiyon</span>
         <h2>Çamsan Parke Koleksiyonumuz</h2>
         <p>En çok tercih edilen parke modelleri</p>
       </div>
@@ -55,16 +56,31 @@ const products = [...productsRaw]
     max-width: 680px;
   }
 
+  .section-tag {
+    display: inline-block;
+    color: var(--color-primary);
+    background: var(--color-secondary-light);
+    border: 1px solid var(--color-border);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+  }
+
   .header-text h2 {
     font-size: 2.4rem;
-    line-height: 1.25;
+    line-height: 1.2;
     color: var(--color-primary);
     margin-bottom: 0.75rem;
     font-family: var(--font-primary);
+    font-weight: 700;
   }
 
   .header-text p {
-    color: #5a6872;
+    color: var(--color-text-muted);
     line-height: 1.65;
     font-size: 1.05rem;
   }
@@ -103,11 +119,11 @@ const products = [...productsRaw]
     font-size: 0.95rem;
     font-family: var(--font-secondary);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 11px 22px;
     border-radius: var(--radius-sm);
     background: #ffffff;
     border: 1.5px solid var(--color-border);
-    transition: all 0.25s ease;
+    transition: all 0.25s var(--ease-out);
     white-space: nowrap;
   }
 
@@ -120,7 +136,7 @@ const products = [...productsRaw]
   }
 
   .btn-view-all svg {
-    transition: transform 0.25s ease;
+    transition: transform 0.25s var(--ease-out);
   }
 
   .btn-view-all:hover svg {
