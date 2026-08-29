@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.zenparke.com.tr',
+  site: 'https://zenparke.com.tr',
   integrations: [sitemap()],
   image: {
     service: passthroughImageService(),
