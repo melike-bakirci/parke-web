@@ -43,6 +43,11 @@ export const siteInfo = {
     youtube: "https://www.youtube.com/@zenflormarket",
     tiktok: "https://www.tiktok.com/@zenflormarket",
     sahibinden: "https://zenflor.sahibinden.com/"
+  },
+
+  // Takip ve Analiz Kodları
+  analytics: {
+    microsoftClarityId: "ya1sczmqop" // Microsoft Clarity Proje Kimliği
   }
 } as const;
 

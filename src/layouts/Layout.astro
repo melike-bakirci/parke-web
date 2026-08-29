@@ -52,6 +52,17 @@ const schemaData = {
 	"@id": siteInfo.url,
 	"url": siteInfo.url,
 	"telephone": siteInfo.contact.phone.raw,
+	"priceRange": "₺₺",
+	"hasMap": siteInfo.contact.address.mapsUrl,
+	"sameAs": [
+		siteInfo.contact.address.mapsUrl,
+		siteInfo.social.instagram,
+		siteInfo.social.facebook,
+		siteInfo.social.linkedin,
+		siteInfo.social.youtube,
+		siteInfo.social.tiktok,
+		siteInfo.social.sahibinden
+	],
 	"address": {
 		"@type": "PostalAddress",
 		"streetAddress": siteInfo.contact.address.street,
@@ -118,8 +129,19 @@ const finalSchema = Astro.props.schema || schemaData;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
 		
-		<!-- JSON-LD Structured Data -->
+		<!-- JSON-LD Structured Data (Google İşletmeler & Yerel SEO) -->
 		<script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+
+		<!-- Microsoft Clarity (Isı Haritası & Davranış Analizi) -->
+		{siteInfo.analytics.microsoftClarityId && (
+			<script is:inline define:vars={{ clarityId: siteInfo.analytics.microsoftClarityId }}>
+				(function(c,l,a,r,i,t,y){
+					c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+					t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+					y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+				})(window, document, "clarity", "script", clarityId);
+			</script>
+		)}
 	</head>
 	<body>
 		{showHeader && <Header />}
