@@ -269,6 +269,22 @@ const legalLinks = [
     margin-bottom: 1.2rem;
   }
 
+  .legal-content :global(a) {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .legal-content :global(a strong) {
+    color: inherit;
+  }
+
+  .legal-content :global(a:hover) {
+    color: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
   .legal-content :global(ul) {
     margin-bottom: 1.4rem;
     padding-left: 1.2rem;

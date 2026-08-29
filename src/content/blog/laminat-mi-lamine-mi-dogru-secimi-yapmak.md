@@ -21,7 +21,7 @@ Laminat parke, preslenmiş yüksek yoğunluklu ahşap tozu (HDF) üzerine yükse
   </ul>
 </div>
 
-Özellikle konut, evcil hayvan sahipleri ve ofis gibi yoğun trafiğe sahip alanlar için <a href="/parke" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">en dayanıklı laminat parke koleksiyonlarımızı</a> inceleyebilirsiniz.
+Özellikle konut, evcil hayvan sahipleri ve ofis gibi yoğun trafiğe sahip alanlar için <a href="/parke" style="color: #c8a96e; font-weight: 600; text-decoration: none;">en dayanıklı laminat parke koleksiyonlarımızı</a> inceleyebilirsiniz.
 
 ## Lamine Parke Nedir? Özellikleri ve Avantajları
 
@@ -36,7 +36,7 @@ Lamine parke ise %100 doğal ahşaptan üretilir. Genellikle üç katmandan olu�
   </ul>
 </div>
 
-Doğallığın zarafetini yaşamak istiyorsanız, <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">bizimle iletişime geçerek</a> mekanınıza en uygun lamine parkeler için özel teklif alabilirsiniz.
+Doğallığın zarafetini yaşamak istiyorsanız, <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: none;">bizimle iletişime geçerek</a> mekanınıza en uygun lamine parkeler için özel teklif alabilirsiniz.
 
 ## Karşılaştırma Tablosu: Laminat vs Lamine
 
@@ -53,4 +53,4 @@ Doğallığın zarafetini yaşamak istiyorsanız, <a href="/iletisim" style="col
 
 Eğer yoğun trafiği olan bir alan için pratik, bütçe dostu ve çizilme direnci yüksek bir zemin arıyorsanız **Laminat Parke** sizin için doğru seçimdir. Ancak mekanınızda prestijli ve %100 doğal bir doku istiyorsanız, uzun vadeli bir yatırım olan **Lamine Parke** eşsiz bir deneyim sunar.
 
-Karar vermekte hala zorlanıyorsanız, mekanınızın ihtiyaçlarına en uygun ürün seçimi ve İstanbul Sancaktepe bölgesindeki en uygun parke fiyatları için <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">iletişim sayfamızı</a> ziyaret edebilirsiniz. Size rehberlik etmekten mutluluk duyarız...
+Karar vermekte hala zorlanıyorsanız, mekanınızın ihtiyaçlarına en uygun ürün seçimi ve İstanbul Sancaktepe bölgesindeki en uygun parke fiyatları için <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: none;">iletişim sayfamızı</a> ziyaret edebilirsiniz. Size rehberlik etmekten mutluluk duyarız...

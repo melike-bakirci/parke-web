@@ -122,8 +122,9 @@ import { siteInfo } from "../data/siteInfo";
     tutar. Değişiklikler sitede yayımlandığı andan itibaren geçerli olur.
   </p>
   <p>
-    Çerez Politikamız ile ilgili detaylı bilgi almak için <strong
-      >{siteInfo.contact.email.address}</strong
+    Çerez Politikamız ile ilgili detaylı bilgi almak için <a
+      href={siteInfo.contact.email.mailto}
+      ><strong>{siteInfo.contact.email.address}</strong></a
     > adresinden bize dilediğiniz zaman ulaşabilirsiniz.
   </p>
 </LegalPageLayout>

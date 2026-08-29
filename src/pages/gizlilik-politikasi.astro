@@ -114,15 +114,17 @@ import { siteInfo } from "../data/siteInfo";
     düzeltilmesini isteme ve silinmesini talep etme hakkına sahipsiniz.
     Ayrıntılı bilgi için <a
       href="/kvkk"
-      style="color: var(--color-primary); font-weight: 600; text-decoration: underline;"
+      style="color: var(--color-primary); font-weight: 600; text-decoration: none;"
       >KVKK Aydınlatma Metnimizi</a
     > inceleyebilirsiniz.
   </p>
   <p>
-    Gizlilik Politikamız ile ilgili tüm sorularınız için <strong
-      >{siteInfo.contact.email.address}</strong
-    > adresine e-posta gönderebilir veya <strong
-      >{siteInfo.contact.phone.formatted}</strong
+    Gizlilik Politikamız ile ilgili tüm sorularınız için <a
+      href={siteInfo.contact.email.mailto}
+      ><strong>{siteInfo.contact.email.address}</strong></a
+    > adresine e-posta gönderebilir veya <a
+      href={siteInfo.contact.phone.tel}
+      ><strong>{siteInfo.contact.phone.formatted}</strong></a
     > numaralı hattımızdan bize ulaşabilirsiniz.
   </p>
 

@@ -25,9 +25,23 @@ import { siteInfo } from "../data/siteInfo";
     açıklanan kapsamda işlenebilecektir.
   </p>
   <ul>
-    <li><strong>Adres:</strong> {siteInfo.contact.address.full}</li>
-    <li><strong>Telefon:</strong> {siteInfo.contact.phone.formatted}</li>
-    <li><strong>E-posta:</strong> {siteInfo.contact.email.address}</li>
+    <li>
+      <strong>Adres:</strong> <a
+        href={siteInfo.contact.address.mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer">{siteInfo.contact.address.full}</a
+      >
+    </li>
+    <li>
+      <strong>Telefon:</strong> <a href={siteInfo.contact.phone.tel}
+        >{siteInfo.contact.phone.formatted}</a
+      >
+    </li>
+    <li>
+      <strong>E-posta:</strong> <a href={siteInfo.contact.email.mailto}
+        >{siteInfo.contact.email.address}</a
+      >
+    </li>
   </ul>
 
   <h2>2. İşlenen Kişisel Veri Kategorileri</h2>
@@ -147,8 +161,9 @@ import { siteInfo } from "../data/siteInfo";
   <h2>7. Başvuru Yöntemi</h2>
   <p>
     Yukarıda belirtilen haklarınızı kullanmak için kimliğinizi tevsik edici
-    belgeler ile birlikte talebinizi e-posta adresinizden <strong
-      >{siteInfo.contact.email.address}</strong
+    belgeler ile birlikte talebinizi e-posta adresinizden <a
+      href={siteInfo.contact.email.mailto}
+      ><strong>{siteInfo.contact.email.address}</strong></a
     > adresine iletebilirsiniz. Başvurularınız en geç 30 (otuz) gün içinde ücretsiz
     olarak sonuçlandırılacaktır.
   </p>

@@ -1,5 +1,6 @@
 ---
 import LegalPageLayout from "../components/LegalPageLayout.astro";
+import { siteInfo } from "../data/siteInfo";
 ---
 
 <LegalPageLayout
@@ -19,11 +20,14 @@ import LegalPageLayout from "../components/LegalPageLayout.astro";
 
   <h2>1. Genel Koşullar ve Kabul</h2>
   <p>
-    İşbu web sitesi, Leman Sk. No:4, Sancaktepe/İstanbul adresinde mukim <strong
-      >ZenFlor Parke</strong
-    > ("ZenFlor") tarafından yönetilmektedir. ZenFlor, sitede sunulan içerikleri,
-    görselleri, ürün bilgilerini ve kullanım koşullarını önceden haber vermeksizin
-    dilediği zaman değiştirme hakkını saklı tutar.
+    İşbu web sitesi, <a
+      href={siteInfo.contact.address.mapsUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      ><strong>{siteInfo.contact.address.full}</strong></a
+    > adresinde mukim <strong>ZenFlor Parke</strong> ("ZenFlor") tarafından yönetilmektedir.
+    ZenFlor, sitede sunulan içerikleri, görselleri, ürün bilgilerini ve kullanım koşullarını
+    önceden haber vermeksizin dilediği zaman değiştirme hakkını saklı tutar.
   </p>
 
   <h2>2. Fikri Mülkiyet ve Telif Hakları</h2>
