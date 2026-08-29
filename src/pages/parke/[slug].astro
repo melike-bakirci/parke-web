@@ -977,20 +977,15 @@ const productSchema = {
 
 		let currentIndex = 0;
 
-		function sanitizeFilename(name, idx, url) {
-			const ext = url.split(".").pop().split("?")[0] || "jpg";
-			const cleanName = name
-				.toLowerCase()
-				.replace(/ğ/g, "g")
-				.replace(/ü/g, "u")
-				.replace(/ş/g, "s")
-				.replace(/ı/g, "i")
-				.replace(/ö/g, "o")
-				.replace(/ç/g, "c")
-				.replace(/[^a-z0-9]/g, "-")
-				.replace(/-+/g, "-")
-				.replace(/^-|-$/g, "");
-			return `zenflor-${cleanName}-gorsel-${idx + 1}.${ext}`;
+		function getOriginalFilename(url) {
+			try {
+				const pathname = new URL(url, window.location.origin).pathname;
+				const rawName = pathname.substring(pathname.lastIndexOf("/") + 1);
+				return decodeURIComponent(rawName) || "gorsel.webp";
+			} catch (_) {
+				const cleanUrl = url.split("?")[0].split("#")[0];
+				return cleanUrl.substring(cleanUrl.lastIndexOf("/") + 1) || "gorsel.webp";
+			}
 		}
 
 		// --- SLIDER FONKSİYONLARI ---
@@ -1059,11 +1054,7 @@ const productSchema = {
 				e.stopPropagation();
 				const currentUrl = imageList[currentIndex] || "";
 				if (currentUrl) {
-					const fileName = sanitizeFilename(
-						productName,
-						currentIndex,
-						currentUrl,
-					);
+					const fileName = getOriginalFilename(currentUrl);
 					downloadImageFile(currentUrl, fileName);
 				}
 			});
@@ -1309,11 +1300,7 @@ const productSchema = {
 				e.stopPropagation();
 				const currentUrl = imageList[modalIndex] || "";
 				if (currentUrl) {
-					const fileName = sanitizeFilename(
-						productName,
-						modalIndex,
-						currentUrl,
-					);
+					const fileName = getOriginalFilename(currentUrl);
 					downloadImageFile(currentUrl, fileName);
 				}
 			});
