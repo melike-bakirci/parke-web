@@ -580,104 +580,26 @@ const productSchema = {
 	>
 		<div class="photo-modal-backdrop" id="photoModalBackdrop"></div>
 		<div class="photo-modal-container">
-			<!-- Modal Üst Çubuk -->
+			<!-- Minimalist Üst Çubuk (Floating) -->
 			<div class="photo-modal-header">
 				<div class="modal-product-info">
-					<span class="modal-series-tag">{product.series} Serisi</span
-					>
-					<h3 class="modal-product-title">{product.name}</h3>
-					<span class="modal-counter" id="modalCounter"
-						>1 / {images.length}</span
-					>
+					<span class="modal-product-title">{product.name}</span>
+					{
+						images.length > 1 && (
+							<span class="modal-counter" id="modalCounter">
+								1 / {images.length}
+							</span>
+						)
+					}
 				</div>
 
 				<div class="modal-actions">
-					<!-- Yakınlaştır / Uzaklaştır / Sıfırla -->
-					<div class="zoom-controls">
-						<button
-							type="button"
-							class="modal-btn"
-							id="modalZoomOutBtn"
-							title="Uzaklaştır (-)"
-							aria-label="Uzaklaştır"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<circle cx="11" cy="11" r="8"></circle>
-								<line x1="21" y1="21" x2="16.65" y2="16.65"
-								></line>
-								<line x1="8" y1="11" x2="14" y2="11"></line>
-							</svg>
-						</button>
-						<span class="zoom-level-text" id="modalZoomLevel"
-							>100%</span
-						>
-						<button
-							type="button"
-							class="modal-btn"
-							id="modalZoomInBtn"
-							title="Yakınlaştır (+)"
-							aria-label="Yakınlaştır"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<circle cx="11" cy="11" r="8"></circle>
-								<line x1="21" y1="21" x2="16.65" y2="16.65"
-								></line>
-								<line x1="11" y1="8" x2="11" y2="14"></line>
-								<line x1="8" y1="11" x2="14" y2="11"></line>
-							</svg>
-						</button>
-						<button
-							type="button"
-							class="modal-btn"
-							id="modalZoomResetBtn"
-							title="Sıfırla (1:1)"
-							aria-label="Görsel Boyutunu Sıfırla"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="16"
-								height="16"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							>
-								<path
-									d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
-								></path>
-								<path d="M3 3v5h5"></path>
-							</svg>
-						</button>
-					</div>
-
-					<!-- İndir Butonu -->
+					<!-- İndir Butonu (Minimal Icon) -->
 					<button
 						type="button"
 						class="modal-btn modal-download-btn"
 						id="modalDownloadBtn"
-						title="Bu Görseli Yüksek Çözünürlükte İndir"
+						title="Görseli İndir"
 						aria-label="Görseli İndir"
 					>
 						<svg
@@ -691,12 +613,10 @@ const productSchema = {
 							stroke-linecap="round"
 							stroke-linejoin="round"
 						>
-							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
-							></path>
+							<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
 							<polyline points="7 10 12 15 17 10"></polyline>
 							<line x1="12" y1="15" x2="12" y2="3"></line>
 						</svg>
-						<span class="btn-text">İndir</span>
 					</button>
 
 					<!-- Kapat Butonu -->
@@ -709,12 +629,12 @@ const productSchema = {
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							width="22"
-							height="22"
+							width="20"
+							height="20"
 							viewBox="0 0 24 24"
 							fill="none"
 							stroke="currentColor"
-							stroke-width="2.5"
+							stroke-width="2"
 							stroke-linecap="round"
 							stroke-linejoin="round"
 						>
@@ -748,12 +668,12 @@ const productSchema = {
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									width="28"
-									height="28"
+									width="24"
+									height="24"
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
-									stroke-width="2.5"
+									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								>
@@ -768,12 +688,12 @@ const productSchema = {
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									width="28"
-									height="28"
+									width="24"
+									height="24"
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
-									stroke-width="2.5"
+									stroke-width="2"
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								>
@@ -783,30 +703,6 @@ const productSchema = {
 						</>
 					)
 				}
-
-				<!-- Alt İpucu -->
-				<div class="modal-pan-hint" id="modalPanHint">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="14"
-						height="14"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<circle cx="12" cy="12" r="10"></circle>
-						<line x1="12" y1="8" x2="12" y2="12"></line>
-						<line x1="12" y1="16" x2="12.01" y2="16"></line>
-					</svg>
-					<span
-						>Çift tıklayarak veya fare tekerleğiyle
-						yakınlaştırabilir, sürükleyerek dokuyu
-						inceleyebilirsiniz</span
-					>
-				</div>
 			</div>
 
 			<!-- Alt Küçük Önizleme Şeridi (Birden Fazla Görsel Varsa) -->
@@ -1157,8 +1053,10 @@ const productSchema = {
 			if (modalCanvas) {
 				if (scale > 1) {
 					modalCanvas.style.cursor = isDragging ? "grabbing" : "grab";
+					if (modalImage) modalImage.style.cursor = isDragging ? "grabbing" : "grab";
 				} else {
-					modalCanvas.style.cursor = "zoom-in";
+					modalCanvas.style.cursor = "default";
+					if (modalImage) modalImage.style.cursor = "zoom-in";
 				}
 			}
 		}
@@ -1245,6 +1143,25 @@ const productSchema = {
 		if (modalCloseBtn) modalCloseBtn.addEventListener("click", closeModal);
 		if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
 
+		// Arka plana veya boşluğa tıklanınca kapat (Görsel ve kontroller haricindeki her yer)
+		let hasDragged = false;
+		if (modal) {
+			modal.addEventListener("click", (e) => {
+				if (hasDragged) {
+					hasDragged = false;
+					return;
+				}
+
+				const isInsideInteractive = e.target.closest(
+					"#modalImage, .modal-actions, .modal-nav-btn, .modal-thumbnails"
+				);
+
+				if (!isInsideInteractive) {
+					closeModal();
+				}
+			});
+		}
+
 		// Modal Önceki / Sonraki
 		if (modalPrevBtn) {
 			modalPrevBtn.addEventListener("click", (e) => {
@@ -1330,12 +1247,13 @@ const productSchema = {
 
 			// Sürükleme / Pan Mekanizması (Mouse)
 			modalCanvas.addEventListener("mousedown", (e) => {
-				// Sadece sol tık ve görsel alanı
+				// Sadece sol tık
 				if (e.button !== 0) return;
+				hasDragged = false;
+				dragStartX = e.clientX;
+				dragStartY = e.clientY;
 				if (scale > 1) {
 					isDragging = true;
-					dragStartX = e.clientX;
-					dragStartY = e.clientY;
 					initialPanX = panX;
 					initialPanY = panY;
 					updateTransform(false);
@@ -1343,6 +1261,9 @@ const productSchema = {
 			});
 
 			window.addEventListener("mousemove", (e) => {
+				if (Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY) > 6) {
+					hasDragged = true;
+				}
 				if (!isDragging || scale <= 1) return;
 				const deltaX = e.clientX - dragStartX;
 				const deltaY = e.clientY - dragStartY;
@@ -2298,9 +2219,9 @@ const productSchema = {
 	.photo-modal-backdrop {
 		position: absolute;
 		inset: 0;
-		background: rgba(10, 15, 22, 0.92);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
+		background: rgba(8, 10, 14, 0.9);
+		backdrop-filter: blur(24px);
+		-webkit-backdrop-filter: blur(24px);
 		cursor: pointer;
 	}
 
@@ -2310,8 +2231,11 @@ const productSchema = {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 		z-index: 2;
 		user-select: none;
+		padding: 1.25rem 1.5rem;
+		box-sizing: border-box;
 	}
 
 	/* Modal Header */
@@ -2319,140 +2243,84 @@ const productSchema = {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1rem 1.5rem;
-		background: rgba(10, 15, 22, 0.6);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		width: 100%;
+		padding: 0 0.5rem;
 		color: #ffffff;
-		gap: 1rem;
-		z-index: 10;
+		z-index: 20;
+		flex-shrink: 0;
 	}
 
 	.modal-product-info {
 		display: flex;
 		align-items: center;
 		gap: 0.85rem;
-		flex-wrap: wrap;
-	}
-
-	.modal-series-tag {
-		font-family: var(--font-secondary);
-		font-size: 0.75rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		background: rgba(140, 106, 83, 0.35);
-		color: #dfba9d;
-		padding: 0.2rem 0.6rem;
-		border-radius: 4px;
-		border: 1px solid rgba(140, 106, 83, 0.5);
 	}
 
 	.modal-product-title {
 		font-family: var(--font-primary);
-		font-size: 1.15rem;
-		font-weight: 700;
+		font-size: 1.1rem;
+		font-weight: 600;
 		color: #ffffff;
+		letter-spacing: -0.01em;
 		margin: 0;
 	}
 
 	.modal-counter {
 		font-family: var(--font-secondary);
-		font-size: 0.85rem;
-		color: rgba(255, 255, 255, 0.6);
-		background: rgba(255, 255, 255, 0.1);
-		padding: 0.2rem 0.55rem;
-		border-radius: 12px;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.55);
+		font-weight: 500;
+		background: rgba(255, 255, 255, 0.08);
+		padding: 0.2rem 0.6rem;
+		border-radius: 20px;
 	}
 
 	.modal-actions {
 		display: flex;
 		align-items: center;
-		gap: 0.6rem;
-	}
-
-	.zoom-controls {
-		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-		background: rgba(255, 255, 255, 0.08);
-		border: 1px solid rgba(255, 255, 255, 0.12);
-		border-radius: 30px;
-		padding: 3px 6px;
-	}
-
-	.zoom-level-text {
-		font-family: var(--font-secondary);
-		font-size: 0.8rem;
-		font-weight: 600;
-		color: #ffffff;
-		min-width: 45px;
-		text-align: center;
+		gap: 0.65rem;
 	}
 
 	.modal-btn {
-		background: transparent;
-		color: rgba(255, 255, 255, 0.85);
-		border: none;
+		background: rgba(255, 255, 255, 0.08);
+		color: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(255, 255, 255, 0.12);
 		border-radius: 50%;
-		width: 36px;
-		height: 36px;
+		width: 40px;
+		height: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		transition: all 0.2s ease;
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 		padding: 0;
 	}
 
 	.modal-btn:hover {
-		background: rgba(255, 255, 255, 0.18);
+		background: rgba(255, 255, 255, 0.2);
 		color: #ffffff;
-		transform: scale(1.08);
-	}
-
-	.modal-download-btn {
-		width: auto;
-		border-radius: 20px;
-		padding: 0 1rem;
-		height: 36px;
-		background: var(--color-primary);
-		color: #ffffff;
-		font-weight: 600;
-		font-size: 0.85rem;
-		font-family: var(--font-secondary);
-		gap: 0.4rem;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-	}
-
-	.modal-download-btn:hover {
-		background: #a67c5b;
-		color: #ffffff;
-		transform: translateY(-1px);
-		box-shadow: 0 4px 14px rgba(140, 106, 83, 0.4);
-	}
-
-	.modal-close-btn {
-		background: rgba(255, 255, 255, 0.12);
-		border: 1px solid rgba(255, 255, 255, 0.15);
+		transform: scale(1.06);
 	}
 
 	.modal-close-btn:hover {
-		background: rgba(239, 68, 68, 0.85);
-		border-color: rgba(239, 68, 68, 0.9);
+		background: rgba(239, 68, 68, 0.8);
+		border-color: rgba(239, 68, 68, 0.8);
 		color: #ffffff;
 	}
 
 	/* Modal Body / Canvas */
 	.photo-modal-body {
 		flex: 1;
+		min-height: 0;
 		width: 100%;
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
+		padding: 1rem 0;
 	}
 
 	.modal-canvas {
@@ -2463,47 +2331,49 @@ const productSchema = {
 		justify-content: center;
 		overflow: hidden;
 		position: relative;
-		cursor: zoom-in;
+		cursor: default;
 	}
 
 	#modalImage {
-		max-width: 90vw;
-		max-height: 75vh;
+		max-width: 100%;
+		max-height: 100%;
+		width: auto;
+		height: auto;
 		object-fit: contain;
-		border-radius: 8px;
-		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+		border-radius: 12px;
+		box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.65);
 		transform-origin: center center;
 		user-select: none;
 		-webkit-user-drag: none;
-		pointer-events: none;
+		pointer-events: auto;
+		cursor: zoom-in;
 	}
 
 	.modal-nav-btn {
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
-		width: 50px;
-		height: 50px;
+		width: 44px;
+		height: 44px;
 		border-radius: 50%;
-		background: rgba(15, 23, 42, 0.7);
-		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px);
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		color: #ffffff;
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		color: rgba(255, 255, 255, 0.9);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
-		transition: all 0.25s ease;
+		transition: all 0.2s ease;
 		z-index: 15;
 		padding: 0;
 	}
 
 	.modal-nav-btn:hover {
-		background: var(--color-primary);
+		background: rgba(255, 255, 255, 0.22);
 		color: #ffffff;
-		transform: translateY(-50%) scale(1.1);
-		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+		transform: translateY(-50%) scale(1.08);
 	}
 
 	.modal-prev-btn {
@@ -2514,58 +2384,36 @@ const productSchema = {
 		right: 1.5rem;
 	}
 
-	.modal-pan-hint {
-		position: absolute;
-		bottom: 1rem;
-		left: 50%;
-		transform: translateX(-50%);
-		display: flex;
-		align-items: center;
-		gap: 0.45rem;
-		background: rgba(10, 15, 22, 0.75);
-		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		color: rgba(255, 255, 255, 0.75);
-		font-family: var(--font-secondary);
-		font-size: 0.8rem;
-		padding: 0.4rem 1rem;
-		border-radius: 20px;
-		pointer-events: none;
-		z-index: 10;
-		text-align: center;
-		white-space: nowrap;
-		max-width: 90vw;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
-	/* Modal Thumbnails */
+	/* Modal Thumbnails (Under the photo, never overlapping) */
 	.modal-thumbnails {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 0.6rem;
-		padding: 0.75rem 1.5rem;
-		background: rgba(10, 15, 22, 0.6);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		gap: 0.5rem;
+		padding: 6px 8px;
+		background: rgba(12, 16, 22, 0.65);
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 14px;
+		z-index: 20;
+		max-width: 90vw;
+		margin: 0 auto;
+		flex-shrink: 0;
 		overflow-x: auto;
-		z-index: 10;
 	}
 
 	.modal-thumb-btn {
-		width: 54px;
-		height: 54px;
+		width: 44px;
+		height: 44px;
 		border-radius: 8px;
 		overflow: hidden;
 		border: 2px solid transparent;
 		background: rgba(255, 255, 255, 0.05);
 		padding: 0;
 		cursor: pointer;
-		opacity: 0.55;
-		transition: all 0.25s ease;
+		opacity: 0.45;
+		transition: all 0.2s ease;
 		flex-shrink: 0;
 	}
 
@@ -2577,15 +2425,13 @@ const productSchema = {
 	}
 
 	.modal-thumb-btn:hover {
-		opacity: 0.85;
-		transform: translateY(-2px);
+		opacity: 0.8;
 	}
 
 	.modal-thumb-btn.active {
 		opacity: 1;
-		border-color: var(--color-primary);
-		box-shadow: 0 0 12px rgba(140, 106, 83, 0.6);
-		transform: scale(1.05);
+		border-color: #ffffff;
+		transform: scale(1.04);
 	}
 
 	/* TOAST NOTIFICATION */
@@ -2764,44 +2610,38 @@ const productSchema = {
 		}
 
 		/* Modal */
-		.photo-modal-header {
-			padding: 0.75rem 1rem;
-			gap: 0.6rem;
+		.photo-modal-container {
+			padding: 0.85rem 1rem;
 		}
 
-		.modal-product-info {
-			gap: 0.4rem;
+		.photo-modal-header {
+			padding: 0 0.25rem;
 		}
 
 		.modal-product-title {
 			font-size: 0.95rem;
 		}
 
-		.modal-download-btn .btn-text {
-			display: none;
-		}
-
-		.modal-download-btn {
+		.modal-btn {
 			width: 36px;
-			padding: 0;
-			border-radius: 50%;
-		}
-
-		.modal-pan-hint {
-			font-size: 0.725rem;
-			padding: 0.35rem 0.75rem;
+			height: 36px;
 		}
 
 		.modal-prev-btn {
-			left: 0.75rem;
-			width: 40px;
-			height: 40px;
+			left: 0.5rem;
+			width: 38px;
+			height: 38px;
 		}
 
 		.modal-next-btn {
-			right: 0.75rem;
-			width: 40px;
-			height: 40px;
+			right: 0.5rem;
+			width: 38px;
+			height: 38px;
+		}
+
+		.modal-thumb-btn {
+			width: 38px;
+			height: 38px;
 		}
 
 		.download-toast {
@@ -2809,11 +2649,6 @@ const productSchema = {
 			right: 1rem;
 			left: 1rem;
 			max-width: none;
-		}
-
-		/* Zoom kontrolleri - tablet */
-		.zoom-controls {
-			display: none;
 		}
 	}
 
