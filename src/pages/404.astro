@@ -192,19 +192,59 @@ import Layout from "../layouts/Layout.astro";
     box-shadow: 0 4px 14px rgba(140, 106, 83, 0.2);
   }
 
+  @media (max-width: 992px) {
+    .not-found-page {
+      padding: 4rem 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .not-found-page {
+      padding: 3.5rem 1.5rem;
+    }
+    
+    .error-description {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
   @media (max-width: 640px) {
     .not-found-page {
-      padding: 3.5rem 1rem;
+      padding: 3rem 1rem;
+    }
+
+    .parquet-badge {
+      width: 56px;
+      height: 56px;
     }
 
     .action-buttons {
       flex-direction: column;
       width: 100%;
-      max-width: 320px;
+      max-width: 340px;
+      margin: 0 auto;
     }
 
     .action-buttons a {
       width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .not-found-page {
+      padding: 2.5rem 1rem;
+    }
+    
+    .error-description {
+      font-size: 0.95rem;
+      padding: 0 0.5rem;
+    }
+    
+    .parquet-badge {
+      width: 48px;
+      height: 48px;
     }
   }
 </style>
