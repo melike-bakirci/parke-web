@@ -1,10 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import { Image } from "astro:assets";
 import { galleryImages } from "../data/references";
-
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/**/*.{jpeg,jpg,png,webp}');
 ---
 
 <Layout
@@ -23,18 +20,18 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 			<!-- Galeri Grid (3 Sütunlu Dengeli Izgara) -->
 			<div class="gallery-grid">
 				{
-					galleryImages.map((item) => {
-						const globPath = `/public${item.img}`;
-						return (
-							<div class="gallery-card" data-img={item.img}>
-								{imagesGlob[globPath] ? (
-									<Image src={imagesGlob[globPath]()} alt={item.alt} loading="lazy" decoding="async" />
-								) : (
-									<img src={item.img} alt={item.alt} loading="lazy" decoding="async" />
-								)}
-							</div>
-						);
-					})
+					galleryImages.map((item) => (
+						<div class="gallery-card" data-img={item.img}>
+							<img
+								src={item.img}
+								alt={item.alt}
+								width="800"
+								height="600"
+								loading="lazy"
+								decoding="async"
+							/>
+						</div>
+					))
 				}
 			</div>
 		</div>

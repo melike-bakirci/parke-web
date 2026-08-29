@@ -2,9 +2,6 @@
 import Layout from "../../layouts/Layout.astro";
 
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
-
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp,svg}');
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
@@ -83,13 +80,15 @@ const articleSchema = {
           </aside>
           
           <div class="blog-content-body">
-            {
-              imagesGlob[`/public${blog.image}`] ? (
-                <Image src={imagesGlob[`/public${blog.image}`]()} alt={blog.title} class="blog-featured-image" width={1200} height={600} loading="eager" />
-              ) : (
-                <img src={blog.image} alt={blog.title} class="blog-featured-image" />
-              )
-            }
+            <img
+              src={blog.image}
+              alt={blog.title}
+              class="blog-featured-image"
+              width={1200}
+              height={600}
+              loading="eager"
+              decoding="async"
+            />
             <div class="blog-content" id="blog-content"><Content /></div>
           </div>
         </div>
@@ -143,13 +142,7 @@ const articleSchema = {
                     data-content={(b.content || "").replace(/<[^>]+>/g, " ")}
                   >
                     <div class="search-item-img-wrap">
-                      {
-                        imagesGlob[`/public${b.image}`] ? (
-                          <Image src={imagesGlob[`/public${b.image}`]()} alt={b.title} class="search-item-img" width={150} height={150} loading="lazy" />
-                        ) : (
-                          <img src={b.image} alt={b.title} class="search-item-img" loading="lazy" />
-                        )
-                      }
+                      <img src={b.image} alt={b.title} class="search-item-img" width={150} height={150} loading="lazy" decoding="async" />
                     </div>
                     <div class="search-item-info">
                       <h4>{b.title}</h4>
@@ -175,13 +168,7 @@ const articleSchema = {
               {otherBlogs.map((ob) => (
                 <a href={`/blog/${ob.slug}`} class="other-blog-item">
                   <div class="other-blog-img-wrap">
-                    {
-                      imagesGlob[`/public${ob.image}`] ? (
-                        <Image src={imagesGlob[`/public${ob.image}`]()} alt={ob.title} class="other-blog-img" width={150} height={150} loading="lazy" />
-                      ) : (
-                        <img src={ob.image} alt={ob.title} class="other-blog-img" loading="lazy" />
-                      )
-                    }
+                    <img src={ob.image} alt={ob.title} class="other-blog-img" width={150} height={150} loading="lazy" decoding="async" />
                   </div>
                   <div class="other-blog-info">
                     <h4>{ob.title}</h4>

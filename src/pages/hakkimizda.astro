@@ -1,11 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import { Image } from "astro:assets";
-
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
-	"/public/images/*.{jpeg,jpg,png,webp}",
-);
 ---
 
 <Layout
@@ -53,27 +48,14 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 
 			<div class="story-visual-wrap">
 				<div class="story-image">
-					{
-						imagesGlob["/public/images/about-3.webp"] ? (
-							<Image
-								src={imagesGlob[
-									"/public/images/about-3.webp"
-								]()}
-								alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri"
-								width={800}
-								height={600}
-								loading="lazy"
-								decoding="async"
-							/>
-						) : (
-							<img
-								src="/images/about-3.webp"
-								alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri"
-								loading="lazy"
-								decoding="async"
-							/>
-						)
-					}
+					<img
+						src="/images/about-3.webp"
+						alt="ZenFlor Sancaktepe Parke Mağazası ve Laminat Parke Çözümleri"
+						width="800"
+						height="600"
+						loading="lazy"
+						decoding="async"
+					/>
 				</div>
 
 				<!-- 1 Standalone Website Icon Under Photo -->

@@ -1,6 +1,5 @@
 ---
 import Icon from "./Icon.astro";
-import { Image } from "astro:assets";
 
 export interface BlogPost {
   slug: string;
@@ -28,9 +27,6 @@ const {
 } = Astro.props;
 
 const TitleTag = titleTag;
-
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp}');
-const imagePath = `/public${post.image}`;
 ---
 
 <article class={`blog-card ${className}`.trim()}>
@@ -39,11 +35,7 @@ const imagePath = `/public${post.image}`;
     class="blog-img-wrapper"
     aria-label={post.title}
   >
-    {imagesGlob[imagePath] ? (
-      <Image src={imagesGlob[imagePath]()} alt={post.title} width={600} height={400} loading="lazy" decoding="async" />
-    ) : (
-      <img src={post.image} alt={post.title} loading="lazy" decoding="async" />
-    )}
+    <img src={post.image} alt={post.title} width="600" height="400" loading="lazy" decoding="async" />
   </a>
   <div class="blog-content">
     <div class="blog-meta">

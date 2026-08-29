@@ -4,9 +4,6 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 import ProductCard from "../../components/ProductCard.astro";
 import products from "../../data/products.json";
 import { siteInfo } from "../../data/siteInfo";
-import { Image } from "astro:assets";
-
-const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/*.{jpeg,jpg,png,webp,svg}');
 
 export async function getStaticPaths() {
 	return products.map((product) => ({
@@ -155,25 +152,13 @@ const productSchema = {
 											data-index={index}
 											title="Görseli büyütmek için tıklayın"
 										>
-											{
-												imagesGlob[`/public${imgSrc}`] ? (
-													<Image
-														src={imagesGlob[`/public${imgSrc}`]()}
-														alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke - Görsel ${index + 1}`}
-														width={1200}
-														height={800}
-														loading={index === 0 ? "eager" : "lazy"}
-														data-index={index}
-													/>
-												) : (
-													<img
-														src={imgSrc}
-														alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke - Görsel ${index + 1}`}
-														loading={index === 0 ? "eager" : "lazy"}
-														data-index={index}
-													/>
-												)
-											}
+											<img
+												src={imgSrc}
+												alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke - Görsel ${index + 1}`}
+												loading={index === 0 ? "eager" : "lazy"}
+												decoding="async"
+												data-index={index}
+											/>
 										</div>
 									))
 								}
@@ -743,25 +728,12 @@ const productSchema = {
 			<!-- Modal Görsel Alanı (Pan & Zoom Özellikli) -->
 			<div class="photo-modal-body" id="modalBody">
 				<div class="modal-canvas" id="modalCanvas">
-					{
-						imagesGlob[`/public${images[0]}`] ? (
-							<Image
-								src={imagesGlob[`/public${images[0]}`]()}
-								alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke Yüksek Çözünürlüklü Görsel`}
-								id="modalImage"
-								draggable="false"
-								width={1920}
-								height={1280}
-							/>
-						) : (
-							<img
-								src={images[0]}
-								alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke Yüksek Çözünürlüklü Görsel`}
-								id="modalImage"
-								draggable="false"
-							/>
-						)
-					}
+					<img
+						src={images[0]}
+						alt={`${product.series} Serisi ${product.color} Renk ${product.thickness} ${product.edge} ${product.name} Laminat Parke Yüksek Çözünürlüklü Görsel`}
+						id="modalImage"
+						draggable="false"
+					/>
 				</div>
 
 				<!-- Gezinme Okları -->
@@ -848,22 +820,12 @@ const productSchema = {
 								data-thumb-index={index}
 								aria-label={`Görsel ${index + 1}`}
 							>
-								{
-									imagesGlob[`/public${imgSrc}`] ? (
-										<Image
-											src={imagesGlob[`/public${imgSrc}`]()}
-											alt={`${product.name} parke küçük görsel ${index + 1}`}
-											width={150}
-											height={100}
-											loading="lazy"
-										/>
-									) : (
-										<img
-											src={imgSrc}
-											alt={`${product.name} parke küçük görsel ${index + 1}`}
-										/>
-									)
-								}
+								<img
+									src={imgSrc}
+									alt={`${product.name} parke küçük görsel ${index + 1}`}
+									loading="lazy"
+									decoding="async"
+								/>
 							</button>
 						))}
 					</div>
