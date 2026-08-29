@@ -26,7 +26,7 @@ const articleSchema = {
   "@type": "Article",
   "headline": blog.title,
   "image": new URL(blog.image, Astro.site ? Astro.site.origin : siteInfo.url).href,
-  "description": blog.summary,
+  "description": blog.summary || blog.title,
   "author": {
     "@type": "Organization",
     "name": "ZenFlor"
@@ -36,7 +36,7 @@ const articleSchema = {
 
 <Layout 
   title={`${blog.title} | ZenFlor Blog`}
-  description={blog.summary}
+  description={blog.summary || blog.title}
   image={blog.image}
   schema={articleSchema}
 >
