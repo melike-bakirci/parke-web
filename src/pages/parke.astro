@@ -38,7 +38,8 @@ const maxProductPrice = Math.max(...numericPrices);
 				class="sidebar-backdrop"
 				id="sidebarBackdrop"
 				aria-hidden="true"
-			></div>
+			>
+			</div>
 
 			<!-- Sidebar Filters (Desktop Sticky Sidebar / Mobile Off-Canvas Drawer) -->
 			<aside
@@ -312,7 +313,9 @@ const maxProductPrice = Math.max(...numericPrices);
 						id="applyFiltersDrawerBtn"
 						aria-label="Filtreleri Uygula"
 					>
-						Filtreleri Uygula (<span id="drawerResultCount">{products.length}</span> Ürün Göster)
+						Filtreleri Uygula (<span id="drawerResultCount"
+							>{products.length}</span
+						>)
 					</button>
 				</div>
 			</aside>
@@ -387,7 +390,11 @@ const maxProductPrice = Math.max(...numericPrices);
 								<line x1="17" y1="16" x2="23" y2="16"></line>
 							</svg>
 							<span>Filtrele</span>
-							<span class="active-filter-badge" id="activeFilterBadge" style="display: none;">0</span>
+							<span
+								class="active-filter-badge"
+								id="activeFilterBadge"
+								style="display: none;">0</span
+							>
 						</button>
 
 						<div class="sort-by">
@@ -411,10 +418,18 @@ const maxProductPrice = Math.max(...numericPrices);
 				</div>
 
 				<!-- Aktif Filtre Etiketleri (Active Filter Chips) -->
-				<div class="active-chips-bar" id="activeChipsBar" style="display: none;">
+				<div
+					class="active-chips-bar"
+					id="activeChipsBar"
+					style="display: none;"
+				>
 					<span class="active-chips-title">Aktif Filtreler:</span>
 					<div class="active-chips-list" id="activeChipsList"></div>
-					<button type="button" class="clear-all-chips-btn" id="clearAllChipsBtn">Tümünü Kaldır</button>
+					<button
+						type="button"
+						class="clear-all-chips-btn"
+						id="clearAllChipsBtn">Tümünü Kaldır</button
+					>
 				</div>
 
 				<!-- Arama Sonucu Bulunamadı Mesajı -->
@@ -1089,7 +1104,8 @@ const maxProductPrice = Math.max(...numericPrices);
 			url.searchParams.set("max", appliedMaxPrice.toString());
 		else url.searchParams.delete("max");
 
-		if (currentPage > 1) url.searchParams.set("page", currentPage.toString());
+		if (currentPage > 1)
+			url.searchParams.set("page", currentPage.toString());
 		else url.searchParams.delete("page");
 
 		window.history.replaceState({}, "", url);
@@ -1104,7 +1120,8 @@ const maxProductPrice = Math.max(...numericPrices);
 			hasParams = true;
 		}
 		if (params.has("sort")) {
-			if (sortSelect) sortSelect.value = params.get("sort") || "price-asc";
+			if (sortSelect)
+				sortSelect.value = params.get("sort") || "price-asc";
 			hasParams = true;
 		}
 
@@ -1162,7 +1179,9 @@ const maxProductPrice = Math.max(...numericPrices);
 			renderCurrentPage(false);
 		} else {
 			// Initialize chips & counts initially
-			updateFilterStatsAndChips(productGrid?.querySelectorAll(".product-card").length || 0);
+			updateFilterStatsAndChips(
+				productGrid?.querySelectorAll(".product-card").length || 0,
+			);
 		}
 	}
 
@@ -1172,13 +1191,21 @@ const maxProductPrice = Math.max(...numericPrices);
 
 <style>
 	.catalog-section {
-		padding: 50px 0 80px;
+		padding: 28px 0 60px;
 		background: #fcfcfc;
 	}
 	.catalog-container {
 		display: flex;
 		flex-direction: column;
-		gap: 30px;
+		gap: 18px;
+	}
+	@media (min-width: 640px) {
+		.catalog-section {
+			padding: 40px 0 70px;
+		}
+		.catalog-container {
+			gap: 24px;
+		}
 	}
 	@media (min-width: 1024px) {
 		.catalog-section {
@@ -1574,12 +1601,18 @@ const maxProductPrice = Math.max(...numericPrices);
 		display: flex;
 		flex-direction: column;
 		background: #fff;
-		padding: 16px 18px;
+		padding: 12px 14px;
 		border-radius: var(--radius-md);
-		margin-bottom: 20px;
+		margin-bottom: 14px;
 		box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
 		border: 1px solid #edf2f7;
-		gap: 14px;
+		gap: 10px;
+	}
+	@media (min-width: 480px) {
+		.catalog-topbar {
+			padding: 14px 16px;
+			gap: 12px;
+		}
 	}
 	@media (min-width: 640px) {
 		.catalog-topbar {
@@ -1588,6 +1621,7 @@ const maxProductPrice = Math.max(...numericPrices);
 			align-items: center;
 			padding: 16px 22px;
 			gap: 16px;
+			margin-bottom: 20px;
 		}
 	}
 
@@ -1610,16 +1644,22 @@ const maxProductPrice = Math.max(...numericPrices);
 	}
 	.search-input-wrap input {
 		width: 100%;
-		padding: 10px 85px 10px 14px;
+		padding: 9px 78px 9px 12px;
 		border: 1px solid #e2e8f0;
 		border-radius: var(--radius-sm);
 		font-family: var(--font-secondary);
-		font-size: 0.92rem;
+		font-size: 0.9rem;
 		outline: none;
 		transition:
 			border-color 0.2s ease,
 			box-shadow 0.2s ease;
 		background-color: #f8fafc;
+	}
+	@media (min-width: 640px) {
+		.search-input-wrap input {
+			padding: 10px 85px 10px 14px;
+			font-size: 0.92rem;
+		}
 	}
 	.search-input-wrap input:focus {
 		background-color: #ffffff;
@@ -1635,14 +1675,20 @@ const maxProductPrice = Math.max(...numericPrices);
 		color: #ffffff;
 		border: none;
 		border-radius: var(--radius-sm);
-		padding: 0 14px;
+		padding: 0 10px;
 		display: inline-flex;
 		align-items: center;
-		gap: 6px;
+		gap: 5px;
 		font-weight: 600;
-		font-size: 0.85rem;
+		font-size: 0.82rem;
 		cursor: pointer;
 		transition: background-color 0.2s ease;
+	}
+	@media (min-width: 400px) {
+		.search-btn {
+			padding: 0 14px;
+			font-size: 0.85rem;
+		}
 	}
 	.search-btn:hover {
 		background: var(--color-dark);
@@ -1652,7 +1698,7 @@ const maxProductPrice = Math.max(...numericPrices);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 12px;
+		gap: 8px;
 		flex-wrap: wrap;
 		width: 100%;
 	}
@@ -1707,8 +1753,13 @@ const maxProductPrice = Math.max(...numericPrices);
 
 	.result-count {
 		color: #666;
-		font-size: 0.92rem;
+		font-size: 0.85rem;
 		white-space: nowrap;
+	}
+	@media (min-width: 640px) {
+		.result-count {
+			font-size: 0.92rem;
+		}
 	}
 	.result-count strong {
 		color: var(--color-primary);
@@ -1716,19 +1767,35 @@ const maxProductPrice = Math.max(...numericPrices);
 	.sort-by {
 		display: flex;
 		align-items: center;
-		gap: 8px;
-		font-size: 0.92rem;
+		gap: 6px;
+		font-size: 0.88rem;
 		color: #555;
 	}
+	.sort-by label {
+		display: none;
+	}
+	@media (min-width: 480px) {
+		.sort-by label {
+			display: inline;
+		}
+	}
 	.sort-by select {
-		padding: 7px 12px;
+		padding: 7px 10px;
 		border: 1px solid #cbd5e1;
 		border-radius: var(--radius-sm);
 		outline: none;
 		font-family: var(--font-secondary);
 		background-color: #fff;
-		font-size: 0.88rem;
+		font-size: 0.85rem;
 		cursor: pointer;
+		max-width: 160px;
+	}
+	@media (min-width: 640px) {
+		.sort-by select {
+			padding: 7px 12px;
+			font-size: 0.88rem;
+			max-width: none;
+		}
 	}
 	.sort-by select:focus {
 		border-color: var(--color-primary);
@@ -1821,11 +1888,22 @@ const maxProductPrice = Math.max(...numericPrices);
 	/* Product Grid */
 	.product-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 24px;
-		margin-bottom: 40px;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 12px;
+		margin-bottom: 30px;
+	}
+	@media (min-width: 400px) {
+		.product-grid {
+			gap: 16px;
+		}
 	}
 	@media (min-width: 640px) {
+		.product-grid {
+			gap: 22px;
+			margin-bottom: 40px;
+		}
+	}
+	@media (min-width: 768px) {
 		.product-grid {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 28px;
@@ -1843,12 +1921,19 @@ const maxProductPrice = Math.max(...numericPrices);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 8px;
-		margin-top: 20px;
+		gap: 6px;
+		margin-top: 16px;
+		flex-wrap: wrap;
+	}
+	@media (min-width: 640px) {
+		.pagination {
+			gap: 8px;
+			margin-top: 20px;
+		}
 	}
 	.page-btn {
-		width: 40px;
-		height: 40px;
+		width: 36px;
+		height: 36px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -1857,9 +1942,16 @@ const maxProductPrice = Math.max(...numericPrices);
 		border-radius: var(--radius-sm);
 		cursor: pointer;
 		font-weight: 600;
-		font-size: 0.92rem;
+		font-size: 0.85rem;
 		color: #555;
 		transition: all 0.2s ease;
+	}
+	@media (min-width: 640px) {
+		.page-btn {
+			width: 40px;
+			height: 40px;
+			font-size: 0.92rem;
+		}
 	}
 	.page-btn.active,
 	.page-btn:hover:not(:disabled) {
