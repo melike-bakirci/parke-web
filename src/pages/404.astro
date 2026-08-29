@@ -100,7 +100,7 @@ import Layout from "../layouts/Layout.astro";
     padding: 6px;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
-    border-radius: 12px;
+    border-radius: var(--radius-md);
     box-shadow: 0 10px 25px -5px rgba(140, 106, 83, 0.15), 0 0 0 1px rgba(212, 184, 149, 0.3);
     transition: transform 0.4s ease;
   }
@@ -165,6 +165,7 @@ import Layout from "../layouts/Layout.astro";
 
   .btn-primary {
     gap: 0.5rem;
+    border-radius: var(--radius-sm);
     box-shadow: 0 4px 14px rgba(140, 106, 83, 0.25);
   }
 
@@ -173,7 +174,7 @@ import Layout from "../layouts/Layout.astro";
     color: var(--color-dark);
     padding: 12px 24px;
     border: 1.5px solid var(--color-secondary);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     font-weight: 600;
     font-family: var(--font-secondary);
     cursor: pointer;

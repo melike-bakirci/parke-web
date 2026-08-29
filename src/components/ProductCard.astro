@@ -144,13 +144,15 @@ const secondaryImagePath = product.images && product.images[1] ? `/public${produ
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: opacity 0.35s ease, transform 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
   }
 
   .product-img-wrapper .primary-img {
     position: relative;
     z-index: 1;
     opacity: 1;
+    transform: scale(1);
   }
 
   .product-img-wrapper .secondary-img {
@@ -161,15 +163,16 @@ const secondaryImagePath = product.images && product.images[1] ? `/public${produ
     height: 100%;
     z-index: 2;
     opacity: 0;
+    transform: scale(1.01);
   }
 
   .product-card:hover .secondary-img {
     opacity: 1;
-    transform: scale(1.04);
+    transform: scale(1.05);
   }
 
   .product-card:hover .primary-img {
-    transform: scale(1.04);
+    transform: scale(1.05);
   }
 
   .product-info {

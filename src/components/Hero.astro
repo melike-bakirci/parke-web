@@ -8,7 +8,16 @@
   <div class="container hero-content">
     <div class="hero-text">
       <h1>Ev, Ofis ve Mekanlarınıza Değer Katan Parke Modellerimiz</h1>
-      <a href="/iletisim" class="btn-white cta-btn">Bize Ulaşın</a>
+      <div class="hero-actions">
+        <a href="/parke" class="btn-outline-hero">
+          <span>Ürünleri İncele</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="/iletisim" class="btn-white cta-btn">Bize Ulaşın</a>
+      </div>
     </div>
   </div>
 </section>
@@ -78,26 +87,71 @@
     color: #fff;
     font-size: 3.5rem;
     line-height: 1.2;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.25rem;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
     font-family: var(--font-primary);
     text-align: center;
   }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.15rem;
+    flex-wrap: wrap;
+  }
+  .btn-outline-hero {
+    padding: 15px 34px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: var(--radius-sm, 6px);
+    backdrop-filter: blur(8px);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+  .btn-outline-hero:hover {
+    background: #ffffff;
+    color: var(--color-primary);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  .btn-outline-hero svg {
+    transition: transform 0.25s ease;
+  }
+  .btn-outline-hero:hover svg {
+    transform: translateX(4px);
+  }
   .cta-btn {
-    padding: 16px 42px;
-    font-size: 1.15rem;
+    padding: 16px 36px;
+    font-size: 1.1rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     text-decoration: none;
-    margin: 0 auto;
     display: inline-flex;
+    border-radius: var(--radius-sm, 6px);
   }
   @media (max-width: 768px) {
     .hero {
-      height: 420px;
+      height: 440px;
     }
     .hero-text h1 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
+    }
+    .hero-actions {
+      gap: 0.75rem;
+      width: 100%;
+    }
+    .btn-outline-hero,
+    .cta-btn {
+      padding: 13px 24px;
+      font-size: 0.98rem;
     }
   }
 </style>

@@ -282,6 +282,34 @@ try {
 							</div>
 						</div>
 
+						<div
+							id="formErrorMessage"
+							class="form-error-alert"
+							role="alert"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="22"
+								height="22"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="8" x2="12" y2="12"></line>
+								<line x1="12" y1="16" x2="12.01" y2="16"></line>
+							</svg>
+							<div>
+								<strong>Mesaj gönderilirken bir hata oluştu</strong>
+								<p>
+									Lütfen bilgilerinizi kontrol edip tekrar deneyin veya doğrudan <a href={siteInfo.contact.phone.tel} class="alert-link">bizi arayın</a> ya da <a href={siteInfo.contact.whatsapp.url} target="_blank" rel="noopener noreferrer" class="alert-link">WhatsApp'tan yazın</a>.
+								</p>
+							</div>
+						</div>
+
 						<div class="form-row">
 							<div class="input-group">
 								<label for="entry_2005620554"
@@ -345,12 +373,17 @@ try {
 			"contactForm",
 		) as HTMLFormElement | null;
 		const successAlert = document.getElementById("formSuccessMessage");
+		const errorAlert = document.getElementById("formErrorMessage");
 		const submitBtn = document.getElementById(
 			"submitBtn",
 		) as HTMLButtonElement | null;
 
 		contactForm?.addEventListener("submit", async (e) => {
 			e.preventDefault();
+
+			// Hide any existing alerts
+			successAlert?.classList.remove("show");
+			errorAlert?.classList.remove("show");
 
 			if (submitBtn) {
 				submitBtn.disabled = true;
@@ -391,13 +424,17 @@ try {
 
 					setTimeout(() => {
 						successAlert.classList.remove("show");
-					}, 7000);
+					}, 8000);
 				}
 			} catch (error) {
 				console.error("Form gönderim hatası:", error);
-				alert(
-					"Mesajınız gönderilirken bir hata oluştu. Lütfen doğrudan telefon veya WhatsApp üzerinden bize ulaşın.",
-				);
+				if (errorAlert) {
+					errorAlert.classList.add("show");
+					errorAlert.scrollIntoView({
+						behavior: "smooth",
+						block: "nearest",
+					});
+				}
 			} finally {
 				if (submitBtn) {
 					submitBtn.disabled = false;
@@ -763,25 +800,39 @@ try {
 		box-shadow: var(--shadow-md);
 	}
 
-	/* Form Success Alert */
-	.form-success-alert {
+	/* Form Success & Error Alerts */
+	.form-success-alert,
+	.form-error-alert {
 		display: none;
 		align-items: flex-start;
 		gap: 12px;
-		background: #ecfdf5;
-		border: 1px solid #a7f3d0;
-		color: #065f46;
 		padding: 16px 20px;
-		border-radius: 6px;
+		border-radius: var(--radius-sm, 6px);
 		margin-bottom: 20px;
 		animation: fadeIn 0.3s ease;
 	}
-	.form-success-alert.show {
+	.form-success-alert {
+		background: #ecfdf5;
+		border: 1px solid #a7f3d0;
+		color: #065f46;
+	}
+	.form-error-alert {
+		background: #fef2f2;
+		border: 1px solid #fecaca;
+		color: #991b1b;
+	}
+	.form-success-alert.show,
+	.form-error-alert.show {
 		display: flex;
 	}
 	.form-success-alert svg {
 		flex-shrink: 0;
 		color: #059669;
+		margin-top: 2px;
+	}
+	.form-error-alert svg {
+		flex-shrink: 0;
+		color: #dc2626;
 		margin-top: 2px;
 	}
 	.form-success-alert strong {
@@ -790,10 +841,31 @@ try {
 		margin-bottom: 2px;
 		color: #047857;
 	}
+	.form-error-alert strong {
+		display: block;
+		font-size: 0.95rem;
+		margin-bottom: 2px;
+		color: #b91c1c;
+	}
 	.form-success-alert p {
 		margin: 0;
 		font-size: 0.88rem;
 		color: #065f46;
+	}
+	.form-error-alert p {
+		margin: 0;
+		font-size: 0.88rem;
+		color: #991b1b;
+		line-height: 1.5;
+	}
+	.form-error-alert .alert-link {
+		color: #b91c1c;
+		font-weight: 700;
+		text-decoration: underline;
+		transition: color 0.2s ease;
+	}
+	.form-error-alert .alert-link:hover {
+		color: #7f1d1d;
 	}
 
 	/* Button Spinner */
