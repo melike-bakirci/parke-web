@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="404 - Sayfa Bulunamadı | ZenFlor Parke" showCta={false}>
-
   <main class="not-found-page">
     <div class="container not-found-container">
       <!-- Decorative Parquet Motif Graphic -->
@@ -20,33 +19,52 @@ import Layout from "../layouts/Layout.astro";
         <span class="error-code">404</span>
         <h1 class="error-title">Sayfa Bulunamadı</h1>
         <p class="error-description">
-          Aradığınız sayfa taşınmış, silinmiş veya adı değiştirilmiş olabilir.
-          Zeminlerimizde kaybolmak keyifli olsa da, sizi doğru yere ulaştıralım.
+          Aradığınız sayfa bulunamadı. Ana sayfaya dönebilir veya parke
+          koleksiyonumuzu inceleyebilirsiniz.
         </p>
 
         <div class="action-buttons">
           <a href="/" class="btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
             </svg>
             <span>Ana Sayfaya Dön</span>
           </a>
           <a href="/parke" class="btn-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="18" height="18" x="3" y="3" rx="2"/>
-              <path d="M3 9h18"/>
-              <path d="M3 15h18"/>
-              <path d="M9 3v18"/>
-              <path d="M15 3v18"/>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+              <path d="M3 9h18"></path>
+              <path d="M3 15h18"></path>
+              <path d="M9 3v18"></path>
+              <path d="M15 3v18"></path>
             </svg>
-            <span>Parke Koleksiyonları</span>
+            <span>Parke Koleksiyonumuz</span>
           </a>
         </div>
       </div>
     </div>
   </main>
-
 </Layout>
 
 <style>
@@ -55,7 +73,7 @@ import Layout from "../layouts/Layout.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, #FBF9F6 0%, #F5EFE6 100%);
+    background: linear-gradient(180deg, #fbf9f6 0%, #f5efe6 100%);
     padding: 5rem 1.5rem;
     position: relative;
     overflow: hidden;
@@ -63,13 +81,16 @@ import Layout from "../layouts/Layout.astro";
 
   /* Subtle background pattern */
   .not-found-page::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: radial-gradient(var(--color-secondary) 0.75px, transparent 0.75px);
+    background-image: radial-gradient(
+      var(--color-secondary) 0.75px,
+      transparent 0.75px
+    );
     background-size: 24px 24px;
     opacity: 0.25;
     pointer-events: none;
@@ -101,7 +122,9 @@ import Layout from "../layouts/Layout.astro";
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     border-radius: var(--radius-md);
-    box-shadow: 0 10px 25px -5px rgba(140, 106, 83, 0.15), 0 0 0 1px rgba(212, 184, 149, 0.3);
+    box-shadow:
+      0 10px 25px -5px rgba(140, 106, 83, 0.15),
+      0 0 0 1px rgba(212, 184, 149, 0.3);
     transition: transform 0.4s ease;
   }
 
@@ -114,11 +137,13 @@ import Layout from "../layouts/Layout.astro";
     transition: background-color 0.3s ease;
   }
 
-  .sq-1, .sq-4 {
+  .sq-1,
+  .sq-4 {
     background: var(--color-primary);
   }
 
-  .sq-2, .sq-3 {
+  .sq-2,
+  .sq-3 {
     background: var(--color-secondary);
     opacity: 0.85;
   }
@@ -131,7 +156,12 @@ import Layout from "../layouts/Layout.astro";
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-primary) 60%, var(--color-secondary) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--color-dark) 0%,
+      var(--color-primary) 60%,
+      var(--color-secondary) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
@@ -150,7 +180,7 @@ import Layout from "../layouts/Layout.astro";
   .error-description {
     font-size: 1.05rem;
     line-height: 1.65;
-    color: #6E5A4E;
+    color: #6e5a4e;
     max-width: 520px;
     margin: 0 auto 2.5rem;
   }
@@ -187,7 +217,7 @@ import Layout from "../layouts/Layout.astro";
   .btn-outline:hover {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: #FFFFFF;
+    color: #ffffff;
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(140, 106, 83, 0.2);
   }
@@ -202,7 +232,7 @@ import Layout from "../layouts/Layout.astro";
     .not-found-page {
       padding: 3.5rem 1.5rem;
     }
-    
+
     .error-description {
       font-size: 1rem;
       margin-bottom: 2rem;
@@ -236,12 +266,12 @@ import Layout from "../layouts/Layout.astro";
     .not-found-page {
       padding: 2.5rem 1rem;
     }
-    
+
     .error-description {
       font-size: 0.95rem;
       padding: 0 0.5rem;
     }
-    
+
     .parquet-badge {
       width: 48px;
       height: 48px;
