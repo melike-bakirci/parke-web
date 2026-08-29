@@ -1,7 +1,7 @@
 [
   {
     "id": "amasra-mese-2108",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "AMASRA MEŞE - 2108",
     "color": "Orta",
     "thickness": "10 mm",
@@ -20,7 +20,7 @@
   },
   {
     "id": "sedef-mese-2106",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "SEDEF MEŞE - 2106",
     "color": "Açık",
     "thickness": "10 mm",
@@ -39,7 +39,7 @@
   },
   {
     "id": "amerikan-ceviz-2104",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "AMERİKAN CEVİZ - 2104",
     "color": "Koyu",
     "thickness": "10 mm",
@@ -58,7 +58,7 @@
   },
   {
     "id": "albero-mese-2103",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "ALBERO MEŞE - 2103",
     "color": "Koyu",
     "thickness": "10 mm",
@@ -77,7 +77,7 @@
   },
   {
     "id": "belgrad-mese-2102",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "BELGRAD MEŞE - 2102",
     "color": "Açık",
     "thickness": "10 mm",
@@ -96,7 +96,7 @@
   },
   {
     "id": "barok-mese-2101",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "BAROK MEŞE - 2101",
     "color": "Orta",
     "thickness": "10 mm",
@@ -115,7 +115,7 @@
   },
   {
     "id": "soft-mese-2100",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "SOFT MEŞE - 2100",
     "color": "Açık",
     "thickness": "10 mm",
@@ -134,7 +134,7 @@
   },
   {
     "id": "naturel-mese-625",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "NATUREL MEŞE - 625",
     "color": "Orta",
     "thickness": "10 mm",
@@ -153,7 +153,7 @@
   },
   {
     "id": "rustik-mese-615",
-    "series": "Platinum",
+    "series": "Çamsan Platinum",
     "name": "RUSTİK MEŞE - 615",
     "color": "Açık",
     "thickness": "10 mm",
@@ -172,7 +172,7 @@
   },
   {
     "id": "vardar-mese-735",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "VARDAR MEŞE - 735",
     "color": "Orta",
     "thickness": "8 mm",
@@ -191,7 +191,7 @@
   },
   {
     "id": "luna-mese-734",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "LUNA MEŞE - 734",
     "color": "Açık",
     "thickness": "8 mm",
@@ -210,7 +210,7 @@
   },
   {
     "id": "mira-mese-730",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "MİRA MEŞE - 730",
     "color": "Açık",
     "thickness": "8 mm",
@@ -229,7 +229,7 @@
   },
   {
     "id": "anadolu-mese-728",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "ANADOLU MEŞE - 728",
     "color": "Orta",
     "thickness": "8 mm",
@@ -248,7 +248,7 @@
   },
   {
     "id": "ovenkol-726",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "OVENKOL - 726",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -267,7 +267,7 @@
   },
   {
     "id": "uludag-mese-725",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "ULUDAĞ MEŞE - 725",
     "color": "Açık",
     "thickness": "8 mm",
@@ -286,7 +286,7 @@
   },
   {
     "id": "rumeli-mese-724",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "RUMELİ MEŞE - 724",
     "color": "Orta",
     "thickness": "8 mm",
@@ -305,7 +305,7 @@
   },
   {
     "id": "sofya-mese-723",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "SOFYA MEŞE - 723",
     "color": "Açık",
     "thickness": "8 mm",
@@ -324,7 +324,7 @@
   },
   {
     "id": "balkan-mese-722",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "BALKAN MEŞE - 722",
     "color": "Orta",
     "thickness": "8 mm",
@@ -343,7 +343,7 @@
   },
   {
     "id": "aydos-mese-721",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "AYDOS MEŞE - 721",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -362,7 +362,7 @@
   },
   {
     "id": "filibe-mese-4541",
-    "series": "Modern Long",
+    "series": "Çamsan Modern Long",
     "name": "FİLİBE MEŞE - 4541",
     "color": "Orta",
     "thickness": "8 mm",
@@ -381,7 +381,7 @@
   },
   {
     "id": "solid-mese-733",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "SOLİD MEŞE - 733",
     "color": "Orta",
     "thickness": "8 mm",
@@ -400,7 +400,7 @@
   },
   {
     "id": "doruk-mese-732",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "DORUK MEŞE - 732",
     "color": "Açık",
     "thickness": "8 mm",
@@ -419,7 +419,7 @@
   },
   {
     "id": "falya-718",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "FALYA - 718",
     "color": "Orta",
     "thickness": "8 mm",
@@ -438,7 +438,7 @@
   },
   {
     "id": "rustik-ceviz-717",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "RUSTİK CEVİZ - 717",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -457,7 +457,7 @@
   },
   {
     "id": "gediz-mese-716",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "GEDİZ MEŞE - 716",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -476,7 +476,7 @@
   },
   {
     "id": "kanyon-mese-710",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "KANYON MEŞE - 710",
     "color": "Açık",
     "thickness": "8 mm",
@@ -495,7 +495,7 @@
   },
   {
     "id": "kafkas-mese-709",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "KAFKAS MEŞE - 709",
     "color": "Orta",
     "thickness": "8 mm",
@@ -514,7 +514,7 @@
   },
   {
     "id": "aspendos-cam-707",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "ASPENDOS ÇAM - 707",
     "color": "Açık",
     "thickness": "8 mm",
@@ -533,7 +533,7 @@
   },
   {
     "id": "mavi-cam-706",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "MAVİ ÇAM - 706",
     "color": "Orta",
     "thickness": "8 mm",
@@ -552,7 +552,7 @@
   },
   {
     "id": "prestij-mese-705",
-    "series": "Modern",
+    "series": "Çamsan Modern",
     "name": "PRESTİJ MEŞE - 705",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -571,7 +571,7 @@
   },
   {
     "id": "volga-mese-731",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "VOLGA MEŞE - 731",
     "color": "Orta",
     "thickness": "8 mm",
@@ -590,7 +590,7 @@
   },
   {
     "id": "gediz-mese-716-klasik",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "GEDİZ MEŞE - 716",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -609,7 +609,7 @@
   },
   {
     "id": "milas-mese-1500",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "MİLAS MEŞE - 1500",
     "color": "Açık",
     "thickness": "8 mm",
@@ -628,7 +628,7 @@
   },
   {
     "id": "kashmir-teak-550",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "KASHMİR TEAK - 550",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -647,7 +647,7 @@
   },
   {
     "id": "kristal-mese-645",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "KRİSTAL MEŞE - 645",
     "color": "Açık",
     "thickness": "8 mm",
@@ -666,7 +666,7 @@
   },
   {
     "id": "elegant-mese-555",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "ELEGANT MEŞE - 555",
     "color": "Açık",
     "thickness": "8 mm",
@@ -685,7 +685,7 @@
   },
   {
     "id": "modern-mese-640",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "MODERN MEŞE - 640",
     "color": "Açık",
     "thickness": "8 mm",
@@ -704,7 +704,7 @@
   },
   {
     "id": "ilgaz-mese-715",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "ILGAZ MEŞE - 715",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -723,7 +723,7 @@
   },
   {
     "id": "efes-cam-713",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "EFES ÇAM - 713",
     "color": "Orta",
     "thickness": "8 mm",
@@ -742,7 +742,7 @@
   },
   {
     "id": "bati-cam-702",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "BATI ÇAM - 702",
     "color": "Açık",
     "thickness": "8 mm",
@@ -761,7 +761,7 @@
   },
   {
     "id": "asos-mese-1505",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "ASOS MEŞE - 1505",
     "color": "Açık",
     "thickness": "8 mm",
@@ -780,7 +780,7 @@
   },
   {
     "id": "abant-mese-704",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "ABANT MEŞE - 704",
     "color": "Orta",
     "thickness": "8 mm",
@@ -799,7 +799,7 @@
   },
   {
     "id": "dogal-kestane-729",
-    "series": "Klasik",
+    "series": "Çamsan Klasik",
     "name": "DOĞAL KESTANE - 729",
     "color": "Orta",
     "thickness": "8 mm",
@@ -818,7 +818,7 @@
   },
   {
     "id": "kackar-mese-5016",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "KAÇKAR MEŞE - 5016",
     "color": "Orta",
     "thickness": "8 mm",
@@ -837,7 +837,7 @@
   },
   {
     "id": "aras-mese-5001",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "ARAS MEŞE - 5001",
     "color": "Açık",
     "thickness": "8 mm",
@@ -856,7 +856,7 @@
   },
   {
     "id": "sakarya-mese-5002",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "SAKARYA MEŞE - 5002",
     "color": "Orta",
     "thickness": "8 mm",
@@ -875,7 +875,7 @@
   },
   {
     "id": "liva-mese-5003",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "LİVA MEŞE - 5003",
     "color": "Açık",
     "thickness": "8 mm",
@@ -894,7 +894,7 @@
   },
   {
     "id": "acar-mese-5004",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "ACAR MEŞE - 5004",
     "color": "Orta",
     "thickness": "8 mm",
@@ -913,7 +913,7 @@
   },
   {
     "id": "karya-mese-5005",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "KARYA MEŞE - 5005",
     "color": "Açık",
     "thickness": "8 mm",
@@ -932,7 +932,7 @@
   },
   {
     "id": "burgaz-mese-5006",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "BURGAZ MEŞE - 5006",
     "color": "Açık",
     "thickness": "8 mm",
@@ -951,7 +951,7 @@
   },
   {
     "id": "didim-mese-5007",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "DİDİM MEŞE - 5007",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -970,7 +970,7 @@
   },
   {
     "id": "atlas-mese-5009",
-    "series": "Silver",
+    "series": "Çamsan Silver",
     "name": "ATLAS MEŞE - 5009",
     "color": "Orta",
     "thickness": "8 mm",
@@ -989,7 +989,7 @@
   },
   {
     "id": "milda-6007",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "MİLDA - 6007",
     "color": "Açık",
     "thickness": "8 mm",
@@ -1008,7 +1008,7 @@
   },
   {
     "id": "flores-6006",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "FLORES - 6006",
     "color": "Açık",
     "thickness": "8 mm",
@@ -1027,7 +1027,7 @@
   },
   {
     "id": "mauna-6005",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "MAUNA - 6005",
     "color": "Orta",
     "thickness": "8 mm",
@@ -1046,7 +1046,7 @@
   },
   {
     "id": "aden-6004",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "ADEN - 6004",
     "color": "Orta",
     "thickness": "8 mm",
@@ -1065,7 +1065,7 @@
   },
   {
     "id": "hekla-6003",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "HEKLA - 6003",
     "color": "Açık",
     "thickness": "8 mm",
@@ -1084,7 +1084,7 @@
   },
   {
     "id": "fingal-6002",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "FİNGAL - 6002",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -1103,7 +1103,7 @@
   },
   {
     "id": "karpat-6001",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "KARPAT - 6001",
     "color": "Koyu",
     "thickness": "8 mm",
@@ -1122,7 +1122,7 @@
   },
   {
     "id": "palmira-6000",
-    "series": "Gloria",
+    "series": "Çamsan Gloria",
     "name": "PALMİRA - 6000",
     "color": "Koyu",
     "thickness": "8 mm",
