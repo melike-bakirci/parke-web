@@ -9,14 +9,14 @@ Evinizi veya ofisinizi yenilerken zemin kaplama seçimi, tüm mekanın atmosferi
 
 ## 1. Doğallığa Dönüş: Mat Yüzeyler ve Belirgin Damarlar
 
-2026 yılında sentetik ve aşırı parlak görünümlerden uzaklaşıp, ahşabın en doğal haline odaklanıyoruz. Bu sene belirgin ahşap damarları, doğal budak görünümleri ve mat yüzeyler revaçta. Zeminlerinizde gerçek ahşap hissini yaşamak istiyorsanız, bu trend tam size göre. Zeminlerinize doğallık katmak için <a href="/parke" style="color: #c8a96e; font-weight: 600; text-decoration: none;">ahşap dokulu laminat parkelerimizi</a> keşfedebilirsiniz.
+2026 yılında sentetik ve aşırı parlak görünümlerden uzaklaşıp, ahşabın en doğal haline odaklanıyoruz. Bu sene belirgin ahşap damarları, doğal budak görünümleri ve mat yüzeyler revaçta. Zeminlerinizde gerçek ahşap hissini yaşamak istiyorsanız, bu trend tam size göre. Zeminlerinize doğallık katmak için <a href="/parke" style="color: #d3b176; font-weight: 600; text-decoration: none;">ahşap dokulu laminat parkelerimizi</a> keşfedebilirsiniz.
 
 ## 2. Estetik ve Temiz: Derzli Modeller
 
-2026 sezonunun önde gelen trendlerinden biri de derzli laminat parkeler. Derzler arasına toz ve kir girmez, temizliği son derece kolaydır. Gerçek ahşap görünümünü pekiştiren açık, orta ve koyu renklerdeki ahşap tonlarına sahip <a href="/parke?edge=Derzli" style="color: #c8a96e; font-weight: 600; text-decoration: none;">derzli parke modellerimizi</a> inceleyerek mekanınıza modern ve premium bir hava katabilirsiniz.
+2026 sezonunun önde gelen trendlerinden biri de derzli laminat parkeler. Derzler arasına toz ve kir girmez, temizliği son derece kolaydır. Gerçek ahşap görünümünü pekiştiren açık, orta ve koyu renklerdeki ahşap tonlarına sahip <a href="/parke?edge=Derzli" style="color: #d3b176; font-weight: 600; text-decoration: none;">derzli parke modellerimizi</a> inceleyerek mekanınıza modern ve premium bir hava katabilirsiniz.
 
 ## 3. Çamsan Platinum Serisi ile Maksimum Dayanıklılık
 
-Yoğun kullanım gerektiren alanlar için özel olarak üretilen 10mm kalınlığındaki Çamsan Platinum serisi, bu yıl hem ev hem de ofis dekorasyonlarında çok popüler. Ekstra kalın yapısı sayesinde mükemmel ses ve ısı yalıtımı ile darbeye karşı üstün direnç sunar. Daha dayanıklı, prestijli ve sağlam bir zemin arıyorsanız <a href="/parke?category=Çamsan+Platinum" style="color: #c8a96e; font-weight: 600; text-decoration: none;">Çamsan Platinum serisi modellerimize</a> mutlaka göz atmalısınız.
+Yoğun kullanım gerektiren alanlar için özel olarak üretilen 10mm kalınlığındaki Çamsan Platinum serisi, bu yıl hem ev hem de ofis dekorasyonlarında çok popüler. Ekstra kalın yapısı sayesinde mükemmel ses ve ısı yalıtımı ile darbeye karşı üstün direnç sunar. Daha dayanıklı, prestijli ve sağlam bir zemin arıyorsanız <a href="/parke?category=Çamsan+Platinum" style="color: #d3b176; font-weight: 600; text-decoration: none;">Çamsan Platinum serisi modellerimize</a> mutlaka göz atmalısınız.
 
-Mekanlarınızı 2026 trendleriyle yenilemek ve laminat parke fiyatlarımız hakkında detaylı bilgi almak için <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: none;">bizimle iletişime geçebilirsiniz</a>. Profesyonel zemin kaplama ustalarımızla hayalinizdeki zemini gerçeğe dönüştürüyoruz...
+Mekanlarınızı 2026 trendleriyle yenilemek ve laminat parke fiyatlarımız hakkında detaylı bilgi almak için <a href="/iletisim" style="color: #d3b176; font-weight: 600; text-decoration: none;">bizimle iletişime geçebilirsiniz</a>. Profesyonel zemin kaplama ustalarımızla hayalinizdeki zemini gerçeğe dönüştürüyoruz...

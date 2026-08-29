@@ -21,7 +21,7 @@ Laminat parke, preslenmiş yüksek yoğunluklu ahşap tozu (HDF) üzerine yükse
   </ul>
 </div>
 
-Özellikle konut, evcil hayvan sahipleri ve ofis gibi yoğun trafiğe sahip alanlar için <a href="/parke" style="color: #c8a96e; font-weight: 600; text-decoration: none;">en dayanıklı laminat parke koleksiyonlarımızı</a> inceleyebilirsiniz.
+Özellikle konut, evcil hayvan sahipleri ve ofis gibi yoğun trafiğe sahip alanlar için <a href="/parke" style="color: #d3b176; font-weight: 600; text-decoration: none;">en dayanıklı laminat parke koleksiyonlarımızı</a> inceleyebilirsiniz.
 
 ## Lamine Parke Nedir? Özellikleri ve Avantajları
 
@@ -36,7 +36,7 @@ Lamine parke ise %100 doğal ahşaptan üretilir. Genellikle üç katmandan olu�
   </ul>
 </div>
 
-Doğallığın zarafetini yaşamak istiyorsanız, <a href="/iletisim" style="color: #c8a96e; font-weight: 600; text-decoration: none;">bizimle iletişime geçerek</a> mekanınıza en uygun lamine parkeler için özel teklif alabilirsiniz.
+Doğallığın zarafetini yaşamak istiyorsanız, <a href="/iletisim" style="color: #d3b176; font-weight: 600; text-decoration: none;">bizimle iletişime geçerek</a> mekanınıza en uygun lamine parkeler için özel teklif alabilirsiniz.
 
 ## Karşılaştırma Tablosu: Laminat vs Lamine
 

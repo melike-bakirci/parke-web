@@ -1,19 +1,19 @@
 :root {
-  /* Primary & Accent Palette (Warm Wood / Bronze & Sand) */
-  --color-primary: #8C6A53;
-  --color-primary-dark: #6D4F3B;
-  --color-secondary: #C8A96E;
-  --color-secondary-light: #F6EFE6;
-  --color-dark: #3E2E25;
+  /* Primary & Accent Palette (Logo Colors: Warm Wood & Elegant Sand Gold) */
+  --color-primary: #845843;
+  --color-primary-dark: #654232;
+  --color-secondary: #D3B176;
+  --color-secondary-light: #F8F3EA;
+  --color-dark: #342219;
   --color-light: #FAF7F2;
   --color-surface: #FFFFFF;
   --color-border: #E8DFD7;
 
   /* Text Contrast Hierarchy (WCAG AAA & AA Compliant) */
-  --color-text-dark: #2C221E;
-  --color-text-muted: #64554C;
+  --color-text-dark: #281B14;
+  --color-text-muted: #66554B;
   --color-text-light: #FFFFFF;
-  --color-text-light-muted: #DDD1C8;
+  --color-text-light-muted: #DDD2C9;
 
   /* Typography */
   --font-primary: 'Outfit', sans-serif;
@@ -23,9 +23,9 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
-  --shadow-sm: 0 1px 3px rgba(62, 46, 37, 0.04), 0 2px 8px rgba(62, 46, 37, 0.04);
-  --shadow-md: 0 4px 12px rgba(62, 46, 37, 0.06), 0 12px 28px rgba(62, 46, 37, 0.07);
-  --shadow-lg: 0 8px 24px rgba(62, 46, 37, 0.08), 0 24px 56px rgba(62, 46, 37, 0.12);
+  --shadow-sm: 0 1px 3px rgba(52, 34, 25, 0.04), 0 2px 8px rgba(52, 34, 25, 0.04);
+  --shadow-md: 0 4px 12px rgba(52, 34, 25, 0.06), 0 12px 28px rgba(52, 34, 25, 0.07);
+  --shadow-lg: 0 8px 24px rgba(52, 34, 25, 0.08), 0 24px 56px rgba(52, 34, 25, 0.12);
 
   /* Easing */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
