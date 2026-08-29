@@ -6,6 +6,7 @@ const pathname = Astro.url.pathname;
 ---
 
 <header class="header">
+  <!-- Header Top Bar (Desktop & Tablet) -->
   <div class="header-top">
     <div class="container top-container">
       <div class="logo">
@@ -64,13 +65,29 @@ const pathname = Astro.url.pathname;
           aria-label="Sahibinden Mağazamız"
         >
           <Icon name="sahibinden" size={15} />
-          <span>Sahibinden Mağazamız</span>
+          <span>Sahibinden</span>
         </a>
       </div>
     </div>
   </div>
-  <nav class="header-nav">
+
+  <!-- Main Navigation Bar -->
+  <nav class="header-nav" aria-label="Ana Gezinme Menüsü">
     <div class="container nav-container">
+      <!-- Mobile Logo (shown inside nav bar on mobile) -->
+      <a href="/" class="mobile-logo" aria-label="Ana Sayfa - ZenFlor Parke">
+        <div class="mobile-logo-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="13" height="13" fill="#C8A96E" opacity="0.95"></rect>
+            <rect x="18" y="1" width="13" height="13" fill="#C8A96E" opacity="0.5"></rect>
+            <rect x="1" y="18" width="13" height="13" fill="#C8A96E" opacity="0.5"></rect>
+            <rect x="18" y="18" width="13" height="13" fill="#C8A96E" opacity="0.95"></rect>
+          </svg>
+        </div>
+        <span class="mobile-logo-title">{siteInfo.name}</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
       <ul class="nav-links">
         <li><a href="/" class={pathname === "/" ? "active" : ""}>Ana Sayfa</a></li>
         <li><a href="/hakkimizda" class={pathname.startsWith("/hakkimizda") ? "active" : ""}>Biz Kimiz?</a></li>
@@ -79,21 +96,208 @@ const pathname = Astro.url.pathname;
         <li><a href="/blog" class={pathname.startsWith("/blog") ? "active" : ""}>Blog</a></li>
         <li><a href="/iletisim" class={pathname.startsWith("/iletisim") ? "active" : ""}>İletişim</a></li>
       </ul>
-      <a href={siteInfo.contact.phone.tel} class="btn-white quote-nav-btn" aria-label="Telefonla Teklif Alın">
+
+      <!-- Desktop Quote Button -->
+      <a href={siteInfo.contact.phone.tel} class="btn-white quote-nav-btn desktop-quote" aria-label="Telefonla Teklif Alın">
         <Icon name="phone" size={16} strokeWidth={2.2} class="quote-phone-icon" />
         <span>Teklif Alın</span>
       </a>
+
+      <!-- Mobile Right Controls (Quick Call + Hamburger Button - NO BG) -->
+      <div class="mobile-nav-actions">
+        <a href={siteInfo.contact.phone.tel} class="mobile-quick-call" aria-label="Hemen Arayın" title="Hemen Arayın">
+          <Icon name="phone" size={20} strokeWidth={2.2} />
+        </a>
+        <button
+          type="button"
+          class="hamburger-btn"
+          id="mobileMenuToggle"
+          aria-label="Menüyü Aç"
+          aria-expanded="false"
+          aria-controls="mobileDrawer"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobil Menü">
+    <div class="drawer-header">
+      <div class="drawer-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="13" height="13" fill="#C8A96E" opacity="0.95"></rect>
+            <rect x="18" y="1" width="13" height="13" fill="#C8A96E" opacity="0.5"></rect>
+            <rect x="1" y="18" width="13" height="13" fill="#C8A96E" opacity="0.5"></rect>
+            <rect x="18" y="18" width="13" height="13" fill="#C8A96E" opacity="0.95"></rect>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">{siteInfo.name}</span>
+          <span class="logo-sub">Parke Çözümleri</span>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="drawer-close-btn"
+        id="drawerCloseBtn"
+        aria-label="Menüyü Kapat"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="drawer-body">
+      <ul class="drawer-links">
+        <li>
+          <a href="/" class={`drawer-link ${pathname === "/" ? "active" : ""}`}>
+            <span>Ana Sayfa</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+        <li>
+          <a href="/hakkimizda" class={`drawer-link ${pathname.startsWith("/hakkimizda") ? "active" : ""}`}>
+            <span>Biz Kimiz?</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+        <li>
+          <a href="/parke" class={`drawer-link ${pathname.startsWith("/parke") ? "active" : ""}`}>
+            <span>Parke Koleksiyonu</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+        <li>
+          <a href="/referanslar" class={`drawer-link ${pathname.startsWith("/referanslar") ? "active" : ""}`}>
+            <span>Neler Yaptık? (Referanslar)</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+        <li>
+          <a href="/blog" class={`drawer-link ${pathname.startsWith("/blog") ? "active" : ""}`}>
+            <span>Blog & Rehber</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+        <li>
+          <a href="/iletisim" class={`drawer-link ${pathname.startsWith("/iletisim") ? "active" : ""}`}>
+            <span>İletişim</span>
+            <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
+          </a>
+        </li>
+      </ul>
+
+      <!-- Drawer Call to Actions -->
+      <div class="drawer-actions">
+        <a href={siteInfo.contact.phone.tel} class="drawer-btn drawer-btn-phone">
+          <Icon name="phone" size={18} strokeWidth={2.2} />
+          <span>Hemen Arayın: {siteInfo.contact.phone.formatted}</span>
+        </a>
+        <a
+          href={siteInfo.contact.whatsapp.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="drawer-btn drawer-btn-whatsapp"
+        >
+          <Icon name="whatsapp" size={18} />
+          <span>WhatsApp ile Teklif Alın</span>
+        </a>
+      </div>
+
+      <!-- Drawer Footer Info -->
+      <div class="drawer-footer">
+        <div class="drawer-info-item">
+          <Icon name="location" size={15} />
+          <span>{siteInfo.contact.address.full}</span>
+        </div>
+        <div class="drawer-info-item">
+          <Icon name="clock" size={15} />
+          <span>{siteInfo.contact.workingHours.summary}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
+
+<script>
+  function setupMobileMenu() {
+    const toggleBtn = document.getElementById("mobileMenuToggle");
+    const closeBtn = document.getElementById("drawerCloseBtn");
+    const drawer = document.getElementById("mobileDrawer");
+    const backdrop = document.getElementById("drawerBackdrop");
+    const drawerLinks = document.querySelectorAll(".drawer-link");
+
+    if (!toggleBtn || !drawer || !backdrop) return;
+
+    function openMenu() {
+      drawer?.classList.add("open");
+      backdrop?.classList.add("open");
+      toggleBtn?.classList.add("active");
+      toggleBtn?.setAttribute("aria-expanded", "true");
+      toggleBtn?.setAttribute("aria-label", "Menüyü Kapat");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenu() {
+      drawer?.classList.remove("open");
+      backdrop?.classList.remove("open");
+      toggleBtn?.classList.remove("active");
+      toggleBtn?.setAttribute("aria-expanded", "false");
+      toggleBtn?.setAttribute("aria-label", "Menüyü Aç");
+      document.body.style.overflow = "";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = drawer.classList.contains("open");
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    closeBtn?.addEventListener("click", closeMenu);
+    backdrop.addEventListener("click", closeMenu);
+
+    drawerLinks.forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && drawer.classList.contains("open")) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Initial load and Astro Page Transitions support
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupMobileMenu);
+  } else {
+    setupMobileMenu();
+  }
+  document.addEventListener("astro:page-load", setupMobileMenu);
+</script>
 
 <style>
   .header {
     width: 100%;
     background: #fff;
+    position: relative;
+    z-index: 1000;
   }
   .header-top {
-    padding: 0.9rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid #f0f0f0;
   }
   .top-container {
@@ -110,6 +314,7 @@ const pathname = Astro.url.pathname;
   .logo-icon {
     width: 40px;
     height: 40px;
+    flex-shrink: 0;
   }
   .logo-text {
     display: flex;
@@ -161,6 +366,23 @@ const pathname = Astro.url.pathname;
     justify-content: space-between;
     align-items: center;
   }
+  .mobile-logo {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #ffffff;
+  }
+  .mobile-logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .mobile-logo-title {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
+  }
   .nav-links {
     display: flex;
     gap: 2rem;
@@ -207,5 +429,267 @@ const pathname = Astro.url.pathname;
   }
   .quote-nav-btn:hover .quote-phone-icon {
     transform: rotate(15deg) scale(1.1);
+  }
+
+  /* Mobile Actions & Hamburger Button (NO BACKGROUND) */
+  .mobile-nav-actions {
+    display: none;
+    align-items: center;
+    gap: 4px;
+  }
+  .mobile-quick-call {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+  }
+  .mobile-quick-call:hover {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+  .hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 6px;
+    transition: transform 0.2s ease;
+  }
+  .hamburger-btn:hover {
+    transform: scale(1.05);
+  }
+  .hamburger-bar {
+    width: 24px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+  .hamburger-btn.active .hamburger-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger-btn.active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger-btn.active .hamburger-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile Drawer Backdrop */
+  .drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .drawer-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile Drawer Container */
+  .mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 86%;
+    max-width: 360px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+  }
+  .mobile-drawer.open {
+    transform: translateX(0);
+  }
+
+  /* Drawer Header */
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+    background: #ffffff;
+  }
+  .drawer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .drawer-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .drawer-close-btn:hover {
+    color: #ef4444;
+    transform: scale(1.1);
+  }
+
+  /* Drawer Body */
+  .drawer-body {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1.75rem;
+  }
+  .drawer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .drawer-link:hover {
+    background: #f8fafc;
+    color: var(--color-primary);
+  }
+  .drawer-link.active {
+    background: rgba(140, 106, 83, 0.08);
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+  .drawer-arrow {
+    color: #94a3b8;
+    transition: transform 0.2s ease;
+  }
+  .drawer-link:hover .drawer-arrow,
+  .drawer-link.active .drawer-arrow {
+    color: var(--color-primary);
+    transform: translateX(3px);
+  }
+
+  /* Drawer Actions */
+  .drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+  .drawer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .drawer-btn-phone {
+    background: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(140, 106, 83, 0.25);
+  }
+  .drawer-btn-phone:hover {
+    background: var(--color-dark);
+  }
+  .drawer-btn-whatsapp {
+    background: #25D366;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  }
+  .drawer-btn-whatsapp:hover {
+    background: #20ba5a;
+  }
+
+  /* Drawer Footer */
+  .drawer-footer {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .drawer-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: #64748b;
+    line-height: 1.4;
+  }
+  .drawer-info-item svg {
+    flex-shrink: 0;
+    color: var(--color-secondary);
+    margin-top: 2px;
+  }
+
+  /* Responsive Media Queries */
+  @media (max-width: 900px) {
+    .contact-item:last-child {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      display: none;
+    }
+    .mobile-logo {
+      display: flex;
+    }
+    .nav-links {
+      display: none;
+    }
+    .desktop-quote {
+      display: none;
+    }
+    .mobile-nav-actions {
+      display: flex;
+    }
+    .header-nav {
+      padding: 0.75rem 0;
+    }
   }
 </style>
