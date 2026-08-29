@@ -33,8 +33,19 @@ const maxProductPrice = Math.max(...numericPrices);
 
 	<section class="catalog-section" id="catalogSection">
 		<div class="container catalog-container">
-			<!-- Sidebar Filters -->
-			<aside class="sidebar-filters">
+			<!-- Mobile Backdrop -->
+			<div
+				class="sidebar-backdrop"
+				id="sidebarBackdrop"
+				aria-hidden="true"
+			></div>
+
+			<!-- Sidebar Filters (Desktop Sticky Sidebar / Mobile Off-Canvas Drawer) -->
+			<aside
+				class="sidebar-filters"
+				id="sidebarFilters"
+				aria-label="Ürün Filtreleri"
+			>
 				<div class="sidebar-header">
 					<div class="sidebar-title-wrap">
 						<svg
@@ -60,219 +71,253 @@ const maxProductPrice = Math.max(...numericPrices);
 						</svg>
 						<h2>Filtreler</h2>
 					</div>
-				</div>
-
-				<div class="filter-group">
-					<h3>Seriler</h3>
-					<ul>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Platinum"
-								/>
-								<span>Platinum</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Modern Long"
-								/>
-								<span>Modern Long</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Modern"
-								/>
-								<span>Modern</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Klasik"
-								/>
-								<span>Klasik</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Silver"
-								/>
-								<span>Silver</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="category-filter"
-									value="Gloria"
-								/>
-								<span>Gloria</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-
-				<div class="filter-group">
-					<h3>Kenar Tipi</h3>
-					<ul>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="edge-filter"
-									value="Derzli"
-								/>
-								<span>Derzli</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="edge-filter"
-									value="Derzsiz"
-								/>
-								<span>Derzsiz</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-
-				<div class="filter-group">
-					<h3>Kalınlık</h3>
-					<ul>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="thickness-filter"
-									value="8 mm"
-								/>
-								<span>8 mm</span>
-							</label>
-						</li>
-						<li>
-							<label>
-								<input
-									type="checkbox"
-									class="thickness-filter"
-									value="10 mm"
-								/>
-								<span>10 mm</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-
-				<div class="filter-group">
-					<h3>Renkler</h3>
-					<div class="color-list">
-						<label class="color-item">
-							<input
-								type="checkbox"
-								class="color-filter"
-								value="Açık"
-							/>
-							<span
-								class="color-swatch-dot"
-								style="background-color: #E8D3A7;"></span>
-							<span class="color-text">Açık</span>
-						</label>
-						<label class="color-item">
-							<input
-								type="checkbox"
-								class="color-filter"
-								value="Orta"
-							/>
-							<span
-								class="color-swatch-dot"
-								style="background-color: #D2B48C;"></span>
-							<span class="color-text">Orta</span>
-						</label>
-						<label class="color-item">
-							<input
-								type="checkbox"
-								class="color-filter"
-								value="Koyu"
-							/>
-							<span
-								class="color-swatch-dot"
-								style="background-color: #5C4033;"></span>
-							<span class="color-text">Koyu</span>
-						</label>
-					</div>
-				</div>
-
-				<div class="filter-group">
-					<h3>Fiyat Aralığı</h3>
-					<div class="price-inputs-container">
-						<div class="price-input-field">
-							<label for="minPriceInput">Min (₺)</label>
-							<div class="price-input-box">
-								<span class="currency-sign">₺</span>
-								<input
-									type="number"
-									id="minPriceInput"
-									placeholder={minProductPrice.toString()}
-									min={minProductPrice}
-									max={maxProductPrice}
-									step="5"
-									aria-label="Minimum Fiyat"
-								/>
-							</div>
-						</div>
-						<span class="price-range-sep">-</span>
-						<div class="price-input-field">
-							<label for="maxPriceInput">Max (₺)</label>
-							<div class="price-input-box">
-								<span class="currency-sign">₺</span>
-								<input
-									type="number"
-									id="maxPriceInput"
-									placeholder={maxProductPrice.toString()}
-									min={minProductPrice}
-									max={maxProductPrice}
-									step="5"
-									aria-label="Maksimum Fiyat"
-								/>
-							</div>
-						</div>
-					</div>
 					<button
 						type="button"
-						id="applyPriceBtn"
-						class="btn-apply-price"
+						class="sidebar-close-btn"
+						id="closeFiltersBtn"
+						aria-label="Filtreleri Kapat"
 					>
-						Fiyat Uygula
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<line x1="18" y1="6" x2="6" y2="18"></line>
+							<line x1="6" y1="6" x2="18" y2="18"></line>
+						</svg>
 					</button>
 				</div>
 
-				<button
-					type="button"
-					class="btn-primary reset-btn"
-					id="resetFiltersBtn">Filtreleri Temizle</button
-				>
+				<div class="sidebar-body">
+					<div class="filter-group">
+						<h3>Seriler</h3>
+						<ul>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Platinum"
+									/>
+									<span>Platinum</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Modern Long"
+									/>
+									<span>Modern Long</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Modern"
+									/>
+									<span>Modern</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Klasik"
+									/>
+									<span>Klasik</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Silver"
+									/>
+									<span>Silver</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="category-filter"
+										value="Gloria"
+									/>
+									<span>Gloria</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-group">
+						<h3>Kenar Tipi</h3>
+						<ul>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="edge-filter"
+										value="Derzli"
+									/>
+									<span>Derzli</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="edge-filter"
+										value="Derzsiz"
+									/>
+									<span>Derzsiz</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-group">
+						<h3>Kalınlık</h3>
+						<ul>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="thickness-filter"
+										value="8 mm"
+									/>
+									<span>8 mm</span>
+								</label>
+							</li>
+							<li>
+								<label>
+									<input
+										type="checkbox"
+										class="thickness-filter"
+										value="10 mm"
+									/>
+									<span>10 mm</span>
+								</label>
+							</li>
+						</ul>
+					</div>
+
+					<div class="filter-group">
+						<h3>Renkler</h3>
+						<div class="color-list">
+							<label class="color-item">
+								<input
+									type="checkbox"
+									class="color-filter"
+									value="Açık"
+								/>
+								<span
+									class="color-swatch-dot"
+									style="background-color: #E8D3A7;"></span>
+								<span class="color-text">Açık</span>
+							</label>
+							<label class="color-item">
+								<input
+									type="checkbox"
+									class="color-filter"
+									value="Orta"
+								/>
+								<span
+									class="color-swatch-dot"
+									style="background-color: #D2B48C;"></span>
+								<span class="color-text">Orta</span>
+							</label>
+							<label class="color-item">
+								<input
+									type="checkbox"
+									class="color-filter"
+									value="Koyu"
+								/>
+								<span
+									class="color-swatch-dot"
+									style="background-color: #5C4033;"></span>
+								<span class="color-text">Koyu</span>
+							</label>
+						</div>
+					</div>
+
+					<div class="filter-group">
+						<h3>Fiyat Aralığı</h3>
+						<div class="price-inputs-container">
+							<div class="price-input-field">
+								<label for="minPriceInput">Min (₺)</label>
+								<div class="price-input-box">
+									<span class="currency-sign">₺</span>
+									<input
+										type="number"
+										id="minPriceInput"
+										placeholder={minProductPrice.toString()}
+										min={minProductPrice}
+										max={maxProductPrice}
+										step="5"
+										aria-label="Minimum Fiyat"
+									/>
+								</div>
+							</div>
+							<span class="price-range-sep">-</span>
+							<div class="price-input-field">
+								<label for="maxPriceInput">Max (₺)</label>
+								<div class="price-input-box">
+									<span class="currency-sign">₺</span>
+									<input
+										type="number"
+										id="maxPriceInput"
+										placeholder={maxProductPrice.toString()}
+										min={minProductPrice}
+										max={maxProductPrice}
+										step="5"
+										aria-label="Maksimum Fiyat"
+									/>
+								</div>
+							</div>
+						</div>
+						<button
+							type="button"
+							id="applyPriceBtn"
+							class="btn-apply-price"
+						>
+							Fiyat Uygula
+						</button>
+					</div>
+				</div>
+
+				<div class="sidebar-actions">
+					<button
+						type="button"
+						class="btn-sidebar-reset reset-btn"
+						id="resetFiltersBtn"
+					>
+						Filtreleri Temizle
+					</button>
+					<button
+						type="button"
+						class="btn-sidebar-apply"
+						id="applyFiltersDrawerBtn"
+					>
+						Sonuçları Göster (<span id="drawerResultCount">{products.length}</span>)
+					</button>
+				</div>
 			</aside>
 
 			<!-- Product List Area -->
 			<div class="catalog-content">
-				<!-- Top Bar: Search, Count & Sort -->
+				<!-- Top Bar: Search, Mobile Filter Button, Count & Sort -->
 				<div class="catalog-topbar">
 					<div class="catalog-search">
 						<div class="search-input-wrap">
@@ -310,9 +355,42 @@ const maxProductPrice = Math.max(...numericPrices);
 					</div>
 
 					<div class="catalog-controls">
+						<button
+							type="button"
+							class="mobile-filter-trigger"
+							id="openFiltersBtn"
+							aria-expanded="false"
+							aria-controls="sidebarFilters"
+							aria-label="Filtreleri Aç"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="17"
+								height="17"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2.2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							>
+								<line x1="4" y1="21" x2="4" y2="14"></line>
+								<line x1="4" y1="10" x2="4" y2="3"></line>
+								<line x1="12" y1="21" x2="12" y2="12"></line>
+								<line x1="12" y1="8" x2="12" y2="3"></line>
+								<line x1="20" y1="21" x2="20" y2="16"></line>
+								<line x1="20" y1="12" x2="20" y2="3"></line>
+								<line x1="1" y1="14" x2="7" y2="14"></line>
+								<line x1="9" y1="8" x2="15" y2="8"></line>
+								<line x1="17" y1="16" x2="23" y2="16"></line>
+							</svg>
+							<span>Filtrele</span>
+							<span class="active-filter-badge" id="activeFilterBadge" style="display: none;">0</span>
+						</button>
+
 						<div class="sort-by">
 							<label for="sort">Sırala:</label>
-							<select id="sort">
+							<select id="sort" aria-label="Ürünleri sırala">
 								<option value="price-asc" selected
 									>Fiyata Göre Artan</option
 								>
@@ -328,6 +406,13 @@ const maxProductPrice = Math.max(...numericPrices);
 							ürün
 						</div>
 					</div>
+				</div>
+
+				<!-- Aktif Filtre Etiketleri (Active Filter Chips) -->
+				<div class="active-chips-bar" id="activeChipsBar" style="display: none;">
+					<span class="active-chips-title">Aktif Filtreler:</span>
+					<div class="active-chips-list" id="activeChipsList"></div>
+					<button type="button" class="clear-all-chips-btn" id="clearAllChipsBtn">Tümünü Kaldır</button>
 				</div>
 
 				<!-- Arama Sonucu Bulunamadı Mesajı -->
@@ -407,6 +492,22 @@ const maxProductPrice = Math.max(...numericPrices);
 		document.querySelectorAll<HTMLButtonElement>(".page-num-btn");
 	const catalogSection = document.getElementById("catalogSection");
 
+	// Mobile Drawer Elements
+	const sidebarFilters = document.getElementById("sidebarFilters");
+	const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+	const openFiltersBtn = document.getElementById("openFiltersBtn");
+	const closeFiltersBtn = document.getElementById("closeFiltersBtn");
+	const applyFiltersDrawerBtn = document.getElementById(
+		"applyFiltersDrawerBtn",
+	);
+	const drawerResultCount = document.getElementById("drawerResultCount");
+	const activeFilterBadge = document.getElementById("activeFilterBadge");
+
+	// Filter Chips Elements
+	const activeChipsBar = document.getElementById("activeChipsBar");
+	const activeChipsList = document.getElementById("activeChipsList");
+	const clearAllChipsBtn = document.getElementById("clearAllChipsBtn");
+
 	const categoryCheckboxes =
 		document.querySelectorAll<HTMLInputElement>(".category-filter");
 	const edgeCheckboxes =
@@ -432,6 +533,49 @@ const maxProductPrice = Math.max(...numericPrices);
 	let currentPage = 1;
 	let appliedMinPrice: number | null = null;
 	let appliedMaxPrice: number | null = null;
+
+	// Mobile Drawer Open / Close Functions
+	function openDrawer() {
+		sidebarFilters?.classList.add("open");
+		sidebarBackdrop?.classList.add("active");
+		openFiltersBtn?.setAttribute("aria-expanded", "true");
+		document.body.style.overflow = "hidden";
+	}
+
+	function closeDrawer() {
+		sidebarFilters?.classList.remove("open");
+		sidebarBackdrop?.classList.remove("active");
+		openFiltersBtn?.setAttribute("aria-expanded", "false");
+		document.body.style.overflow = "";
+	}
+
+	openFiltersBtn?.addEventListener("click", openDrawer);
+	closeFiltersBtn?.addEventListener("click", closeDrawer);
+	sidebarBackdrop?.addEventListener("click", closeDrawer);
+	applyFiltersDrawerBtn?.addEventListener("click", () => {
+		closeDrawer();
+		if (catalogSection) {
+			const rect = catalogSection.getBoundingClientRect();
+			if (rect.top < 0) {
+				catalogSection.scrollIntoView({ behavior: "smooth" });
+			}
+		}
+	});
+
+	window.addEventListener("keydown", (e) => {
+		if (e.key === "Escape" && sidebarFilters?.classList.contains("open")) {
+			closeDrawer();
+		}
+	});
+
+	window.addEventListener("resize", () => {
+		if (window.innerWidth >= 1024) {
+			if (sidebarFilters?.classList.contains("open")) {
+				closeDrawer();
+			}
+			document.body.style.overflow = "";
+		}
+	});
 
 	function normalizeText(str: string): string {
 		if (!str) return "";
@@ -567,6 +711,126 @@ const maxProductPrice = Math.max(...numericPrices);
 		return matchingCards;
 	}
 
+	function updateFilterStatsAndChips(totalMatching: number) {
+		// Update drawer counter
+		if (drawerResultCount) {
+			drawerResultCount.textContent = totalMatching.toString();
+		}
+
+		// Calculate active filter count & create chips
+		const activeFilters: { label: string; clear: () => void }[] = [];
+
+		categoryCheckboxes.forEach((cb) => {
+			if (cb.checked) {
+				activeFilters.push({
+					label: cb.value,
+					clear: () => {
+						cb.checked = false;
+						currentPage = 1;
+						renderCurrentPage(false);
+					},
+				});
+			}
+		});
+
+		edgeCheckboxes.forEach((cb) => {
+			if (cb.checked) {
+				activeFilters.push({
+					label: cb.value,
+					clear: () => {
+						cb.checked = false;
+						currentPage = 1;
+						renderCurrentPage(false);
+					},
+				});
+			}
+		});
+
+		thicknessCheckboxes.forEach((cb) => {
+			if (cb.checked) {
+				activeFilters.push({
+					label: cb.value,
+					clear: () => {
+						cb.checked = false;
+						currentPage = 1;
+						renderCurrentPage(false);
+					},
+				});
+			}
+		});
+
+		colorCheckboxes.forEach((cb) => {
+			if (cb.checked) {
+				activeFilters.push({
+					label: `Renk: ${cb.value}`,
+					clear: () => {
+						cb.checked = false;
+						currentPage = 1;
+						renderCurrentPage(false);
+					},
+				});
+			}
+		});
+
+		if (appliedMinPrice !== null || appliedMaxPrice !== null) {
+			const priceText =
+				appliedMinPrice !== null && appliedMaxPrice !== null
+					? `${appliedMinPrice}₺ - ${appliedMaxPrice}₺`
+					: appliedMinPrice !== null
+						? `Min ${appliedMinPrice}₺`
+						: `Max ${appliedMaxPrice}₺`;
+
+			activeFilters.push({
+				label: priceText,
+				clear: () => {
+					appliedMinPrice = null;
+					appliedMaxPrice = null;
+					if (minPriceInput) minPriceInput.value = "";
+					if (maxPriceInput) maxPriceInput.value = "";
+					currentPage = 1;
+					renderCurrentPage(false);
+				},
+			});
+		}
+
+		// Update Badge
+		if (activeFilterBadge) {
+			const count = activeFilters.length;
+			if (count > 0) {
+				activeFilterBadge.textContent = count.toString();
+				activeFilterBadge.style.display = "inline-flex";
+			} else {
+				activeFilterBadge.style.display = "none";
+			}
+		}
+
+		// Update Chips Bar
+		if (activeChipsBar && activeChipsList) {
+			if (activeFilters.length > 0) {
+				activeChipsBar.style.display = "flex";
+				activeChipsList.innerHTML = "";
+
+				activeFilters.forEach((filter) => {
+					const chip = document.createElement("button");
+					chip.type = "button";
+					chip.className = "filter-chip";
+					chip.setAttribute(
+						"aria-label",
+						`${filter.label} filtresini kaldır`,
+					);
+					chip.innerHTML = `<span>${filter.label}</span><span class="filter-chip-remove" aria-hidden="true">&times;</span>`;
+					chip.addEventListener("click", filter.clear);
+					activeChipsList.appendChild(chip);
+				});
+			} else {
+				activeChipsBar.style.display = "none";
+				activeChipsList.innerHTML = "";
+			}
+		}
+	}
+
+	clearAllChipsBtn?.addEventListener("click", resetFilters);
+
 	function renderCurrentPage(scrollToTop = false) {
 		if (!productGrid) return;
 		const matchingCards = getFilteredAndSortedCards();
@@ -605,6 +869,9 @@ const maxProductPrice = Math.max(...numericPrices);
 		if (noResultsMsg) {
 			noResultsMsg.style.display = totalMatching === 0 ? "block" : "none";
 		}
+
+		// Update filter badge, drawer counter & chips
+		updateFilterStatsAndChips(totalMatching);
 
 		// Update pagination UI
 		if (paginationContainer) {
@@ -775,33 +1042,49 @@ const maxProductPrice = Math.max(...numericPrices);
 
 	function updateURL() {
 		const url = new URL(window.location.href);
-		
-		if (searchInput && searchInput.value) url.searchParams.set("q", searchInput.value);
+
+		if (searchInput && searchInput.value)
+			url.searchParams.set("q", searchInput.value);
 		else url.searchParams.delete("q");
 
-		if (sortSelect && sortSelect.value !== "price-asc") url.searchParams.set("sort", sortSelect.value);
+		if (sortSelect && sortSelect.value !== "price-asc")
+			url.searchParams.set("sort", sortSelect.value);
 		else url.searchParams.delete("sort");
 
-		const selectedCategories = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-		if (selectedCategories.length) url.searchParams.set("category", selectedCategories.join(","));
+		const selectedCategories = Array.from(categoryCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value);
+		if (selectedCategories.length)
+			url.searchParams.set("category", selectedCategories.join(","));
 		else url.searchParams.delete("category");
 
-		const selectedEdges = Array.from(edgeCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-		if (selectedEdges.length) url.searchParams.set("edge", selectedEdges.join(","));
+		const selectedEdges = Array.from(edgeCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value);
+		if (selectedEdges.length)
+			url.searchParams.set("edge", selectedEdges.join(","));
 		else url.searchParams.delete("edge");
 
-		const selectedThicknesses = Array.from(thicknessCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-		if (selectedThicknesses.length) url.searchParams.set("thickness", selectedThicknesses.join(","));
+		const selectedThicknesses = Array.from(thicknessCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value);
+		if (selectedThicknesses.length)
+			url.searchParams.set("thickness", selectedThicknesses.join(","));
 		else url.searchParams.delete("thickness");
 
-		const selectedColors = Array.from(colorCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
-		if (selectedColors.length) url.searchParams.set("color", selectedColors.join(","));
+		const selectedColors = Array.from(colorCheckboxes)
+			.filter((cb) => cb.checked)
+			.map((cb) => cb.value);
+		if (selectedColors.length)
+			url.searchParams.set("color", selectedColors.join(","));
 		else url.searchParams.delete("color");
 
-		if (appliedMinPrice !== null) url.searchParams.set("min", appliedMinPrice.toString());
+		if (appliedMinPrice !== null)
+			url.searchParams.set("min", appliedMinPrice.toString());
 		else url.searchParams.delete("min");
 
-		if (appliedMaxPrice !== null) url.searchParams.set("max", appliedMaxPrice.toString());
+		if (appliedMaxPrice !== null)
+			url.searchParams.set("max", appliedMaxPrice.toString());
 		else url.searchParams.delete("max");
 
 		if (currentPage > 1) url.searchParams.set("page", currentPage.toString());
@@ -825,36 +1108,46 @@ const maxProductPrice = Math.max(...numericPrices);
 
 		if (params.has("category")) {
 			const cats = params.get("category")?.split(",") || [];
-			categoryCheckboxes.forEach(cb => { cb.checked = cats.includes(cb.value); });
+			categoryCheckboxes.forEach((cb) => {
+				cb.checked = cats.includes(cb.value);
+			});
 			hasParams = true;
 		}
-		
+
 		if (params.has("edge")) {
 			const edges = params.get("edge")?.split(",") || [];
-			edgeCheckboxes.forEach(cb => { cb.checked = edges.includes(cb.value); });
+			edgeCheckboxes.forEach((cb) => {
+				cb.checked = edges.includes(cb.value);
+			});
 			hasParams = true;
 		}
 
 		if (params.has("thickness")) {
 			const thick = params.get("thickness")?.split(",") || [];
-			thicknessCheckboxes.forEach(cb => { cb.checked = thick.includes(cb.value); });
+			thicknessCheckboxes.forEach((cb) => {
+				cb.checked = thick.includes(cb.value);
+			});
 			hasParams = true;
 		}
 
 		if (params.has("color")) {
 			const colors = params.get("color")?.split(",") || [];
-			colorCheckboxes.forEach(cb => { cb.checked = colors.includes(cb.value); });
+			colorCheckboxes.forEach((cb) => {
+				cb.checked = colors.includes(cb.value);
+			});
 			hasParams = true;
 		}
 
 		if (params.has("min")) {
 			appliedMinPrice = parseFloat(params.get("min") || "0");
-			if (minPriceInput && appliedMinPrice) minPriceInput.value = appliedMinPrice.toString();
+			if (minPriceInput && appliedMinPrice)
+				minPriceInput.value = appliedMinPrice.toString();
 			hasParams = true;
 		}
 		if (params.has("max")) {
 			appliedMaxPrice = parseFloat(params.get("max") || "0");
-			if (maxPriceInput && appliedMaxPrice) maxPriceInput.value = appliedMaxPrice.toString();
+			if (maxPriceInput && appliedMaxPrice)
+				maxPriceInput.value = appliedMaxPrice.toString();
 			hasParams = true;
 		}
 
@@ -865,6 +1158,9 @@ const maxProductPrice = Math.max(...numericPrices);
 
 		if (hasParams) {
 			renderCurrentPage(false);
+		} else {
+			// Initialize chips & counts initially
+			updateFilterStatsAndChips(productGrid?.querySelectorAll(".product-card").length || 0);
 		}
 	}
 
@@ -874,36 +1170,89 @@ const maxProductPrice = Math.max(...numericPrices);
 
 <style>
 	.catalog-section {
-		padding: 80px 0;
+		padding: 50px 0 80px;
 		background: #fcfcfc;
 	}
 	.catalog-container {
 		display: flex;
 		flex-direction: column;
-		gap: 40px;
+		gap: 30px;
 	}
 	@media (min-width: 1024px) {
+		.catalog-section {
+			padding: 70px 0 90px;
+		}
 		.catalog-container {
 			flex-direction: row;
 			align-items: flex-start;
+			gap: 36px;
 		}
 	}
 
-	/* Sidebar Filters */
-	.sidebar-filters {
-		width: 100%;
-		background: #fff;
-		padding: 26px;
-		border-radius: 10px;
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-		border: 1px solid #edf2f7;
+	/* Mobile Backdrop - Elevated z-index to cover floating contact buttons */
+	.sidebar-backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(15, 23, 42, 0.5);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		z-index: 10000;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+			visibility 0.3s ease;
 	}
+	.sidebar-backdrop.active {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* Sidebar Filters (Mobile Drawer by default, Sticky Sidebar on Desktop) */
+	.sidebar-filters {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 86%;
+		max-width: 380px;
+		height: 100vh;
+		height: 100dvh;
+		background: #ffffff;
+		z-index: 10001;
+		transform: translateX(-100%);
+		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+		border-radius: 0 18px 18px 0;
+		box-shadow: 12px 0 36px rgba(0, 0, 0, 0.16);
+		border: none;
+	}
+	.sidebar-filters.open {
+		transform: translateX(0);
+	}
+
 	@media (min-width: 1024px) {
+		.sidebar-backdrop {
+			display: none !important;
+		}
 		.sidebar-filters {
-			width: 290px;
-			flex-shrink: 0;
 			position: sticky;
 			top: 90px;
+			left: auto;
+			bottom: auto;
+			width: 290px;
+			height: auto;
+			max-width: none;
+			transform: none !important;
+			transition: none;
+			display: block;
+			padding: 26px;
+			border-radius: 12px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+			border: 1px solid #edf2f7;
+			z-index: 10;
 		}
 	}
 
@@ -912,9 +1261,10 @@ const maxProductPrice = Math.max(...numericPrices);
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-bottom: 18px;
-		margin-bottom: 22px;
-		border-bottom: 2px solid #f1f5f9;
+		padding: 20px 22px;
+		border-bottom: 1px solid #f1f5f9;
+		background: #ffffff;
+		flex-shrink: 0;
 	}
 	.sidebar-title-wrap {
 		display: flex;
@@ -932,6 +1282,47 @@ const maxProductPrice = Math.max(...numericPrices);
 		color: var(--color-primary);
 		margin: 0;
 	}
+	.sidebar-close-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		border: none;
+		background: #f1f5f9;
+		color: #475569;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+	.sidebar-close-btn:hover {
+		background: #e2e8f0;
+		color: var(--color-dark);
+	}
+	@media (min-width: 1024px) {
+		.sidebar-header {
+			padding: 0 0 18px 0;
+			margin-bottom: 22px;
+			border-bottom: 2px solid #f1f5f9;
+		}
+		.sidebar-close-btn {
+			display: none;
+		}
+	}
+
+	/* Sidebar Body (Scrollable in Drawer) */
+	.sidebar-body {
+		flex: 1;
+		overflow-y: auto;
+		padding: 22px;
+		-webkit-overflow-scrolling: touch;
+	}
+	@media (min-width: 1024px) {
+		.sidebar-body {
+			overflow: visible;
+			padding: 0;
+		}
+	}
 
 	/* Filter Groups */
 	.filter-group {
@@ -941,11 +1332,11 @@ const maxProductPrice = Math.max(...numericPrices);
 	}
 	.filter-group:last-of-type {
 		border-bottom: none;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		padding-bottom: 0;
 	}
 	.filter-group h3 {
-		font-size: 0.98rem;
+		font-size: 0.96rem;
 		font-weight: 700;
 		margin-bottom: 14px;
 		color: var(--color-primary);
@@ -970,20 +1361,14 @@ const maxProductPrice = Math.max(...numericPrices);
 		color: var(--color-primary);
 	}
 	.filter-group input[type="checkbox"] {
-		width: 17px;
-		height: 17px;
+		width: 18px;
+		height: 18px;
 		accent-color: var(--color-primary);
 		cursor: pointer;
 		border-radius: 4px;
 	}
-	.count-badge {
-		margin-left: auto;
-		color: #94a3b8;
-		font-size: 0.82rem;
-		font-weight: 500;
-	}
 
-	/* Written Color Options */
+	/* Color Swatch Options */
 	.color-list {
 		display: flex;
 		flex-direction: column;
@@ -1067,7 +1452,7 @@ const maxProductPrice = Math.max(...numericPrices);
 	.price-input-box input:focus {
 		background: #ffffff;
 		border-color: var(--color-primary);
-		box-shadow: 0 0 0 3px rgba(18, 52, 71, 0.08);
+		box-shadow: 0 0 0 3px rgba(140, 106, 83, 0.12);
 	}
 	.price-range-sep {
 		color: #94a3b8;
@@ -1088,7 +1473,7 @@ const maxProductPrice = Math.max(...numericPrices);
 		transition:
 			background-color 0.2s ease,
 			transform 0.1s ease;
-		box-shadow: 0 2px 6px rgba(18, 52, 71, 0.12);
+		box-shadow: 0 2px 6px rgba(140, 106, 83, 0.2);
 	}
 	.btn-apply-price:hover {
 		background: var(--color-dark);
@@ -1098,47 +1483,110 @@ const maxProductPrice = Math.max(...numericPrices);
 		transform: translateY(0);
 	}
 
-	/* Reset Filter Button */
-	.reset-btn {
-		width: 100%;
-		background: #f1f5f9;
-		color: #475569;
+	/* Sidebar Bottom Actions */
+	.sidebar-actions {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 16px 20px;
+		border-top: 1px solid #f1f5f9;
+		background: #ffffff;
+		flex-shrink: 0;
+		box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.04);
+	}
+	.btn-sidebar-reset {
+		flex: 1;
+		background: #f8fafc;
+		color: #64748b;
 		border: 1px solid #e2e8f0;
-		padding: 10px;
+		border-radius: 8px;
+		padding: 11px 14px;
 		font-size: 0.9rem;
 		font-weight: 600;
-		border-radius: 6px;
 		cursor: pointer;
 		transition: all 0.2s ease;
-		margin-top: 6px;
+		text-align: center;
 	}
-	.reset-btn:hover {
-		background: #e2e8f0;
+	.btn-sidebar-reset:hover {
+		background: #f1f5f9;
 		color: var(--color-primary);
+	}
+	.btn-sidebar-apply {
+		flex: 1.6;
+		background: var(--color-primary);
+		color: #ffffff;
+		border: none;
+		border-radius: 8px;
+		padding: 11px 16px;
+		font-size: 0.92rem;
+		font-weight: 600;
+		font-family: var(--font-secondary);
+		cursor: pointer;
+		transition:
+			background-color 0.2s ease,
+			transform 0.1s ease;
+		box-shadow: 0 2px 8px rgba(140, 106, 83, 0.25);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.btn-sidebar-apply:hover {
+		background: var(--color-dark);
+	}
+	@media (min-width: 1024px) {
+		.sidebar-actions {
+			padding: 12px 0 0 0;
+			border-top: none;
+			box-shadow: none;
+		}
+		.btn-sidebar-apply {
+			display: none;
+		}
+		.btn-sidebar-reset {
+			flex: none;
+			width: 100%;
+		}
 	}
 
 	/* Catalog Content */
 	.catalog-content {
 		flex: 1;
 		width: 100%;
+		min-width: 0;
 	}
 	.catalog-topbar {
 		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
+		flex-direction: column;
 		background: #fff;
-		padding: 16px 22px;
-		border-radius: 8px;
-		margin-bottom: 30px;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-		gap: 16px;
+		padding: 16px 18px;
+		border-radius: 12px;
+		margin-bottom: 20px;
+		box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+		border: 1px solid #edf2f7;
+		gap: 14px;
 	}
+	@media (min-width: 640px) {
+		.catalog-topbar {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			padding: 16px 22px;
+			gap: 16px;
+		}
+	}
+
 	.catalog-search {
-		flex: 1;
-		min-width: 250px;
-		max-width: 420px;
+		width: 100%;
 	}
+	@media (min-width: 640px) {
+		.catalog-search {
+			flex: 1;
+			min-width: 220px;
+			max-width: 380px;
+		}
+	}
+
 	.search-input-wrap {
 		display: flex;
 		align-items: center;
@@ -1149,7 +1597,7 @@ const maxProductPrice = Math.max(...numericPrices);
 		width: 100%;
 		padding: 10px 85px 10px 14px;
 		border: 1px solid #e2e8f0;
-		border-radius: 6px;
+		border-radius: 8px;
 		font-family: var(--font-secondary);
 		font-size: 0.92rem;
 		outline: none;
@@ -1161,7 +1609,7 @@ const maxProductPrice = Math.max(...numericPrices);
 	.search-input-wrap input:focus {
 		background-color: #ffffff;
 		border-color: var(--color-primary);
-		box-shadow: 0 0 0 3px rgba(18, 52, 71, 0.08);
+		box-shadow: 0 0 0 3px rgba(140, 106, 83, 0.1);
 	}
 	.search-btn {
 		position: absolute;
@@ -1171,7 +1619,7 @@ const maxProductPrice = Math.max(...numericPrices);
 		background: var(--color-primary);
 		color: #ffffff;
 		border: none;
-		border-radius: 4px;
+		border-radius: 6px;
 		padding: 0 14px;
 		display: inline-flex;
 		align-items: center;
@@ -1184,15 +1632,68 @@ const maxProductPrice = Math.max(...numericPrices);
 	.search-btn:hover {
 		background: var(--color-dark);
 	}
+
 	.catalog-controls {
 		display: flex;
 		align-items: center;
-		gap: 20px;
+		justify-content: space-between;
+		gap: 12px;
 		flex-wrap: wrap;
+		width: 100%;
 	}
+	@media (min-width: 640px) {
+		.catalog-controls {
+			width: auto;
+			justify-content: flex-end;
+			gap: 18px;
+		}
+	}
+
+	/* Mobile Filter Trigger Button */
+	.mobile-filter-trigger {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		padding: 8px 14px;
+		background: #ffffff;
+		color: var(--color-primary);
+		border: 1.5px solid #e2e8f0;
+		border-radius: 8px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		font-family: var(--font-secondary);
+		cursor: pointer;
+		transition: all 0.2s ease;
+		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+	}
+	.mobile-filter-trigger:hover {
+		border-color: var(--color-primary);
+		background: #faf8f5;
+	}
+	.active-filter-badge {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 20px;
+		height: 20px;
+		padding: 0 6px;
+		border-radius: 10px;
+		background: var(--color-primary);
+		color: #ffffff;
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+	@media (min-width: 1024px) {
+		.mobile-filter-trigger {
+			display: none !important;
+		}
+	}
+
 	.result-count {
 		color: #666;
-		font-size: 0.95rem;
+		font-size: 0.92rem;
+		white-space: nowrap;
 	}
 	.result-count strong {
 		color: var(--color-primary);
@@ -1200,19 +1701,97 @@ const maxProductPrice = Math.max(...numericPrices);
 	.sort-by {
 		display: flex;
 		align-items: center;
-		gap: 10px;
-		font-size: 0.95rem;
+		gap: 8px;
+		font-size: 0.92rem;
 		color: #555;
 	}
 	.sort-by select {
-		padding: 8px 15px;
-		border: 1px solid #ddd;
-		border-radius: 4px;
+		padding: 7px 12px;
+		border: 1px solid #cbd5e1;
+		border-radius: 6px;
 		outline: none;
 		font-family: var(--font-secondary);
 		background-color: #fff;
+		font-size: 0.88rem;
 		cursor: pointer;
 	}
+	.sort-by select:focus {
+		border-color: var(--color-primary);
+	}
+
+	/* Active Chips Bar */
+	.active-chips-bar {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px 10px;
+		margin-bottom: 22px;
+		padding: 12px 16px;
+		background: #ffffff;
+		border: 1px solid #edf2f7;
+		border-radius: 10px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+	}
+	.active-chips-title {
+		font-size: 0.84rem;
+		font-weight: 600;
+		color: #64748b;
+	}
+	.active-chips-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+	:global(.filter-chip) {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 4px 10px;
+		background: #f1f5f9;
+		color: #334155;
+		border-radius: 20px;
+		font-size: 0.82rem;
+		font-weight: 500;
+		border: 1px solid #e2e8f0;
+		cursor: pointer;
+		transition: all 0.15s ease;
+		font-family: var(--font-secondary);
+	}
+	:global(.filter-chip:hover) {
+		background: #e2e8f0;
+		color: #0f172a;
+		border-color: #cbd5e1;
+	}
+	:global(.filter-chip-remove) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1rem;
+		line-height: 1;
+		color: #94a3b8;
+		font-weight: 600;
+	}
+	:global(.filter-chip:hover .filter-chip-remove) {
+		color: #ef4444;
+	}
+	.clear-all-chips-btn {
+		margin-left: auto;
+		background: none;
+		border: none;
+		color: #ef4444;
+		font-size: 0.82rem;
+		font-weight: 600;
+		cursor: pointer;
+		padding: 4px 6px;
+		border-radius: 4px;
+		transition: background-color 0.15s ease;
+		font-family: var(--font-secondary);
+	}
+	.clear-all-chips-btn:hover {
+		background-color: #fef2f2;
+		text-decoration: underline;
+	}
+
 	.no-results {
 		text-align: center;
 		padding: 60px 20px;
@@ -1228,17 +1807,19 @@ const maxProductPrice = Math.max(...numericPrices);
 	.product-grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 30px;
+		gap: 24px;
 		margin-bottom: 40px;
 	}
 	@media (min-width: 640px) {
 		.product-grid {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 28px;
 		}
 	}
 	@media (min-width: 1200px) {
 		.product-grid {
 			grid-template-columns: repeat(3, 1fr);
+			gap: 30px;
 		}
 	}
 
@@ -1247,21 +1828,21 @@ const maxProductPrice = Math.max(...numericPrices);
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		gap: 10px;
+		gap: 8px;
 		margin-top: 20px;
 	}
 	.page-btn {
-		width: 42px;
-		height: 42px;
+		width: 40px;
+		height: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: #fff;
-		border: 1px solid #ddd;
+		border: 1px solid #e2e8f0;
 		border-radius: 6px;
 		cursor: pointer;
 		font-weight: 600;
-		font-size: 0.95rem;
+		font-size: 0.92rem;
 		color: #555;
 		transition: all 0.2s ease;
 	}
