@@ -197,9 +197,33 @@ const imagePath = `/public${post.image}`;
     transform: translateX(4px);
   }
 
+  /* Tablet */
   @media (max-width: 768px) {
+    .blog-img-wrapper {
+      height: 200px;
+    }
     .blog-content {
       padding: 1.4rem 1.2rem;
+    }
+    .blog-title {
+      font-size: 1.05rem;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 480px) {
+    .blog-img-wrapper {
+      height: 180px;
+    }
+    .blog-content {
+      padding: 1.1rem 1rem;
+    }
+    .blog-title {
+      font-size: 1rem;
+    }
+    .blog-desc {
+      font-size: 0.87rem;
+      -webkit-line-clamp: 3;
     }
   }
 </style>

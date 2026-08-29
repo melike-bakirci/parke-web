@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
 
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
@@ -44,17 +44,16 @@ const articleSchema = {
   image={blog.image}
   schema={articleSchema}
 >
-  <PageHero
-    title="Parke ve Zemin Dekorasyon Rehberi"
-    subtitle={blog.title}
-    breadcrumbs={[
-      { label: "Blog", href: "/blog" },
-      { label: blog.title },
-    ]}
-  />
-
   <section class="blog-detail-section">
     <div class="container">
+      <!-- Mini Clean Breadcrumbs (No banner, mobile-friendly) -->
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/" class="crumb-link">Ana Sayfa</a>
+        <span class="crumb-sep">/</span>
+        <a href="/blog" class="crumb-link">Blog</a>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-current" title={blog.title}>{blog.title}</span>
+      </nav>
       
       <div class="blog-header">
         <span class="blog-date">{blog.date}</span>
@@ -202,10 +201,46 @@ const articleSchema = {
 </Layout>
 
 <style is:global>
+  /* =========================================
+     BLOG DETAIL SECTION & BREADCRUMBS
+     ========================================= */
   .blog-detail-section {
-    padding: 80px 0;
-    background: var(--color-light);
+    padding: 40px 0 80px;
+    background: #ffffff;
   }
+
+  .blog-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px 8px;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .crumb-link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .crumb-link:hover {
+    color: var(--color-primary);
+  }
+  .crumb-sep {
+    color: #cbd5e1;
+    user-select: none;
+  }
+  .crumb-current {
+    color: var(--color-primary);
+    font-weight: 600;
+    max-width: 420px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .blog-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -228,22 +263,22 @@ const articleSchema = {
   }
   .blog-header {
     text-align: left;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     max-width: 1200px;
   }
   .blog-date {
     display: inline-block;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--color-primary);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
   }
   .blog-title {
-    font-size: 2.5rem;
+    font-size: 2.35rem;
     color: var(--color-dark);
-    line-height: 1.2;
+    line-height: 1.25;
     font-family: var(--font-secondary);
   }
   
@@ -751,16 +786,148 @@ const articleSchema = {
     }
   }
 
+  /* =========================================
+     TABLET (≤ 1024px) — sidebar goes below
+     ========================================= */
+  @media (max-width: 1024px) {
+    .blog-detail-section {
+      padding: 56px 0;
+    }
+    .blog-layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .blog-sidebar {
+      position: static;
+    }
+  }
+
+  /* =========================================
+     MOBILE (≤ 768px)
+     ========================================= */
   @media (max-width: 768px) {
+    .blog-detail-section {
+      padding: 24px 0 48px;
+    }
+    .blog-breadcrumb {
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+    }
+    .crumb-current {
+      max-width: 180px;
+    }
+    .blog-header {
+      margin-bottom: 1.25rem;
+    }
     .blog-title {
-      font-size: 2rem;
+      font-size: 1.6rem;
+      line-height: 1.3;
+    }
+    .blog-date {
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Toolbar — horizontal pill, full width */
+    .blog-toolbar-wrapper {
+      width: 100%;
     }
     .blog-toolbar {
       border-radius: 12px;
-      padding: 10px;
+      padding: 8px 12px;
+      width: 100%;
+      justify-content: space-around;
+      box-sizing: border-box;
+      flex-direction: row !important;
     }
     .tool-btn {
-      padding: 6px 12px;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+    }
+
+    .blog-featured-image {
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      max-height: 260px;
+    }
+
+    /* Content */
+    .blog-content {
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+    .blog-content h2 {
+      font-size: 1.35rem;
+      margin: 1.75rem 0 0.75rem;
+    }
+    .blog-content p {
+      margin-bottom: 1.1rem;
+    }
+
+    /* Tables: horizontal scroll */
+    .blog-content table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+    .blog-content th,
+    .blog-content td {
+      padding: 10px 12px;
+    }
+
+    /* Feature boxes */
+    .feature-box {
+      padding: 16px;
+    }
+    .feature-box h4 {
+      font-size: 1.05rem;
+    }
+
+    /* Sidebar */
+    .blog-sidebar {
+      position: static;
+    }
+    .sidebar-widget {
+      padding: 16px;
+    }
+    .widget-title {
+      font-size: 1.05rem;
+    }
+    .other-blog-img-wrap {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  /* =========================================
+     SMALL MOBILE (≤ 480px)
+     ========================================= */
+  @media (max-width: 480px) {
+    .blog-detail-section {
+      padding: 20px 0 40px;
+    }
+    .blog-breadcrumb {
+      font-size: 0.78rem;
+      gap: 4px 6px;
+    }
+    .crumb-current {
+      max-width: 130px;
+    }
+    .blog-title {
+      font-size: 1.3rem;
+    }
+    .blog-featured-image {
+      max-height: 200px;
+    }
+    .blog-content {
+      font-size: 0.95rem;
+    }
+    .blog-content h2 {
+      font-size: 1.15rem;
     }
   }
 </style>

@@ -43,24 +43,27 @@ const blogs = blogEntries.map((entry) => ({
 		padding: 90px 0;
 		background: #f8fafc;
 	}
+	/* Default: 3 columns on desktop */
 	.blog-grid {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: 30px;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 28px;
 	}
-	@media (min-width: 768px) {
+	/* Tablet: 2 columns */
+	@media (max-width: 1023px) {
 		.blog-grid {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 24px;
 		}
 	}
-	@media (min-width: 1024px) {
-		.blog-grid {
-			grid-template-columns: repeat(3, 1fr);
-		}
-	}
-	@media (max-width: 768px) {
+	/* Mobile: 1 column, less padding */
+	@media (max-width: 639px) {
 		.blog-section {
-			padding: 60px 0;
+			padding: 40px 0;
+		}
+		.blog-grid {
+			grid-template-columns: 1fr;
+			gap: 20px;
 		}
 	}
 </style>
