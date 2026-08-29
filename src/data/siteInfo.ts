@@ -2,9 +2,9 @@ export const siteInfo = {
   name: "ZenFlor",
   url: "https://www.zenparke.com.tr",
   title: "ZenFlor Parke Çözümleri",
-  description: "Yaşam alanlarınıza değer katan modern, estetik ve dayanıklı lamine, laminat ve masif parke zemin çözümleri.",
-  defaultKeywords: "lamine parke, laminat parke, masif parke, zenflor parke, istanbul parke, zemin kaplama, süpürgelik, parke döşeme",
-  
+  description: "2006 yılından bu yana zemin çözümlerinde kalitenin adresi. Uzman ekibimiz ve kaliteli ürünlerimizle parke ve zemin ihtiyaçlarınızda yanınızdayız.",
+  defaultKeywords: "laminat parke, lamine parke, zenflor parke, istanbul parke, zemin kaplama, süpürgelik, parke döşeme",
+
   contact: {
     phone: {
       raw: "+905302708487",
@@ -14,7 +14,7 @@ export const siteInfo = {
     whatsapp: {
       number: "905302708487",
       url: "https://wa.me/905302708487",
-      createLink: (msg?: string) => 
+      createLink: (msg?: string) =>
         msg ? `https://wa.me/905302708487?text=${encodeURIComponent(msg)}` : "https://wa.me/905302708487"
     },
     email: {
