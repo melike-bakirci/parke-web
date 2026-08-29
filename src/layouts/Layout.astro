@@ -106,6 +106,16 @@ const finalSchema = Astro.props.schema || schemaData;
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="robots" content={robots} />
 		
+		<!-- Dev / Preview Ortamları İçin Noindex Koruması (zenparke.com.tr harici alan adlarında otomatik noindex yapar) -->
+		<script is:inline>
+			if (window.location.hostname.includes('workers.dev') || window.location.hostname.includes('pages.dev')) {
+				var metaRobots = document.querySelector('meta[name="robots"]');
+				if (metaRobots) {
+					metaRobots.setAttribute('content', 'noindex, nofollow, noarchive');
+				}
+			}
+		</script>
+		
 		<!-- Google Search Console -->
 		<meta name="google-site-verification" content="NPsb6XH8U2d9DXOVUxDBaOw7Ll5zujq5KW0-yH8u3Kw" />
 
