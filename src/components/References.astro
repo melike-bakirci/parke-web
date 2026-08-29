@@ -7,10 +7,10 @@ import { galleryImages } from "../data/references";
     <div class="gallery-header">
       <div class="header-text">
         <h2>Uygulama Galerisi</h2>
-        <p>Ev, ofis ve ticari mekanlar için uzman ekibimizle hayata geçirdiğimiz seçkin parke zemin uygulamalarımız.</p>
+        <p>Ev, ofis ve ticari mekanlar için parke zemin uygulamalarımız</p>
       </div>
       <a href="/galeri" class="btn-view-all">
-        <span>Tüm Galeriyi Gör</span>
+        <span>Tümü</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -30,28 +30,44 @@ import { galleryImages } from "../data/references";
 
     <!-- Uygulama Galerisi Grid (4 Adet Örnek Görsel) -->
     <div class="gallery-grid">
-      {galleryImages.slice(0, 4).map((item) => (
-        <a href="/galeri" class="gallery-card" aria-label="Uygulama Galerisini Gör">
-          <img
-            src={item.img}
-            alt={item.alt}
-            width="600"
-            height="450"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="gallery-card-overlay">
-            <span class="zoom-icon" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                <line x1="11" y1="8" x2="11" y2="14"></line>
-                <line x1="8" y1="11" x2="14" y2="11"></line>
-              </svg>
-            </span>
-          </div>
-        </a>
-      ))}
+      {
+        galleryImages.slice(0, 4).map((item) => (
+          <a
+            href="/galeri"
+            class="gallery-card"
+            aria-label="Uygulama Galerisini Gör"
+          >
+            <img
+              src={item.img}
+              alt={item.alt}
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gallery-card-overlay">
+              <span class="zoom-icon" aria-hidden="true">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  <line x1="11" y1="8" x2="11" y2="14" />
+                  <line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>
@@ -154,7 +170,10 @@ import { galleryImages } from "../data/references";
     aspect-ratio: 4/3;
     text-decoration: none;
     box-shadow: var(--shadow-sm);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
   }
 
   .gallery-card:hover {

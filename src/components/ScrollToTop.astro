@@ -2,26 +2,26 @@
 // src/components/ScrollToTop.astro
 ---
 
-<button 
-  id="scroll-to-top" 
-  class="scroll-to-top-btn" 
-  type="button" 
-  aria-label="Yukarı Çık"
-  title="Yukarı Çık"
+<button
+  id="scroll-to-top"
+  class="scroll-to-top-btn"
+  type="button"
+  aria-label="En Yukarı Çık"
+  title="En Yukarı Çık"
 >
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="22" 
-    height="22" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    stroke-width="2.5" 
-    stroke-linecap="round" 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
     stroke-linejoin="round"
     class="arrow-icon"
   >
-    <path d="M18 15l-6-6-6 6"/>
+    <path d="M18 15l-6-6-6 6"></path>
   </svg>
 </button>
 
@@ -34,7 +34,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background-color: var(--color-primary, #8C6A53);
+    background-color: var(--color-primary, #8c6a53);
     color: #ffffff;
     border: none;
     display: flex;
@@ -45,11 +45,12 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
-    transition: opacity 0.25s ease,
-                visibility 0.25s ease,
-                transform 0.25s ease,
-                background-color 0.2s ease,
-                box-shadow 0.2s ease;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease,
+      transform 0.25s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
     outline: none;
     user-select: none;
   }
@@ -65,7 +66,7 @@
   }
 
   .scroll-to-top-btn:hover {
-    background-color: var(--color-primary-dark, #6D4F3B);
+    background-color: var(--color-primary-dark, #6d4f3b);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
   }
@@ -101,31 +102,35 @@
 
 <script>
   function initScrollToTop() {
-    const scrollBtn = document.getElementById('scroll-to-top');
+    const scrollBtn = document.getElementById("scroll-to-top");
     if (!scrollBtn) return;
 
     let ticking = false;
 
     const toggleVisibility = () => {
       if (window.scrollY > 300) {
-        scrollBtn.classList.add('visible');
+        scrollBtn.classList.add("visible");
       } else {
-        scrollBtn.classList.remove('visible');
+        scrollBtn.classList.remove("visible");
       }
       ticking = false;
     };
 
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(toggleVisibility);
-        ticking = true;
-      }
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(toggleVisibility);
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
 
-    scrollBtn.addEventListener('click', () => {
+    scrollBtn.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     });
 
@@ -134,10 +139,10 @@
   }
 
   // Support initial load and Astro page transitions
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initScrollToTop);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollToTop);
   } else {
     initScrollToTop();
   }
-  document.addEventListener('astro:page-load', initScrollToTop);
+  document.addEventListener("astro:page-load", initScrollToTop);
 </script>
