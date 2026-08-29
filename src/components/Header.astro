@@ -499,9 +499,13 @@ const pathname = Astro.url.pathname;
     position: relative;
     z-index: 1000;
   }
+
+  /* =========================================
+     TOP BAR
+     ========================================= */
   .header-top {
-    padding: 0.85rem 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #f3f1ee;
   }
   .top-container {
     display: flex;
@@ -511,63 +515,81 @@ const pathname = Astro.url.pathname;
   .logo-link {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.75rem;
     text-decoration: none;
   }
   .logo-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
   }
   .logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.2;
+    line-height: 1.15;
   }
   .logo-title {
     font-family: var(--font-primary);
     font-weight: 800;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     color: var(--color-primary);
-    letter-spacing: 0.5px;
+    letter-spacing: -0.02em;
   }
   .logo-sub {
-    font-size: 0.8rem;
-    color: #666;
-    letter-spacing: 2px;
+    font-size: 0.72rem;
+    color: var(--color-text-muted);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 500;
   }
   .contact-info {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
+    gap: 0.25rem;
   }
   .contact-item {
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-text-dark);
+    font-size: 0.83rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
     text-decoration: none;
-    padding: 0.35rem 0.55rem;
+    padding: 0.35rem 0.65rem;
     border-radius: var(--radius-sm);
-    transition: all 0.2s ease;
+    transition: all 0.2s var(--ease-smooth);
   }
   .contact-item svg {
     flex-shrink: 0;
     color: var(--color-primary);
-    transition: transform 0.2s ease;
+    opacity: 0.85;
+    transition: all 0.2s var(--ease-smooth);
   }
   .contact-item:hover {
     color: var(--color-primary);
     background: var(--color-secondary-light);
   }
   .contact-item:hover svg {
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.08);
   }
+
+  /* =========================================
+     NAV BAR
+     ========================================= */
   .header-nav {
     background: var(--color-primary);
-    padding: 0.6rem 0;
+    padding: 0.65rem 0;
+    position: relative;
+  }
+  .header-nav::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(200, 169, 110, 0.3) 50%, transparent 100%);
   }
   .nav-container {
     display: flex;
@@ -589,35 +611,36 @@ const pathname = Astro.url.pathname;
     font-family: var(--font-primary);
     font-weight: 800;
     font-size: 1.15rem;
-    letter-spacing: 0.5px;
+    letter-spacing: -0.02em;
   }
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.2rem;
   }
   .nav-links a {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.82);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 0.93rem;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.25s var(--ease-smooth);
     position: relative;
-    padding-bottom: 0.2rem;
+    padding-bottom: 0.15rem;
   }
   .nav-links a:hover {
     color: #fff;
   }
   .nav-links a.active {
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
   }
   .nav-links a.active::after {
     content: "";
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
-    height: 3px;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
     background-color: var(--color-secondary);
     border-radius: 2px;
   }
@@ -627,19 +650,23 @@ const pathname = Astro.url.pathname;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    padding: 9px 20px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s var(--ease-out);
   }
   .quote-phone-icon {
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s var(--ease-out);
   }
   .quote-nav-btn:hover .quote-phone-icon {
     transform: rotate(15deg) scale(1.1);
   }
 
-  /* Mobile Actions & Hamburger Button (NO BACKGROUND) */
+  /* =========================================
+     MOBILE ACTIONS & HAMBURGER
+     ========================================= */
   .mobile-nav-actions {
     display: none;
     align-items: center;
@@ -655,9 +682,7 @@ const pathname = Astro.url.pathname;
     border: none;
     color: #ffffff;
     text-decoration: none;
-    transition:
-      transform 0.2s ease,
-      opacity 0.2s ease;
+    transition: transform 0.2s var(--ease-smooth), opacity 0.2s var(--ease-smooth);
     cursor: pointer;
   }
   .mobile-quick-call:hover {
@@ -677,19 +702,17 @@ const pathname = Astro.url.pathname;
     outline: none;
     cursor: pointer;
     padding: 6px;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s var(--ease-smooth);
   }
   .hamburger-btn:hover {
     transform: scale(1.05);
   }
   .hamburger-bar {
-    width: 24px;
+    width: 22px;
     height: 2px;
     background-color: #ffffff;
     border-radius: 2px;
-    transition:
-      transform 0.3s ease,
-      opacity 0.3s ease;
+    transition: transform 0.3s var(--ease-out), opacity 0.3s var(--ease-out);
     transform-origin: center;
   }
   .hamburger-btn.active .hamburger-bar:nth-child(1) {
@@ -702,28 +725,31 @@ const pathname = Astro.url.pathname;
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* Mobile Drawer Backdrop */
+  /* =========================================
+     MOBILE DRAWER BACKDROP
+     ========================================= */
   .drawer-backdrop {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     z-index: 10000;
     opacity: 0;
     visibility: hidden;
-    transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
+    transition: opacity 0.3s var(--ease-smooth), visibility 0.3s var(--ease-smooth);
   }
   .drawer-backdrop.open {
     opacity: 1;
     visibility: visible;
   }
 
-  /* Mobile Drawer Container */
+  /* =========================================
+     MOBILE DRAWER
+     ========================================= */
   .mobile-drawer {
     position: fixed;
     top: 0;
@@ -736,8 +762,8 @@ const pathname = Astro.url.pathname;
     display: flex;
     flex-direction: column;
     transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
+    transition: transform 0.35s var(--ease-out);
+    box-shadow: -12px 0 40px rgba(0, 0, 0, 0.12);
     overflow-y: auto;
   }
   .mobile-drawer.open {
@@ -750,8 +776,7 @@ const pathname = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid #f1f5f9;
-    background: #ffffff;
+    border-bottom: 1px solid #f3f1ee;
   }
   .drawer-logo {
     display: flex;
@@ -764,12 +789,12 @@ const pathname = Astro.url.pathname;
     border-radius: 8px;
     border: none;
     background: transparent;
-    color: #475569;
+    color: #64748b;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.2s var(--ease-smooth);
   }
   .drawer-close-btn:hover {
     color: #ef4444;
@@ -786,33 +811,33 @@ const pathname = Astro.url.pathname;
   .drawer-links {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     margin-bottom: 1.75rem;
   }
   .drawer-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px;
-    border-radius: 8px;
+    padding: 13px 14px;
+    border-radius: var(--radius-sm);
     font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-dark);
+    font-weight: 500;
+    color: var(--color-text-dark);
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.2s var(--ease-smooth);
   }
   .drawer-link:hover {
-    background: #f8fafc;
+    background: var(--color-secondary-light);
     color: var(--color-primary);
   }
   .drawer-link.active {
     background: rgba(140, 106, 83, 0.08);
     color: var(--color-primary);
-    font-weight: 700;
+    font-weight: 600;
   }
   .drawer-arrow {
     color: #94a3b8;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s var(--ease-smooth);
   }
   .drawer-link:hover .drawer-arrow,
   .drawer-link.active .drawer-arrow {
@@ -820,11 +845,11 @@ const pathname = Astro.url.pathname;
     transform: translateX(3px);
   }
 
-  /* Drawer Footer (TopHeader Items & Working Hours) */
+  /* Drawer Footer */
   .drawer-footer {
     margin-top: auto;
     padding-top: 1.25rem;
-    border-top: 1px solid #f1f5f9;
+    border-top: 1px solid #f3f1ee;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -833,33 +858,35 @@ const pathname = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 0.88rem;
+    font-size: 0.87rem;
     font-weight: 500;
-    color: #475569;
+    color: var(--color-text-muted);
     text-decoration: none;
     line-height: 1.4;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s var(--ease-smooth);
   }
   .drawer-info-item svg {
     flex-shrink: 0;
     color: var(--color-primary);
-    transition: transform 0.2s ease;
+    opacity: 0.85;
+    transition: transform 0.2s var(--ease-smooth);
   }
   a.drawer-info-item:hover {
     color: var(--color-primary);
   }
   a.drawer-info-item:hover svg {
-    transform: scale(1.15);
+    transform: scale(1.12);
+    opacity: 1;
   }
 
   /* =========================================
      HEADER RESPONSIVE
      ========================================= */
 
-  /* Tablet — hide last two contact items */
+  /* Tablet — hide contact item text */
   @media (max-width: 1024px) {
     .contact-info {
-      gap: 0.5rem;
+      gap: 0.25rem;
     }
     .contact-item span {
       display: none;
@@ -879,7 +906,7 @@ const pathname = Astro.url.pathname;
   /* Tablet — narrow nav */
   @media (max-width: 1024px) and (min-width: 769px) {
     .nav-links {
-      gap: 1.25rem;
+      gap: 1.4rem;
     }
     .nav-links a {
       font-size: 0.88rem;
