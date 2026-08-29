@@ -34,43 +34,16 @@ const {
   <div class="container footer-container">
     <div class="footer-col brand-col">
       <div class="logo">
-        <a href="/" class="footer-logo-link">
-          <div class="logo-icon">
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="1"
-                y="1"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.95"></rect>
-              <rect
-                x="18"
-                y="1"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.5"></rect>
-              <rect
-                x="1"
-                y="18"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.5"></rect>
-              <rect
-                x="18"
-                y="18"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.95"></rect>
-            </svg>
-          </div>
+        <a href="/" class="footer-logo-link" aria-label="Ana Sayfa - ZenFlor Parke">
+          <img
+            src="/zenparke-logo.png"
+            alt="ZenFlor Parke Logo"
+            class="footer-logo-img"
+            width="44"
+            height="44"
+            loading="lazy"
+            decoding="async"
+          />
           <div class="logo-text">
             <span class="footer-logo-title">{siteInfo.name}</span>
             <span class="footer-logo-sub">Parke Çözümleri</span>
@@ -232,10 +205,16 @@ const {
     text-decoration: none;
     margin-bottom: 1.25rem;
   }
-  .logo-icon {
-    width: 36px;
-    height: 36px;
+  .footer-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
     flex-shrink: 0;
+    border-radius: 6px;
+    transition: transform 0.25s var(--ease-smooth);
+  }
+  .footer-logo-link:hover .footer-logo-img {
+    transform: scale(1.05);
   }
   .footer-logo-title {
     font-family: var(--font-primary);

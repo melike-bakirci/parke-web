@@ -11,42 +11,15 @@ const pathname = Astro.url.pathname;
     <div class="container top-container">
       <div class="logo">
         <a href="/" class="logo-link" aria-label="Ana Sayfa - ZenFlor Parke">
-          <div class="logo-icon">
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect
-                x="1"
-                y="1"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.95"></rect>
-              <rect
-                x="18"
-                y="1"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.5"></rect>
-              <rect
-                x="1"
-                y="18"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.5"></rect>
-              <rect
-                x="18"
-                y="18"
-                width="13"
-                height="13"
-                fill="var(--color-secondary, #C8A96E)"
-                opacity="0.95"></rect>
-            </svg>
-          </div>
+          <img
+            src="/zenparke-logo.png"
+            alt="ZenFlor Parke Logo"
+            class="logo-img"
+            width="44"
+            height="44"
+            loading="eager"
+            decoding="async"
+          />
           <div class="logo-text">
             <span class="logo-title">{siteInfo.name}</span>
             <span class="logo-sub">Parke Çözümleri</span>
@@ -105,42 +78,15 @@ const pathname = Astro.url.pathname;
     <div class="container nav-container">
       <!-- Mobile Logo (shown inside nav bar on mobile) -->
       <a href="/" class="mobile-logo" aria-label="Ana Sayfa - ZenFlor Parke">
-        <div class="mobile-logo-icon">
-          <svg
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1"
-              y="1"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.95"></rect>
-            <rect
-              x="18"
-              y="1"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.5"></rect>
-            <rect
-              x="1"
-              y="18"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.5"></rect>
-            <rect
-              x="18"
-              y="18"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.95"></rect>
-          </svg>
-        </div>
+        <img
+          src="/zenparke-logo.png"
+          alt="ZenFlor Parke Logo"
+          class="mobile-logo-img"
+          width="32"
+          height="32"
+          loading="eager"
+          decoding="async"
+        />
         <span class="mobile-logo-title">{siteInfo.name}</span>
       </a>
 
@@ -234,42 +180,15 @@ const pathname = Astro.url.pathname;
   >
     <div class="drawer-header">
       <div class="drawer-logo">
-        <div class="logo-icon">
-          <svg
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1"
-              y="1"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.95"></rect>
-            <rect
-              x="18"
-              y="1"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.5"></rect>
-            <rect
-              x="1"
-              y="18"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.5"></rect>
-            <rect
-              x="18"
-              y="18"
-              width="13"
-              height="13"
-              fill="var(--color-secondary, #C8A96E)"
-              opacity="0.95"></rect>
-          </svg>
-        </div>
+        <img
+          src="/zenparke-logo.png"
+          alt="ZenFlor Parke Logo"
+          class="drawer-logo-img"
+          width="40"
+          height="40"
+          loading="eager"
+          decoding="async"
+        />
         <div class="logo-text">
           <span class="logo-title">{siteInfo.name}</span>
           <span class="logo-sub">Parke Çözümleri</span>
@@ -518,10 +437,16 @@ const pathname = Astro.url.pathname;
     gap: 0.75rem;
     text-decoration: none;
   }
-  .logo-icon {
-    width: 36px;
-    height: 36px;
+  .logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
     flex-shrink: 0;
+    border-radius: 6px;
+    transition: transform 0.25s var(--ease-smooth);
+  }
+  .logo-link:hover .logo-img {
+    transform: scale(1.05);
   }
   .logo-text {
     display: flex;
@@ -602,9 +527,19 @@ const pathname = Astro.url.pathname;
     text-decoration: none;
     color: #ffffff;
   }
-  .mobile-logo-icon {
-    width: 26px;
-    height: 26px;
+  .mobile-logo-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+  }
+  .drawer-logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 6px;
   }
   .mobile-logo-title {
     font-family: var(--font-primary);
