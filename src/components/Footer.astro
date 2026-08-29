@@ -212,7 +212,12 @@ const {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(200, 169, 110, 0.3) 50%, transparent 100%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(200, 169, 110, 0.3) 50%,
+      transparent 100%
+    );
   }
   .footer-container {
     display: grid;
@@ -310,7 +315,9 @@ const {
     color: var(--color-text-light-muted, #ddd1c8);
     font-size: 0.92rem;
     font-weight: 500;
-    transition: color 0.25s var(--ease-smooth), transform 0.2s var(--ease-smooth);
+    transition:
+      color 0.25s var(--ease-smooth),
+      transform 0.2s var(--ease-smooth);
     display: inline-block;
     text-decoration: none;
     opacity: 0.85;
