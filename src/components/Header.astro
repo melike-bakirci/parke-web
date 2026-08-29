@@ -92,7 +92,7 @@ const pathname = Astro.url.pathname;
         <li><a href="/" class={pathname === "/" ? "active" : ""}>Ana Sayfa</a></li>
         <li><a href="/hakkimizda" class={pathname.startsWith("/hakkimizda") ? "active" : ""}>Biz Kimiz?</a></li>
         <li><a href="/parke" class={pathname.startsWith("/parke") ? "active" : ""}>Parke</a></li>
-        <li><a href="/referanslar" class={pathname.startsWith("/referanslar") ? "active" : ""}>Neler Yaptık?</a></li>
+        <li><a href="/galeri" class={pathname.startsWith("/galeri") ? "active" : ""}>Galeri</a></li>
         <li><a href="/blog" class={pathname.startsWith("/blog") ? "active" : ""}>Blog</a></li>
         <li><a href="/iletisim" class={pathname.startsWith("/iletisim") ? "active" : ""}>İletişim</a></li>
       </ul>
@@ -178,8 +178,8 @@ const pathname = Astro.url.pathname;
           </a>
         </li>
         <li>
-          <a href="/referanslar" class={`drawer-link ${pathname.startsWith("/referanslar") ? "active" : ""}`}>
-            <span>Neler Yaptık? (Referanslar)</span>
+          <a href="/galeri" class={`drawer-link ${pathname.startsWith("/galeri") ? "active" : ""}`}>
+            <span>Galeri</span>
             <Icon name="arrow-right" size={16} strokeWidth={2} class="drawer-arrow" />
           </a>
         </li>

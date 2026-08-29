@@ -37,7 +37,7 @@ Lamine parke ise %100 doğal ahşaptan üretilir. Genellikle üç katmandan olu�
   </ul>
 </div>
 
-Doğallığın zarafetini yaşamak istiyorsanız, <a href="/referanslar" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">lamine parke uyguladığımız örnek projelere</a> referanslarımız sayfasından göz atabilirsiniz.
+Doğallığın zarafetini yaşamak istiyorsanız, <a href="/galeri" style="color: #c8a96e; font-weight: 600; text-decoration: underline;">lamine parke uyguladığımız örnek projelere</a> uygulama galerimizden göz atabilirsiniz.
 
 ## Karşılaştırma Tablosu: Laminat vs Lamine
 
