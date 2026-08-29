@@ -55,11 +55,15 @@ const blogs = blogEntries.map(entry => ({
 
   .section-tag {
     display: inline-block;
-    color: var(--color-secondary);
-    font-size: 0.85rem;
+    color: var(--color-primary);
+    background: var(--color-secondary-light);
+    border: 1px solid var(--color-border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 0.75rem;
+    letter-spacing: 1.2px;
+    margin-bottom: 0.85rem;
     text-transform: uppercase;
   }
 
@@ -74,7 +78,7 @@ const blogs = blogEntries.map(entry => ({
 
   .blog-header p {
     font-size: 1.05rem;
-    color: #5a6872;
+    color: var(--color-text-muted);
     line-height: 1.65;
   }
 
@@ -107,9 +111,9 @@ const blogs = blogEntries.map(entry => ({
     font-family: var(--font-secondary);
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: #ffffff;
-    border: 1.5px solid #d0dbe5;
+    border: 1.5px solid var(--color-border);
     transition: all 0.25s ease;
     white-space: nowrap;
   }
@@ -119,7 +123,7 @@ const blogs = blogEntries.map(entry => ({
     color: #ffffff;
     border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(18, 52, 71, 0.15);
+    box-shadow: var(--shadow-md);
   }
 
   .btn-view-all svg {

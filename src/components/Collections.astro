@@ -100,9 +100,9 @@ const products = [...productsRaw]
     font-family: var(--font-secondary);
     text-decoration: none;
     padding: 10px 20px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     background: #ffffff;
-    border: 1.5px solid #d0dbe5;
+    border: 1.5px solid var(--color-border);
     transition: all 0.25s ease;
     white-space: nowrap;
   }
@@ -112,7 +112,7 @@ const products = [...productsRaw]
     color: #ffffff;
     border-color: var(--color-primary);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(18, 52, 71, 0.15);
+    box-shadow: var(--shadow-md);
   }
 
   .btn-view-all svg {

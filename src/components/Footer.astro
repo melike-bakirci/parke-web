@@ -184,9 +184,9 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     border-radius: 2px;
   }
   .footer-col p {
-    color: #aaa;
-    font-size: 0.9rem;
-    line-height: 1.6;
+    color: var(--color-text-light-muted, #DDD1C8);
+    font-size: 0.92rem;
+    line-height: 1.65;
     margin-bottom: 1.5rem;
   }
   .social-links {
@@ -199,16 +199,16 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: #ccc;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
     transition: all 0.3s ease;
   }
   .social-links a:hover {
     background: var(--color-secondary);
-    color: #fff;
+    color: var(--color-dark);
     transform: translateY(-3px);
   }
   .footer-links {
@@ -217,13 +217,15 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     gap: 12px;
   }
   .footer-links a {
-    color: #aaa;
+    color: var(--color-text-light-muted, #DDD1C8);
     font-size: 0.95rem;
-    transition: color 0.3s;
+    transition: color 0.25s ease, transform 0.2s ease;
+    display: inline-block;
   }
   .footer-links a:hover {
-    color: #fff;
+    color: #ffffff;
     text-decoration: underline;
+    transform: translateX(3px);
   }
   .footer-contact-list {
     display: flex;
@@ -234,8 +236,8 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     display: flex;
     align-items: flex-start;
     gap: 10px;
-    color: #aaa;
-    font-size: 0.9rem;
+    color: var(--color-text-light-muted, #DDD1C8);
+    font-size: 0.92rem;
     line-height: 1.5;
   }
   .footer-contact-list svg {
@@ -244,12 +246,12 @@ const { showCta = true, ctaTitle, ctaDescription, ctaWhatsappMsg, ctaPhoneText }
     color: var(--color-secondary);
   }
   .footer-contact-list a {
-    color: #aaa;
+    color: var(--color-text-light-muted, #DDD1C8);
     transition: color 0.3s;
     text-decoration: none;
   }
   .footer-contact-list a:hover {
-    color: #fff;
+    color: #ffffff;
     text-decoration: underline;
   }
   .footer-bottom {

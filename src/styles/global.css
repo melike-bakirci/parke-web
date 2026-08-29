@@ -1,14 +1,31 @@
-
 :root {
-  --color-primary: #8C6A53; /* Warm Nude / Wood */
-  --color-secondary: #D4B895; /* Light Nude / Sand */
-  --color-dark: #4A3B32; /* Dark Wood */
-  --color-light: #F9F6F0; /* Cream background */
-  --color-text-dark: #4A3B32;
-  --color-text-light: #FFFFFF;
+  /* Primary & Accent Palette (Warm Wood / Bronze & Sand) */
+  --color-primary: #8C6A53;          /* Warm Wood / Terracotta */
+  --color-primary-dark: #6D4F3B;     /* Deep Wood for hover & emphasis */
+  --color-secondary: #C8A96E;        /* Warm Gold / Honey Sand */
+  --color-secondary-light: #F6EFE6;  /* Soft Warm Badge Background */
+  --color-dark: #3E2E25;             /* Deep Walnut / Dark Wood */
+  --color-light: #FAF7F2;            /* Cream Warm Surface */
+  --color-surface: #FFFFFF;
+  --color-border: #E8DFD7;
   
+  /* Text Contrast Hierarchy (WCAG AAA & AA Compliant) */
+  --color-text-dark: #2C221E;        /* Deep Walnut Black (14:1+ on white) */
+  --color-text-muted: #64554C;       /* Warm Secondary Text (6:1+ on white) */
+  --color-text-light: #FFFFFF;
+  --color-text-light-muted: #DDD1C8; /* High Contrast Text on Dark (7:1+ on #3E2E25) */
+  
+  /* Typography */
   --font-primary: 'Outfit', sans-serif;
   --font-secondary: 'Inter', sans-serif;
+
+  /* Standardized Radii & Shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 2px 8px rgba(62, 46, 37, 0.06);
+  --shadow-md: 0 6px 20px rgba(62, 46, 37, 0.08);
+  --shadow-lg: 0 12px 32px rgba(62, 46, 37, 0.12);
 }
 
 * {
@@ -20,15 +37,31 @@
 html, body {
   font-family: var(--font-secondary);
   color: var(--color-text-dark);
-  background-color: var(--color-text-light);
+  background-color: var(--color-surface);
   overflow-x: hidden;
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Custom Text Selection */
+::selection {
+  background-color: var(--color-secondary-light);
+  color: var(--color-dark);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
   font-weight: 700;
   color: var(--color-primary);
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -47,43 +80,49 @@ ul {
   padding: 0 2rem;
 }
 
-/* Common button style */
+/* Common button styles */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-text-light);
   padding: 12px 24px;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-family: var(--font-secondary);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-dark);
+  background-color: var(--color-primary-dark);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-white {
-  background-color: var(--color-text-light);
+  background-color: var(--color-surface);
   color: var(--color-primary);
   padding: 12px 24px;
-  border: none;
-  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   font-weight: 600;
   font-family: var(--font-secondary);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 }
 
 .btn-white:hover {
-  background-color: #faf7f2;
+  background-color: var(--color-light);
+  border-color: var(--color-secondary);
+  color: var(--color-primary-dark);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }

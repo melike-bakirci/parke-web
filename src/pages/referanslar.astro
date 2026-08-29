@@ -234,8 +234,8 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 	}
 
 	.brand-card:hover {
-		border-color: #cbd5e1;
-		box-shadow: 0 4px 12px rgba(18, 52, 71, 0.05);
+		border-color: var(--color-secondary);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.brand-logo-wrap {
@@ -320,8 +320,8 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>('/public/images/
 
 	.gallery-card:hover {
 		transform: translateY(-4px);
-		box-shadow: 0 10px 24px rgba(18, 52, 71, 0.12);
-		border-color: #cbd5e1;
+		box-shadow: var(--shadow-lg);
+		border-color: var(--color-secondary);
 	}
 
 	.gallery-card img {

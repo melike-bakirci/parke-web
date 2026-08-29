@@ -264,7 +264,7 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 		border-color: var(--color-primary);
 		color: #ffffff;
 		transform: translateY(-3px);
-		box-shadow: 0 8px 20px rgba(18, 52, 71, 0.2);
+		box-shadow: var(--shadow-md);
 	}
 
 	/* Vision & Mission Section */
@@ -283,9 +283,9 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 		}
 	}
 	.vm-card {
-		background: #f8fafc;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
+		background: var(--color-light);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
 		padding: 40px 36px;
 		transition: all 0.3s ease;
 		display: flex;
@@ -294,15 +294,15 @@ const imagesGlob = import.meta.glob<{ default: ImageMetadata }>(
 	}
 	.vm-card:hover {
 		transform: translateY(-4px);
-		border-color: rgba(18, 52, 71, 0.2);
-		box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+		border-color: var(--color-secondary);
+		box-shadow: var(--shadow-md);
 		background: #ffffff;
 	}
 	.vm-icon {
 		width: 60px;
 		height: 60px;
-		border-radius: 12px;
-		background: rgba(18, 52, 71, 0.08);
+		border-radius: var(--radius-sm);
+		background: var(--color-secondary-light);
 		color: var(--color-primary);
 		display: flex;
 		align-items: center;
