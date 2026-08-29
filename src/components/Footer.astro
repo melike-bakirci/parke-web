@@ -1,4 +1,4 @@
----
+﻿---
 import CtaBanner from "./CtaBanner.astro";
 import { siteInfo } from "../data/siteInfo";
 import Icon from "./Icon.astro";
@@ -196,6 +196,9 @@ const {
 </footer>
 
 <style>
+  /* =========================================
+     FOOTER BASE
+     ========================================= */
   .footer {
     background: var(--color-dark);
     color: #fff;
@@ -203,19 +206,9 @@ const {
   }
   .footer-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1.5fr 1fr 1.2fr;
     gap: 40px;
     padding-bottom: 60px;
-  }
-  @media (min-width: 640px) {
-    .footer-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1024px) {
-    .footer-container {
-      grid-template-columns: 1.5fr 1fr 1.2fr;
-    }
   }
   .footer-logo-link {
     display: flex;
@@ -244,11 +237,8 @@ const {
     letter-spacing: 2px;
     display: block;
   }
-  .mt-4 {
-    margin-top: 1.5rem;
-  }
   .footer-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
@@ -277,7 +267,7 @@ const {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   .social-links a {
     display: inline-flex;
@@ -303,10 +293,9 @@ const {
   .footer-links a {
     color: var(--color-text-light-muted, #ddd1c8);
     font-size: 0.95rem;
-    transition:
-      color 0.25s ease,
-      transform 0.2s ease;
+    transition: color 0.25s ease, transform 0.2s ease;
     display: inline-block;
+    text-decoration: none;
   }
   .footer-links a:hover {
     color: #ffffff;
@@ -340,23 +329,18 @@ const {
     color: #ffffff;
     text-decoration: underline;
   }
+
+  /* Footer Bottom */
   .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 25px 0;
+    padding: 24px 0;
   }
   .footer-bottom-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
     text-align: center;
-  }
-  @media (min-width: 768px) {
-    .footer-bottom-container {
-      flex-direction: row;
-      justify-content: space-between;
-      text-align: left;
-    }
   }
   .footer-bottom p {
     color: #777;
@@ -366,16 +350,77 @@ const {
   .footer-legal-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
     justify-content: center;
   }
   .footer-legal-links a {
     color: #777;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     text-decoration: none;
     transition: color 0.3s;
   }
   .footer-legal-links a:hover {
     color: #fff;
+  }
+
+  /* =========================================
+     FOOTER RESPONSIVE — TABLET (≤ 900px)
+     ========================================= */
+  @media (max-width: 900px) {
+    .footer {
+      padding-top: 56px;
+    }
+    .footer-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      padding-bottom: 48px;
+    }
+    /* Brand col spans full width */
+    .brand-col {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* =========================================
+     FOOTER RESPONSIVE — MOBILE (≤ 540px)
+     ========================================= */
+  @media (max-width: 540px) {
+    .footer {
+      padding-top: 40px;
+    }
+    .footer-container {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-bottom: 36px;
+    }
+    .brand-col {
+      grid-column: auto;
+    }
+    .footer-logo-title {
+      font-size: 1.15rem;
+    }
+    .footer-legal-links {
+      gap: 10px;
+    }
+    .footer-legal-links a {
+      font-size: 0.78rem;
+    }
+    .footer-bottom-container {
+      gap: 10px;
+    }
+  }
+
+  /* =========================================
+     FOOTER BOTTOM — DESKTOP row layout
+     ========================================= */
+  @media (min-width: 768px) {
+    .footer-bottom-container {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+    .footer-legal-links {
+      justify-content: flex-end;
+    }
   }
 </style>

@@ -1,4 +1,4 @@
----
+﻿---
 import { siteInfo } from "../data/siteInfo";
 import Icon from "./Icon.astro";
 
@@ -865,13 +865,41 @@ const pathname = Astro.url.pathname;
     margin-top: 2px;
   }
 
-  /* Responsive Media Queries */
+  /* =========================================
+     HEADER RESPONSIVE
+     ========================================= */
+
+  /* Tablet — hide last two contact items */
+  @media (max-width: 1024px) {
+    .contact-info {
+      gap: 0.5rem;
+    }
+    .contact-item span {
+      display: none;
+    }
+    .contact-item {
+      padding: 0.4rem;
+    }
+  }
+
+  /* Tablet — hide Sahibinden link in top bar */
   @media (max-width: 900px) {
     .contact-item:last-child {
       display: none;
     }
   }
 
+  /* Tablet — narrow nav */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .nav-links {
+      gap: 1.25rem;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+    }
+  }
+
+  /* Mobile (≤ 768px) — switch to drawer layout */
   @media (max-width: 768px) {
     .header-top {
       display: none;
@@ -890,6 +918,17 @@ const pathname = Astro.url.pathname;
     }
     .header-nav {
       padding: 0.75rem 0;
+    }
+  }
+
+  /* Small mobile — ensure drawer full-width on tiny screens */
+  @media (max-width: 380px) {
+    .mobile-drawer {
+      width: 100%;
+      max-width: 100%;
+    }
+    .drawer-btn span {
+      font-size: 0.85rem;
     }
   }
 </style>
